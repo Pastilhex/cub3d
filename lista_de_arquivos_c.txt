@@ -1,0 +1,3 @@
+./src/handle_keypress.c\
+./src/close_window.c\
+./main.c\
