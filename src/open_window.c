@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_window.c                                     :+:      :+:    :+:   */
+/*   open_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 10:59:10 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/09/27 11:42:45 by ialves-m         ###   ########.fr       */
+/*   Created: 2023/09/27 13:53:33 by ialves-m          #+#    #+#             */
+/*   Updated: 2023/09/27 13:59:05 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	close_window(t_mlx *m)
+void	open_window(t_mlx *m, int screen_width, int screen_height, char * window_description)
 {
-	if (m->mlx)
-		mlx_destroy_window(m->mlx, m->mlx_win);
-	if (m->mlx_win)
-		mlx_destroy_display(m->mlx);
-	exit(0);
-	return (0);
+	m->mlx = mlx_init();
+	m->mlx_win = mlx_new_window(m->mlx, screen_width, screen_height, window_description);
+	m->img = mlx_new_image(m->mlx, screen_width, screen_height);
+	m->addr = mlx_get_data_addr(m->img, &m->bits_per_pixel, &m->line_length, &m->endian);
+	mlx_destroy_image(m->mlx, m->img);
 }

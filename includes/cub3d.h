@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/09/27 11:02:52 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/09/27 13:56:34 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 
-# define screenWidth 800
-# define screenHeight 600
+# define screenWidth 640
+# define screenHeight 480
 # define mapWidth 24
 # define mapHeight 24
 
@@ -38,6 +38,7 @@ typedef struct s_mlx {
 } t_mlx;
 
 
+void	open_window(t_mlx *m, int screen_width, int screen_height, char * window_description);
 
 int	handle_keypress(int keysym, t_mlx *m);
 int	close_window(t_mlx *m);

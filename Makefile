@@ -6,6 +6,7 @@ CC = cc
 
 SRC	= ./src/handle_keypress.c\
 	./src/close_window.c\
+	./src/open_window.c\
 	./main.c\
 
 

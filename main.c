@@ -6,27 +6,78 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:33:20 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/09/27 11:02:59 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/09/27 14:40:58 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3d.h"
 
-void	open_window(t_mlx *m)
+int worldMap[mapWidth][mapHeight]=
 {
-	m->mlx = mlx_init();
-	m->mlx_win = mlx_new_window(m->mlx, screenWidth, screenHeight, "Cub3D");
-	m->img = mlx_new_image(m->mlx, screenWidth, screenHeight);
-	m->addr = mlx_get_data_addr(m->img, &m->bits_per_pixel, &m->line_length, &m->endian);
-	mlx_destroy_image(m->mlx, m->img);
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
+{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
+{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+}; // Mapa definido como variavel global para já
+
+int draw_line(void *mlx, void *win, int beginX, int beginY, int endX, int endY, int color)
+{
+	double deltaX = endX - beginX; // -640 = 0 - 640
+	double deltaY = endY - beginY; // -480 = 0 - 480
+	
+	int pixels = sqrt((deltaX * deltaX) + (deltaY * deltaY));
+	// = sqrt((-640 * -640) + (-480 * -480))
+	// = sqrt(409600 + 230400)
+	// = 800
+
+	deltaX /= pixels; // 640 / 800 = 0.8
+	deltaY /= pixels; // 480 / 800 = 0.6
+
+	double pixelX = beginX; // 640
+	double pixelY = beginY; // 480
+
+	while (pixels)
+	{
+		mlx_pixel_put(mlx, win, pixelX, pixelY, color);
+		printf("PixelX: %.2f\nPixelY: %.2f\n", pixelX, pixelY);
+		usleep(10000);
+		pixelX += deltaX;
+		pixelY += deltaY;
+		--pixels;
+	}
+	return (0);
 }
 
 int main()
 {
 	t_mlx m;
-	
-	open_window(&m);
+
+	open_window(&m, screenWidth, screenHeight, "Raycaster");
+
+	draw_line(m.mlx, m.mlx_win, screenWidth, screenHeight, 0, 0, 0xFFFFFF);
+
 	mlx_hook(m.mlx_win, 2, 1L << 0, &handle_keypress, &m);
 	mlx_hook(m.mlx_win, 17, 0, close_window, &m);
 	mlx_loop(m.mlx);
+
 }
