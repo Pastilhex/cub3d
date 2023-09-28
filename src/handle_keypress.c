@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:56:22 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/09/27 11:17:05 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/09/28 13:16:55 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	handle_keypress(int keysym, t_mlx *m)
 	// 	move_player(0, 1, m);
 	// else if (keysym == XK_D || keysym == XK_d)
 	// 	move_player(1, 0, m);
-	// if (keysym == XK_Escape)
-	// 	close_window(m);
+	if (keysym == XK_Escape)
+		close_window(m);
 	return (0);
 }

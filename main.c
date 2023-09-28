@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:33:20 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/09/27 21:18:42 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/09/28 13:12:48 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,34 +40,6 @@ int worldMap[mapWidth][mapHeight]=
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 }; // Mapa definido como variavel global para já
 
-int draw_line(void *mlx, void *win, void *img, int beginX, int beginY, int endX, int endY, int color)
-{
-	double deltaX = endX - beginX; // -640 = 0 - 640
-	double deltaY = endY - beginY; // -480 = 0 - 480
-	
-	int pixels = sqrt((deltaX * deltaX) + (deltaY * deltaY));
-	// = sqrt((-640 * -640) + (-480 * -480))
-	// = sqrt(409600 + 230400)
-	// = 800
-
-	deltaX /= pixels; // 640 / 800 = 0.8
-	deltaY /= pixels; // 480 / 800 = 0.6
-
-	double pixelX = beginX; // 640
-	double pixelY = beginY; // 480
-
-	while (pixels)
-	{
-		mlx_pixel_put(mlx, win, pixelX, pixelY, color);
-		printf("PixelX: %.2f\nPixelY: %.2f\n", pixelX, pixelY);
-		usleep(10000);
-		pixelX += deltaX;
-		pixelY += deltaY;
-		--pixels;
-	}
-	return (0);
-}
-
 
 int main()
 {
@@ -76,11 +48,11 @@ int main()
 	
 	open_window(&m, screenWidth, screenHeight, "Raycaster");
 
-	// draw_line(m.mlx, m.mlx_win, m.img, screenWidth, screenHeight, 0, 0, 0xFFFFFF);
 
 	draw_sky(m, BLUE);
 	draw_ground(m, RED);
 	mlx_put_image_to_window(m.mlx, m.mlx_win, m.img, 0, 0);
+
 	sleep(2);
 	draw_sky(m, RED);
 	draw_ground(m, GREEN);
