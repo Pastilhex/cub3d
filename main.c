@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:33:20 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/09/27 14:40:58 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/09/27 21:18:42 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int worldMap[mapWidth][mapHeight]=
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 }; // Mapa definido como variavel global para já
 
-int draw_line(void *mlx, void *win, int beginX, int beginY, int endX, int endY, int color)
+int draw_line(void *mlx, void *win, void *img, int beginX, int beginY, int endX, int endY, int color)
 {
 	double deltaX = endX - beginX; // -640 = 0 - 640
 	double deltaY = endY - beginY; // -480 = 0 - 480
@@ -68,13 +68,23 @@ int draw_line(void *mlx, void *win, int beginX, int beginY, int endX, int endY, 
 	return (0);
 }
 
+
 int main()
 {
 	t_mlx m;
 
+	
 	open_window(&m, screenWidth, screenHeight, "Raycaster");
 
-	draw_line(m.mlx, m.mlx_win, screenWidth, screenHeight, 0, 0, 0xFFFFFF);
+	// draw_line(m.mlx, m.mlx_win, m.img, screenWidth, screenHeight, 0, 0, 0xFFFFFF);
+
+	draw_sky(m, BLUE);
+	draw_ground(m, RED);
+	mlx_put_image_to_window(m.mlx, m.mlx_win, m.img, 0, 0);
+	sleep(2);
+	draw_sky(m, RED);
+	draw_ground(m, GREEN);
+	mlx_put_image_to_window(m.mlx, m.mlx_win, m.img, 0, 0);
 
 	mlx_hook(m.mlx_win, 2, 1L << 0, &handle_keypress, &m);
 	mlx_hook(m.mlx_win, 17, 0, close_window, &m);

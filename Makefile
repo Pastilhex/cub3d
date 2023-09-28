@@ -8,6 +8,9 @@ SRC	= ./src/handle_keypress.c\
 	./src/close_window.c\
 	./src/open_window.c\
 	./main.c\
+	./src/ft_pix_put.c\
+	./src/drawn_ground.c\
+	./src/drawn_sky.c\
 
 
 
