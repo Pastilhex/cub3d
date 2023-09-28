@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:33:20 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/09/28 16:45:36 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/09/28 21:43:03 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int worldMap[mapWidth][mapHeight]=
 {1,0,0,0,0,0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,1},
 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,3,0,0,0,3,0,0,0,3,0,0,0,0,3,0,0,0,0,1},
 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,2,0,0,0,0,0,1},
 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -58,8 +58,7 @@ int	render_frames(void *arg)
 	t_data *data;
 
 	data = arg;
-	background(*data->m_ptr, RED, BLUE);
-	sleep(1);
+	background(*data->m_ptr, BLACK, BLUE);
 
 	
 	for(int x = 0; x < screenWidth; x++)
@@ -68,27 +67,11 @@ int	render_frames(void *arg)
 		data->cameraX = 2 * x / (double)screenWidth - 1; //x-coordinate in camera space
 		data->rayDirX = data->dirX + data->planeX * data->cameraX;
 		data->rayDirY = data->dirY + data->planeY * data->cameraX;
+
 		//which box of the map we're in
 		data->mapX = (int)data->posX;
 		data->mapY = (int)data->posY;
 
-		//length of ray from current position to next x or y-side
-		// data->sideDistX;
-		// data->sideDistY;
-
-		//length of ray from one x or y-side to next x or y-side
-		//these are derived as:
-		//deltaDistX = sqrt(1 + (rayDirY * rayDirY) / (rayDirX * rayDirX))
-		//deltaDistY = sqrt(1 + (rayDirX * rayDirX) / (rayDirY * rayDirY))
-		//which can be simplified to abs(|rayDir| / rayDirX) and abs(|rayDir| / rayDirY)
-		//where |rayDir| is the length of the vector (rayDirX, rayDirY). Its length,
-		//unlike (data.dirX, dirY) is not 1, however this does not matter, only the
-		//ratio between deltaDistX and deltaDistY matters, due to the way the DDA
-		//stepping further below works. So the values can be computed as below.
-		// Division through zero is prevented, even though technically that's not
-		// needed in C++ with IEEE 754 floating point values.
-		// data->deltaDistX = (data->rayDirX == 0) ? 1e30 : abs(1 / data->rayDirX);
-		// data->deltaDistY = (data->rayDirY == 0) ? 1e30 : abs(1 / data->rayDirY);
 		if (data->rayDirX == 0)
 			data->deltaDistX = 1e30;
 		else
@@ -99,10 +82,6 @@ int	render_frames(void *arg)
 		else
 			data->deltaDistY = fabs(1.0 / data->rayDirY);
 		
-
-		//what direction to step in x or y-direction (either +1 or -1)
-
-
 		data-> hit = 0; //was there a wall hit?
 		
 		//calculate step and initial sideDist
@@ -130,21 +109,21 @@ int	render_frames(void *arg)
 		//perform DDA
 		while(data->hit == 0)
 		{
-		//jump to next map square, either in x-direction, or in y-direction
-		if(data->sideDistX < data->sideDistY)
-		{
-			data->sideDistX += data->deltaDistX;
-			data->mapX += data->stepX;
-			data->side = 0;
-		}
-		else
-		{
-			data->sideDistY += data->deltaDistY;
-			data->mapY += data->stepY;
-			data->side = 1;
-		}
-		//Check if ray has hit a wall
-		if(worldMap[data->mapX][data->mapY] > 0) data->hit = 1;
+			//jump to next map square, either in x-direction, or in y-direction
+			if(data->sideDistX < data->sideDistY)
+			{
+				data->sideDistX += data->deltaDistX;
+				data->mapX += data->stepX;
+				data->side = 0;
+			}
+			else
+			{
+				data->sideDistY += data->deltaDistY;
+				data->mapY += data->stepY;
+				data->side = 1;
+			}
+			//Check if ray has hit a wall
+			if(worldMap[data->mapX][data->mapY] > 0) data->hit = 1;
 		}
 		//Calculate distance projected on camera direction. This is the shortest distance from the point where the wall is
 		//hit to the camera plane. Euclidean to center camera point would give fisheye effect!
@@ -207,10 +186,33 @@ int	render_frames(void *arg)
 		for(int y = data->drawStart; y <= data->drawEnd; y++)
 			ft_pix_put(data->m_ptr, x, y, color);
 	}
-
-
-
 	
+	
+	
+	//speed modifiers
+    data->oldTime = data->time;
+	//printf("Old Time: %f\n", data->oldTime);
+    data->time = get_actual_time();
+	//printf("Actual Time: %f\n", data->time);
+	data->frameTime = (data->time - data->oldTime) / 1000.0; //frameTime is the time this frame has taken, in seconds
+	//printf("Time - OldTime: %f\n", data->frameTime);
+
+	// printf("FPS: %d\n", data->fps);
+	
+	if (data->tps <= 1.0)
+	{
+		data->fps++;
+		data->tps += data->frameTime;
+	}	
+	else
+	{
+		printf("FPS: %d\n", data->fps);
+		data->fps = 0;
+		data->tps = 0.0;
+	}
+
+	data->moveSpeed = data->frameTime * 5.0; //the constant value is in squares/second
+	data->rotSpeed = data->frameTime * 3.0; //the constant value is in radians/second
 	return(0);
 }
 	
@@ -219,13 +221,20 @@ int main()
 	t_mlx m;
 	t_data data;
 
-	data.posX = 22, data.posY = 12;  //x and y start position
+	data.worldMap_ptr = &worldMap;
+	data.posX = 0, data.posY = 0;  //x and y start position
 	data.dirX = -1, data.dirY = 0; //initial direction vector
 	data.planeX = 0, data.planeY = 0.66; //the 2d raycaster version of camera plane
 	data.time = 0; //time of current frame
 	data.oldTime = 0; //time of previous frame
+	data.fps = 0;
+	data.tps = 0.0;
+
 
 	data.m_ptr = &m;
+	m.data_ptr = &data;
+
+
 	open_window(&m, screenWidth, screenHeight, "Cube3d IvoJao");
 
 	mlx_hook(m.mlx_win, 2, 1L << 0, &handle_keypress, &m);
