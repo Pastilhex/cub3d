@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:33:20 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/09/29 10:29:25 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/09/29 18:05:35 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3d.h"
-
+/*
 int worldMap[mapWidth][mapHeight]=
 {
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -216,27 +216,49 @@ int	render_frames(void *arg)
 	return(0);
 }
 	
+// int main()
+// {
+// 	t_mlx m;
+// 	t_data data;
+
+// 	data.worldMap_ptr = &worldMap;
+// 	data.posX = 20, data.posY = 10;  //x and y start position
+// 	data.dirX = -1, data.dirY = 0; //initial direction vector
+// 	data.planeX = 0, data.planeY = 0.66; //the 2d raycaster version of camera plane
+// 	data.time = 0; //time of current frame
+// 	data.oldTime = 0; //time of previous frame
+// 	data.fps = 0;
+// 	data.tps = 0.0;
+
+// 	data.m_ptr = &m;
+// 	m.data_ptr = &data;
+
+// 	open_window(&m, screenWidth, screenHeight, "Cube3d IvoJao");
+
+// 	mlx_hook(m.mlx_win, 2, 1L << 0, &handle_keypress, &m);
+// 	mlx_hook(m.mlx_win, 17, 0, close_window, &m);
+// 	mlx_loop_hook(m.mlx, render_frames, &data);
+// 	mlx_loop(m.mlx);	
+// }
+
+*/
+
+void 	ft_print_array(char ** arr, int nb_lines)
+{
+	for (int i = 0; i < nb_lines; i++)
+		printf("%s", arr[i]);
+}
+
+
+
 int main()
 {
-	t_mlx m;
-	t_data data;
+	t_map my_map;
+	init_t_map(&my_map);
+	char *path = "./maps/test.cub"; //av[2]
+	my_map.map_path = path;
 
-	data.worldMap_ptr = &worldMap;
-	data.posX = 20, data.posY = 10;  //x and y start position
-	data.dirX = -1, data.dirY = 0; //initial direction vector
-	data.planeX = 0, data.planeY = 0.66; //the 2d raycaster version of camera plane
-	data.time = 0; //time of current frame
-	data.oldTime = 0; //time of previous frame
-	data.fps = 0;
-	data.tps = 0.0;
-
-	data.m_ptr = &m;
-	m.data_ptr = &data;
-
-	open_window(&m, screenWidth, screenHeight, "Cube3d IvoJao");
-
-	mlx_hook(m.mlx_win, 2, 1L << 0, &handle_keypress, &m);
-	mlx_hook(m.mlx_win, 17, 0, close_window, &m);
-	mlx_loop_hook(m.mlx, render_frames, &data);
-	mlx_loop(m.mlx);	
+	read_map_from_file(&my_map);
+	ft_print_array(my_map.worldMap, my_map.map_length);
+	
 }

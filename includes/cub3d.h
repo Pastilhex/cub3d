@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/09/29 14:15:01 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/09/29 18:30:29 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define WHITE 0xFFFFFF
 # define YELLOW 0xFFFF00
 # define BLACK 0x000000
-# define CUSTOM 0x00FFFF
+# define CUSTOM 0x00FFFF 
 
 typedef struct s_mlx 
 {
@@ -113,15 +113,28 @@ void		*ft_calloc(size_t nmemb, size_t size);
 bool		ft_is_numeric(char *str);
 int			ft_strlen(char *str);
 char		*ft_strnstr(const char *big, const char *little, size_t len);
+int			ft_isdigit(int c);
 
 /*-----> Cub3d <-----*/
-void		open_window(t_mlx *m, int screen_width, int screen_height, char * window_description);
-void		ft_pix_put(t_mlx *data, int x, int y, int color);
-void		draw_ground(t_mlx m, int color);
-void		draw_sky(t_mlx m, int color);
-uint64_t	get_actual_time(void);
-int	handle_keypress(int keysym, t_mlx *m);
-int	close_window(t_mlx *m);
+// void		open_window(t_mlx *m, int screen_width, int screen_height, char * window_description);
+// void		ft_pix_put(t_mlx *data, int x, int y, int color);
+// void		draw_ground(t_mlx m, int color);
+// void		draw_sky(t_mlx m, int color);
+// uint64_t	get_actual_time(void);
+// int	handle_keypress(int keysym, t_mlx *m);
+// int	close_window(t_mlx *m);
 
+/*-----> Map related <-----*/
+void	read_map_from_file(t_map *map);
+void	init_t_map(t_map *m);
+int		access_file(t_map *map);
+bool	check_map_extension(t_map *map, char *filename);
+bool	find_texture(char *line, char *texture);
+char	*get_back_line(char *line);
+void	get_elements(t_map *map);
+void	get_map_size(t_map *map);
+void	get_map_to_array(t_map *map);
+char	*get_texture(char *line);
+void	get_ttl_nbr_lines(t_map *map);
 
 #endif
