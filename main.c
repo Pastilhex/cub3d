@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:33:20 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/09/28 21:43:03 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/09/29 10:29:25 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,8 +211,8 @@ int	render_frames(void *arg)
 		data->tps = 0.0;
 	}
 
-	data->moveSpeed = data->frameTime * 5.0; //the constant value is in squares/second
-	data->rotSpeed = data->frameTime * 3.0; //the constant value is in radians/second
+	data->moveSpeed = data->frameTime * 30.0; //the constant value is in squares/second
+	data->rotSpeed = data->frameTime * 10.0; //the constant value is in radians/second
 	return(0);
 }
 	
@@ -222,7 +222,7 @@ int main()
 	t_data data;
 
 	data.worldMap_ptr = &worldMap;
-	data.posX = 0, data.posY = 0;  //x and y start position
+	data.posX = 20, data.posY = 10;  //x and y start position
 	data.dirX = -1, data.dirY = 0; //initial direction vector
 	data.planeX = 0, data.planeY = 0.66; //the 2d raycaster version of camera plane
 	data.time = 0; //time of current frame
@@ -230,10 +230,8 @@ int main()
 	data.fps = 0;
 	data.tps = 0.0;
 
-
 	data.m_ptr = &m;
 	m.data_ptr = &data;
-
 
 	open_window(&m, screenWidth, screenHeight, "Cube3d IvoJao");
 

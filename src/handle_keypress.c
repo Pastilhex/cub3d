@@ -16,10 +16,10 @@ int	handle_keypress(int keysym, t_mlx *m)
 {
 	if (keysym == XK_W || keysym == XK_w)
 	{
-		if (*m->data_ptr->worldMap_ptr[(int)(m->data_ptr->posX + m->data_ptr->dirX * m->data_ptr->moveSpeed)][(int)(m->data_ptr->posY)] == 0)
+		//if (*m->data_ptr->worldMap_ptr[(int)(m->data_ptr->posX + m->data_ptr->dirX * m->data_ptr->moveSpeed)][(int)(m->data_ptr->posY)] == 0)
 			m->data_ptr->posX += m->data_ptr->dirX * m->data_ptr->moveSpeed;
 		
-		if (*m->data_ptr->worldMap_ptr[(int)(m->data_ptr->posX)][(int)(m->data_ptr->posY + m->data_ptr->dirY * m->data_ptr->moveSpeed)] == 0)
+		//if (*m->data_ptr->worldMap_ptr[(int)(m->data_ptr->posX)][(int)(m->data_ptr->posY + m->data_ptr->dirY * m->data_ptr->moveSpeed)] == 0)
 			m->data_ptr->posY += m->data_ptr->dirY * m->data_ptr->moveSpeed;
 
 		// int xxx = *m->data_ptr->worldMap_ptr[(int)(m->data_ptr->posX + m->data_ptr->dirX * m->data_ptr->moveSpeed)][(int)(m->data_ptr->posY)];

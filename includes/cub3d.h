@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/09/28 20:48:38 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:15:01 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include "../minilibx-linux/mlx.h"
+# include "../gnl/get_next_line.h"
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -26,7 +27,6 @@
 # include <sys/time.h>
 # include <stdint.h>
 
-
 # define screenWidth 640
 # define screenHeight 480
 # define mapWidth 24
@@ -38,7 +38,6 @@
 # define YELLOW 0xFFFF00
 # define BLACK 0x000000
 # define CUSTOM 0x00FFFF
-
 
 typedef struct s_mlx 
 {
@@ -90,17 +89,37 @@ typedef	struct s_data
 	t_mlx	*m_ptr;
 }	t_data;
 
+typedef struct s_map {
+	int		fd;
+	int		ttl_nbr_lines;
+	int		map_width;
+	int		map_length;
+	char	*extension;
+	char	*get_line;
+	char	*map_path;
+	char	*north_texture;
+	char	*south_texture;
+	char	*west_texture;
+	char	*east_texture;
+	char	*floor_texture;
+	char	*ceiling_texture;
+	char	**worldMap;
+}	t_map;
 
+/*-----> Utils <-----*/
+int			ft_atoi(const char *str);
+void		ft_bzero(void *s, size_t n);
+void		*ft_calloc(size_t nmemb, size_t size);
+bool		ft_is_numeric(char *str);
+int			ft_strlen(char *str);
+char		*ft_strnstr(const char *big, const char *little, size_t len);
+
+/*-----> Cub3d <-----*/
 void		open_window(t_mlx *m, int screen_width, int screen_height, char * window_description);
 void		ft_pix_put(t_mlx *data, int x, int y, int color);
 void		draw_ground(t_mlx m, int color);
 void		draw_sky(t_mlx m, int color);
 uint64_t	get_actual_time(void);
-
-void back2(t_mlx m);
-void back1(t_mlx m);
-
-
 int	handle_keypress(int keysym, t_mlx *m);
 int	close_window(t_mlx *m);
 
