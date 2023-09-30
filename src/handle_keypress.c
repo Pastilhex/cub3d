@@ -16,6 +16,7 @@
 #define DIRX m->data_ptr->dirX
 #define DIRY m->data_ptr->dirY
 #define MOVESPEED m->data_ptr->moveSpeed
+#define ROTSPEED m->data_ptr->rotSpeed
 
 int	handle_keypress(int keysym, t_mlx *m)
 {
@@ -51,22 +52,22 @@ int	handle_keypress(int keysym, t_mlx *m)
 	if (keysym == XK_Right)
 	{
 		//both camera direction and camera plane must be rotated
-		m->data_ptr->oldDirX = m->data_ptr->dirX;
-		m->data_ptr->dirX = m->data_ptr->dirX * cos(-m->data_ptr->rotSpeed) - m->data_ptr->dirY * sin(-m->data_ptr->rotSpeed);
-		m->data_ptr->dirY = m->data_ptr->oldDirX * sin(-m->data_ptr->rotSpeed) + m->data_ptr->dirY * cos(-m->data_ptr->rotSpeed);
+		m->data_ptr->oldDirX = DIRX;
+		DIRX = DIRX * cos(-ROTSPEED) - DIRY * sin(-ROTSPEED);
+		DIRY = m->data_ptr->oldDirX * sin(-ROTSPEED) + DIRY * cos(-ROTSPEED);
 		m->data_ptr->oldPlaneX = m->data_ptr->planeX;
-		m->data_ptr->planeX = m->data_ptr->planeX * cos(-m->data_ptr->rotSpeed) - m->data_ptr->planeY * sin(-m->data_ptr->rotSpeed);
-		m->data_ptr->planeY = m->data_ptr->oldPlaneX * sin(-m->data_ptr->rotSpeed) + m->data_ptr->planeY * cos(-m->data_ptr->rotSpeed);
+		m->data_ptr->planeX = m->data_ptr->planeX * cos(-ROTSPEED) - m->data_ptr->planeY * sin(-ROTSPEED);
+		m->data_ptr->planeY = m->data_ptr->oldPlaneX * sin(-ROTSPEED) + m->data_ptr->planeY * cos(-ROTSPEED);
 	}
 	if (keysym == XK_Left)
 	{
 		//both camera direction and camera plane must be rotated
-		m->data_ptr->oldDirX = m->data_ptr->dirX;
-		m->data_ptr->dirX = m->data_ptr->dirX * cos(m->data_ptr->rotSpeed) - m->data_ptr->dirY * sin(m->data_ptr->rotSpeed);
-		m->data_ptr-> dirY = m->data_ptr->oldDirX * sin(m->data_ptr->rotSpeed) + m->data_ptr->dirY * cos(m->data_ptr->rotSpeed);
+		m->data_ptr->oldDirX = DIRX;
+		DIRX = DIRX * cos(ROTSPEED) - DIRY * sin(ROTSPEED);
+		m->data_ptr-> dirY = m->data_ptr->oldDirX * sin(ROTSPEED) + DIRY * cos(ROTSPEED);
 		m->data_ptr->oldPlaneX = m->data_ptr->planeX;
-		m->data_ptr-> planeX = m->data_ptr->planeX * cos(m->data_ptr->rotSpeed) - m->data_ptr->planeY * sin(m->data_ptr->rotSpeed);
-		m->data_ptr->planeY = m->data_ptr->oldPlaneX * sin(m->data_ptr->rotSpeed) + m->data_ptr->planeY * cos(m->data_ptr->rotSpeed);
+		m->data_ptr-> planeX = m->data_ptr->planeX * cos(ROTSPEED) - m->data_ptr->planeY * sin(ROTSPEED);
+		m->data_ptr->planeY = m->data_ptr->oldPlaneX * sin(ROTSPEED) + m->data_ptr->planeY * cos(ROTSPEED);
 	}
 	if (keysym == XK_Escape)
 		close_window(m);
