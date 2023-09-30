@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/09/30 01:21:29 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/09/30 166:33:15 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ typedef struct s_map {
 /*-----> Utils <-----*/
 int			ft_atoi(const char *str);
 void		ft_bzero(void *s, size_t n);
-void		*ft_calloc(size_t nmemb, size_t size);
+// void		*ft_calloc(size_t nmemb, size_t size);	
 bool		ft_is_numeric(char *str);
 int			ft_strlen(char *str);
 char		*ft_strnstr(const char *big, const char *little, size_t len);
