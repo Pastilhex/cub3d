@@ -53,7 +53,12 @@ typedef struct s_mlx
 
 typedef	struct s_data
 {
-	//int	(*worldMap_ptr)[mapWidth][mapHeight];
+	int		moveUp;
+	int		moveDown;
+	int		moveLeft;
+	int		moveRight;
+	int		slideLeft;
+	int		slideRight;
     double	posX;		// Posição X do jogador
     double	posY;		// Posição Y do jogador
     double	dirX;		// Direção X do jogador
@@ -123,6 +128,7 @@ void		draw_ground(t_mlx m, int color);
 void		draw_sky(t_mlx m, int color);
 uint64_t	get_actual_time(void);
 int			handle_keypress(int keysym, t_mlx *m);
+int			handle_keyrelease(int keysym, t_mlx *m);
 int			close_window(t_mlx *m);
 
 /*-----> Map related <-----*/
@@ -137,5 +143,13 @@ void	get_map_size(t_map *map);
 void	get_map_to_array(t_map *map);
 char	*get_texture(char *line);
 void	get_ttl_nbr_lines(t_map *map);
+
+/*-----> Player Movement <-----*/
+void	moveUp(t_mlx *m);
+void	moveDown(t_mlx *m);
+void	moveLeft(t_mlx *m);
+void	moveRight(t_mlx *m);
+void	moveSlideLeft(t_mlx *m);
+void	moveSlideRight(t_mlx *m);
 
 #endif
