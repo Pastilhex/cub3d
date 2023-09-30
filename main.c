@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:33:20 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/09/30 17:43:20 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/09/30 20:23:22 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,8 +165,12 @@ int	render_frames(void *arg)
 		data->tps = 0.0;
 	}
 
-	data->moveSpeed = data->frameTime * 50.0; //the constant value is in squares/second
-	data->rotSpeed = data->frameTime * 20.0; //the constant value is in radians/second
+	data->moveSpeed = data->frameTime * 25.0; //the constant value is in squares/second
+	data->rotSpeed = data->frameTime * 10.0; //the constant value is in radians/second
+
+	
+	printf("POSX %f POSY %f ", data->posX, data->posY);
+	printf("DIRX %f DIRY %f\n", data->dirX, data->dirY);
 	return(0);
 }
 	

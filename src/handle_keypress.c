@@ -11,58 +11,63 @@
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+#define POSX m->data_ptr->posX
+#define POSY m->data_ptr->posY
+#define DIRX m->data_ptr->dirX
+#define DIRY m->data_ptr->dirY
+#define MOVESPEED m->data_ptr->moveSpeed
 
 int	handle_keypress(int keysym, t_mlx *m)
 {
 	if (keysym == XK_W || keysym == XK_w)
 	{
-		if (m->data_ptr->map_ptr->worldMap[(int)(m->data_ptr->posX + m->data_ptr->dirX * m->data_ptr->moveSpeed)][(int)(m->data_ptr->posY)] == '0')
-			m->data_ptr->posX += m->data_ptr->dirX * m->data_ptr->moveSpeed;
+		if (m->data_ptr->map_ptr->worldMap[(int)(POSX + DIRX * MOVESPEED)][(int)(POSY)] == '0')
+			POSX += DIRX * MOVESPEED;
 		
-		if (m->data_ptr->map_ptr->worldMap[(int)(m->data_ptr->posX)][(int)(m->data_ptr->posY + m->data_ptr->dirY * m->data_ptr->moveSpeed)] == '0')
-			m->data_ptr->posY += m->data_ptr->dirY * m->data_ptr->moveSpeed;
+		if (m->data_ptr->map_ptr->worldMap[(int)(POSX)][(int)(POSY + DIRY * MOVESPEED)] == '0')
+			POSY += DIRY * MOVESPEED;
 	}
 	if (keysym == XK_S || keysym == XK_s)
 	{
-		if(m->data_ptr->map_ptr->worldMap[(int)(m->data_ptr->posX - m->data_ptr->dirX * m->data_ptr->moveSpeed)][(int)(m->data_ptr->posY)] == '0')
-			m->data_ptr->posX -= m->data_ptr->dirX * m->data_ptr->moveSpeed;
-		if(m->data_ptr->map_ptr->worldMap[(int)(m->data_ptr->posX)][(int)(m->data_ptr->posY - m->data_ptr->dirY * m->data_ptr->moveSpeed)] == '0')
-			m->data_ptr->posY -= m->data_ptr->dirY * m->data_ptr->moveSpeed;
+		if(m->data_ptr->map_ptr->worldMap[(int)(POSX - DIRX * MOVESPEED)][(int)(POSY)] == '0')
+			POSX -= DIRX * MOVESPEED;
+		if(m->data_ptr->map_ptr->worldMap[(int)(POSX)][(int)(POSY - DIRY * MOVESPEED)] == '0')
+			POSY -= DIRY * MOVESPEED;
 	}	
 	if (keysym == XK_D || keysym == XK_d)
 	{
-		if(m->data_ptr->map_ptr->worldMap[(int)(m->data_ptr->posX - m->data_ptr->dirY * m->data_ptr->moveSpeed)][(int)(m->data_ptr->posX)] == '0')
-			m->data_ptr->posX -= m->data_ptr->dirY * m->data_ptr->moveSpeed;
-		if(m->data_ptr->map_ptr->worldMap[(int)(m->data_ptr->posY)][(int)(m->data_ptr->posX - m->data_ptr->dirY * m->data_ptr->moveSpeed)] == '0')
-			m->data_ptr->posY -= m->data_ptr->dirX * m->data_ptr->moveSpeed;
+		if(m->data_ptr->map_ptr->worldMap[(int)(POSY - DIRX * MOVESPEED)][(int)(POSY)] == '0')
+			POSX += DIRY * MOVESPEED;
+		if(m->data_ptr->map_ptr->worldMap[(int)(POSX)][(int)(POSY - DIRY * MOVESPEED)] == '0')
+			POSY -= DIRX * MOVESPEED;
 	}
 	if (keysym == XK_A || keysym == XK_a)
 	{
-		if(m->data_ptr->map_ptr->worldMap[(int)(m->data_ptr->posX - m->data_ptr->dirY * m->data_ptr->moveSpeed)][(int)(m->data_ptr->posX)] == '0')
-			m->data_ptr->posX += m->data_ptr->dirY * m->data_ptr->moveSpeed;
-		if(m->data_ptr->map_ptr->worldMap[(int)(m->data_ptr->posY)][(int)(m->data_ptr->posX - m->data_ptr->dirY * m->data_ptr->moveSpeed)] == '0')
-			m->data_ptr->posY += m->data_ptr->dirX * m->data_ptr->moveSpeed;
+		if(m->data_ptr->map_ptr->worldMap[(int)(POSY + DIRX * MOVESPEED)][(int)(POSY)] == '0')
+			POSX -= DIRY * MOVESPEED;
+		if(m->data_ptr->map_ptr->worldMap[(int)(POSX)][(int)(POSY - DIRY * MOVESPEED)] == '0')
+			POSY += DIRX * MOVESPEED;
 	}
-	// if (keysym == XK_Right)
-	// {
-	// 	//both camera direction and camera plane must be rotated
-	// 	m->data_ptr->oldDirX = m->data_ptr->dirX;
-	// 	m->data_ptr->dirX = m->data_ptr->dirX * cos(-m->data_ptr->rotSpeed) - m->data_ptr->dirY * sin(-m->data_ptr->rotSpeed);
-	// 	m->data_ptr->dirY = m->data_ptr->oldDirX * sin(-m->data_ptr->rotSpeed) + m->data_ptr->dirY * cos(-m->data_ptr->rotSpeed);
-	// 	m->data_ptr->oldPlaneX = m->data_ptr->planeX;
-	// 	m->data_ptr->planeX = m->data_ptr->planeX * cos(-m->data_ptr->rotSpeed) - m->data_ptr->planeY * sin(-m->data_ptr->rotSpeed);
-	// 	m->data_ptr->planeY = m->data_ptr->oldPlaneX * sin(-m->data_ptr->rotSpeed) + m->data_ptr->planeY * cos(-m->data_ptr->rotSpeed);
-	// }
-	// if (keysym == XK_Left)
-	// {
-	// 	//both camera direction and camera plane must be rotated
-	// 	m->data_ptr->oldDirX = m->data_ptr->dirX;
-	// 	m->data_ptr->dirX = m->data_ptr->dirX * cos(m->data_ptr->rotSpeed) - m->data_ptr->dirY * sin(m->data_ptr->rotSpeed);
-	// 	m->data_ptr-> dirY = m->data_ptr->oldDirX * sin(m->data_ptr->rotSpeed) + m->data_ptr->dirY * cos(m->data_ptr->rotSpeed);
-	// 	m->data_ptr->oldPlaneX = m->data_ptr->planeX;
-	// 	m->data_ptr-> planeX = m->data_ptr->planeX * cos(m->data_ptr->rotSpeed) - m->data_ptr->planeY * sin(m->data_ptr->rotSpeed);
-	// 	m->data_ptr->planeY = m->data_ptr->oldPlaneX * sin(m->data_ptr->rotSpeed) + m->data_ptr->planeY * cos(m->data_ptr->rotSpeed);
-	// }
+	if (keysym == XK_Right)
+	{
+		//both camera direction and camera plane must be rotated
+		m->data_ptr->oldDirX = m->data_ptr->dirX;
+		m->data_ptr->dirX = m->data_ptr->dirX * cos(-m->data_ptr->rotSpeed) - m->data_ptr->dirY * sin(-m->data_ptr->rotSpeed);
+		m->data_ptr->dirY = m->data_ptr->oldDirX * sin(-m->data_ptr->rotSpeed) + m->data_ptr->dirY * cos(-m->data_ptr->rotSpeed);
+		m->data_ptr->oldPlaneX = m->data_ptr->planeX;
+		m->data_ptr->planeX = m->data_ptr->planeX * cos(-m->data_ptr->rotSpeed) - m->data_ptr->planeY * sin(-m->data_ptr->rotSpeed);
+		m->data_ptr->planeY = m->data_ptr->oldPlaneX * sin(-m->data_ptr->rotSpeed) + m->data_ptr->planeY * cos(-m->data_ptr->rotSpeed);
+	}
+	if (keysym == XK_Left)
+	{
+		//both camera direction and camera plane must be rotated
+		m->data_ptr->oldDirX = m->data_ptr->dirX;
+		m->data_ptr->dirX = m->data_ptr->dirX * cos(m->data_ptr->rotSpeed) - m->data_ptr->dirY * sin(m->data_ptr->rotSpeed);
+		m->data_ptr-> dirY = m->data_ptr->oldDirX * sin(m->data_ptr->rotSpeed) + m->data_ptr->dirY * cos(m->data_ptr->rotSpeed);
+		m->data_ptr->oldPlaneX = m->data_ptr->planeX;
+		m->data_ptr-> planeX = m->data_ptr->planeX * cos(m->data_ptr->rotSpeed) - m->data_ptr->planeY * sin(m->data_ptr->rotSpeed);
+		m->data_ptr->planeY = m->data_ptr->oldPlaneX * sin(m->data_ptr->rotSpeed) + m->data_ptr->planeY * cos(m->data_ptr->rotSpeed);
+	}
 	if (keysym == XK_Escape)
 		close_window(m);
 	return (0);
