@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/09/29 18:30:29 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/09/30 01:21:29 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct s_mlx
 
 typedef	struct s_data
 {
-	int	(*worldMap_ptr)[mapWidth][mapHeight];
+	//int	(*worldMap_ptr)[mapWidth][mapHeight];
     double	posX;		// Posição X do jogador
     double	posY;		// Posição Y do jogador
     double	dirX;		// Direção X do jogador
@@ -86,6 +86,7 @@ typedef	struct s_data
 	double	frameTime;
 	int		fps;
 	double	tps;
+	struct s_map	*map_ptr;
 	t_mlx	*m_ptr;
 }	t_data;
 
@@ -116,13 +117,13 @@ char		*ft_strnstr(const char *big, const char *little, size_t len);
 int			ft_isdigit(int c);
 
 /*-----> Cub3d <-----*/
-// void		open_window(t_mlx *m, int screen_width, int screen_height, char * window_description);
-// void		ft_pix_put(t_mlx *data, int x, int y, int color);
-// void		draw_ground(t_mlx m, int color);
-// void		draw_sky(t_mlx m, int color);
-// uint64_t	get_actual_time(void);
-// int	handle_keypress(int keysym, t_mlx *m);
-// int	close_window(t_mlx *m);
+void		open_window(t_mlx *m, int screen_width, int screen_height, char * window_description);
+void		ft_pix_put(t_mlx *data, int x, int y, int color);
+void		draw_ground(t_mlx m, int color);
+void		draw_sky(t_mlx m, int color);
+uint64_t	get_actual_time(void);
+int			handle_keypress(int keysym, t_mlx *m);
+int			close_window(t_mlx *m);
 
 /*-----> Map related <-----*/
 void	read_map_from_file(t_map *map);

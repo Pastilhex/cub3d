@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:33:20 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/09/29 18:05:35 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/09/30 01:24:42 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int worldMap[mapWidth][mapHeight]=
 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 }; // Mapa definido como variavel global para já
-
+*/
 void	background(t_mlx m, int ground_color, int sky_color)
 {
 	draw_sky(m, sky_color);
@@ -56,7 +56,9 @@ void	background(t_mlx m, int ground_color, int sky_color)
 int	render_frames(void *arg)
 {
 	t_data *data;
-
+	t_map *map;
+	
+	map = data->map_ptr;
 	data = arg;
 	background(*data->m_ptr, BLACK, BLUE);
 
@@ -123,7 +125,7 @@ int	render_frames(void *arg)
 				data->side = 1;
 			}
 			//Check if ray has hit a wall
-			if(worldMap[data->mapX][data->mapY] > 0) data->hit = 1;
+			if(map->worldMap[data->mapX][data->mapY] > 0) data->hit = 1;
 		}
 		//Calculate distance projected on camera direction. This is the shortest distance from the point where the wall is
 		//hit to the camera plane. Euclidean to center camera point would give fisheye effect!
@@ -161,7 +163,7 @@ int	render_frames(void *arg)
 		
 		// Choose wall color
 		int color;
-		switch (worldMap[data->mapX][data->mapY]) {
+		switch (map->worldMap[data->mapX][data->mapY]) {
 			case 1:
 				color = RED;
 				break; // red
@@ -216,32 +218,38 @@ int	render_frames(void *arg)
 	return(0);
 }
 	
-// int main()
-// {
-// 	t_mlx m;
-// 	t_data data;
+int main()
+{
+	t_mlx m;
+	t_data data;
+	t_map map;
 
-// 	data.worldMap_ptr = &worldMap;
-// 	data.posX = 20, data.posY = 10;  //x and y start position
-// 	data.dirX = -1, data.dirY = 0; //initial direction vector
-// 	data.planeX = 0, data.planeY = 0.66; //the 2d raycaster version of camera plane
-// 	data.time = 0; //time of current frame
-// 	data.oldTime = 0; //time of previous frame
-// 	data.fps = 0;
-// 	data.tps = 0.0;
+	data.map_ptr = &map;
+	data.posX = 20, data.posY = 10;  //x and y start position
+	data.dirX = -1, data.dirY = 0; //initial direction vector
+	data.planeX = 0, data.planeY = 0.66; //the 2d raycaster version of camera plane
+	data.time = 0; //time of current frame
+	data.oldTime = 0; //time of previous frame
+	data.fps = 0;
+	data.tps = 0.0;
 
-// 	data.m_ptr = &m;
-// 	m.data_ptr = &data;
+	data.m_ptr = &m;
+	m.data_ptr = &data;
 
-// 	open_window(&m, screenWidth, screenHeight, "Cube3d IvoJao");
+	init_t_map(&map);
+	char *path = "./maps/test.cub"; //av[2]
+	map.map_path = path;
+	read_map_from_file(&map);
 
-// 	mlx_hook(m.mlx_win, 2, 1L << 0, &handle_keypress, &m);
-// 	mlx_hook(m.mlx_win, 17, 0, close_window, &m);
-// 	mlx_loop_hook(m.mlx, render_frames, &data);
-// 	mlx_loop(m.mlx);	
-// }
+	open_window(&m, screenWidth, screenHeight, "Cube3d IvoJao");
 
-*/
+	mlx_hook(m.mlx_win, 2, 1L << 0, &handle_keypress, &m);
+	mlx_hook(m.mlx_win, 17, 0, close_window, &m);
+	mlx_loop_hook(m.mlx, render_frames, &data);
+	mlx_loop(m.mlx);	
+}
+
+
 
 void 	ft_print_array(char ** arr, int nb_lines)
 {
@@ -250,7 +258,7 @@ void 	ft_print_array(char ** arr, int nb_lines)
 }
 
 
-
+/* 
 int main()
 {
 	t_map my_map;
@@ -259,6 +267,8 @@ int main()
 	my_map.map_path = path;
 
 	read_map_from_file(&my_map);
-	ft_print_array(my_map.worldMap, my_map.map_length);
+	//ft_print_array(my_map.worldMap, my_map.map_length);
+	
 	
 }
+ */
