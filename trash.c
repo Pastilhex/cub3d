@@ -26,3 +26,107 @@
 // 	}
 // 	return (0);
 // }
+
+
+// if (data->moveUp == 1 && data->moveLeft == 1 && data->slideLeft == 1)
+// {
+// 	moveUp(data->m_ptr);
+// 	moveLeft(data->m_ptr);
+// 	moveSlideLeft(data->m_ptr);
+// }
+// else if (data->moveUp == 1 && data->moveRight == 1 && data->slideLeft == 1)
+// {
+// 	moveUp(data->m_ptr);
+// 	moveRight(data->m_ptr);
+// 	moveSlideLeft(data->m_ptr);
+// }
+// if (data->moveUp == 1 && data->moveLeft == 1 && data->slideRight == 1)
+// {
+// 	moveUp(data->m_ptr);
+// 	moveLeft(data->m_ptr);
+// 	moveSlideRight(data->m_ptr);
+// }
+// else if (data->moveUp == 1 && data->moveRight == 1 && data->slideRight == 1)
+// {
+// 	moveUp(data->m_ptr);
+// 	moveRight(data->m_ptr);
+// 	moveSlideRight(data->m_ptr);
+// }
+
+// else if (data->moveDown == 1 && data->moveLeft == 1 && data->slideLeft == 1)
+// {
+// 	moveDown(data->m_ptr);
+// 	moveLeft(data->m_ptr);
+// 	moveSlideLeft(data->m_ptr);
+// }
+// else if (data->moveDown == 1 && data->moveRight == 1 && data->slideLeft == 1)
+// {
+// 	moveDown(data->m_ptr);
+// 	moveRight(data->m_ptr);
+// 	moveSlideLeft(data->m_ptr);
+// }
+// if (data->moveDown == 1 && data->moveLeft == 1 && data->slideRight == 1)
+// {
+// 	moveDown(data->m_ptr);
+// 	moveLeft(data->m_ptr);
+// 	moveSlideRight(data->m_ptr);
+// }
+// else if (data->moveDown == 1 && data->moveRight == 1 && data->slideRight == 1)
+// {
+// 	moveDown(data->m_ptr);
+// 	moveRight(data->m_ptr);
+// 	moveSlideRight(data->m_ptr);
+// }
+
+// else if (data->moveUp == 1 && data->moveLeft == 1)
+// {
+// 	moveUp(data->m_ptr);
+// 	moveLeft(data->m_ptr);
+// }
+// else if (data->moveUp == 1 && data->moveRight == 1)
+// {
+// 	moveUp(data->m_ptr);
+// 	moveRight(data->m_ptr);
+// }
+// else if (data->moveDown == 1 && data->moveLeft == 1)
+// {
+// 	moveDown(data->m_ptr);
+// 	moveLeft(data->m_ptr);
+// }
+// else if (data->moveDown == 1 && data->moveRight == 1)
+// {
+// 	moveDown(data->m_ptr);
+// 	moveRight(data->m_ptr);
+// }
+// else if (data->moveUp == 1 && data->slideLeft)
+// {
+// 	moveUp(data->m_ptr);
+// 	moveSlideLeft(data->m_ptr);
+// }
+// else if (data->moveUp == 1 && data->slideRight)
+// {
+// 	moveUp(data->m_ptr);
+// 	moveSlideRight(data->m_ptr);
+// }
+// else if (data->moveDown == 1 && data->slideLeft)
+// {
+// 	moveDown(data->m_ptr);
+// 	moveSlideLeft(data->m_ptr);
+// }
+// else if (data->moveDown == 1 && data->slideRight)
+// {
+// 	moveDown(data->m_ptr);
+// 	moveSlideRight(data->m_ptr);
+// }
+// else if (data->moveUp == 1)
+// 	moveUp(data->m_ptr);
+// else if (data->moveDown == 1)
+// 	moveDown(data->m_ptr);
+// else if (data->moveLeft == 1)
+// 	moveLeft(data->m_ptr);
+// else if (data->moveRight == 1)
+// 	moveRight(data->m_ptr);
+// else if (data->slideLeft == 1)
+// 	moveSlideLeft(data->m_ptr);
+// else if (data->slideRight == 1)
+// 	moveSlideRight(data->m_ptr);

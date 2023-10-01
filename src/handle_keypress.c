@@ -79,14 +79,17 @@ int	handle_keypress(int keysym, t_mlx *m)
 		m->data_ptr->moveUp = 1;
 	if (keysym == XK_S || keysym == XK_s)
 		m->data_ptr->moveDown = 1;
+
 	if (keysym == XK_A || keysym == XK_a)
 		m->data_ptr->slideLeft = 1;
 	if (keysym == XK_D || keysym == XK_d)
 		m->data_ptr->slideRight = 1;
-	if (keysym == XK_Right)
-		m->data_ptr->moveRight = 1;
+
 	if (keysym == XK_Left)
 		m->data_ptr->moveLeft = 1;
+	if (keysym == XK_Right)
+		m->data_ptr->moveRight = 1;
+
 	if (keysym == XK_Escape)
 		close_window(m);
 	return (0);
@@ -98,10 +101,12 @@ int	handle_keyrelease(int keysym, t_mlx *m)
 		m->data_ptr->moveUp = 0;
 	if (keysym == XK_S || keysym == XK_s)
 		m->data_ptr->moveDown = 0;
+
 	if (keysym == XK_A || keysym == XK_a)
 		m->data_ptr->slideLeft = 0;
 	if (keysym == XK_D || keysym == XK_d)
 		m->data_ptr->slideRight = 0;
+
 	if (keysym == XK_Right)
 		m->data_ptr->moveRight = 0;
 	if (keysym == XK_Left)

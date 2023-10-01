@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:33:20 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/01 00:03:07 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:36:04 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,8 @@ int	render_frames(void *arg)
 		}
 
 		//give x and y sides different brightness
-		if(data->side == '1') {color = color / 2;}
+		if(data->side == '1')
+			{color = color / 2;}
 
 		//draw the pixels of the stripe as a vertical line
 		// vertical_line(x, data->drawStart, data->drawEnd, color);
@@ -169,39 +170,49 @@ int	render_frames(void *arg)
 	data->rotSpeed = data->frameTime * 2.0; //the constant value is in radians/second
 
 	// Control Player Movement
-	if (data->moveUp == 1 && data->moveLeft == 1)
-	{
+	if (data->moveUp == 1) {
 		moveUp(data->m_ptr);
-		moveLeft(data->m_ptr);
-	}
-	else if (data->moveUp == 1 && data->moveRight == 1)
-	{
-		moveUp(data->m_ptr);
-		moveRight(data->m_ptr);
-	}
-	else if (data->moveDown == 1 && data->moveLeft == 1)
-	{
+		if (data->moveLeft == 1) {
+			moveLeft(data->m_ptr);
+			if (data->slideLeft == 1) {
+				moveSlideLeft(data->m_ptr);
+			}
+		} else if (data->moveRight == 1) {
+			moveRight(data->m_ptr);
+			if (data->slideRight == 1) {
+				moveSlideRight(data->m_ptr);
+			}
+		} else if (data->slideLeft == 1) {
+			moveSlideLeft(data->m_ptr);
+		} else if (data->slideRight == 1) {
+			moveSlideRight(data->m_ptr);
+		}
+	} else if (data->moveDown == 1) {
 		moveDown(data->m_ptr);
+		if (data->moveLeft == 1) {
+			moveLeft(data->m_ptr);
+			if (data->slideLeft == 1) {
+				moveSlideLeft(data->m_ptr);
+			}
+		} else if (data->moveRight == 1) {
+			moveRight(data->m_ptr);
+			if (data->slideRight == 1) {
+				moveSlideRight(data->m_ptr);
+			}
+		} else if (data->slideLeft == 1) {
+			moveSlideLeft(data->m_ptr);
+		} else if (data->slideRight == 1) {
+			moveSlideRight(data->m_ptr);
+		}
+	} else if (data->moveLeft == 1) {
 		moveLeft(data->m_ptr);
-	}
-	else if (data->moveDown == 1 && data->moveRight == 1)
-	{
-		moveDown(data->m_ptr);
+	} else if (data->moveRight == 1) {
 		moveRight(data->m_ptr);
-	}
-	else if (data->moveUp == 1)
-		moveUp(data->m_ptr);
-	else if (data->moveDown == 1)
-		moveDown(data->m_ptr);
-	else if (data->moveLeft == 1)
-		moveLeft(data->m_ptr);
-	else if (data->moveRight == 1)
-		moveRight(data->m_ptr);
-	else if (data->slideLeft == 1)
+	} else if (data->slideLeft == 1) {
 		moveSlideLeft(data->m_ptr);
-	else if (data->slideRight == 1)
+	} else if (data->slideRight == 1) {
 		moveSlideRight(data->m_ptr);
-
+	}
 
 	// printf("POSX %f POSY %f ", data->posX, data->posY);
 	// printf("DIRX %f DIRY %f\n", data->dirX, data->dirY);
