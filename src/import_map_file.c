@@ -17,7 +17,7 @@ void	init_t_map(t_map *m)
 	m->fd = 0;
 	m->ttl_nbr_lines = 0;
 	m->map_length = 0;
-	m->map_length = 0;
+	m->map_width = 0;
 	m->extension = NULL;
 	m->get_line = NULL;
 	m->map_path = NULL;

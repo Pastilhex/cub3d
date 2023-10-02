@@ -17,6 +17,8 @@
 #define DIRY m->data_ptr->dirY
 #define MOVESPEED m->data_ptr->moveSpeed
 #define ROTSPEED m->data_ptr->rotSpeed
+#define STRAFE_X m->data_ptr->planeX
+#define STRAFE_Y m->data_ptr->planeY
 
 void	moveUp(t_mlx *m)
 {

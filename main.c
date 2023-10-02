@@ -225,6 +225,7 @@ int main()
 	t_data data;
 	t_map map;
 
+	init_t_map(&map);
 	data.map_ptr = &map;
 	data.posX = 11, data.posY = 11;  //x and y start position
 	data.dirX = -1, data.dirY = 0; //initial direction vector
@@ -237,7 +238,6 @@ int main()
 	data.m_ptr = &m;
 	m.data_ptr = &data;
 
-	init_t_map(&map);
 	char *path = "./maps/test.cub"; //av[2]
 	map.map_path = path;
 	read_map_from_file(&map);
