@@ -39,6 +39,17 @@
 # define BLACK 0x000000
 # define CUSTOM 0x00FFFF 
 
+typedef struct s_texture
+{	
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+	int			txt_w;
+	int			txt_h;
+} 		t_texture;
+
 typedef struct s_mlx 
 {
 	char			*mlx;
@@ -91,6 +102,12 @@ typedef	struct s_data
 	double	frameTime;
 	int		fps;
 	double	tps;
+	t_texture *txt_ptr;
+	// t_texture north;
+	// t_texture south;
+	// t_texture west;
+	// t_texture east;
+	
 	struct s_map	*map_ptr;
 	t_mlx	*m_ptr;
 }	t_data;
@@ -110,6 +127,11 @@ typedef struct s_map {
 	char	*floor_texture;
 	char	*ceiling_texture;
 	char	**worldMap;
+	double	wallX;
+	double	step;
+	double 	texPos;
+	int 	texY;
+	uint32_t	color; 
 }	t_map;
 
 /*-----> Utils <-----*/

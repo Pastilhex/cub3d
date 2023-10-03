@@ -119,40 +119,50 @@ int	render_frames(void *arg)
 		if(data->drawEnd >= screenHeight)
 			data->drawEnd = screenHeight - 1;
 
+		 //calculate value of wallX
+      //where exactly the wall was hit
+		if (data->side == 0) 
+			map->wallX = data->posY + data->perpWallDist * data->rayDirY;
+		else
+		    map->wallX = data->posX + data->perpWallDist * data->rayDirX;
+		map->wallX -= floor((map->wallX));
+
+		//x coordinate on the texture
+		int texX = (int)(map->wallX * (double)(data->txt_ptr->txt_w));
+		if(data->side == 0 && data->rayDirX > 0)
+			texX = data->txt_ptr->txt_w - texX - 1;
+		if(data->side == 1 && data->rayDirY < 0)
+			texX = data->txt_ptr->txt_h - texX - 1;
+		
+		// How much to increase the texture coordinate per screen pixel
+		map->step = 1.0 * data->txt_ptr->txt_h / data->lineHeight;
+		// Starting texture coordinate
+		map->texPos = (data->drawStart - screenHeight / 2 + data->lineHeight / 2) * map->step;
+		for(int y = data->drawStart; y < data->drawEnd; y++)
+		{
+			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
+			int texY = (int)map->texPos & (data->txt_ptr->txt_h - 1);
+			map->texPos += map->step;
+			map->color = data->txt_ptr[1][data->txt_ptr->txt_h * texY + texX];
+			//make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
+			if(side == 1) color = (color >> 1) & 8355711;
+			buffer[y][x] = color;
+      	}
+    
+
+
 
 		int color;
-		int wallColor = map->worldMap[data->mapX][data->mapY];
-		if (data->side == '0' && data->rayDirX > 0 && wallColor == '1')
-			color = RED;
-		else if (data->side == '0' && data->rayDirX < 0 && wallColor == '1')
-			color = YELLOW;
-		else if (data->side == '1' && data->rayDirY > 0 && wallColor == '1')
-			color = BLUE;
-		else if (data->side == '1' && data->rayDirY < 0 && wallColor == '1')
-			color = GREEN;
+		// int wallColor = map->worldMap[data->mapX][data->mapY];
+		// if (data->side == '0' && data->rayDirX > 0 && wallColor == '1')
+		// 	color = RED;
+		// else if (data->side == '0' && data->rayDirX < 0 && wallColor == '1')
+		// 	color = YELLOW;
+		// else if (data->side == '1' && data->rayDirY > 0 && wallColor == '1')
+		// 	color = BLUE;
+		// else if (data->side == '1' && data->rayDirY < 0 && wallColor == '1')
+		// 	color = GREEN;
 
-		// Choose wall color
-		// switch (map->worldMap[data->mapX][data->mapY]) {
-		// 	case '1':
-		// 		color = RED;
-		// 		break; // red
-		// 	case '2':
-		// 		color = GREEN;
-		// 		break; // green
-		// 	case '3':
-		// 		color = CUSTOM;
-		// 		break; // blue
-		// 	case '4':
-		// 		color = WHITE;
-		// 		break; // white
-		// 	default:
-		// 		color = YELLOW;
-		// 		break; // yellow
-		// }
-
-		//give x and y sides different brightness
-		// if(data->side == '1')
-		// 	{color = color / 2;}
 
 		//draw the pixels of the stripe as a vertical line
 		// vertical_line(x, data->drawStart, data->drawEnd, color);
@@ -189,6 +199,18 @@ int	render_frames(void *arg)
 	printf("DIRX %f DIRY %f\n", data->dirX, data->dirY);
 	return(0);
 }
+
+void 	get_textures(t_data *d)
+{
+	d->txt_ptr[0].img = mlx_xpm_file_to_image(d->m_ptr->mlx,
+		d->map_ptr->north_texture, d->txt_ptr[0].txt_w, d->txt_ptr[0].txt_h);
+	d->txt_ptr[1].img = mlx_xpm_file_to_image(d->m_ptr->mlx,
+		d->map_ptr->south_texture, d->txt_ptr[1].txt_w, d->txt_ptr[1].txt_h);
+	d->txt_ptr[2].img = mlx_xpm_file_to_image(d->m_ptr->mlx,
+		d->map_ptr->west_texture, d->txt_ptr[2].txt_w, d->txt_ptr[2].txt_h);
+	d->txt_ptr[3].img = mlx_xpm_file_to_image(d->m_ptr->mlx,
+		d->map_ptr->east_texture, d->txt_ptr[3].txt_w, d->txt_ptr[3].txt_h);
+}
 	
 int main()
 {
@@ -205,6 +227,10 @@ int main()
 	data.oldTime = 0; //time of previous frame
 	data.fps = 0;
 	data.tps = 0.0;
+	// data.txt_ptr = malloc(sizeof(t_texture) * 4); 
+	// if (!data.txt_ptr)
+	// 	return (-1);
+	
 
 	data.m_ptr = &m;
 	m.data_ptr = &data;
