@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:33:20 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/03 12:52:23 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/03 15:36:56 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ int	render_frames(void *arg)
     data->oldTime = data->time;
     data->time = get_actual_time();
 	data->frameTime = (data->time - data->oldTime) / 1000.0; //frameTime is the time this frame has taken, in seconds
-	
+
 	if (data->tps <= 1.0)
 	{
 		data->fps++;
@@ -182,7 +182,7 @@ int	render_frames(void *arg)
 
 	// Control Player Movement
 	movePlayer(data);
-	
+
 	printf("Side %d ", data->side - 48);
 	printf("PlaneX %f PlaneY %f ", data->planeX, data->planeY);
 	printf("POSX %f POSY %f ", data->posX, data->posY);
