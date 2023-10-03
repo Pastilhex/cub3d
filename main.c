@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:33:20 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/03 15:36:56 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:55:44 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,7 @@ int main()
 
 	init_t_map(&map);
 	data.map_ptr = &map;
-	data.posX = 11, data.posY = 11;  //x and y start position
+	data.posX = 2, data.posY = 2;  //x and y start position
 	data.dirX = -1, data.dirY = 0; //initial direction vector
 	data.planeX = 0, data.planeY = 0.66; //the 2d raycaster version of camera plane
 	data.time = 0; //time of current frame

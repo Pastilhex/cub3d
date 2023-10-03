@@ -22,34 +22,34 @@
 
 void	moveUp(t_mlx *m)
 {
-	if (m->data_ptr->map_ptr->worldMap[(int)(POSX + DIRX * MOVESPEED)][(int)(POSY)] == '0')
+	if (m->data_ptr->map_ptr->worldMap[(int)(POSX + DIRX * .5)][(int)(POSY)] == '0')
 		POSX += DIRX * MOVESPEED;
 	
-	if (m->data_ptr->map_ptr->worldMap[(int)(POSX)][(int)(POSY + DIRY * MOVESPEED)] == '0')
+	if (m->data_ptr->map_ptr->worldMap[(int)(POSX)][(int)(POSY + DIRY * .5)] == '0')
 		POSY += DIRY * MOVESPEED;
 }
 
 void	moveDown(t_mlx *m)
 {
-	if(m->data_ptr->map_ptr->worldMap[(int)(POSX - DIRX * MOVESPEED)][(int)(POSY)] == '0')
+	if(m->data_ptr->map_ptr->worldMap[(int)(POSX - DIRX * .5)][(int)(POSY)] == '0')
 		POSX -= DIRX * MOVESPEED;
-	if(m->data_ptr->map_ptr->worldMap[(int)(POSX)][(int)(POSY - DIRY * MOVESPEED)] == '0')
+	if(m->data_ptr->map_ptr->worldMap[(int)(POSX)][(int)(POSY - DIRY * .5)] == '0')
 		POSY -= DIRY * MOVESPEED;
 }
 
 void	moveSlideLeft(t_mlx *m)
 {
-	if(m->data_ptr->map_ptr->worldMap[(int)(POSX - STRAFE_X * 1)][(int)(POSY)] == '0')
+	if(m->data_ptr->map_ptr->worldMap[(int)(POSX - STRAFE_X * .5)][(int)(POSY)] == '0')
 		POSX -= STRAFE_X * MOVESPEED;
-	if(m->data_ptr->map_ptr->worldMap[(int)(POSY)][(int)(POSY - STRAFE_Y * 1)] == '0')
+	if(m->data_ptr->map_ptr->worldMap[(int)(POSX)][(int)(POSY - STRAFE_Y * .5)] == '0')
 		POSY -= STRAFE_Y * MOVESPEED;
 }
 
 void	moveSlideRight(t_mlx *m)
 {
-	if(m->data_ptr->map_ptr->worldMap[(int)(POSX + STRAFE_X * 1)][(int)(POSY)] == '0')
+	if(m->data_ptr->map_ptr->worldMap[(int)(POSX + STRAFE_X * .5)][(int)(POSY)] == '0')
 		POSX += STRAFE_X * MOVESPEED;
-	if(m->data_ptr->map_ptr->worldMap[(int)(POSX)][(int)(POSY + STRAFE_Y * 1)] == '0')
+	if(m->data_ptr->map_ptr->worldMap[(int)(POSX)][(int)(POSY + STRAFE_Y * .5)] == '0')
 		POSY += STRAFE_Y * MOVESPEED;	
 }
 
