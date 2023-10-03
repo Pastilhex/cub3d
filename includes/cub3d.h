@@ -151,5 +151,6 @@ void	moveLeft(t_mlx *m);
 void	moveRight(t_mlx *m);
 void	moveSlideLeft(t_mlx *m);
 void	moveSlideRight(t_mlx *m);
+void movePlayer(t_data *data);
 
 #endif

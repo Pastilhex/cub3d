@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:33:20 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/01 15:36:04 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:52:23 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	render_frames(void *arg)
 
 	data = arg;
 	map = data->map_ptr;
-	background(*data->m_ptr, BLACK, BLUE);
+	background(*data->m_ptr, BLACK, WHITE);
 	
 	for(int x = 0; x < screenWidth; x++)
 	{
@@ -119,29 +119,40 @@ int	render_frames(void *arg)
 		if(data->drawEnd >= screenHeight)
 			data->drawEnd = screenHeight - 1;
 
-		// Choose wall color
+
 		int color;
-		switch (map->worldMap[data->mapX][data->mapY]) {
-			case '1':
-				color = RED;
-				break; // red
-			case '2':
-				color = GREEN;
-				break; // green
-			case '3':
-				color = CUSTOM;
-				break; // blue
-			case '4':
-				color = WHITE;
-				break; // white
-			default:
-				color = YELLOW;
-				break; // yellow
-		}
+		int wallColor = map->worldMap[data->mapX][data->mapY];
+		if (data->side == '0' && data->rayDirX > 0 && wallColor == '1')
+			color = RED;
+		else if (data->side == '0' && data->rayDirX < 0 && wallColor == '1')
+			color = YELLOW;
+		else if (data->side == '1' && data->rayDirY > 0 && wallColor == '1')
+			color = BLUE;
+		else if (data->side == '1' && data->rayDirY < 0 && wallColor == '1')
+			color = GREEN;
+
+		// Choose wall color
+		// switch (map->worldMap[data->mapX][data->mapY]) {
+		// 	case '1':
+		// 		color = RED;
+		// 		break; // red
+		// 	case '2':
+		// 		color = GREEN;
+		// 		break; // green
+		// 	case '3':
+		// 		color = CUSTOM;
+		// 		break; // blue
+		// 	case '4':
+		// 		color = WHITE;
+		// 		break; // white
+		// 	default:
+		// 		color = YELLOW;
+		// 		break; // yellow
+		// }
 
 		//give x and y sides different brightness
-		if(data->side == '1')
-			{color = color / 2;}
+		// if(data->side == '1')
+		// 	{color = color / 2;}
 
 		//draw the pixels of the stripe as a vertical line
 		// vertical_line(x, data->drawStart, data->drawEnd, color);
@@ -170,52 +181,12 @@ int	render_frames(void *arg)
 	data->rotSpeed = data->frameTime * 2.0; //the constant value is in radians/second
 
 	// Control Player Movement
-	if (data->moveUp == 1) {
-		moveUp(data->m_ptr);
-		if (data->moveLeft == 1) {
-			moveLeft(data->m_ptr);
-			if (data->slideLeft == 1) {
-				moveSlideLeft(data->m_ptr);
-			}
-		} else if (data->moveRight == 1) {
-			moveRight(data->m_ptr);
-			if (data->slideRight == 1) {
-				moveSlideRight(data->m_ptr);
-			}
-		} else if (data->slideLeft == 1) {
-			moveSlideLeft(data->m_ptr);
-		} else if (data->slideRight == 1) {
-			moveSlideRight(data->m_ptr);
-		}
-	} else if (data->moveDown == 1) {
-		moveDown(data->m_ptr);
-		if (data->moveLeft == 1) {
-			moveLeft(data->m_ptr);
-			if (data->slideLeft == 1) {
-				moveSlideLeft(data->m_ptr);
-			}
-		} else if (data->moveRight == 1) {
-			moveRight(data->m_ptr);
-			if (data->slideRight == 1) {
-				moveSlideRight(data->m_ptr);
-			}
-		} else if (data->slideLeft == 1) {
-			moveSlideLeft(data->m_ptr);
-		} else if (data->slideRight == 1) {
-			moveSlideRight(data->m_ptr);
-		}
-	} else if (data->moveLeft == 1) {
-		moveLeft(data->m_ptr);
-	} else if (data->moveRight == 1) {
-		moveRight(data->m_ptr);
-	} else if (data->slideLeft == 1) {
-		moveSlideLeft(data->m_ptr);
-	} else if (data->slideRight == 1) {
-		moveSlideRight(data->m_ptr);
-	}
-
-	// printf("POSX %f POSY %f ", data->posX, data->posY);
-	// printf("DIRX %f DIRY %f\n", data->dirX, data->dirY);
+	movePlayer(data);
+	
+	printf("Side %d ", data->side - 48);
+	printf("PlaneX %f PlaneY %f ", data->planeX, data->planeY);
+	printf("POSX %f POSY %f ", data->posX, data->posY);
+	printf("DIRX %f DIRY %f\n", data->dirX, data->dirY);
 	return(0);
 }
 	

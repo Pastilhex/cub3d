@@ -4,32 +4,34 @@ NAME_BONUS = cub3d_bonus
 
 CC = cc
 
-SRC	= ./main.c\
-	./src/time.c\
+SRC	= ./src/parser/get_ttl_nbr_lines.c\
+	./src/parser/get_map_size.c\
+	./src/parser/get_map_to_array.c\
+	./src/parser/get_texture.c\
+	./src/parser/get_elements.c\
+	./src/parser/access_file.c\
+	./src/parser/find_texture.c\
+	./src/parser/get_back_line.c\
+	./src/parser/check_map_extension.c\
 	./src/drawn_ground.c\
 	./src/drawn_sky.c\
+	./src/move_player.c\
+	./src/import_map_file.c\
 	./src/ft_pix_put.c\
+	./src/close_window.c\
 	./src/open_window.c\
+	./src/handle_keypress.c\
+	./src/time.c\
+	./src/utils/get_next_line.c\
+	./src/utils/ft_strnstr.c\
 	./src/utils/ft_isdigit.c\
+	./src/utils/ft_strlen.c\
 	./src/utils/ft_is_numeric.c\
 	./src/utils/ft_atoi.c\
 	./src/utils/ft_calloc.c\
-	./src/utils/ft_strlen.c\
 	./src/utils/ft_bzero.c\
-	./src/utils/get_next_line.c\
-	./src/utils/ft_strnstr.c\
-	./src/close_window.c\
-	./src/parser/access_file.c\
-	./src/parser/get_ttl_nbr_lines.c\
-	./src/parser/get_map_to_array.c\
-	./src/parser/find_texture.c\
-	./src/parser/get_elements.c\
-	./src/parser/get_back_line.c\
-	./src/parser/get_texture.c\
-	./src/parser/check_map_extension.c\
-	./src/parser/get_map_size.c\
-	./src/import_map_file.c\
-	./src/handle_keypress.c\
+	./main.c\
+
 
 
 
