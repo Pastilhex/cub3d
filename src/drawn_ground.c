@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 11:51:52 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/09/28 11:52:01 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/04 09:50:18 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	draw_ground(t_mlx m, int color)
 		x = 0;
 		while (x < screenWidth)
 		{
-			ft_pix_put(&m, x, y, color);
+			ft_pixel_put(&m, x, y, color);
 			x++;
 		}
 		y++;

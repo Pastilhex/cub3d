@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./maps/textures/north.xpm
+SO ./maps/textures/south.xpm
+WE ./maps/textures/west.xpm
+EA ./maps/textures/east.xpm
 F 000,000,000
 C 255,255,255
 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1

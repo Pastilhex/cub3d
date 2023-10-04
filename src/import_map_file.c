@@ -12,22 +12,22 @@
 
 #include "../includes/cub3d.h"
 
-void	init_t_map(t_map *m)
+void	init_t_map(t_map *map)
 {
-	m->fd = 0;
-	m->ttl_nbr_lines = 0;
-	m->map_length = 0;
-	m->map_width = 0;
-	m->extension = NULL;
-	m->get_line = NULL;
-	m->map_path = NULL;
-	m->north_texture = NULL;
-	m->south_texture = NULL;
-	m->west_texture = NULL;
-	m->east_texture = NULL;
-	m->floor_texture = NULL;
-	m->ceiling_texture = NULL;
-	m->worldMap = NULL;
+	map->fd = 0;
+	map->ttl_nbr_lines = 0;
+	map->map_length = 0;
+	map->map_width = 0;
+	map->extension = NULL;
+	map->get_line = NULL;
+	map->map_path = NULL;
+	map->north_texture = NULL;
+	map->south_texture = NULL;
+	map->west_texture = NULL;
+	map->east_texture = NULL;
+	map->floor_texture = NULL;
+	map->ceiling_texture = NULL;
+	map->worldMap = NULL;
 }
 
 void	read_map_from_file(t_map *map)

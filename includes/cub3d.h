@@ -146,8 +146,9 @@ char		*ft_strnstr(const char *big, const char *little, size_t len);
 int			ft_isdigit(int c);
 
 /*-----> Cub3d <-----*/
+void		ft_pixel_put(t_mlx *data, int x, int y, int color);
+unsigned int	ft_pixel_get(t_texture *txt, int x, int y);
 void		open_window(t_mlx *m, int screen_width, int screen_height, char * window_description);
-void		ft_pix_put(t_mlx *data, int x, int y, int color);
 void		draw_ground(t_mlx m, int color);
 void		draw_sky(t_mlx m, int color);
 uint64_t	get_actual_time(void);

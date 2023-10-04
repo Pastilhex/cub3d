@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:33:20 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/03 22:25:00 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:39:13 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,61 +109,74 @@ int	render_frames(void *arg)
 		//Calculate height of line to draw on screen
 		data->lineHeight = (int)(screenHeight / data->perpWallDist);
 
+		
+		int pitch = 10;
+
 		//calculate lowest and highest pixel to fill in current stripe
-		data->drawStart = -data->lineHeight / 2 + screenHeight / 2;
+		data->drawStart = -data->lineHeight / 2 + screenHeight / 2 + pitch;
 		
 		if(data->drawStart < 0)
 			data->drawStart = 0;
 		
-		data->drawEnd = data->lineHeight / 2 + screenHeight / 2;
+		data->drawEnd = data->lineHeight / 2 + screenHeight / 2 + pitch;
 		if(data->drawEnd >= screenHeight)
 			data->drawEnd = screenHeight - 1;
 
-		//calculate value of wallX
-		//where exactly the wall was hit
-		if (data->side == '0') 
-			map->wallX = data->posY + data->perpWallDist * data->rayDirY;
-		else
-		    map->wallX = data->posX + data->perpWallDist * data->rayDirX;
-		map->wallX -= floor((map->wallX));
-		
-		// int wallColor = map->worldMap[data->mapX][data->mapY];
-		// if (data->side == '0' && data->rayDirX > 0 && wallColor == '1')
-		// 	color = RED;
-		// else if (data->side == '0' && data->rayDirX < 0 && wallColor == '1')
-		// 	color = YELLOW;
-		// else if (data->side == '1' && data->rayDirY > 0 && wallColor == '1')
-		// 	color = BLUE;
-		// else if (data->side == '1' && data->rayDirY < 0 && wallColor == '1')
-		// 	color = GREEN;
 
-		//x coordinate on the texture
+
+		//calculate value of wallX
+		if (data->side == '0') 
+			map->wallX = data->posY + data->perpWallDist * data->rayDirY; //where exactly the wall was hit
+		else
+			map->wallX = data->posX + data->perpWallDist * data->rayDirX; //where exactly the wall was hit
+		map->wallX -= floor((map->wallX));
+
+		// int wallColor = map->worldMap[data->mapX][data->mapY];
+
+		// x coordinate on the texture
 		int texX = (int)(map->wallX * texWidth);
 		if(data->side == '0' && data->rayDirX > 0)
 			texX = texWidth - texX - 1;
 		if(data->side == '1' && data->rayDirY < 0)
 			texX = texWidth - texX - 1;
-		
+		// if(data->side == '0' && data->rayDirX < 0)
+		// 	texX = texWidth - texX - 1;
+		// if(data->side == '1' && data->rayDirY > 0)
+		// 	texX = texWidth - texX - 1;
+
 		// How much to increase the texture coordinate per screen pixel
 		map->step = 1.0 * texHeight / data->lineHeight;
 		
 		// Starting texture coordinate
-		map->texPos = (data->drawStart - (int)(screenHeight / 2) + (int)(data->lineHeight / 2)) * map->step;
-		for(int y = data->drawStart; y < data->drawEnd; y++)
-		{
-			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
-			int texY = (int)map->texPos & (texHeight - 1);
-			map->texPos += map->step;
-			//map->color = data->txt_ptr[texHeight * texY + texX];
-			ft_pix_put(data->m_ptr, x, y, ft_get_pix_color(data->txt_ptr[0].img));
-      	
-		}
-    
-
-		//draw the pixels of the stripe as a vertical line
-		// vertical_line(x, data->drawStart, data->drawEnd, color);
-		// for(int y = data->drawStart; y <= data->drawEnd; y++)
-		// 	ft_pix_put(data->m_ptr, x, y, map->color);
+		map->texPos = (data->drawStart - pitch - (double)screenHeight / 2 + (double)data->lineHeight / 2) * map->step;
+		if (data->side == '0' && data->rayDirX > 0)
+			for(int y = data->drawStart; y < data->drawEnd; y++)
+			{
+				int texY = (int)map->texPos & (texHeight - 1);
+				map->texPos += map->step;
+				ft_pixel_put(data->m_ptr, x, y, ft_pixel_get(&data->txt_ptr[0], texX, texY));
+			}
+		else if (data->side == '0' && data->rayDirX < 0)
+			for(int y = data->drawStart; y < data->drawEnd; y++)
+			{
+				int texY = (int)map->texPos & (texHeight - 1);
+				map->texPos += map->step;
+				ft_pixel_put(data->m_ptr, x, y, ft_pixel_get(&data->txt_ptr[1], texX, texY));
+			}
+		else if (data->side == '1' && data->rayDirY > 0)
+			for(int y = data->drawStart; y < data->drawEnd; y++)
+			{
+				int texY = (int)map->texPos & (texHeight - 1);
+				map->texPos += map->step;
+				ft_pixel_put(data->m_ptr, x, y, ft_pixel_get(&data->txt_ptr[2], texX, texY));
+			}
+		else if (data->side == '1' && data->rayDirY < 0)
+			for(int y = data->drawStart; y < data->drawEnd; y++)
+			{
+				int texY = (int)map->texPos & (texHeight - 1);
+				map->texPos += map->step;
+				ft_pixel_put(data->m_ptr, x, y, ft_pixel_get(&data->txt_ptr[3], texX, texY));
+			}
 	}
 
 	// FPS
@@ -200,9 +213,16 @@ int	render_frames(void *arg)
 void 	get_textures(t_data *d)
 {
 	d->txt_ptr[0].img = mlx_xpm_file_to_image(d->m_ptr->mlx, d->map_ptr->north_texture, &d->txt_ptr[0].txt_w, &d->txt_ptr[0].txt_h);
+	d->txt_ptr[0].addr = mlx_get_data_addr(d->txt_ptr[0].img, &d->txt_ptr[0].bits_per_pixel, &d->txt_ptr[0].line_length, &d->txt_ptr[0].endian);
+
 	d->txt_ptr[1].img = mlx_xpm_file_to_image(d->m_ptr->mlx, d->map_ptr->south_texture, &d->txt_ptr[1].txt_w, &d->txt_ptr[1].txt_h);
+	d->txt_ptr[1].addr = mlx_get_data_addr(d->txt_ptr[1].img, &d->txt_ptr[1].bits_per_pixel, &d->txt_ptr[1].line_length, &d->txt_ptr[1].endian);
+
 	d->txt_ptr[2].img = mlx_xpm_file_to_image(d->m_ptr->mlx, d->map_ptr->west_texture, &d->txt_ptr[2].txt_w, &d->txt_ptr[2].txt_h);
+	d->txt_ptr[2].addr = mlx_get_data_addr(d->txt_ptr[2].img, &d->txt_ptr[2].bits_per_pixel, &d->txt_ptr[2].line_length, &d->txt_ptr[2].endian);
+
 	d->txt_ptr[3].img = mlx_xpm_file_to_image(d->m_ptr->mlx, d->map_ptr->east_texture, &d->txt_ptr[3].txt_w, &d->txt_ptr[3].txt_h);
+	d->txt_ptr[3].addr = mlx_get_data_addr(d->txt_ptr[3].img, &d->txt_ptr[3].bits_per_pixel, &d->txt_ptr[3].line_length, &d->txt_ptr[3].endian);
 }
 	
 int main()
@@ -213,16 +233,16 @@ int main()
 
 	init_t_map(&map);
 	data.map_ptr = &map;
-	data.posX = 2, data.posY = 2;  //x and y start position
+	data.posX = 6, data.posY = 6;  //x and y start position
 	data.dirX = -1, data.dirY = 0; //initial direction vector
 	data.planeX = 0, data.planeY = 0.66; //the 2d raycaster version of camera plane
 	data.time = 0; //time of current frame
 	data.oldTime = 0; //time of previous frame
 	data.fps = 0;
 	data.tps = 0.0;
-	// data.txt_ptr = malloc(sizeof(t_texture) * 4); 
-	// if (!data.txt_ptr)
-	// 	return (-1);
+	data.txt_ptr = malloc(sizeof(t_texture) * 4); 
+	if (!data.txt_ptr)
+		return (-1);
 	
 
 	data.m_ptr = &m;
@@ -231,8 +251,8 @@ int main()
 	char *path = "./maps/test.cub"; //av[2]
 	map.map_path = path;
 	read_map_from_file(&map);
-
 	open_window(&m, screenWidth, screenHeight, "Cube3d IvoJao");
+	get_textures(&data);
 
 	mlx_hook(m.mlx_win, 2, 1L << 0, &handle_keypress, &m);
 	mlx_hook(m.mlx_win, 3, 1L << 1, &handle_keyrelease, &m);
@@ -248,19 +268,3 @@ void 	ft_print_array(char ** arr, int nb_lines)
 	for (int i = 0; i < nb_lines; i++)
 		printf("%s", arr[i]);
 }
-
-
-/* 
-int main()
-{
-	t_map my_map;
-	init_t_map(&my_map);
-	char *path = "./maps/test.cub"; //av[2]
-	my_map.map_path = path;
-
-	read_map_from_file(&my_map);
-	//ft_print_array(my_map.worldMap, my_map.map_length);
-	
-	
-}
- */

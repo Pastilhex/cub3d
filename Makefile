@@ -17,7 +17,7 @@ SRC	= ./src/parser/get_ttl_nbr_lines.c\
 	./src/drawn_sky.c\
 	./src/move_player.c\
 	./src/import_map_file.c\
-	./src/ft_pix_put.c\
+	./src/ft_pixel_put.c\
 	./src/close_window.c\
 	./src/open_window.c\
 	./src/handle_keypress.c\
