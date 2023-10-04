@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:33:20 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/04 14:39:13 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/04 22:23:54 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ int	render_frames(void *arg)
 
 
 		//calculate value of wallX
-		if (data->side == '0') 
+		if (data->side == '0')
 			map->wallX = data->posY + data->perpWallDist * data->rayDirY; //where exactly the wall was hit
 		else
 			map->wallX = data->posX + data->perpWallDist * data->rayDirX; //where exactly the wall was hit
@@ -134,7 +134,7 @@ int	render_frames(void *arg)
 		// int wallColor = map->worldMap[data->mapX][data->mapY];
 
 		// x coordinate on the texture
-		int texX = (int)(map->wallX * texWidth);
+		int texX = (int)(map->wallX * (double)texWidth);
 		if(data->side == '0' && data->rayDirX > 0)
 			texX = texWidth - texX - 1;
 		if(data->side == '1' && data->rayDirY < 0)
@@ -147,36 +147,20 @@ int	render_frames(void *arg)
 		// How much to increase the texture coordinate per screen pixel
 		map->step = 1.0 * texHeight / data->lineHeight;
 		
-		// Starting texture coordinate
 		map->texPos = (data->drawStart - pitch - (double)screenHeight / 2 + (double)data->lineHeight / 2) * map->step;
-		if (data->side == '0' && data->rayDirX > 0)
-			for(int y = data->drawStart; y < data->drawEnd; y++)
-			{
-				int texY = (int)map->texPos & (texHeight - 1);
-				map->texPos += map->step;
-				ft_pixel_put(data->m_ptr, x, y, ft_pixel_get(&data->txt_ptr[0], texX, texY));
-			}
-		else if (data->side == '0' && data->rayDirX < 0)
-			for(int y = data->drawStart; y < data->drawEnd; y++)
-			{
-				int texY = (int)map->texPos & (texHeight - 1);
-				map->texPos += map->step;
+		for (int y = data->drawStart; y < data->drawEnd; y++)
+		{
+			int texY = (int)map->texPos & (texHeight - 1);  //(texHeight - 1)
+			map->texPos += map->step;
+			if (data->side == '0' && data->rayDirX > 0)
+				ft_pixel_put(data->m_ptr, x, y, ft_pixel_get(&data->txt_ptr[south], texX, texY));
+			else if (data->side == '0' && data->rayDirX < 0)
 				ft_pixel_put(data->m_ptr, x, y, ft_pixel_get(&data->txt_ptr[1], texX, texY));
-			}
-		else if (data->side == '1' && data->rayDirY > 0)
-			for(int y = data->drawStart; y < data->drawEnd; y++)
-			{
-				int texY = (int)map->texPos & (texHeight - 1);
-				map->texPos += map->step;
+			else if (data->side == '1' && data->rayDirY > 0)
 				ft_pixel_put(data->m_ptr, x, y, ft_pixel_get(&data->txt_ptr[2], texX, texY));
-			}
-		else if (data->side == '1' && data->rayDirY < 0)
-			for(int y = data->drawStart; y < data->drawEnd; y++)
-			{
-				int texY = (int)map->texPos & (texHeight - 1);
-				map->texPos += map->step;
+			else if (data->side == '1' && data->rayDirY < 0)
 				ft_pixel_put(data->m_ptr, x, y, ft_pixel_get(&data->txt_ptr[3], texX, texY));
-			}
+		}
 	}
 
 	// FPS
@@ -212,19 +196,20 @@ int	render_frames(void *arg)
 
 void 	get_textures(t_data *d)
 {
-	d->txt_ptr[0].img = mlx_xpm_file_to_image(d->m_ptr->mlx, d->map_ptr->north_texture, &d->txt_ptr[0].txt_w, &d->txt_ptr[0].txt_h);
-	d->txt_ptr[0].addr = mlx_get_data_addr(d->txt_ptr[0].img, &d->txt_ptr[0].bits_per_pixel, &d->txt_ptr[0].line_length, &d->txt_ptr[0].endian);
+	d->txt_ptr[north].img = mlx_xpm_file_to_image(d->m_ptr->mlx, d->map_ptr->north_texture, &d->txt_ptr[north].txt_w, &d->txt_ptr[north].txt_h);
+	d->txt_ptr[north].addr = mlx_get_data_addr(d->txt_ptr[north].img, &d->txt_ptr[north].bits_per_pixel, &d->txt_ptr[north].line_length, &d->txt_ptr[north].endian);
 
-	d->txt_ptr[1].img = mlx_xpm_file_to_image(d->m_ptr->mlx, d->map_ptr->south_texture, &d->txt_ptr[1].txt_w, &d->txt_ptr[1].txt_h);
-	d->txt_ptr[1].addr = mlx_get_data_addr(d->txt_ptr[1].img, &d->txt_ptr[1].bits_per_pixel, &d->txt_ptr[1].line_length, &d->txt_ptr[1].endian);
+	d->txt_ptr[south].img = mlx_xpm_file_to_image(d->m_ptr->mlx, d->map_ptr->south_texture, &d->txt_ptr[south].txt_w, &d->txt_ptr[south].txt_h);
+	d->txt_ptr[south].addr = mlx_get_data_addr(d->txt_ptr[south].img, &d->txt_ptr[south].bits_per_pixel, &d->txt_ptr[south].line_length, &d->txt_ptr[south].endian);
 
-	d->txt_ptr[2].img = mlx_xpm_file_to_image(d->m_ptr->mlx, d->map_ptr->west_texture, &d->txt_ptr[2].txt_w, &d->txt_ptr[2].txt_h);
-	d->txt_ptr[2].addr = mlx_get_data_addr(d->txt_ptr[2].img, &d->txt_ptr[2].bits_per_pixel, &d->txt_ptr[2].line_length, &d->txt_ptr[2].endian);
+	d->txt_ptr[west].img = mlx_xpm_file_to_image(d->m_ptr->mlx, d->map_ptr->west_texture, &d->txt_ptr[west].txt_w, &d->txt_ptr[west].txt_h);
+	d->txt_ptr[west].addr = mlx_get_data_addr(d->txt_ptr[west].img, &d->txt_ptr[west].bits_per_pixel, &d->txt_ptr[west].line_length, &d->txt_ptr[west].endian);
 
-	d->txt_ptr[3].img = mlx_xpm_file_to_image(d->m_ptr->mlx, d->map_ptr->east_texture, &d->txt_ptr[3].txt_w, &d->txt_ptr[3].txt_h);
-	d->txt_ptr[3].addr = mlx_get_data_addr(d->txt_ptr[3].img, &d->txt_ptr[3].bits_per_pixel, &d->txt_ptr[3].line_length, &d->txt_ptr[3].endian);
+	d->txt_ptr[east].img = mlx_xpm_file_to_image(d->m_ptr->mlx, d->map_ptr->east_texture, &d->txt_ptr[east].txt_w, &d->txt_ptr[east].txt_h);
+	d->txt_ptr[east].addr = mlx_get_data_addr(d->txt_ptr[east].img, &d->txt_ptr[east].bits_per_pixel, &d->txt_ptr[east].line_length, &d->txt_ptr[east].endian);
 }
-	
+void 	ft_print_array(char **arr, int nb_lines);
+
 int main()
 {
 	t_mlx m;
@@ -232,10 +217,11 @@ int main()
 	t_map map;
 
 	init_t_map(&map);
+	map.data_ptr = &data;
 	data.map_ptr = &map;
-	data.posX = 6, data.posY = 6;  //x and y start position
-	data.dirX = -1, data.dirY = 0; //initial direction vector
-	data.planeX = 0, data.planeY = 0.66; //the 2d raycaster version of camera plane
+	// data.posX = 6, data.posY = 6;  //x and y start position
+	// data.dirX = 1, data.dirY = 0; //initial direction vector
+	// data.planeX = 0, data.planeY = -0.66; //the 2d raycaster version of camera plane
 	data.time = 0; //time of current frame
 	data.oldTime = 0; //time of previous frame
 	data.fps = 0;
@@ -263,7 +249,7 @@ int main()
 
 
 
-void 	ft_print_array(char ** arr, int nb_lines)
+void 	ft_print_array(char **arr, int nb_lines)
 {
 	for (int i = 0; i < nb_lines; i++)
 		printf("%s", arr[i]);

@@ -133,8 +133,18 @@ typedef struct s_map {
 	double	step;
 	double 	texPos;
 	int 	texY;
+	char	start_dir;
+	t_data	*data_ptr;
 	uint32_t	color; 
 }	t_map;
+
+enum direction
+{
+	south = 0,
+	north = 1,
+	east = 2,
+	west = 3
+};
 
 /*-----> Utils <-----*/
 int			ft_atoi(const char *str);

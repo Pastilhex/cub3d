@@ -28,6 +28,7 @@ void	init_t_map(t_map *map)
 	map->floor_texture = NULL;
 	map->ceiling_texture = NULL;
 	map->worldMap = NULL;
+	map->start_dir = '0';
 }
 
 void	read_map_from_file(t_map *map)

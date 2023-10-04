@@ -39,7 +39,7 @@ void	moveDown(t_mlx *m)
 
 void	moveSlideLeft(t_mlx *m)
 {
-	if(m->data_ptr->map_ptr->worldMap[(int)(POSX - STRAFE_X * .5)][(int)(POSY)] == '0')
+	if(m->data_ptr->map_ptr->worldMap[(int)(POSX - STRAFE_X * .5)][(int)(POSX)] == '0')
 		POSX -= STRAFE_X * MOVESPEED;
 	if(m->data_ptr->map_ptr->worldMap[(int)(POSX)][(int)(POSY - STRAFE_Y * .5)] == '0')
 		POSY -= STRAFE_Y * MOVESPEED;
@@ -47,7 +47,7 @@ void	moveSlideLeft(t_mlx *m)
 
 void	moveSlideRight(t_mlx *m)
 {
-	if(m->data_ptr->map_ptr->worldMap[(int)(POSX + STRAFE_X * .5)][(int)(POSY)] == '0')
+	if(m->data_ptr->map_ptr->worldMap[(int)(POSX + STRAFE_X * .5)][(int)(POSX)] == '0')
 		POSX += STRAFE_X * MOVESPEED;
 	if(m->data_ptr->map_ptr->worldMap[(int)(POSX)][(int)(POSY + STRAFE_Y * .5)] == '0')
 		POSY += STRAFE_Y * MOVESPEED;	

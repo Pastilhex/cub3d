@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_elements.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:39 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/04 10:04:48 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:28:38 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ void	get_elements(t_map *map)
 	while (map->get_line)
 	{
 		if (!map->north_texture)
-			if (find_texture(map->get_line, "N") || find_texture(map->get_line, "NO"))
+			if (find_texture(map->get_line, "N ") || find_texture(map->get_line, "NO "))
 				map->north_texture = get_texture(map->get_line);
 		if (!map->south_texture)
-			if (find_texture(map->get_line, "S") || find_texture(map->get_line, "SO"))
+			if (find_texture(map->get_line, "S ") || find_texture(map->get_line, "SO "))
 				map->south_texture = get_texture(map->get_line);
 		if (!map->west_texture)
-			if (find_texture(map->get_line, "W") || find_texture(map->get_line, "WE"))
+			if (find_texture(map->get_line, "W ") || find_texture(map->get_line, "WE "))
 				map->west_texture = get_texture(map->get_line);
 		if (!map->east_texture)
-			if (find_texture(map->get_line, "E") || find_texture(map->get_line, "EA"))
+			if (find_texture(map->get_line, "E ") || find_texture(map->get_line, "EA "))
 				map->east_texture = get_texture(map->get_line);
 		if (!map->ceiling_texture)
 			if (find_texture(map->get_line, "C"))
