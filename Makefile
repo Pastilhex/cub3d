@@ -13,8 +13,6 @@ SRC	= ./src/parser/get_ttl_nbr_lines.c\
 	./src/parser/find_texture.c\
 	./src/parser/get_back_line.c\
 	./src/parser/check_map_extension.c\
-	./src/drawn_ground.c\
-	./src/drawn_sky.c\
 	./src/move_player.c\
 	./src/import_map_file.c\
 	./src/ft_pixel_put.c\
@@ -22,6 +20,10 @@ SRC	= ./src/parser/get_ttl_nbr_lines.c\
 	./src/open_window.c\
 	./src/handle_keypress.c\
 	./src/time.c\
+	./src/init_data.c\
+	./src/render_frames.c\
+	./src/render_frames2.c\
+	./src/background.c\
 	./src/utils/get_next_line.c\
 	./src/utils/ft_strnstr.c\
 	./src/utils/ft_isdigit.c\

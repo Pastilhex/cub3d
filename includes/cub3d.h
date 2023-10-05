@@ -104,6 +104,7 @@ typedef	struct s_data
 	double	frameTime;
 	int		fps;
 	double	tps;
+	int		texX;
 	t_texture *txt_ptr;
 	// t_texture north;
 	// t_texture south;
@@ -159,16 +160,18 @@ int			ft_isdigit(int c);
 void		ft_pixel_put(t_mlx *data, int x, int y, int color);
 unsigned int	ft_pixel_get(t_texture *txt, int x, int y);
 void		open_window(t_mlx *m, int screen_width, int screen_height, char * window_description);
-void		draw_ground(t_mlx m, int color);
-void		draw_sky(t_mlx m, int color);
 uint64_t	get_actual_time(void);
 int			handle_keypress(int keysym, t_mlx *m);
 int			handle_keyrelease(int keysym, t_mlx *m);
 int			close_window(t_mlx *m);
+void		init_data(t_data *d, struct s_map *map_ptr, t_mlx *m);
+int			render_frames(void *arg);
+void		render_frames2(t_data *data, int *x);
+void		background(t_mlx m, int ground_color, int sky_color);
 
-/*-----> Map related <-----*/
+/*-----> Parser <-----*/
 void	read_map_from_file(t_map *map);
-void	init_t_map(t_map *m);
+void	init_t_map(t_map *m, t_data *d);
 int		access_file(t_map *map);
 bool	check_map_extension(t_map *map, char *filename);
 bool	find_texture(char *line, char *texture);
