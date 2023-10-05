@@ -155,6 +155,16 @@ bool		ft_is_numeric(char *str);
 int			ft_strlen(char *str);
 char		*ft_strnstr(const char *big, const char *little, size_t len);
 int			ft_isdigit(int c);
+char		**ft_split(char const *s, char c);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
+char		*ft_strdup(char *s);
+void		*ft_memcpy(void *dest, const void *src, size_t n);
+void		free_arr(char **arr, t_map *m);
+void		free_arr1(char **arr);
+
+
+
+
 
 /*-----> Cub3d <-----*/
 void		ft_pixel_put(t_mlx *data, int x, int y, int color);
@@ -169,19 +179,19 @@ int			render_frames(void *arg);
 void		render_frames2(t_data *data, int *x);
 void		background(t_mlx m, int ground_color, int sky_color);
 void 		init_textures_img(t_data *d);
+void		cleaning(t_data *d, t_map* m);
+
 
 
 /*-----> Parser <-----*/
-void		read_map_from_file(t_map *map);
+void		read_cub_file(t_map *map);
 void		init_t_map(t_map *m, t_data *d);
 int			access_file(t_map *map);
 bool		check_map_extension(t_map *map, char *filename);
 bool		find_texture(char *line, char *texture);
-char		*get_back_line(char *line);
 void		get_elements(t_map *map);
 void		get_map_size(t_map *map);
 void		get_map_to_array(t_map *map);
-char		*get_texture(char *line);
 void		get_ttl_nbr_lines(t_map *map);
 
 /*-----> Player Movement <-----*/

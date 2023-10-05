@@ -22,9 +22,6 @@ void	ft_pixel_put(t_mlx *m, int x, int y, int color)
 
 unsigned int	ft_pixel_get(t_texture *txt, int x, int y)
 {
-	//char	*dst;
-
-	// dst = txt->addr + (y * txt->line_length + x * (txt->bits_per_pixel / 8));
-	// return (*(unsigned int *)dst);
-	return (*(unsigned int*)((txt->addr + (y * txt->line_length) + (x * txt->bits_per_pixel / 8))));
+	return (*(unsigned int*)((txt->addr + (y * txt->line_length) + 
+	(x * txt->bits_per_pixel / 8))));
 }

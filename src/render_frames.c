@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_frames.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:11:26 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/05 15:21:52 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:19:16 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	render_frames(void *arg)
 	int		x;
 
 	data = arg;
-	background(*data->m_ptr, BLACK, WHITE);
+	background(*data->m_ptr, BLACK, CUSTOM);
 	x = 0;
 	while (x < screenWidth)
 	{

@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_texture.c                                     :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 18:23:31 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/05 14:36:52 by ialves-m         ###   ########.fr       */
+/*   Created: 2022/11/04 16:11:04 by joaoalme          #+#    #+#             */
+/*   Updated: 2023/10/05 17:03:39 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-bool	find_texture(char *line, char *texture)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int		size;
-	char	*texture_found;
+	size_t	i;
+	size_t	len;
 
-	size = ft_strlen(line);
-	texture_found = ft_strnstr(line, texture, size);
-	if (texture_found)
-		return (true);
-	return (false);
+	i = 0;
+	len = n;
+	if (n == 0)
+		return (0);
+	while ((s1[i] == s2[i]) && s1[i] && s2[i] && (len - 1) > 0)
+	{
+		i++;
+		len--;
+	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_map_size.c                                     :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 18:23:43 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/05 20:58:38 by joaoalme         ###   ########.fr       */
+/*   Created: 2022/11/06 17:11:15 by joaoalme          #+#    #+#             */
+/*   Updated: 2023/10/05 19:14:40 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	get_map_size(t_map *map)
+char	*ft_strdup(char *s)
 {
-	while (map->get_line)
-	{
-		map->map_length++;
-		if (ft_strlen(map->get_line) > map->map_width)
-			map->map_width = ft_strlen(map->get_line);
-		free(map->get_line);
-		map->get_line = get_next_line(map->fd);
-	}
-	map->worldMap = (char**)ft_calloc(map->map_length, sizeof(char *));
-	if (!map->worldMap)
-		return ;
-	close(map->fd);
+	char	*copy;
+	size_t	len;
+
+	len = ft_strlen(s) + 1;
+	copy = (char *)malloc(sizeof(char) * len);
+	if (!copy)
+		return (0);
+	ft_memcpy(copy, s, len);
+	return (copy);
 }

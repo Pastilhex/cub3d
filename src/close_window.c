@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close_window.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:59:10 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/09/27 11:42:45 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/05 21:20:17 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	close_window(t_mlx *m)
 		mlx_destroy_window(m->mlx, m->mlx_win);
 	if (m->mlx_win)
 		mlx_destroy_display(m->mlx);
+	cleaning(m->data_ptr, m->data_ptr->map_ptr);	
 	exit(0);
 	return (0);
 }

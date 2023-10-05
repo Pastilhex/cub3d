@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/04 22:42:33 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/05 20:18:56 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	get_map_to_array(t_map *map)
 	map->get_line = get_next_line(map->fd);
 	while (i < (map->ttl_nbr_lines - map->map_length))
 	{
+		free(map->get_line);
 		map->get_line = get_next_line(map->fd);
 		i++;
 	}
@@ -104,6 +105,7 @@ void	get_map_to_array(t_map *map)
 				}
 			}
 		}
+		free(map->get_line);
 		i++;
 		map->get_line = get_next_line(map->fd);
 	}

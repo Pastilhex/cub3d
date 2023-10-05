@@ -7,14 +7,11 @@ CC = cc
 SRC	= ./src/parser/get_ttl_nbr_lines.c\
 	./src/parser/get_map_size.c\
 	./src/parser/get_map_to_array.c\
-	./src/parser/get_texture.c\
 	./src/parser/get_elements.c\
 	./src/parser/access_file.c\
-	./src/parser/find_texture.c\
-	./src/parser/get_back_line.c\
 	./src/parser/check_map_extension.c\
 	./src/move_player.c\
-	./src/import_map_file.c\
+	./src/read_cub_file.c\
 	./src/ft_pixel_put.c\
 	./src/close_window.c\
 	./src/open_window.c\
@@ -33,6 +30,11 @@ SRC	= ./src/parser/get_ttl_nbr_lines.c\
 	./src/utils/ft_atoi.c\
 	./src/utils/ft_calloc.c\
 	./src/utils/ft_bzero.c\
+	./src/utils/ft_split.c\
+	./src/utils/ft_strncmp.c\
+	./src/utils/ft_strdup.c\
+	./src/utils/ft_memcpy.c\
+	./src/utils/free_arr.c\
 	./main.c\
 
 
@@ -40,7 +42,7 @@ SRC	= ./src/parser/get_ttl_nbr_lines.c\
 
 SRC_BONUS = $(wildcard bonus/*.c)
 
-CFLAGS = -L ./minilibx-linux -Wall -Werror -Wextra -g -lmlx -lXext -lX11 -lm -lbsd
+CFLAGS = -L ./minilibx-linux -Wall -Werror -Wextra -g -lmlx -lXext -lX11 -lm -lz -lbsd 
 
 RM = rm -f
 

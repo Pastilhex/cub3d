@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:54 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/09/29 18:27:06 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/05 20:54:44 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void	get_ttl_nbr_lines(t_map *map)
 	line = get_next_line(fd);
 	while (line)
 	{
-		line = get_next_line(fd);
 		map->ttl_nbr_lines++;
+		free(line);
+		line = get_next_line(fd);
 	}
+	close(fd);
 }

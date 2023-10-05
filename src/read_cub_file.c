@@ -35,9 +35,10 @@ void	init_t_map(t_map *map, t_data *d)
 	map->start_dir = '0';
 	map->data_ptr = d;
 	map->color = 0;
+	map->data_ptr = d;
 }
 
-void	read_map_from_file(t_map *map)
+void	read_cub_file(t_map *map)
 {
 	get_ttl_nbr_lines(map);
 	map->fd = access_file(map);
@@ -45,4 +46,5 @@ void	read_map_from_file(t_map *map)
 	get_elements(map);
 	get_map_size(map);
 	get_map_to_array(map);
+	free(map->get_line);
 }

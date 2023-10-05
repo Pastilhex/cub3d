@@ -337,3 +337,34 @@ static void     draw_sky(t_mlx m, int color)
 }
 
 */
+/*
+void	get_elements(t_map *map)
+{
+	char	**line_arr;
+	
+	while (map->get_line)
+	{
+		line_arr = ft_split(map->get_line, ' ');
+		if (!map->north_texture)
+			if (!ft_strncmp("N", line_arr[0], 2) || !ft_strncmp("NO", line_arr[0], 3))
+				map->north_texture = ft_strdup(line_arr[1]);
+		if (!map->south_texture)
+			if (!ft_strncmp("S", line_arr[0], 2) || !ft_strncmp("SO", line_arr[0], 3))
+				map->south_texture = ft_strdup(line_arr[1]);
+		if (!map->west_texture)
+			if (!ft_strncmp("W", line_arr[0], 2) || !ft_strncmp("WE", line_arr[0], 3))
+				map->west_texture = ft_strdup(line_arr[1]);
+		if (!map->east_texture)
+			if (!ft_strncmp("E", line_arr[0], 2) || !ft_strncmp("EA", line_arr[0], 3))
+				map->east_texture = ft_strdup(line_arr[1]);
+		if (!map->ceiling_texture)
+			if (!ft_strncmp("C", line_arr[0], 2))
+				map->ceiling_texture = ft_strdup(line_arr[1]);
+		if (!map->floor_texture)
+			if (!ft_strncmp("F", line_arr[0], 2))
+				map->floor_texture = ft_strdup(line_arr[1]);
+		if (map->north_texture && map->south_texture && map->west_texture && map->east_texture && map->ceiling_texture && map->floor_texture)
+			break ;
+		map->get_line = get_next_line(map->fd);
+	}
+}*/
