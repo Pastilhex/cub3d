@@ -24,6 +24,7 @@ SRC	= ./src/parser/get_ttl_nbr_lines.c\
 	./src/render_frames.c\
 	./src/render_frames2.c\
 	./src/background.c\
+	./src/init_textures_img.c\
 	./src/utils/get_next_line.c\
 	./src/utils/ft_strnstr.c\
 	./src/utils/ft_isdigit.c\

@@ -168,6 +168,8 @@ void		init_data(t_data *d, struct s_map *map_ptr, t_mlx *m);
 int			render_frames(void *arg);
 void		render_frames2(t_data *data, int *x);
 void		background(t_mlx m, int ground_color, int sky_color);
+void 		init_textures_img(t_data *d);
+
 
 /*-----> Parser <-----*/
 void	read_map_from_file(t_map *map);
