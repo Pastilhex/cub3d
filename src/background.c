@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   background.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:50:21 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/05 12:52:18 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:03:38 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void     draw_ground(t_mlx m, int color)
 		y++;
 	}
 }
+
 static void     draw_sky(t_mlx m, int color)
 {
 	int		x;
@@ -48,6 +49,7 @@ static void     draw_sky(t_mlx m, int color)
 		y++;
 	}
 }
+
 void	background(t_mlx m, int ground_color, int sky_color)
 {
 	draw_sky(m, sky_color);

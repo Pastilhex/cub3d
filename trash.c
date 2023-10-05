@@ -296,4 +296,44 @@ for(int x = 0; x < screenWidth; x++)
 	printf("DIRX %f DIRY %f\n", data->dirX, data->dirY);
 
 	return(0);
-} */
+} 
+
+static void     draw_ground(t_mlx m, int color)
+{
+	int		x;
+	int		y;
+	
+	x = 0;
+	y = screenHeight / 2;
+	while (y < screenHeight)
+	{
+		x = 0;
+		while (x < screenWidth)
+		{
+			ft_pixel_put(&m, x, y, color);
+			x++;
+		}
+		y++;
+	}
+}
+
+static void     draw_sky(t_mlx m, int color)
+{
+	int		x;
+	int		y;
+	
+	x = 0;
+	y = 0;
+	while (y < screenHeight / 2)
+	{
+		x = 0;
+		while (x < screenWidth)
+		{
+			ft_pixel_put(&m, x, y, color);
+			x++;
+		}
+		y++;
+	}
+}
+
+*/

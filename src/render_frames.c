@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_frames.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:11:26 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/05 13:11:27 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/05 15:21:52 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ static void     render_frames1(t_data *data, int *x)
 		data->deltaDistY = fabs(1.0 / data->rayDirY);
 	data->hit = '0'; 
 	if(data->rayDirX < 0)
-		{
-			data->stepX = -1;
-			data->sideDistX = (data->posX - data->mapX) * data->deltaDistX;
-		}
-		else
-		{
-			data->stepX = 1;
-			data->sideDistX = (data->mapX + 1.0 - data->posX) * data->deltaDistX;
-		}
+	{
+		data->stepX = -1;
+		data->sideDistX = (data->posX - data->mapX) * data->deltaDistX;
+	}
+	else
+	{
+		data->stepX = 1;
+		data->sideDistX = (data->mapX + 1.0 - data->posX) * data->deltaDistX;
+	}
 }
 
 

@@ -172,25 +172,25 @@ void 		init_textures_img(t_data *d);
 
 
 /*-----> Parser <-----*/
-void	read_map_from_file(t_map *map);
-void	init_t_map(t_map *m, t_data *d);
-int		access_file(t_map *map);
-bool	check_map_extension(t_map *map, char *filename);
-bool	find_texture(char *line, char *texture);
-char	*get_back_line(char *line);
-void	get_elements(t_map *map);
-void	get_map_size(t_map *map);
-void	get_map_to_array(t_map *map);
-char	*get_texture(char *line);
-void	get_ttl_nbr_lines(t_map *map);
+void		read_map_from_file(t_map *map);
+void		init_t_map(t_map *m, t_data *d);
+int			access_file(t_map *map);
+bool		check_map_extension(t_map *map, char *filename);
+bool		find_texture(char *line, char *texture);
+char		*get_back_line(char *line);
+void		get_elements(t_map *map);
+void		get_map_size(t_map *map);
+void		get_map_to_array(t_map *map);
+char		*get_texture(char *line);
+void		get_ttl_nbr_lines(t_map *map);
 
 /*-----> Player Movement <-----*/
-void	moveUp(t_mlx *m);
-void	moveDown(t_mlx *m);
-void	moveLeft(t_mlx *m);
-void	moveRight(t_mlx *m);
-void	moveSlideLeft(t_mlx *m);
-void	moveSlideRight(t_mlx *m);
-void movePlayer(t_data *data);
+void		moveUp(t_mlx *m);
+void		moveDown(t_mlx *m);
+void		moveLeft(t_mlx *m);
+void		moveRight(t_mlx *m);
+void		moveSlideLeft(t_mlx *m);
+void		moveSlideRight(t_mlx *m);
+void 		movePlayer(t_data *data);
 
 #endif

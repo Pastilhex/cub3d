@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_frames2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:05:09 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/05 13:09:07 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/05 13:26:18 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void     check_hit(t_data *data)
 		else
 			data->perpWallDist = (data->sideDistY - data->deltaDistY);
 }
+
 static void     calculate_cols(t_data *data)
 {
 	data->lineHeight = (int)(screenHeight / data->perpWallDist);
@@ -59,6 +60,7 @@ static void     calculate_cols(t_data *data)
 	data->map_ptr->step = 1.0 * texHeight / data->lineHeight;
 	data->map_ptr->texPos = (data->drawStart - pitch - (double)screenHeight / 2 + (double)data->lineHeight / 2) * data->map_ptr->step;
 }
+
 static void     draw_cols(t_data *data, int *x)
 {
 	int		y;
@@ -79,6 +81,7 @@ static void     draw_cols(t_data *data, int *x)
 		y++;
 	}
 }
+
 void	render_frames2(t_data *data, int *x)
 {
 	if(data->rayDirY < 0)
