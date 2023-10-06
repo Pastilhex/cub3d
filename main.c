@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:33:20 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/06 10:37:00 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/06 20:32:02 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ int main(int ac, char **av)
 	t_mlx m;
 	t_data data;
 	t_map map;
-	t_rgb colors;
 
 	check_input(ac, av[1], &map);
-	init_t_map(&map, &data, &colors);
+	init_t_map(&map, &data);
 	init_data(&data, &map, &m);
+	init_mlx(&m);
 	m.data_ptr = &data;
 
 	read_cub_file(&map);

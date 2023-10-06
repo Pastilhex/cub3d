@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:11:26 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/06 14:08:55 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:32:27 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,14 @@ int		get_rgb(int r, int g, int b)
 int	render_frames(void *arg)
 {
 	t_data 	*data;
+	t_rgb	*sky;
+	t_rgb	*floor;
 	int		x;
 
 	data = arg;
-	background(*data->m_ptr, BLACK, CUSTOM);
+	sky = &data->map_ptr->ceiling_colors;
+	floor = &data->map_ptr->floor_colors;
+	background(*data->m_ptr, get_rgb(sky->r,sky->g, sky->b), get_rgb(floor->r, floor->g, floor->b));
 	x = 0;
 	while (x < screenWidth)
 	{

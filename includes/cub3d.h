@@ -66,6 +66,8 @@ typedef struct s_mlx
 
 typedef struct 	s_rgb
 {
+	char	*c;
+	char	*f;
 	int		r;
 	int		g;
 	int		b;
@@ -113,11 +115,6 @@ typedef	struct s_data
 	double	tps;
 	int		texX;
 	t_texture *txt_ptr;
-	// t_texture north;
-	// t_texture south;
-	// t_texture west;
-	// t_texture east;
-	
 	struct s_map	*map_ptr;
 	t_mlx	*m_ptr;
 }	t_data;
@@ -142,9 +139,13 @@ typedef struct s_map {
 	double 	texPos;
 	int 	texY;
 	char	start_dir;
+	int		nbr;
+	int		comma;
+	int		rest;
 	t_data	*data_ptr;
 	uint32_t	color;
-	t_rgb	*colors_ptr; 
+	t_rgb	ceiling_colors; 
+	t_rgb	floor_colors; 
 }	t_map;
 
 enum direction
@@ -172,6 +173,7 @@ void		free_arr(char **arr, t_map *m);
 void		free_arr1(char **arr);
 int			get_rgb_color(char *str);
 void		ft_put_nbr(long long int nbr, int base, int *len);
+char		*get_back_line(char *line);
 
 
 
@@ -188,12 +190,13 @@ int			close_window(t_data *d);
 void		init_data(t_data *d, struct s_map *map_ptr, t_mlx *m);
 int			render_frames(void *arg);
 void		render_frames2(t_data *data, int *x);
-void		background(t_mlx m, t_map *map);
+void		background(t_mlx m, int ground_color, int sky_color);
 void 		init_textures_img(t_data *d);
+void		init_mlx(t_mlx *m);
 
 /*-----> Parser <-----*/
 void		read_cub_file(t_map *map);
-void		init_t_map(t_map *m, t_data *d, t_rgb *colors);
+void		init_t_map(t_map *m, t_data *d);
 int			access_file(t_map *map);
 bool		check_map_extension(t_map *map, char *filename);
 bool		find_texture(char *line, char *texture);

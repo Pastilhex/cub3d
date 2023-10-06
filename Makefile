@@ -9,7 +9,6 @@ SRC	= ./src/render_frames.c\
 	./src/time.c\
 	./src/read_cub_file.c\
 	./src/ft_pixel_put.c\
-	./src/player_move.c\
 	./src/init_textures_img.c\
 	./src/utils/get_next_line.c\
 	./src/utils/free_arr.c\

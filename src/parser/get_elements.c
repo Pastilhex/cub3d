@@ -3,37 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   get_elements.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:39 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/06 09:46:38 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/06 20:50:57 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static char		*get_back_line(char *line)
-{
-	int		i;
-	int		j;
-	int		size;
-	char	*str;
+// char		*get_back_line(char *line)
+// {
+// 	int		i;
+// 	int		j;
+// 	int		size;
+// 	char	*str;
 
-	size = ft_strlen(line);
-	i = 0;
-	j = 0;
-	while (i < size && !ft_isdigit(line[i]))
-		i++;
-	if (line[i + 1] == '\n' || line[i + 1] == '\0')
-		return (NULL);
-	str = malloc((ft_strlen(line) - i + 1) * sizeof(char));
-	if (!str)
-		return (NULL);
-	while (line[i])
-		str[j++] = line[i++];
-	str[j] = '\0';
-	return (str);
-}
+// 	size = ft_strlen(line);
+// 	i = 0;
+// 	j = 0;
+// 	while (i < size && !ft_isdigit(line[i]))
+// 		i++;
+// 	if (line[i + 1] == '\n' || line[i + 1] == '\0')
+// 		return (NULL);
+// 	str = malloc((ft_strlen(line) - i + 1) * sizeof(char));
+// 	if (!str)
+// 		return (NULL);
+// 	while (line[i])
+// 		str[j++] = line[i++];
+// 	str[j] = '\0';
+// 	return (str);
+// }
 
 static char		*get_texture(char *line)
 {
@@ -120,10 +120,10 @@ void	get_elements(t_map *map)
 				map->east_texture = get_texture(map->get_line);
 		if (!map->ceiling_texture)
 			if (!ft_strncmp("C", line_arr[0], 2))
-				map->ceiling_texture = get_back_line(map->get_line);
+				map->ceiling_texture = ft_strdup(map->get_line);
 		if (!map->floor_texture)
 			if (!ft_strncmp("F", line_arr[0], 2))
-				map->floor_texture = get_back_line(map->get_line);
+				map->floor_texture = ft_strdup(map->get_line);
 		free_arr1(line_arr);
 		if (map->north_texture && map->south_texture && map->west_texture && map->east_texture && map->ceiling_texture && map->floor_texture)
 			break ;

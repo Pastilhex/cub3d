@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:42:45 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/05 12:56:54 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/06 20:32:52 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,35 @@ void	init_data(t_data *d, struct s_map *map_ptr, t_mlx *m)
 	d->mapX = 0;
 	d->mapY = 0;
 	init_data2(d, map_ptr, m);
+}
+
+void	init_t_map(t_map *map, t_data *d)
+{
+	map->fd = 0;
+	map->ttl_nbr_lines = 0;
+	map->map_width = 0;
+	map->map_length = 0;
+	map->extension = NULL;
+	map->get_line = NULL;
+	map->north_texture = NULL;
+	map->south_texture = NULL;
+	map->west_texture = NULL;
+	map->east_texture = NULL;
+	map->floor_texture = NULL;
+	map->ceiling_texture = NULL;
+	map->worldMap = NULL;
+	map->wallX = 0.0;
+	map->step = 0.0;
+	map->texPos = 0.0;
+	map->texY = 0;
+	map->start_dir = '0';
+	map->data_ptr = d;
+	map->color = 0;
+	map->data_ptr = d;
+}
+
+void	init_mlx(t_mlx *m)
+{
+	m->mlx = NULL;
+	m->mlx_win = NULL;
 }
