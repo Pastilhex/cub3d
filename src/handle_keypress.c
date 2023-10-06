@@ -91,7 +91,7 @@ int	handle_keypress(int keysym, t_mlx *m)
 	if (keysym == XK_Right)
 		m->data_ptr->moveRight = 1;
 	if (keysym == XK_Escape)
-		close_window(m);
+		close_window(m->data_ptr);
 	return (0);
 }
 

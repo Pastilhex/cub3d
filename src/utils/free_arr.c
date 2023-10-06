@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 19:33:08 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/05 21:25:56 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/06 09:45:39 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	free_arr(char **arr, t_map *m)
 	i = 0;
 	while (i < m->map_length)
 	{
-        // printf("i: %d\n", i);
 		if(arr[i])
             free(arr[i]);
 		i++;

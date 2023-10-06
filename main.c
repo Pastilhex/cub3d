@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:33:20 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/05 21:21:56 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/06 09:40:01 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int main()
 
 	mlx_hook(m.mlx_win, 2, 1L << 0, &handle_keypress, &m);
 	mlx_hook(m.mlx_win, 3, 1L << 1, &handle_keyrelease, &m);
-	mlx_hook(m.mlx_win, 17, 0, close_window, &m);
+	mlx_hook(m.mlx_win, 17, 0, close_window, &data);
 	mlx_loop_hook(m.mlx, render_frames, &data);
 	mlx_loop(m.mlx);
 	return(0);

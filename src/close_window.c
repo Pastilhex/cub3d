@@ -6,19 +6,27 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:59:10 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/05 21:20:17 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/06 10:07:21 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	close_window(t_mlx *m)
+int	close_window(t_data *d)
 {
-	if (m->mlx)
-		mlx_destroy_window(m->mlx, m->mlx_win);
-	if (m->mlx_win)
-		mlx_destroy_display(m->mlx);
-	cleaning(m->data_ptr, m->data_ptr->map_ptr);	
+	int		i;
+	
+	mlx_clear_window(d->m_ptr->mlx, d->m_ptr->mlx_win);
+	if (d->m_ptr->mlx)
+		mlx_destroy_window(d->m_ptr->mlx, d->m_ptr->mlx_win);
+	mlx_destroy_image(d->m_ptr->mlx, d->m_ptr->img);
+	i = -1;
+	while (++i < 4)
+		mlx_destroy_image(d->m_ptr->mlx, d->txt_ptr[i].img);
+	if (d->m_ptr->mlx_win)
+		mlx_destroy_display(d->m_ptr->mlx);
+	cleaning(d->m_ptr->data_ptr, d->m_ptr->data_ptr->map_ptr);
+	free(d->m_ptr->mlx);	
 	exit(0);
 	return (0);
 }

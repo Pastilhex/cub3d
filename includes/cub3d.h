@@ -173,7 +173,7 @@ void		open_window(t_mlx *m, int screen_width, int screen_height, char * window_d
 uint64_t	get_actual_time(void);
 int			handle_keypress(int keysym, t_mlx *m);
 int			handle_keyrelease(int keysym, t_mlx *m);
-int			close_window(t_mlx *m);
+int			close_window(t_data *d);
 void		init_data(t_data *d, struct s_map *map_ptr, t_mlx *m);
 int			render_frames(void *arg);
 void		render_frames2(t_data *data, int *x);
