@@ -6,12 +6,28 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:59:10 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/06 10:07:21 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/06 10:16:56 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+static void		free_t_map(t_map *m)
+{
+	free(m->north_texture);
+	free(m->south_texture);
+	free(m->east_texture);
+	free(m->west_texture);
+	free(m->ceiling_texture);
+	free(m->floor_texture);
+	free(m->get_line);
+	free_arr(m->worldMap, m);
+}
+static void		cleaning(t_data *d, t_map* m)
+{
+	free(d->txt_ptr);
+	free_t_map(m);
+}
 int	close_window(t_data *d)
 {
 	int		i;

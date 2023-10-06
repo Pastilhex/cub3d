@@ -179,9 +179,6 @@ int			render_frames(void *arg);
 void		render_frames2(t_data *data, int *x);
 void		background(t_mlx m, int ground_color, int sky_color);
 void 		init_textures_img(t_data *d);
-void		cleaning(t_data *d, t_map* m);
-
-
 
 /*-----> Parser <-----*/
 void		read_cub_file(t_map *map);
@@ -193,6 +190,7 @@ void		get_elements(t_map *map);
 void		get_map_size(t_map *map);
 void		get_map_to_array(t_map *map);
 void		get_ttl_nbr_lines(t_map *map);
+int			check_input(int ac, char *path_str, t_map *m);
 
 /*-----> Player Movement <-----*/
 void		moveUp(t_mlx *m);

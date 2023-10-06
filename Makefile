@@ -10,6 +10,7 @@ SRC	= ./src/parser/get_ttl_nbr_lines.c\
 	./src/parser/get_elements.c\
 	./src/parser/access_file.c\
 	./src/parser/check_map_extension.c\
+	./src/parser/check_input.c\
 	./src/move_player.c\
 	./src/read_cub_file.c\
 	./src/ft_pixel_put.c\
