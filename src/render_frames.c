@@ -59,13 +59,18 @@ static void     fps(t_data *data)
 		data->tps = 0.0;
 	}
 }
+int		get_rgb(int r, int g, int b)
+{
+	return((r << 16) | (g << 8) | b);
+}
+
 int	render_frames(void *arg)
 {
 	t_data 	*data;
 	int		x;
 
 	data = arg;
-	background(*data->m_ptr, BLACK, CUSTOM);
+	background(*data->m_ptr, get_rgb(255, 255, 255), get_rgb(255, 255, 0));
 	x = 0;
 	while (x < screenWidth)
 	{

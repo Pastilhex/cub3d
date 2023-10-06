@@ -21,9 +21,10 @@ int main(int ac, char **av)
 	t_mlx m;
 	t_data data;
 	t_map map;
+	t_rgb colors;
 
 	check_input(ac, av[1], &map);
-	init_t_map(&map, &data);
+	init_t_map(&map, &data, &colors);
 	init_data(&data, &map, &m);
 	m.data_ptr = &data;
 

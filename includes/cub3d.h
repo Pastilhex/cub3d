@@ -64,6 +64,13 @@ typedef struct s_mlx
 	struct	s_data	*data_ptr;
 }	t_mlx;
 
+typedef struct 	s_rgb
+{
+	int		r;
+	int		g;
+	int		b;
+}	t_rgb;
+
 typedef	struct s_data
 {
 	int		moveUp;
@@ -136,7 +143,8 @@ typedef struct s_map {
 	int 	texY;
 	char	start_dir;
 	t_data	*data_ptr;
-	uint32_t	color; 
+	uint32_t	color;
+	t_rgb	*colors_ptr; 
 }	t_map;
 
 enum direction
@@ -182,7 +190,7 @@ void 		init_textures_img(t_data *d);
 
 /*-----> Parser <-----*/
 void		read_cub_file(t_map *map);
-void		init_t_map(t_map *m, t_data *d);
+void		init_t_map(t_map *m, t_data *d, t_rgb *colors);
 int			access_file(t_map *map);
 bool		check_map_extension(t_map *map, char *filename);
 bool		find_texture(char *line, char *texture);

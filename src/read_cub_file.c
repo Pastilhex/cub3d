@@ -12,7 +12,7 @@
 
 #include "../includes/cub3d.h"
 
-void	init_t_map(t_map *map, t_data *d)
+void	init_t_map(t_map *map, t_data *d, t_rgb *colors)
 {
 	map->fd = 0;
 	map->ttl_nbr_lines = 0;
@@ -35,6 +35,16 @@ void	init_t_map(t_map *map, t_data *d)
 	map->data_ptr = d;
 	map->color = 0;
 	map->data_ptr = d;
+	map->colors_ptr = colors;
+}
+
+void	start_rgb(t_map *m)
+{
+	char *floor;
+	char *sky;
+
+	floor = m->ceiling_texture;
+	sky = m->floor_texture;
 }
 
 void	read_cub_file(t_map *map)
@@ -43,6 +53,7 @@ void	read_cub_file(t_map *map)
 	map->fd = open(map->map_path, O_RDONLY);
 	map->get_line = get_next_line(map->fd);
 	get_elements(map);
+	start_rgb(map);
 	get_map_size(map);
 	get_map_to_array(map);
 	free(map->get_line);
