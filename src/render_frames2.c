@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:05:09 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/05 13:26:18 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:02:39 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void     check_hit(t_data *data)
 static void     calculate_cols(t_data *data)
 {
 	data->lineHeight = (int)(screenHeight / data->perpWallDist);
-	int pitch = 10;
+	int pitch = 0;
 	data->drawStart = -data->lineHeight / 2 + screenHeight / 2 + pitch;
 	if(data->drawStart < 0)
 		data->drawStart = 0;
@@ -66,7 +66,7 @@ static void     draw_cols(t_data *data, int *x)
 	int		y;
 	
 	y = data->drawStart;
-	while (y < data->drawEnd)
+	while (y <= data->drawEnd)
 	{
 		int texY = (int)data->map_ptr->texPos & (texHeight - 1);
 		data->map_ptr->texPos += data->map_ptr->step;

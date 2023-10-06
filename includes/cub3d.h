@@ -149,8 +149,9 @@ enum direction
 
 /*-----> Utils <-----*/
 int			ft_atoi(const char *str);
+char		*ft_itoa(int n);
 void		ft_bzero(void *s, size_t n);
-// void		*ft_calloc(size_t nmemb, size_t size);	
+char		*ft_strjoin(char *s1, char *s2);
 bool		ft_is_numeric(char *str);
 int			ft_strlen(char *str);
 char		*ft_strnstr(const char *big, const char *little, size_t len);
@@ -161,6 +162,8 @@ char		*ft_strdup(char *s);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
 void		free_arr(char **arr, t_map *m);
 void		free_arr1(char **arr);
+int			get_rgb_color(char *str);
+void		ft_put_nbr(long long int nbr, int base, int *len);
 
 
 
@@ -177,7 +180,7 @@ int			close_window(t_data *d);
 void		init_data(t_data *d, struct s_map *map_ptr, t_mlx *m);
 int			render_frames(void *arg);
 void		render_frames2(t_data *data, int *x);
-void		background(t_mlx m, int ground_color, int sky_color);
+void		background(t_mlx m, t_map *map);
 void 		init_textures_img(t_data *d);
 
 /*-----> Parser <-----*/
