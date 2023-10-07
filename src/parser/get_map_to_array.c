@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_to_array.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/05 20:18:56 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/07 19:14:17 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ bool	is_direction(char c)
 		return (true);
 	return (false);
 }
+
 void 	set_start(double i, double k, char c, t_map *m)
 {
 	t_data * d = m->data_ptr;
@@ -54,7 +55,6 @@ void 	set_start(double i, double k, char c, t_map *m)
 	}
 }
 
-
 void	get_map_to_array(t_map *map)
 {
 	int i;
@@ -80,8 +80,10 @@ void	get_map_to_array(t_map *map)
 		k = 0;
 		while (map->get_line[j])
 		{
-			if (map->get_line[j] == ',')
+			if (map->get_line[j] == ',' || (map->get_line[j] == ' ' && map->get_line[j + 1] == '1'))
 				j++;
+			else if (map->get_line[j] == ' ' && map->get_line[j + 1] != '1')
+				perror_close("Invalid Map", map);
 			else if (map->get_line[j] == ' ')
 			{
 				map->worldMap[i][k] = map->get_line[j];
@@ -111,34 +113,3 @@ void	get_map_to_array(t_map *map)
 	}
 	close(map->fd);
 }
-
-/*
-	start position direction - 
-	west
-	data.dirX = 0;
-	data.dirY = 1; 
-	data.planeX = 0.66;
-	data.planeY = 0; 
-	
-	east 
-	data.dirX = 0;
-	data.dirY = -1; 
-	data.planeX = -0.66;
-	data.planeY = 0;
-	
-	north
-	data.dirX = -1;
-	data.dirY = 0;
-	data.planeX = 0;
-	data.planeY = 0.66;
-	
-	South 
-	data.dirX = 1;
-	data.dirY = 0; 
-	data.planeX = 0; 
-	data.planeY = -0.66;
-	
-	
-	
-	
-*/

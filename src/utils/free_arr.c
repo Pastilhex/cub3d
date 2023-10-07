@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_arr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 19:33:08 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/06 09:45:39 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/07 19:08:29 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	free_arr(char **arr, t_map *m)
 	}
 	free(arr);
 }
+
 void	free_arr1(char **arr)
 {
 	int	i;

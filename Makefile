@@ -7,6 +7,7 @@ CC = cc
 SRC	= ./src/render_frames.c\
 	./src/render_frames2.c\
 	./src/time.c\
+	./src/parser/check_map_integrity.c\
 	./src/read_cub_file.c\
 	./src/ft_pixel_put.c\
 	./src/init_textures_img.c\
@@ -43,10 +44,6 @@ SRC	= ./src/render_frames.c\
 	./src/init_data.c\
 	./src/debug.c\
 	./main.c\
-
-
-
-
 
 SRC_BONUS = $(wildcard bonus/*.c)
 

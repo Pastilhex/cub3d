@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cub_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:53:33 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/07 16:17:03 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/07 19:45:17 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static void		define_rgb_colors(t_map *m, char **array, char *str)
 	if (ft_strncmp(str, "C", 1) == 0)
 	{
 		fill_t_rgb(&m->ceiling_colors, rgb[0], rgb[1], rgb[2]);
-		if (!is_valid_colors(&m->ceiling_colors) ||
-								!isOnlyDigitOrComma(array[1]))
+		if (!is_valid_colors(&m->ceiling_colors)
+			|| !isOnlyDigitOrComma(array[1]))
 		{
 			free_arr1(rgb);
 			perror_close("Invalid ceil color", m);		
@@ -37,8 +37,8 @@ static void		define_rgb_colors(t_map *m, char **array, char *str)
 	else if (ft_strncmp(str, "F", 1) == 0)
 	{
 		fill_t_rgb(&m->floor_colors, rgb[0], rgb[1], rgb[2]);
-		if (!is_valid_colors(&m->ceiling_colors) || 
-								!isOnlyDigitOrComma(array[1]))
+		if (!is_valid_colors(&m->ceiling_colors)
+			|| !isOnlyDigitOrComma(array[1]))
 		{
 			free_arr1(rgb);
 			perror_close("Invalid floor color", m);		
@@ -80,13 +80,13 @@ void	read_cub_file(t_map *map)
 	get_ttl_nbr_lines(map);
 	map->fd = open(map->map_path, O_RDONLY);
 	map->get_line = get_next_line(map->fd);
-	
 	get_elements(map);
 	ft_print_t_map(map);
 	check_elements(map, map->ceiling_texture, "C");
 	check_elements(map, map->floor_texture, "F");
 	get_map_size(map);
 	get_map_to_array(map);
+	check_map_integrity(map);
 	ft_print_array(map->worldMap, map->map_length);
 	printf("ttl: %d\n", map->ttl_nbr_lines);
 	printf("map len: %d\n", map->map_length);

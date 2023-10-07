@@ -142,6 +142,9 @@ typedef struct s_map {
 	int		nbr;
 	int		comma;
 	int		rest;
+	int		border_begin_x;
+	int		border_begin_y;
+	int		border_checked;
 	t_data	*data_ptr;
 	uint32_t	color;
 	t_rgb	ceiling_colors; 
@@ -171,7 +174,6 @@ char		*ft_strdup(char *s);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
 void		free_arr(char **arr, t_map *m);
 void		free_arr1(char **arr);
-int			get_rgb_color(char *str);
 void		ft_put_nbr(long long int nbr, int base, int *len);
 int			get_arr_size(char **arr);
 bool		is_valid_colors(t_rgb *colors);
@@ -195,6 +197,7 @@ void		background(t_mlx m, int ground_color, int sky_color);
 void 		init_textures_img(t_data *d);
 void		init_mlx(t_mlx *m);
 void		perror_close(char *msg, t_map *map);
+void		check_map_integrity(t_map *map);
 
 
 /*-----> Parser <-----*/
@@ -202,7 +205,6 @@ void		read_cub_file(t_map *map);
 void		init_t_map(t_map *m, t_data *d);
 int			access_file(t_map *map);
 bool		check_map_extension(t_map *map, char *filename);
-bool		find_texture(char *line, char *texture);
 void		get_elements(t_map *map);
 void		get_map_size(t_map *map);
 void		get_map_to_array(t_map *map);
@@ -219,7 +221,7 @@ void		moveSlideRight(t_mlx *m);
 void 		movePlayer(t_data *data);
 
 /*-----> Debug <-----*/
-void 	ft_print_array(char **arr, int nb_lines);
-void	ft_print_t_map(t_map *m);
+void 		ft_print_array(char **arr, int nb_lines);
+void		ft_print_t_map(t_map *m);
 
 #endif
