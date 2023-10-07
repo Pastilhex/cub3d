@@ -21,4 +21,6 @@ void 	ft_print_array(char **arr, int nb_lines)
 {
 	for (int i = 0; i < nb_lines; i++)
 		printf("%s", arr[i]);
+	printf("\n");
+	
 }

@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:18 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/06 10:44:33 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/07 16:23:22 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	access_file(t_map *map)
 {
-	map->fd = 0;
 	map->fd = open(map->map_path, O_RDONLY);
 	if (map->fd < 0)
 		exit(0);

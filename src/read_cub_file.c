@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:53:33 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/07 15:29:40 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/07 16:17:03 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,15 @@ void	read_cub_file(t_map *map)
 	get_ttl_nbr_lines(map);
 	map->fd = open(map->map_path, O_RDONLY);
 	map->get_line = get_next_line(map->fd);
+	
 	get_elements(map);
 	ft_print_t_map(map);
 	check_elements(map, map->ceiling_texture, "C");
 	check_elements(map, map->floor_texture, "F");
 	get_map_size(map);
 	get_map_to_array(map);
+	ft_print_array(map->worldMap, map->map_length);
+	printf("ttl: %d\n", map->ttl_nbr_lines);
+	printf("map len: %d\n", map->map_length);
 	free(map->get_line);
 }
