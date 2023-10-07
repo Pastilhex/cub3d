@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_elements.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:39 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/06 20:50:57 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/07 09:39:53 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,5 +129,10 @@ void	get_elements(t_map *map)
 			break ;
 		free(map->get_line);
 		map->get_line = get_next_line(map->fd);
+	}
+	if (!map->north_texture || !map->south_texture || !map->west_texture || !map->east_texture || !map->ceiling_texture || !map->floor_texture)
+	{
+		printf("Map Error Found.\n");
+		close_window(map->data_ptr);
 	}
 }
