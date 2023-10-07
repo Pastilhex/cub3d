@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:39 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/07 09:39:53 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/07 09:47:14 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,11 @@ void	get_elements(t_map *map)
 	while (map->get_line)
 	{
 		line_arr = ft_split(map->get_line, ' ');
+		if (line_arr[2])
+		{
+			printf("Map Error Found.\n");
+			close_window(map->data_ptr);
+		}
 		if (!map->north_texture)
 			if (!ft_strncmp("N", line_arr[0], 2) || !ft_strncmp("NO", line_arr[0], 3))
 				map->north_texture = get_texture(map->get_line);
