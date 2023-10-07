@@ -66,8 +66,8 @@ typedef struct s_mlx
 
 typedef struct 	s_rgb
 {
-	char	*c;
-	char	*f;
+	// char	*c;
+	// char	*f;
 	int		r;
 	int		g;
 	int		b;
@@ -173,8 +173,9 @@ void		free_arr(char **arr, t_map *m);
 void		free_arr1(char **arr);
 int			get_rgb_color(char *str);
 void		ft_put_nbr(long long int nbr, int base, int *len);
-char		*get_back_line(char *line);
-
+int			get_arr_size(char **arr);
+bool		is_valid_colors(t_rgb *colors);
+bool		isOnlyDigitOrComma(char *str);
 
 
 
@@ -193,6 +194,8 @@ void		render_frames2(t_data *data, int *x);
 void		background(t_mlx m, int ground_color, int sky_color);
 void 		init_textures_img(t_data *d);
 void		init_mlx(t_mlx *m);
+void		perror_close(char *msg, t_map *map);
+
 
 /*-----> Parser <-----*/
 void		read_cub_file(t_map *map);
@@ -214,5 +217,9 @@ void		moveRight(t_mlx *m);
 void		moveSlideLeft(t_mlx *m);
 void		moveSlideRight(t_mlx *m);
 void 		movePlayer(t_data *data);
+
+/*-----> Debug <-----*/
+void 	ft_print_array(char **arr, int nb_lines);
+void	ft_print_t_map(t_map *m);
 
 #endif

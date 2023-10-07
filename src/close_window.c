@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close_window.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:59:10 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/06 20:01:09 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/07 10:49:22 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ static void		free_t_map(t_map *m)
 
 static void		cleaning(t_data *d, t_map* m)
 {
-	free(d->txt_ptr);
+	if(d->txt_ptr)
+		free(d->txt_ptr);
 	free_t_map(m);
 }
 

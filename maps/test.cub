@@ -1,9 +1,15 @@
 NO ./maps/textures/north.xpm
 SO ./maps/textures/south.xpm
-WE ./maps/textures/west.xpm
-EA ./maps/textures/east.xpm
-F F 000,000,000
-C 255,255,255
+
+W ./maps/textures/west.xpm
+E ./maps/textures/east.xpm
+
+
+F                   244,255,180
+C             130,130,255
+
+
+
 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
 1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1

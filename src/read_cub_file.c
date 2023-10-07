@@ -3,32 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   read_cub_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:53:33 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/06 21:19:55 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/07 15:29:40 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	define_rgb_colors(t_map *m, char **array, char *c)
+static void		fill_t_rgb(t_rgb *c, char *r, char *g, char *b)
+{
+	c->r = atoi(r);
+	c->g = atoi(g);
+	c->b = atoi(b);
+}
+
+static void		define_rgb_colors(t_map *m, char **array, char *str)
 {
 	char	**rgb;
 
 	rgb = ft_split(array[1], ',');
-	if (ft_strncmp(c, "C", 1) == 0)
+	if (ft_strncmp(str, "C", 1) == 0)
 	{
-		m->ceiling_colors.r = ft_atoi(rgb[0]);
-		m->ceiling_colors.g = ft_atoi(rgb[1]);
-		m->ceiling_colors.b = ft_atoi(rgb[2]);
+		fill_t_rgb(&m->ceiling_colors, rgb[0], rgb[1], rgb[2]);
+		if (!is_valid_colors(&m->ceiling_colors) ||
+								!isOnlyDigitOrComma(array[1]))
+		{
+			free_arr1(rgb);
+			perror_close("Invalid ceil color", m);		
+		}
 	}
-	else if (ft_strncmp(c, "F", 1) == 0)
+	else if (ft_strncmp(str, "F", 1) == 0)
 	{
-		m->floor_colors.r = ft_atoi(rgb[0]);
-		m->floor_colors.g = ft_atoi(rgb[1]);
-		m->floor_colors.b = ft_atoi(rgb[2]);
+		fill_t_rgb(&m->floor_colors, rgb[0], rgb[1], rgb[2]);
+		if (!is_valid_colors(&m->ceiling_colors) || 
+								!isOnlyDigitOrComma(array[1]))
+		{
+			free_arr1(rgb);
+			perror_close("Invalid floor color", m);		
+		}
 	}
+	free_arr1(rgb);
 }
 
 void	check_elements(t_map *m, char *texture, char *c)
@@ -40,7 +56,6 @@ void	check_elements(t_map *m, char *texture, char *c)
 	m->nbr = 0;
 	m->comma = 0;
 	m->rest = 0;
-	// array = NULL;
 	array = ft_split(texture, ' ');
 	while (array[1][++i] && array[1][i] != '\n')
 	{
@@ -55,7 +70,7 @@ void	check_elements(t_map *m, char *texture, char *c)
 		|| ((m->nbr < 0 || m->nbr > 9) && (m->comma != 2) && m->rest != 0))
 	{
 		free_arr1(array);
-		close_window(m->data_ptr);
+		perror_close("Invalid char in color definition", m);
 	}
 	define_rgb_colors(m, array, c);
 }
@@ -66,6 +81,7 @@ void	read_cub_file(t_map *map)
 	map->fd = open(map->map_path, O_RDONLY);
 	map->get_line = get_next_line(map->fd);
 	get_elements(map);
+	ft_print_t_map(map);
 	check_elements(map, map->ceiling_texture, "C");
 	check_elements(map, map->floor_texture, "F");
 	get_map_size(map);

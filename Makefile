@@ -25,6 +25,9 @@ SRC	= ./src/render_frames.c\
 	./src/utils/ft_atoi.c\
 	./src/utils/ft_strnstr.c\
 	./src/utils/ft_memcpy.c\
+	./src/utils/get_array_size.c\
+	./src/utils/is_valid_colors.c\
+	./src/utils/isOnlyDigitOrComma.c\
 	./src/move_player.c\
 	./src/open_window.c\
 	./src/background.c\
@@ -38,8 +41,8 @@ SRC	= ./src/render_frames.c\
 	./src/parser/check_map_extension.c\
 	./src/parser/get_map_to_array.c\
 	./src/init_data.c\
+	./src/debug.c\
 	./main.c\
-	./trash.c\
 
 
 

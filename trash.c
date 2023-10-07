@@ -368,3 +368,71 @@ void	get_elements(t_map *map)
 		map->get_line = get_next_line(map->fd);
 	}
 }*/
+
+// char		*get_back_line(char *line)
+// {
+// 	int		i;
+// 	int		j;
+// 	int		size;
+// 	char	*str;
+
+// 	size = ft_strlen(line);
+// 	i = 0;
+// 	j = 0;
+// 	while (i < size && !ft_isdigit(line[i]))
+// 		i++;
+// 	if (line[i + 1] == '\n' || line[i + 1] == '\0')
+// 		return (NULL);
+// 	str = malloc((ft_strlen(line) - i + 1) * sizeof(char));
+// 	if (!str)
+// 		return (NULL);
+// 	while (line[i])
+// 		str[j++] = line[i++];
+// 	str[j] = '\0';
+// 	return (str);
+// }
+
+
+
+/*
+static bool		find_texture(char *line, char *texture)
+{
+	int		size;
+	char	*texture_found;
+
+	size = ft_strlen(line);
+	texture_found = ft_strnstr(line, texture, size);
+	if (texture_found)
+		return (true);
+	return (false);
+}*/
+/*
+void	get_elements(t_map *map)
+{
+	while (map->get_line)
+	{
+		if (!map->north_texture)
+			if (find_texture(map->get_line, "N ") || find_texture(map->get_line, "NO "))
+				map->north_texture = get_texture(map->get_line);
+		if (!map->south_texture)
+			if (find_texture(map->get_line, "S ") || find_texture(map->get_line, "SO "))
+				map->south_texture = get_texture(map->get_line);
+		if (!map->west_texture)
+			if (find_texture(map->get_line, "W ") || find_texture(map->get_line, "WE "))
+				map->west_texture = get_texture(map->get_line);
+		if (!map->east_texture)
+			if (find_texture(map->get_line, "E ") || find_texture(map->get_line, "EA "))
+				map->east_texture = get_texture(map->get_line);
+		if (!map->ceiling_texture)
+			if (find_texture(map->get_line, "C"))
+				map->ceiling_texture = get_back_line(map->get_line);
+		if (!map->floor_texture)
+			if (find_texture(map->get_line, "F"))
+				map->floor_texture = get_back_line(map->get_line);
+		if (map->north_texture && map->south_texture && map->west_texture && map->east_texture && map->ceiling_texture && map->floor_texture)
+			break ;
+		map->get_line = get_next_line(map->fd);
+	}
+}*/
+
+//if (get_arr_size(line_arr) > 2)

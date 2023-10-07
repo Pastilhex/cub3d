@@ -3,18 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:33:20 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/06 20:32:02 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/07 11:13:04 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3d.h"
 
-
-
-void 	ft_print_array(char **arr, int nb_lines);
+void	perror_close(char *msg, t_map *map)
+{
+	printf("Error\n%s\n", msg);
+	close_window(map->data_ptr);
+}
 
 int main(int ac, char **av)
 {
@@ -39,8 +41,4 @@ int main(int ac, char **av)
 	mlx_loop(m.mlx);
 	return(0);
 }
-void 	ft_print_array(char **arr, int nb_lines)
-{
-	for (int i = 0; i < nb_lines; i++)
-		printf("%s", arr[i]);
-}
+

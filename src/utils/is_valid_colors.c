@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_numeric.c                                    :+:      :+:    :+:   */
+/*   is_valid_colors.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/03 10:57:05 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/07 14:27:52 by joaoalme         ###   ########.fr       */
+/*   Created: 2023/10/07 15:11:47 by joaoalme          #+#    #+#             */
+/*   Updated: 2023/10/07 15:11:50 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-bool	ft_is_numeric(char *str)
+bool		is_valid_colors(t_rgb *colors)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!(str[i] >= 48 && str[i] <= 57))
-			return (false);
-		i++;
-	}
+	if (colors->r < 0 || colors->g < 0 || colors->b < 0)
+		return (false);
+	if (colors->r > 255 || colors->g > 255 || colors->b > 255)
+		return (false);
 	return (true);
 }
