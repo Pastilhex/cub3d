@@ -178,6 +178,11 @@ void		ft_put_nbr(long long int nbr, int base, int *len);
 int			get_arr_size(char **arr);
 bool		is_valid_colors(t_rgb *colors);
 bool		isOnlyDigitOrComma(char *str);
+void		flood_fill(char **arr, int i, int j, char c);
+bool		isValidChar(char c);
+bool		is_direction(char c);
+
+
 
 
 

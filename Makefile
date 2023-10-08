@@ -29,6 +29,8 @@ SRC	= ./src/render_frames.c\
 	./src/utils/get_array_size.c\
 	./src/utils/is_valid_colors.c\
 	./src/utils/isOnlyDigitOrComma.c\
+	./src/utils/flood_fill.c\
+	./src/utils/is_direction.c\
 	./src/move_player.c\
 	./src/open_window.c\
 	./src/background.c\

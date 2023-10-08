@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_integrity.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/07 22:39:34 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/08 21:07:43 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-char	**map_copy(t_map *map)
+char	**to_copy_map(t_map *map)
 {
 	int		i;
 	int		j;
@@ -39,56 +39,44 @@ char	**map_copy(t_map *map)
 	}
 	return (copy);
 }
-void	check_border_map(t_map *map, char **border, int i, int j)
+void	check_map_copy(t_map *map, char **floor, int i, int j)
 {
-	if (i < 0 || j < 0 || i >= map->map_length || j >= map->map_width || border[i][j] != '1')
+	if (i < 0 || j < 0 || i >= map->map_length || j >= map->map_width || floor[i][j] != '0')
 	{
-		if (i == map->border_begin_x && j == map->border_begin_y)
-			map->border_checked = 1;
-		else
-			return ;
+		return ;
 	}
-	else if (border[i][j] == '1')
-		border[i][j] = 'X';
-	ft_print_array(border, map->map_length);
-	check_border_map(map, border, i + 1, j);		
-	check_border_map(map, border,i - 1, j);		
-	check_border_map(map, border,i, j + 1);		
-	check_border_map(map, border,i, j - 1);
+	floor[i][j] = 'X';
+	ft_print_array(floor, map->map_length);
+	check_map_copy(map, floor, i + 1, j);		
+	check_map_copy(map, floor,i - 1, j);		
+	check_map_copy(map, floor,i, j + 1);		
+	check_map_copy(map, floor,i, j - 1);
 }
+
+
 
 void	check_map_integrity(t_map *map)
 {
 	int i;
 	int j;
-	char **border_map;
+	char **map_copy;
 
 	i = 0;
 	j = 0;
 	map->border_checked = 0;
-	border_map = map_copy(map);
-	map->fd = access_file(map);
-	map->get_line = get_next_line(map->fd);
-	while (i < (map->ttl_nbr_lines - map->map_length))
-	{
-		free(map->get_line);
-		map->get_line = get_next_line(map->fd);
-		i++;
-	}
-	i = 0;
-	while (map->get_line)
+	map_copy = to_copy_map(map);
+	while (i < map->map_length)
 	{
 		j = 0;
-		while (map->get_line[j])
+		while (map->worldMap[j])
 		{
-			// Search for first block of wall to start border checking
-			if (map->get_line[j] == '1' && map->border_checked == 0)
+			// Search for player position
+			if (is_direction( map->worldMap[i][j]))
 			{
-				map->border_begin_x = i;
-				map->border_begin_x = j;
-				check_border_map(map, border_map, i, j);
-				if (map->border_checked == 0)
-					perror_close("Map Border Integrity Fail", map);
+				
+				check_map_copy(map, map_copy, i, j);
+				if (map->border_checked == 1)
+					perror_close("Map Integrity Fail", map);
 			}
 			j++;
 		}
