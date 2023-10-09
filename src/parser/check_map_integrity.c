@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_integrity.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 15:22:59 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 23:57:30 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,18 @@ char	**to_copy_map(t_map *map)
 {
 	int		i;
 	int		j;
+	int		size_arr;
 	char	**copy;
 
 	i = 0;
 	j = 0;
-	copy = malloc(map->map_length * sizeof(char *));
+	size_arr = map->map_end - map->map_start;
+	copy = malloc(size_arr * sizeof(char *));
 	if (!copy)
 		return (NULL);
-	while (i < map->map_length)
+	while (i < size_arr)
 	{
-		copy[i] = malloc(map->map_width * sizeof(char) + 1);
+		copy[i] = malloc(ft_strlen(map->world_map[i]) * sizeof(char) + 1);
 		if (!copy[i])
 			return (NULL);
 		while (j < ft_strlen(map->world_map[i]))
@@ -42,8 +44,8 @@ char	**to_copy_map(t_map *map)
 
 void	check_map_inside(t_map *map, char **floor, int i, int j)
 {
-	if (i < 0 || j < 0 || i >= map->map_length
-		|| j >= map->map_width || floor[i][j] != '0')
+	if (i < 0 || j < 0 || i >= map->map_end - map->map_start
+		|| j >= ft_strlen(floor[i]) || floor[i][j] != '0')
 	{
 		if (floor[i][j] != '0' && floor[i][j] != '1' && floor[i][j] != 'X')
 			map->inside_checked = 1;
@@ -63,7 +65,7 @@ void	check_map_integrity(t_map *map)
 	map->inside_checked = 0;
 	map_copy = to_copy_map(map);
 	check_map_inside(map, map_copy, map->data_ptr->pos_x, map->data_ptr->pos_y);
+	free_arr(map_copy, map);
 	if (map->inside_checked == 1)
 		perror_close("Map Integrity Fail", map);
-	free_arr(map_copy, map);
 }

@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:42:45 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 18:54:49 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/09 23:44:57 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ void	init_t_map(t_map *map, t_data *d)
 {
 	map->fd = 0;
 	map->ttl_nbr_lines = 0;
-	map->map_width = 0;
-	map->map_length = 0;
 	map->extension = NULL;
 	map->get_line = NULL;
 	map->north_texture = NULL;

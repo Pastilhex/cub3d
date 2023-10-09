@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/09 18:53:21 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/09 23:45:32 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,6 @@ typedef struct s_data
 typedef struct s_map {
 	int			fd;
 	int			ttl_nbr_lines;
-	int			map_width;
-	int			map_length;
 	char		*extension;
 	char		*get_line;
 	char		*map_path;
