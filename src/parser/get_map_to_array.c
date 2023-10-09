@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 23:57:42 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/10 00:01:36 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,5 @@ void	get_map_to_array(t_map *map)
 		i++;
 		map->get_line = get_next_line(map->fd);
 	}
-	ft_print_array(map->world_map, map->map_end - map->map_start);
 	close(map->fd);
 }
