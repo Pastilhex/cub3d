@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:42:45 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 14:13:34 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:45:32 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static void     init_data2(t_data *d, struct s_map *map_ptr, t_mlx *m)
+static void	init_data2(t_data *d, struct s_map *map_ptr, t_mlx *m)
 {
 	d->side_dist_x = 0.0;
 	d->side_dist_y = 0.0;
@@ -32,7 +32,7 @@ static void     init_data2(t_data *d, struct s_map *map_ptr, t_mlx *m)
 	d->fps = 0;
 	d->tps = 0.0;
 	d->tex_x = 0;
-	d->txt_ptr = malloc(sizeof(t_texture) * 4); 
+	d->txt_ptr = malloc(sizeof(t_texture) * 4);
 	if (!d->txt_ptr)
 		exit(EXIT_FAILURE);
 	d->map_ptr = map_ptr;

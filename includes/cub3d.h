@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/09 14:09:02 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:25:36 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define CUB3D_H
 
 # include "../minilibx-linux/mlx.h"
-# include "../gnl/get_next_line.h"
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -26,18 +25,12 @@
 # include <stdbool.h>
 # include <sys/time.h>
 # include <stdint.h>
+# include <fcntl.h>
 
 # define SCREENWIDTH 640
 # define SCREENHEIGHT 480
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
-# define BLUE 0x0000FF
-# define RED 0xFF0000
-# define GREEN 0x00FF00
-# define WHITE 0xFFFFFF
-# define YELLOW 0xFFFF00
-# define BLACK 0x000000
-# define CUSTOM 0x00FFFF 
 
 typedef struct s_texture
 {
@@ -110,6 +103,7 @@ typedef struct s_data
 	int				fps;
 	double			tps;
 	int				tex_x;
+	int				pitch;
 	t_texture		*txt_ptr;
 	struct s_map	*map_ptr;
 	t_mlx			*m_ptr;
@@ -143,7 +137,7 @@ typedef struct s_map {
 	int			inside_checked;
 	t_data		*data_ptr;
 	uint32_t	color;
-	t_rgb		ceiling_colors; 
+	t_rgb		ceiling_colors;
 	t_rgb		floor_colors;
 }	t_map;
 
@@ -173,13 +167,15 @@ void		free_arr1(char **arr);
 void		ft_put_nbr(long long int nbr, int base, int *len);
 int			get_arr_size(char **arr);
 bool		is_valid_colors(t_rgb *colors);
-bool		isOnlyDigitOrComma(char *str);
+bool		is_only_digit_or_comma(char *str);
 void		flood_fill(char **arr, int i, int j, char c);
-bool		isValidChar(char c);
+bool		is_valid_char(char c);
 bool		is_direction(char c);
 char		*ft_strtrim(char *s1, char *set);
 char		*ft_strchr(char *s, int c);
 char		*ft_substr(char *s, unsigned int start, unsigned int len);
+char		*get_next_line(int fd);
+void		*ft_calloc(size_t nmemb, size_t size);
 
 /*-----> Cub3d <-----*/
 void		ft_pixel_put(t_mlx *data, int x, int y, int color);
@@ -212,13 +208,13 @@ int			check_input(int ac, char *path_str, t_map *m);
 void		check_map_inside(t_map *map, char **floor, int i, int j);
 
 /*-----> Player Movement <-----*/
-void		moveUp(t_mlx *m);
-void		moveDown(t_mlx *m);
-void		moveLeft(t_mlx *m);
-void		moveRight(t_mlx *m);
-void		moveSlideLeft(t_mlx *m);
-void		moveSlideRight(t_mlx *m);
-void		movePlayer(t_data *data);
+void		move_p_up(t_mlx *m);
+void		move_p_down(t_mlx *m);
+void		move_p_left(t_mlx *m);
+void		move_p_right(t_mlx *m);
+void		move_p_slide_left(t_mlx *m);
+void		move_p_slide_right(t_mlx *m);
+void		move_player(t_data *data);
 
 /*-----> Debug <-----*/
 void		ft_print_array(char **arr, int nb_lines);

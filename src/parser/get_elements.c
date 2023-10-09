@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_elements.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:39 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 15:16:18 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:15:57 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char	*get_texture(char *line)
 	return (str);
 }
 
-void	get_elements_sides(t_map *map)
+void	get_elements_sides(t_map *map, char **line_arr)
 {
 	if (!map->north_texture)
 		if (!ft_strncmp("N", line_arr[0], 2)
@@ -64,6 +64,7 @@ void	get_elements(t_map *map)
 		line_arr = ft_split(map->get_line, ' ');
 		if (get_arr_size(line_arr) > 2)
 			perror_close("Map Error Found", map);
+		get_elements_sides(map, line_arr);
 		if (!map->ceiling_texture)
 			if (!ft_strncmp("C", line_arr[0], 2))
 				map->ceiling_texture = ft_strdup(map->get_line);

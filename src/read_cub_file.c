@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   read_cub_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:53:33 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/09 14:18:51 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:25:37 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static void		fill_t_rgb(t_rgb *c, char *r, char *g, char *b)
+static void	fill_t_rgb(t_rgb *c, char *r, char *g, char *b)
 {
 	c->r = atoi(r);
 	c->g = atoi(g);
 	c->b = atoi(b);
 }
 
-static void		define_rgb_colors(t_map *m, char **array, char *str)
+static void	define_rgb_colors(t_map *m, char **array, char *str)
 {
 	char	**rgb;
 
@@ -28,20 +28,20 @@ static void		define_rgb_colors(t_map *m, char **array, char *str)
 	{
 		fill_t_rgb(&m->ceiling_colors, rgb[0], rgb[1], rgb[2]);
 		if (!is_valid_colors(&m->ceiling_colors)
-			|| !isOnlyDigitOrComma(array[1]))
+			|| !is_only_digit_or_comma(array[1]))
 		{
 			free_arr1(rgb);
-			perror_close("Invalid ceil color", m);		
+			perror_close("Invalid ceil color", m);
 		}
 	}
 	else if (ft_strncmp(str, "F", 1) == 0)
 	{
 		fill_t_rgb(&m->floor_colors, rgb[0], rgb[1], rgb[2]);
 		if (!is_valid_colors(&m->ceiling_colors)
-			|| !isOnlyDigitOrComma(array[1]))
+			|| !is_only_digit_or_comma(array[1]))
 		{
 			free_arr1(rgb);
-			perror_close("Invalid floor color", m);		
+			perror_close("Invalid floor color", m);
 		}
 	}
 	free_arr1(rgb);

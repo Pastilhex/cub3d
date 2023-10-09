@@ -3,69 +3,69 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:53:33 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/09 13:42:07 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:48:28 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	movePlayerUp(t_data *data)
+void	move_player_up(t_data *data)
 {
-	moveUp(data->m_ptr);
+	move_p_up(data->m_ptr);
 	if (data->move_left == 1)
 	{
-		moveLeft(data->m_ptr);
+		move_p_left(data->m_ptr);
 		if (data->slide_left == 1)
-			moveSlideLeft(data->m_ptr);
+			move_p_slide_left(data->m_ptr);
 	}
 	else if (data->move_right == 1)
 	{
-		moveRight(data->m_ptr);
+		move_p_right(data->m_ptr);
 		if (data->slide_right == 1)
-			moveSlideRight(data->m_ptr);
+			move_p_slide_right(data->m_ptr);
 	}
 	else if (data->slide_left == 1)
-		moveSlideLeft(data->m_ptr);
+		move_p_slide_left(data->m_ptr);
 	else if (data->slide_right == 1)
-		moveSlideRight(data->m_ptr);	
+		move_p_slide_right(data->m_ptr);
 }
 
-void	movePlayerDown(t_data *data)
+void	move_player_down(t_data *data)
 {
-	moveDown(data->m_ptr);
-	if (data->move_left == 1) 
+	move_p_down(data->m_ptr);
+	if (data->move_left == 1)
 	{
-		moveLeft(data->m_ptr);
+		move_p_left(data->m_ptr);
 		if (data->slide_left == 1)
-			moveSlideLeft(data->m_ptr);
+			move_p_slide_left(data->m_ptr);
 	}
 	else if (data->move_right == 1)
 	{
-		moveRight(data->m_ptr);
+		move_p_right(data->m_ptr);
 		if (data->slide_right == 1)
-			moveSlideRight(data->m_ptr);
+			move_p_slide_right(data->m_ptr);
 	}
 	else if (data->slide_left == 1)
-		moveSlideLeft(data->m_ptr);
+		move_p_slide_left(data->m_ptr);
 	else if (data->slide_right == 1)
-		moveSlideRight(data->m_ptr);
+		move_p_slide_right(data->m_ptr);
 }
 
-void movePlayer(t_data *data)
+void	move_player(t_data *data)
 {
 	if (data->move_up == 1)
-		movePlayerUp(data);
+		move_player_up(data);
 	else if (data->move_down == 1)
-		movePlayerDown(data);
+		move_player_down(data);
 	else if (data->move_left == 1)
-		moveLeft(data->m_ptr);
+		move_p_left(data->m_ptr);
 	else if (data->move_right == 1)
-		moveRight(data->m_ptr);
+		move_p_right(data->m_ptr);
 	else if (data->slide_left == 1)
-		moveSlideLeft(data->m_ptr);
+		move_p_slide_left(data->m_ptr);
 	else if (data->slide_right == 1)
-		moveSlideRight(data->m_ptr);
+		move_p_slide_right(data->m_ptr);
 }

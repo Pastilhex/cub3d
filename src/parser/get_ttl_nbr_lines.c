@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_ttl_nbr_lines.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:54 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/05 20:54:44 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:23:15 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	get_ttl_nbr_lines(t_map *map)
 {
-	int fd;
-	char *line;
+	int		fd;
+	char	*line;
 
 	fd = open(map->map_path, O_RDONLY);
 	line = get_next_line(fd);

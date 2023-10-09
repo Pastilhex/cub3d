@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   isOnlyDigitOrComma.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:16:03 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/07 15:16:15 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:51:10 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-bool		isOnlyDigitOrComma(char *str)
+bool	is_only_digit_or_comma(char *str)
 {
 	int	i;
 

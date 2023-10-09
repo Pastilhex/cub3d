@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 10:37:24 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 11:58:00 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:41:50 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int		check_input(int ac, char *path_str, t_map *m)
+int	check_input(int ac, char *path_str, t_map *m)
 {
 	if (ac != 2)
 	{
@@ -30,5 +30,5 @@ int		check_input(int ac, char *path_str, t_map *m)
 		printf("Error!\nCan not open file\n");
 		exit(EXIT_FAILURE);
 	}
-	return(1);
+	return (1);
 }

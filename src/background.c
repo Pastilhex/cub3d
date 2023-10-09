@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   background.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:50:21 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 13:23:11 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:15:28 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static void     draw_ground(t_mlx m, int color)
+static void	draw_ground(t_mlx m, int color)
 {
 	int		x;
 	int		y;
-	
+
 	x = 0;
 	y = SCREENHEIGHT / 2;
 	while (y < SCREENHEIGHT)
@@ -31,11 +31,11 @@ static void     draw_ground(t_mlx m, int color)
 	}
 }
 
-static void     draw_sky(t_mlx m, int color)
+static void	draw_sky(t_mlx m, int color)
 {
 	int		x;
 	int		y;
-	
+
 	x = 0;
 	y = 0;
 	while (y < SCREENHEIGHT / 2)

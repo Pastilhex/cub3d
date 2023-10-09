@@ -3,21 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_to_array.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 15:16:30 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:24:42 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void 	set_start(double i, double k, char c, t_map *m)
+void	set_start_ns(char c, t_data *d)
 {
-	t_data * d = m->data_ptr;
-	d->pos_x = i + 0.49;
-	d->pos_y = k + 0.49;
-	
 	if (c == 'N')
 	{
 		d->dir_x = -1;
@@ -32,6 +28,16 @@ void 	set_start(double i, double k, char c, t_map *m)
 		d->plane_x = 0;
 		d->plane_y = -0.66;
 	}
+}
+
+void	set_start(double i, double k, char c, t_map *m)
+{
+	t_data	*d;
+
+	d = m->data_ptr;
+	d->pos_x = i + 0.49;
+	d->pos_y = k + 0.49;
+	set_start_ns(c, d);
 	if (c == 'W')
 	{
 		d->dir_x = 0;
@@ -48,11 +54,33 @@ void 	set_start(double i, double k, char c, t_map *m)
 	}
 }
 
-bool	isValidChar(char c)
+bool	is_valid_char(char c)
 {
 	if (c == '0' || c == '1' || is_direction(c) || c == '\n' || c == ' ')
-		return(true);
+		return (true);
 	return (false);
+}
+
+void	get_map_to_array_while_get_line(t_map *map, int i, int j)
+{
+	while (map->get_line[j])
+	{
+		if (!is_valid_char(map->get_line[j]))
+		{
+			printf("Invalid char >> %c\n", map->get_line[j]);
+			perror_close("Invalid char in map", map);
+		}
+		if (is_direction(map->get_line[j]))
+		{
+			map->world_map[i][j] = '0';
+			set_start(i, j, map->get_line[j], map);
+		}
+		else
+		{
+			map->world_map[i][j] = map->get_line[j];
+		}
+		j++;
+	}
 }
 
 void	get_map_to_array(t_map *map)
@@ -73,28 +101,10 @@ void	get_map_to_array(t_map *map)
 	i = 0;
 	while (map->get_line)
 	{
-		map->world_map[i] = ft_calloc((ft_strlen(map->get_line) + 1), sizeof(char));
+		map->world_map[i] = ft_calloc((ft_strlen(map->get_line) + 1), \
+			sizeof(char));
 		j = 0;
-		while (map->get_line[j])
-		{
-			
-			if (!isValidChar(map->get_line[j]))
-			{
-				printf("Invalid char >> %c\n", map->get_line[j]);
-				perror_close("Invalid char in map", map);	
-			}
-			if (is_direction(map->get_line[j]))
-			{
-				map->world_map[i][j] = '0';
-				set_start(i, j, map->get_line[j], map);
-				j++;
-			}
-			else
-			{
-				map->world_map[i][j] = map->get_line[j];
-				j++;
-			}
-		}
+		get_map_to_array_while_get_line(map, i, j);
 		free(map->get_line);
 		i++;
 		map->get_line = get_next_line(map->fd);

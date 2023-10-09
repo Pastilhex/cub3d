@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   close_window.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:59:10 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/09 14:00:24 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:16:28 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static void		free_t_map(t_map *m)
+static void	free_t_map(t_map *m)
 {
 	if (m->north_texture)
 		free(m->north_texture);
@@ -32,9 +32,9 @@ static void		free_t_map(t_map *m)
 		free_arr(m->world_map, m);
 }
 
-static void		cleaning(t_data *d, t_map* m)
+static void	cleaning(t_data *d, t_map *m)
 {
-	if(d->txt_ptr)
+	if (d->txt_ptr)
 		free(d->txt_ptr);
 	free_t_map(m);
 }
@@ -57,7 +57,7 @@ int	close_window(t_data *d)
 		mlx_destroy_display(d->m_ptr->mlx);
 	cleaning(d->m_ptr->data_ptr, d->m_ptr->data_ptr->map_ptr);
 	if (d->m_ptr->mlx)
-		free(d->m_ptr->mlx);	
+		free(d->m_ptr->mlx);
 	exit(0);
 	return (0);
 }

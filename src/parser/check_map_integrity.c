@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_integrity.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 14:00:48 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:22:59 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,23 @@ char	**to_copy_map(t_map *map)
 
 void	check_map_inside(t_map *map, char **floor, int i, int j)
 {
-	if (i < 0 || j < 0 || i >= map->map_length || j >= map->map_width || floor[i][j] != '0')
+	if (i < 0 || j < 0 || i >= map->map_length
+		|| j >= map->map_width || floor[i][j] != '0')
 	{
 		if (floor[i][j] != '0' && floor[i][j] != '1' && floor[i][j] != 'X')
 			map->inside_checked = 1;
 		return ;
 	}
 	floor[i][j] = 'X';
-	check_map_inside(map, floor, i + 1, j);		
-	check_map_inside(map, floor, i - 1, j);		
-	check_map_inside(map, floor, i, j + 1);		
+	check_map_inside(map, floor, i + 1, j);
+	check_map_inside(map, floor, i - 1, j);
+	check_map_inside(map, floor, i, j + 1);
 	check_map_inside(map, floor, i, j - 1);
 }
 
 void	check_map_integrity(t_map *map)
 {
-	char **map_copy;
+	char	**map_copy;
 
 	map->inside_checked = 0;
 	map_copy = to_copy_map(map);

@@ -40,6 +40,7 @@ SRC	= ./main.c\
 	./src/open_window.c\
 	./src/background.c\
 	./src/handle_keypress.c\
+	./src/handle_player_keys.c\
 	./src/close_window.c\
 	./src/parser/check_map_integrity.c\
 	./src/parser/get_map_size.c\
