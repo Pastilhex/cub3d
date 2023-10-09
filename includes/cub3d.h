@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/09 17:25:36 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:53:21 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,9 @@ typedef struct s_map {
 	int			border_begin_x;
 	int			border_begin_y;
 	int			inside_checked;
+	int			map_start;
+	int			map_end;
+	int			line_nbr;
 	t_data		*data_ptr;
 	uint32_t	color;
 	t_rgb		ceiling_colors;

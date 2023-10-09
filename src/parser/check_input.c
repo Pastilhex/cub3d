@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 10:37:24 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 15:41:50 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 21:31:48 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	check_input(int ac, char *path_str, t_map *m)
 {
+	int		temp_fd;
+	
 	if (ac != 2)
 	{
 		printf("Error!\nUsage: ./cube3d <map_path>\n");
@@ -25,10 +27,12 @@ int	check_input(int ac, char *path_str, t_map *m)
 		printf("Error!\nCan not open file\n");
 		exit(EXIT_FAILURE);
 	}
-	if (open(path_str, O_RDONLY) == -1)
+	temp_fd = open(path_str, O_RDONLY);
+	if (temp_fd == -1)
 	{
-		printf("Error!\nCan not open file\n");
+		printf("Error!\nCan not open file 2\n");
 		exit(EXIT_FAILURE);
 	}
+	close(temp_fd);
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_to_array.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 17:24:42 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 21:01:51 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,14 @@ void	get_map_to_array_while_get_line(t_map *map, int i, int j)
 		}
 		j++;
 	}
+	map->world_map[i][j] = '\0';
+}
+void 	ft_print_array(char **arr, int nb_lines)
+{
+	for (int i = 0; i < nb_lines; i++)
+	{
+		printf("%d - %s", ft_strlen(arr[i]), arr[i]);
+	}
 }
 
 void	get_map_to_array(t_map *map)
@@ -92,22 +100,22 @@ void	get_map_to_array(t_map *map)
 	j = 0;
 	map->fd = access_file(map);
 	map->get_line = get_next_line(map->fd);
-	while (i < (map->ttl_nbr_lines - map->map_length))
+	while (i < map->map_start)
 	{
 		free(map->get_line);
 		map->get_line = get_next_line(map->fd);
 		i++;
 	}
 	i = 0;
-	while (map->get_line)
+	while (map->get_line && i < map->map_end)
 	{
-		map->world_map[i] = ft_calloc((ft_strlen(map->get_line) + 1), \
-			sizeof(char));
+		map->world_map[i] = malloc((ft_strlen(map->get_line) + 1)* sizeof(char));
 		j = 0;
 		get_map_to_array_while_get_line(map, i, j);
 		free(map->get_line);
 		i++;
 		map->get_line = get_next_line(map->fd);
 	}
+	ft_print_array(map->world_map, map->map_end - map->map_start);
 	close(map->fd);
 }

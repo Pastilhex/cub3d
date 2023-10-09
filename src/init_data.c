@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:42:45 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 16:45:32 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:54:49 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,9 @@ void	init_t_map(t_map *map, t_data *d)
 	map->data_ptr = d;
 	map->color = 0;
 	map->data_ptr = d;
+	map->map_start = 0;
+	map->map_end = 0;
+	map->line_nbr = 0;
 }
 
 void	init_mlx(t_mlx *m)

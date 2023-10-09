@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_elements.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:39 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 17:15:57 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:55:46 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	get_elements(t_map *map)
 
 	while (map->get_line)
 	{
+		map->line_nbr++;
 		line_arr = ft_split(map->get_line, ' ');
 		if (get_arr_size(line_arr) > 2)
 			perror_close("Map Error Found", map);
