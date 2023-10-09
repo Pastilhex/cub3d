@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:33:20 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/07 11:13:04 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/09 13:23:02 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main(int ac, char **av)
 	m.data_ptr = &data;
 
 	read_cub_file(&map);
-	open_window(&m, screenWidth, screenHeight, "Cube3d IvoJao");
+	open_window(&m, SCREENWIDTH, SCREENHEIGHT, "Cube3d IvoJao");
 	init_textures_img(&data);
 
 	mlx_hook(m.mlx_win, 2, 1L << 0, &handle_keypress, &m);
@@ -41,4 +41,3 @@ int main(int ac, char **av)
 	mlx_loop(m.mlx);
 	return(0);
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_direction.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:58:54 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/08 20:58:58 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/09 10:25:17 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	is_direction(char c)
 {
-	if (c == 'N' || c == 'S' ||c == 'W' ||c == 'E')
+	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
 		return (true);
 	return (false);
 }

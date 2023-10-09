@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:50:21 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/06 18:18:07 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 13:23:11 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ static void     draw_ground(t_mlx m, int color)
 	int		y;
 	
 	x = 0;
-	y = screenHeight / 2;
-	while (y < screenHeight)
+	y = SCREENHEIGHT / 2;
+	while (y < SCREENHEIGHT)
 	{
 		x = 0;
-		while (x < screenWidth)
+		while (x < SCREENWIDTH)
 		{
 			ft_pixel_put(&m, x, y, color);
 			x++;
@@ -38,10 +38,10 @@ static void     draw_sky(t_mlx m, int color)
 	
 	x = 0;
 	y = 0;
-	while (y < screenHeight / 2)
+	while (y < SCREENHEIGHT / 2)
 	{
 		x = 0;
-		while (x < screenWidth)
+		while (x < SCREENWIDTH)
 		{
 			ft_pixel_put(&m, x, y, color);
 			x++;

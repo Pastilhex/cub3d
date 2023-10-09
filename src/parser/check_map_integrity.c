@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_integrity.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/08 21:07:43 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:00:48 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ char	**to_copy_map(t_map *map)
 		return (NULL);
 	while (i < map->map_length)
 	{
-		copy[i] = malloc(map->map_width * sizeof(char));
+		copy[i] = malloc(map->map_width * sizeof(char) + 1);
 		if (!copy[i])
 			return (NULL);
-		while (j < map->map_width)
+		while (j < ft_strlen(map->world_map[i]))
 		{
-			copy[i][j] = map->worldMap[i][j];
+			copy[i][j] = map->world_map[i][j];
 			j++;
 		}
 		copy[i][j] = '\0';
@@ -39,52 +39,30 @@ char	**to_copy_map(t_map *map)
 	}
 	return (copy);
 }
-void	check_map_copy(t_map *map, char **floor, int i, int j)
+
+void	check_map_inside(t_map *map, char **floor, int i, int j)
 {
 	if (i < 0 || j < 0 || i >= map->map_length || j >= map->map_width || floor[i][j] != '0')
 	{
+		if (floor[i][j] != '0' && floor[i][j] != '1' && floor[i][j] != 'X')
+			map->inside_checked = 1;
 		return ;
 	}
 	floor[i][j] = 'X';
-	ft_print_array(floor, map->map_length);
-	check_map_copy(map, floor, i + 1, j);		
-	check_map_copy(map, floor,i - 1, j);		
-	check_map_copy(map, floor,i, j + 1);		
-	check_map_copy(map, floor,i, j - 1);
+	check_map_inside(map, floor, i + 1, j);		
+	check_map_inside(map, floor, i - 1, j);		
+	check_map_inside(map, floor, i, j + 1);		
+	check_map_inside(map, floor, i, j - 1);
 }
-
-
 
 void	check_map_integrity(t_map *map)
 {
-	int i;
-	int j;
 	char **map_copy;
 
-	i = 0;
-	j = 0;
-	map->border_checked = 0;
+	map->inside_checked = 0;
 	map_copy = to_copy_map(map);
-	while (i < map->map_length)
-	{
-		j = 0;
-		while (map->worldMap[j])
-		{
-			// Search for player position
-			if (is_direction( map->worldMap[i][j]))
-			{
-				
-				check_map_copy(map, map_copy, i, j);
-				if (map->border_checked == 1)
-					perror_close("Map Integrity Fail", map);
-			}
-			j++;
-		}
-		if (map->border_checked == 1)
-			break ;
-		free(map->get_line);
-		i++;
-		map->get_line = get_next_line(map->fd);
-	}
-	close(map->fd);
+	check_map_inside(map, map_copy, map->data_ptr->pos_x, map->data_ptr->pos_y);
+	if (map->inside_checked == 1)
+		perror_close("Map Integrity Fail", map);
+	free_arr(map_copy, map);
 }

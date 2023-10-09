@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_to_array.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/08 20:58:42 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:12:12 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,36 +16,36 @@
 void 	set_start(double i, double k, char c, t_map *m)
 {
 	t_data * d = m->data_ptr;
-	d->posX = i + 0.49;
-	d->posY = k + 0.49;
+	d->pos_x = i + 0.49;
+	d->pos_y = k + 0.49;
 	
 	if (c == 'N')
 	{
-		d->dirX = -1;
-		d->dirY = 0;
-		d->planeX = 0;
-		d->planeY = 0.66;
+		d->dir_x = -1;
+		d->dir_y = 0;
+		d->plane_x = 0;
+		d->plane_y = 0.66;
 	}
 	if (c == 'S')
 	{
-		d->dirX = 1;
-		d->dirY = 0;
-		d->planeX = 0;
-		d->planeY = -0.66;
+		d->dir_x = 1;
+		d->dir_y = 0;
+		d->plane_x = 0;
+		d->plane_y = -0.66;
 	}
 	if (c == 'W')
 	{
-		d->dirX = 0;
-		d->dirY = -1;
-		d->planeX = -0.66;
-		d->planeY = 0;
+		d->dir_x = 0;
+		d->dir_y = -1;
+		d->plane_x = -0.66;
+		d->plane_y = 0;
 	}
 	if (c == 'E')
 	{
-		d->dirX = 0;
-		d->dirY = 1;
-		d->planeX = 0.66;
-		d->planeY = 0;
+		d->dir_x = 0;
+		d->dir_y = 1;
+		d->plane_x = 0.66;
+		d->plane_y = 0;
 	}
 }
 
@@ -74,7 +74,7 @@ void	get_map_to_array(t_map *map)
 	i = 0;
 	while (map->get_line)
 	{
-		map->worldMap[i] = ft_calloc((ft_strlen(map->get_line) + 1), sizeof(char));
+		map->world_map[i] = ft_calloc((ft_strlen(map->get_line) + 1), sizeof(char));
 		j = 0;
 		while (map->get_line[j])
 		{
@@ -86,13 +86,13 @@ void	get_map_to_array(t_map *map)
 			}
 			if (is_direction(map->get_line[j]))
 			{
-				map->worldMap[i][j] = '0';
+				map->world_map[i][j] = '0';
 				set_start(i, j, map->get_line[j], map);
 				j++;
 			}
 			else
 			{
-				map->worldMap[i][j] = map->get_line[j];
+				map->world_map[i][j] = map->get_line[j];
 				j++;
 			}
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close_window.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:59:10 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/07 10:49:22 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:00:24 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static void		free_t_map(t_map *m)
 		free(m->floor_texture);
 	if (m->get_line)
 		free(m->get_line);
-	if (m->worldMap)
-		free_arr(m->worldMap, m);
+	if (m->world_map)
+		free_arr(m->world_map, m);
 }
 
 static void		cleaning(t_data *d, t_map* m)

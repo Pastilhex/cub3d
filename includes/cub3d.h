@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/09/30 166:33:15 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:09:02 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,10 @@
 # include <sys/time.h>
 # include <stdint.h>
 
-# define screenWidth 640
-# define screenHeight 480
-# define mapWidth 24
-# define mapHeight 24
-# define texWidth 64
-# define texHeight 64
+# define SCREENWIDTH 640
+# define SCREENHEIGHT 480
+# define TEXWIDTH 64
+# define TEXHEIGHT 64
 # define BLUE 0x0000FF
 # define RED 0xFF0000
 # define GREEN 0x00FF00
@@ -42,7 +40,7 @@
 # define CUSTOM 0x00FFFF 
 
 typedef struct s_texture
-{	
+{
 	void		*img;
 	char		*addr;
 	int			bits_per_pixel;
@@ -50,9 +48,9 @@ typedef struct s_texture
 	int			endian;
 	int			txt_w;
 	int			txt_h;
-} 		t_texture;
+}	t_texture;
 
-typedef struct s_mlx 
+typedef struct s_mlx
 {
 	char			*mlx;
 	void			*mlx_win;
@@ -61,97 +59,95 @@ typedef struct s_mlx
 	int				bits_per_pixel;
 	int				line_length;
 	int				endian;
-	struct	s_data	*data_ptr;
+	struct s_data	*data_ptr;
 }	t_mlx;
 
-typedef struct 	s_rgb
+typedef struct s_rgb
 {
-	// char	*c;
-	// char	*f;
 	int		r;
 	int		g;
 	int		b;
 }	t_rgb;
 
-typedef	struct s_data
+typedef struct s_data
 {
-	int		moveUp;
-	int		moveDown;
-	int		moveLeft;
-	int		moveRight;
-	int		slideLeft;
-	int		slideRight;
-    double	posX;		// Posição X do jogador
-    double	posY;		// Posição Y do jogador
-    double	dirX;		// Direção X do jogador
-    double	dirY;		// Direção Y do jogador
-    double	planeX;		// Plano X da câmera
-    double	planeY;		// Plano Y da câmera
-    double	moveSpeed;	// Velocidade de movimento
-    double	rotSpeed;	// Velocidade de rotação
-    double	time;		//time of current frame
-    double	oldTime;	//time of previous frame
-	double	cameraX;
-	double	rayDirX;
-	double	rayDirY;
-	int		mapX;
-	int		mapY;
-	double	sideDistX;
-	double	sideDistY;
-	double	deltaDistX;
-	double	deltaDistY;
-	double	perpWallDist;
-	int		stepX;
-	int		stepY;
-	int		hit; //was there a wall hit?
-	int		side; //was a NS or a EW wall hit?
-	int		lineHeight;
-	int		drawStart;
-	int		drawEnd;
-	double	oldDirX;
-	double	oldPlaneX;
-	double	frameTime;
-	int		fps;
-	double	tps;
-	int		texX;
-	t_texture *txt_ptr;
+	int				move_up;
+	int				move_down;
+	int				move_left;
+	int				move_right;
+	int				slide_left;
+	int				slide_right;
+	double			pos_x;
+	double			pos_y;
+	double			dir_x;
+	double			dir_y;
+	double			plane_x;
+	double			plane_y;
+	double			move_speed;
+	double			rot_speed;
+	double			time;
+	double			old_time;
+	double			camera_x;
+	double			ray_dir_x;
+	double			ray_dir_y;
+	int				map_x;
+	int				map_y;
+	double			side_dist_x;
+	double			side_dist_y;
+	double			delta_dist_x;
+	double			delta_dist_y;
+	double			perp_wall_dist;
+	int				step_x;
+	int				step_y;
+	int				hit;
+	int				side;
+	int				line_height;
+	int				draw_start;
+	int				draw_end;
+	double			old_dir_x;
+	double			old_plane_x;
+	double			frame_time;
+	int				fps;
+	double			tps;
+	int				tex_x;
+	t_texture		*txt_ptr;
 	struct s_map	*map_ptr;
-	t_mlx	*m_ptr;
+	t_mlx			*m_ptr;
 }	t_data;
 
 typedef struct s_map {
-	int		fd;
-	int		ttl_nbr_lines;
-	int		map_width;
-	int		map_length;
-	char	*extension;
-	char	*get_line;
-	char	*map_path;
-	char	*north_texture;
-	char	*south_texture;
-	char	*west_texture;
-	char	*east_texture;
-	char	*floor_texture;
-	char	*ceiling_texture;
-	char	**worldMap;
-	double	wallX;
-	double	step;
-	double 	texPos;
-	int 	texY;
-	char	start_dir;
-	int		nbr;
-	int		comma;
-	int		rest;
-	int		border_begin_x;
-	int		border_begin_y;
-	int		border_checked;
-	t_data	*data_ptr;
+	int			fd;
+	int			ttl_nbr_lines;
+	int			map_width;
+	int			map_length;
+	char		*extension;
+	char		*get_line;
+	char		*map_path;
+	char		*north_texture;
+	char		*south_texture;
+	char		*west_texture;
+	char		*east_texture;
+	char		*floor_texture;
+	char		*ceiling_texture;
+	char		**world_map;
+	double		wall_x;
+	double		step;
+	double		tex_pos;
+	int			tex_y;
+	char		start_dir;
+	int			nbr;
+	int			comma;
+	int			rest;
+	int			border_begin_x;
+	int			border_begin_y;
+	int			inside_checked;
+	t_data		*data_ptr;
 	uint32_t	color;
-	t_rgb	ceiling_colors; 
-	t_rgb	floor_colors; 
+	t_rgb		ceiling_colors; 
+	t_rgb		floor_colors;
 }	t_map;
 
-enum direction
+enum e_direction
 {
 	south = 0,
 	north = 1,
@@ -181,16 +177,14 @@ bool		isOnlyDigitOrComma(char *str);
 void		flood_fill(char **arr, int i, int j, char c);
 bool		isValidChar(char c);
 bool		is_direction(char c);
-
-
-
-
-
+char		*ft_strtrim(char *s1, char *set);
+char		*ft_strchr(char *s, int c);
+char		*ft_substr(char *s, unsigned int start, unsigned int len);
 
 /*-----> Cub3d <-----*/
 void		ft_pixel_put(t_mlx *data, int x, int y, int color);
-unsigned int	ft_pixel_get(t_texture *txt, int x, int y);
-void		open_window(t_mlx *m, int screen_width, int screen_height, char * window_description);
+void		open_window(t_mlx *m, int screen_width, int screen_height, \
+	char *window_description);
 uint64_t	get_actual_time(void);
 int			handle_keypress(int keysym, t_mlx *m);
 int			handle_keyrelease(int keysym, t_mlx *m);
@@ -199,11 +193,11 @@ void		init_data(t_data *d, struct s_map *map_ptr, t_mlx *m);
 int			render_frames(void *arg);
 void		render_frames2(t_data *data, int *x);
 void		background(t_mlx m, int ground_color, int sky_color);
-void 		init_textures_img(t_data *d);
+void		init_textures_img(t_data *d);
 void		init_mlx(t_mlx *m);
 void		perror_close(char *msg, t_map *map);
 void		check_map_integrity(t_map *map);
-
+int			ft_pixel_get(t_texture *txt, int x, int y);
 
 /*-----> Parser <-----*/
 void		read_cub_file(t_map *map);
@@ -215,6 +209,7 @@ void		get_map_size(t_map *map);
 void		get_map_to_array(t_map *map);
 void		get_ttl_nbr_lines(t_map *map);
 int			check_input(int ac, char *path_str, t_map *m);
+void		check_map_inside(t_map *map, char **floor, int i, int j);
 
 /*-----> Player Movement <-----*/
 void		moveUp(t_mlx *m);
@@ -223,10 +218,10 @@ void		moveLeft(t_mlx *m);
 void		moveRight(t_mlx *m);
 void		moveSlideLeft(t_mlx *m);
 void		moveSlideRight(t_mlx *m);
-void 		movePlayer(t_data *data);
+void		movePlayer(t_data *data);
 
 /*-----> Debug <-----*/
-void 		ft_print_array(char **arr, int nb_lines);
-void		ft_print_t_map(t_map *m);
+void		ft_print_array(char **arr, int nb_lines);
+void		t_print_t_map(t_map *m);
 
 #endif

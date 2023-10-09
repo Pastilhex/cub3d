@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:11:26 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/06 18:32:27 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:12:12 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,43 @@
 
 static void     render_frames1(t_data *data, int *x)
 {
-	data->cameraX = 2 * *x / (double)screenWidth - 1; 
-	data->rayDirX = data->dirX + data->planeX * data->cameraX;
-	data->rayDirY = data->dirY + data->planeY * data->cameraX;
-	data->mapX = (int)data->posX;
-	data->mapY = (int)data->posY;
-	if (data->rayDirX == 0)
-		data->deltaDistX = 1e30;
+	data->camera_x = 2 * *x / (double)SCREENWIDTH - 1; 
+	data->ray_dir_x = data->dir_x + data->plane_x * data->camera_x;
+	data->ray_dir_y = data->dir_y + data->plane_y * data->camera_x;
+	data->map_x = (int)data->pos_x;
+	data->map_y = (int)data->pos_y;
+	if (data->ray_dir_x == 0)
+		data->delta_dist_x = 1e30;
 	else
-		data->deltaDistX = fabs(1.0 / data->rayDirX);
+		data->delta_dist_x = fabs(1.0 / data->ray_dir_x);
 
-	if (data->rayDirY == 0)
-		data->deltaDistY = 1e30;
+	if (data->ray_dir_y == 0)
+		data->delta_dist_y = 1e30;
 	else
-		data->deltaDistY = fabs(1.0 / data->rayDirY);
+		data->delta_dist_y = fabs(1.0 / data->ray_dir_y);
 	data->hit = '0'; 
-	if(data->rayDirX < 0)
+	if(data->ray_dir_x < 0)
 	{
-		data->stepX = -1;
-		data->sideDistX = (data->posX - data->mapX) * data->deltaDistX;
+		data->step_x = -1;
+		data->side_dist_x = (data->pos_x - data->map_x) * data->delta_dist_x;
 	}
 	else
 	{
-		data->stepX = 1;
-		data->sideDistX = (data->mapX + 1.0 - data->posX) * data->deltaDistX;
+		data->step_x = 1;
+		data->side_dist_x = (data->map_x + 1.0 - data->pos_x) * data->delta_dist_x;
 	}
 }
 
 
 static void     fps(t_data *data)
 {
-	data->oldTime = data->time;
+	data->old_time = data->time;
     data->time = get_actual_time();
-	data->frameTime = (data->time - data->oldTime) / 1000.0; 
+	data->frame_time = (data->time - data->old_time) / 1000.0; 
 	if (data->tps <= 1.0)
 	{
 		data->fps++;
-		data->tps += data->frameTime;
+		data->tps += data->frame_time;
 	}	
 	else
 	{
@@ -76,15 +76,15 @@ int	render_frames(void *arg)
 	floor = &data->map_ptr->floor_colors;
 	background(*data->m_ptr, get_rgb(sky->r,sky->g, sky->b), get_rgb(floor->r, floor->g, floor->b));
 	x = 0;
-	while (x < screenWidth)
+	while (x < SCREENWIDTH)
 	{
 		render_frames1(data, &x);
 		render_frames2(data, &x);
 		x++;
 	}
 	fps(data);
-	data->moveSpeed = data->frameTime * 5.0;
-	data->rotSpeed = data->frameTime * 2.0; 
+	data->move_speed = data->frame_time * 5.0;
+	data->rot_speed = data->frame_time * 2.0; 
 	movePlayer(data);
 	return(0);
 }

@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:42:45 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/06 20:32:52 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:13:34 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 static void     init_data2(t_data *d, struct s_map *map_ptr, t_mlx *m)
 {
-	d->sideDistX = 0.0;
-	d->sideDistY = 0.0;
-	d->deltaDistX = 0.0;
-	d->deltaDistY = 0.0;
-	d->perpWallDist = 0.0;
-	d->stepX = 0;
-	d->stepY = 0;
+	d->side_dist_x = 0.0;
+	d->side_dist_y = 0.0;
+	d->delta_dist_x = 0.0;
+	d->delta_dist_y = 0.0;
+	d->perp_wall_dist = 0.0;
+	d->step_x = 0;
+	d->step_y = 0;
 	d->hit = 0;
 	d->side = 0;
-	d->lineHeight = 0;
-	d->drawStart = 0;
-	d->drawEnd = 0;
-	d->oldDirX = 0.0;
-	d->oldPlaneX = 0.0;
-	d->frameTime = 0.0;
+	d->line_height = 0;
+	d->draw_start = 0;
+	d->draw_end = 0;
+	d->old_dir_x = 0.0;
+	d->old_plane_x = 0.0;
+	d->frame_time = 0.0;
 	d->fps = 0;
 	d->tps = 0.0;
-	d->texX = 0;
+	d->tex_x = 0;
 	d->txt_ptr = malloc(sizeof(t_texture) * 4); 
 	if (!d->txt_ptr)
 		exit(EXIT_FAILURE);
@@ -41,27 +41,27 @@ static void     init_data2(t_data *d, struct s_map *map_ptr, t_mlx *m)
 
 void	init_data(t_data *d, struct s_map *map_ptr, t_mlx *m)
 {
-	d->moveUp = 0;
-	d->moveDown = 0;
-	d->moveLeft = 0;
-	d->moveRight = 0;
-	d->slideLeft = 0;
-	d->slideRight = 0;
-	d->posX = 0.0;
-	d->posY = 0.0;
-	d->dirX = 0.0;
-	d->dirY = 0.0;
-	d->planeX = 0.0;
-	d->planeY = 0.0;
-	d->moveSpeed = 0.0;
-	d->rotSpeed = 0.0;
+	d->move_up = 0;
+	d->move_down = 0;
+	d->move_left = 0;
+	d->move_right = 0;
+	d->slide_left = 0;
+	d->slide_right = 0;
+	d->pos_x = 0.0;
+	d->pos_y = 0.0;
+	d->dir_x = 0.0;
+	d->dir_y = 0.0;
+	d->plane_x = 0.0;
+	d->plane_y = 0.0;
+	d->move_speed = 0.0;
+	d->rot_speed = 0.0;
 	d->time = 0.0;
-	d->oldTime = 0.0;
-	d->cameraX = 0.0;
-	d->rayDirX = 0.0;
-	d->rayDirY = 0.0;
-	d->mapX = 0;
-	d->mapY = 0;
+	d->old_time = 0.0;
+	d->camera_x = 0.0;
+	d->ray_dir_x = 0.0;
+	d->ray_dir_y = 0.0;
+	d->map_x = 0;
+	d->map_y = 0;
 	init_data2(d, map_ptr, m);
 }
 
@@ -79,11 +79,11 @@ void	init_t_map(t_map *map, t_data *d)
 	map->east_texture = NULL;
 	map->floor_texture = NULL;
 	map->ceiling_texture = NULL;
-	map->worldMap = NULL;
-	map->wallX = 0.0;
+	map->world_map = NULL;
+	map->wall_x = 0.0;
 	map->step = 0.0;
-	map->texPos = 0.0;
-	map->texY = 0;
+	map->tex_pos = 0.0;
+	map->tex_y = 0;
 	map->start_dir = '0';
 	map->data_ptr = d;
 	map->color = 0;

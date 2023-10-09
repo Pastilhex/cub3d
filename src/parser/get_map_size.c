@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:43 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/08 18:27:41 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:00:54 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	get_map_size(t_map *map)
 		free(map->get_line);
 		map->get_line = get_next_line(map->fd);
 	}
-	map->worldMap = (char**)ft_calloc(map->map_length, sizeof(char *));
-	if (!map->worldMap)
+	map->world_map = (char**)ft_calloc(map->map_length, sizeof(char *));
+	if (!map->world_map)
 		return ;
 	close(map->fd);
 }
