@@ -56,7 +56,6 @@ void	moveSlideRight(t_mlx *m)
 
 void	moveRight(t_mlx *m)
 {
-	//both camera direction and camera plane must be rotated
 	m->data_ptr->old_dir_x = DIRX;
 	DIRX = DIRX * cos(-ROTSPEED) - DIRY * sin(-ROTSPEED);
 	DIRY = m->data_ptr->old_dir_x * sin(-ROTSPEED) + DIRY * cos(-ROTSPEED);

@@ -6,12 +6,11 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 14:12:12 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:16:30 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
 
 void 	set_start(double i, double k, char c, t_map *m)
 {

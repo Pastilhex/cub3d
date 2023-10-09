@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   access_file.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:18 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/07 16:23:22 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:13:30 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,3 @@ int	access_file(t_map *map)
 		exit(0);
 	return (map->fd);
 }
-

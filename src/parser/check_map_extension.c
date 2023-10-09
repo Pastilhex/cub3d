@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:26 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 11:53:41 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:13:21 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	check_map_extension(t_map *map, char *filename)
 {
-	int i;
+	int	i;
 
 	i = 3;
 	map->extension = ".cub";
