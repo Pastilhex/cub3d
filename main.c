@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:33:20 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/09 17:00:34 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/10 11:17:39 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3d.h"
-
-void	perror_close(char *msg, t_map *map)
-{
-	printf("Error\n%s\n", msg);
-	close_window(map->data_ptr);
-}
 
 int	main(int ac, char **av)
 {

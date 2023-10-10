@@ -1,0 +1,21 @@
+NO ./maps/textures/north.xpm
+SO ./maps/textures/south.xpm
+W ./maps/textures/west.xpm
+E ./maps/textures/east.xpm
+
+F 20,20,20
+C 200,200,200
+
+111
+1N1
+101
+101
+101
+101
+101
+101
+101
+101
+101
+101
+111

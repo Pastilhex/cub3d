@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/09 23:45:32 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/10 11:27:26 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,7 @@ char		*ft_strchr(char *s, int c);
 char		*ft_substr(char *s, unsigned int start, unsigned int len);
 char		*get_next_line(int fd);
 void		*ft_calloc(size_t nmemb, size_t size);
+void		access_path(t_map *map, char *texture, char **line_arr);
 
 /*-----> Cub3d <-----*/
 void		ft_pixel_put(t_mlx *data, int x, int y, int color);

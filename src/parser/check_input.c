@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 10:37:24 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 21:31:48 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/10 11:16:50 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	check_input(int ac, char *path_str, t_map *m)
 {
 	int		temp_fd;
-	
+
 	if (ac != 2)
 	{
 		printf("Error!\nUsage: ./cube3d <map_path>\n");
