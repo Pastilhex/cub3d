@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:11:26 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/10 14:38:42 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/10 17:46:12 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,9 @@ int	render_frames(void *arg)
 		x++;
 	}
 	fps(data);
-	data->move_speed = data->frame_time * 5.0;
+	data->move_speed = data->frame_time * 2.5;
 	data->rot_speed = data->frame_time * 2.0;
+	data->move_margin = 0.6;
 	move_player(data);
 	return (0);
 }

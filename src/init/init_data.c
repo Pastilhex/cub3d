@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:42:45 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/10 14:43:40 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/10 17:40:22 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	init_data(t_data *d, struct s_map *map_ptr, t_mlx *m)
 	d->plane_y = 0.0;
 	d->move_speed = 0.0;
 	d->rot_speed = 0.0;
+	d->move_margin = 0.0;
 	d->time = 0.0;
 	d->old_time = 0.0;
 	d->camera_x = 0.0;

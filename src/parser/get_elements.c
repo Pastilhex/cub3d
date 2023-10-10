@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:39 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/10 15:17:53 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/10 17:04:31 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ static void	get_elements_colors_textures(t_map *map, char **line_arr)
 			map->floor_texture = ft_strdup(map->get_line);
 }
 
-static void	check_textures_paths(t_map *map, char **line_arr)
+static void	check_textures_paths(t_map *map)
 {
-	access_path(map, map->north_texture, line_arr);
-	access_path(map, map->south_texture, line_arr);
-	access_path(map, map->west_texture, line_arr);
-	access_path(map, map->east_texture, line_arr);
+	access_path(map, map->north_texture);
+	access_path(map, map->south_texture);
+	access_path(map, map->west_texture);
+	access_path(map, map->east_texture);
 }
 
 void	get_elements(t_map *map)
@@ -101,7 +101,7 @@ void	get_elements(t_map *map)
 		free_total(line_arr, map->get_line);
 		map->get_line = get_next_line(map->fd);
 	}
-	check_textures_paths(map, line_arr);
+	check_textures_paths(map);
 	if (!map->north_texture || !map->south_texture || !map->west_texture
 		|| !map->east_texture || !map->ceiling_texture || !map->floor_texture)
 		perror_close("Map Error Found", map);

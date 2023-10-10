@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:05:09 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/10 14:38:45 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/10 17:21:55 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,8 @@ void	render_frames2(t_data *data, int *x)
 		data->side_dist_y = (data->map_y + 1.0 - data->pos_y) * \
 			data->delta_dist_y;
 	}
-	check_hit(data);
+	if (data->map_x && data->map_y)
+		check_hit(data);
 	calculate_cols(data);
 	draw_cols(data, x);
 }

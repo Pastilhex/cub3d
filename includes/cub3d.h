@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/10 15:15:15 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/10 17:38:45 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct s_data
 	double			plane_y;
 	double			move_speed;
 	double			rot_speed;
+	double			move_margin;
 	double			time;
 	double			old_time;
 	double			camera_x;
@@ -177,7 +178,7 @@ char		*ft_strchr(char *s, int c);
 char		*ft_substr(char *s, unsigned int start, unsigned int len);
 char		*get_next_line(int fd);
 void		*ft_calloc(size_t nmemb, size_t size);
-void		access_path(t_map *map, char *texture, char **line_arr);
+void		access_path(t_map *map, char *texture);
 void		free_total(char **arr, char *str);
 
 
