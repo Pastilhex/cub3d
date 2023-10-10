@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/10 19:54:54 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/10 21:41:23 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_begin_strlen(char *line)
 	return (i);
 }
 
-void	find_next_space(t_map *map, char **map_copy)
+int	find_next_space(t_map *map, char **map_copy)
 {
 	int	i;
 	int	j;
@@ -59,7 +59,7 @@ void	find_next_space(t_map *map, char **map_copy)
 	j = 0;
 	map->map_copy_x = 0;
 	map->map_copy_y = 0;
-	while (map_copy[i])
+	while (i < (map->map_copy_x - map->map_start))
 	{
 		while (map_copy[i][j])
 		{
@@ -67,21 +67,25 @@ void	find_next_space(t_map *map, char **map_copy)
 			{
 				map->map_copy_x = i;
 				map->map_copy_y = j;
-				return ;
+				return (0);
 			}
 			j++;
 		}
 		i++;
 		j = 0;
 	}
-	map->inside_checked = 1;
+	return (1);
 }
 
 void	check_map_inside(t_map *map, char **floor, int i, int j)
 {
-	if (i < (map->map_start - map->map_start) || j < ft_begin_strlen(floor[i]) || i > (map->map_end - map->map_start - 1) || j >= ft_strlen(floor[i]) || floor[i][j] != '0')
+	if (i < (map->map_start - map->map_start)
+		|| i > (map->map_end - map->map_start - 1)
+		|| j < ft_begin_strlen(floor[i])
+		|| j >= ft_strlen(floor[i])
+		|| floor[i][j] != '0')
 	{
-		if (i < 0 || j < 0 || i >= map->map_end - map->map_start )
+		if (i < 0 || j < 0 || i >= map->map_end - map->map_start)
 		{
 			map->inside_checked = 1;
 			return ;
@@ -106,7 +110,8 @@ void	check_map_integrity(t_map *map)
 	map_copy = to_copy_map(map);
 	while (map->inside_checked == 0)
 	{
-		find_next_space(map, map_copy);
+		if (find_next_space(map, map_copy) == 1)
+			break ;
 		check_map_inside(map, map_copy, map->map_copy_x, map->map_copy_y);
 	}
 	free_arr(map_copy, map);

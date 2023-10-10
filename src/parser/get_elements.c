@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_elements.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:39 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/10 17:04:31 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/10 21:29:35 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static char	*get_texture(char *line)
+char	*get_texture(char *line)
 {
 	int		i;
 	int		j;
@@ -42,22 +42,7 @@ static void	get_elements_side_textures(t_map *map, char **line_arr)
 		free_arr1(line_arr);
 		perror_close("Check Map Elements", map);
 	}
-	if (!map->north_texture)
-		if (!ft_strncmp("N", line_arr[0], 2)
-			|| !ft_strncmp("NO", line_arr[0], 3))
-			map->north_texture = get_texture(line_arr[1]);
-	if (!map->south_texture)
-		if (!ft_strncmp("S", line_arr[0], 2)
-			|| !ft_strncmp("SO", line_arr[0], 3))
-			map->south_texture = get_texture(line_arr[1]);
-	if (!map->west_texture)
-		if (!ft_strncmp("W", line_arr[0], 2)
-			|| !ft_strncmp("WE", line_arr[0], 3))
-			map->west_texture = get_texture(line_arr[1]);
-	if (!map->east_texture)
-		if (!ft_strncmp("E", line_arr[0], 2)
-			|| !ft_strncmp("EA", line_arr[0], 3))
-			map->east_texture = get_texture(line_arr[1]);
+	get_elements_textures(map, line_arr);
 }
 
 static void	get_elements_colors_textures(t_map *map, char **line_arr)
@@ -102,7 +87,6 @@ void	get_elements(t_map *map)
 		map->get_line = get_next_line(map->fd);
 	}
 	check_textures_paths(map);
-	if (!map->north_texture || !map->south_texture || !map->west_texture
-		|| !map->east_texture || !map->ceiling_texture || !map->floor_texture)
-		perror_close("Map Error Found", map);
+	if (!map->ceiling_texture || !map->floor_texture)
+		perror_close("Missing Color", map);
 }

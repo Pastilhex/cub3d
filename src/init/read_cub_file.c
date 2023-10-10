@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cub_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:53:33 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/10 14:43:58 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/10 21:41:22 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	define_rgb_colors(t_map *m, char **array, char *str)
 			|| !is_only_digit_or_comma(array[1]))
 		{
 			free_arr1(rgb);
-			perror_close("Invalid ceil color", m);
+			perror_close("Invalid Ceil Color", m);
 		}
 	}
 	else if (ft_strncmp(str, "F", 1) == 0)
@@ -41,7 +41,7 @@ static void	define_rgb_colors(t_map *m, char **array, char *str)
 			|| !is_only_digit_or_comma(array[1]))
 		{
 			free_arr1(rgb);
-			perror_close("Invalid floor color", m);
+			perror_close("Invalid Floor Color", m);
 		}
 	}
 	free_arr1(rgb);
@@ -70,7 +70,7 @@ void	check_elements(t_map *m, char *texture, char *c)
 		|| ((m->nbr < 0 || m->nbr > 9) && (m->comma != 2) && m->rest != 0))
 	{
 		free_arr1(array);
-		perror_close("Invalid char in color definition", m);
+		perror_close("Invalid Char in Color Definition", m);
 	}
 	define_rgb_colors(m, array, c);
 	free_arr1(array);

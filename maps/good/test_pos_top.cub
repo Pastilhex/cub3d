@@ -1,7 +1,7 @@
-NO ./maps/textures/north.xpm
-SO ./maps/textures/south.xpm
-W ./maps/textures/west.xpm
-E ./maps/textures/east.xpm
+NO ./textures/north.xpm
+SO ./textures/south.xpm
+W ./textures/west.xpm
+E ./textures/east.xpm
 
 F 20,20,20
 C 200,200,200
