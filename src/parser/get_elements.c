@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_elements.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:39 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/10 21:29:35 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/10 23:06:08 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*get_texture(char *line)
 
 static void	get_elements_side_textures(t_map *map, char **line_arr)
 {
-	if (get_arr_size(line_arr) > 2)
+	if (is_direction(line_arr[0][0] && get_arr_size(line_arr) > 2))
 	{
 		free_arr1(line_arr);
 		perror_close("Check Map Elements", map);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_integrity.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/10 21:41:23 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/11 00:06:15 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	find_next_space(t_map *map, char **map_copy)
 	j = 0;
 	map->map_copy_x = 0;
 	map->map_copy_y = 0;
-	while (i < (map->map_copy_x - map->map_start))
+	while (i < (map->map_end - map->map_start))
 	{
 		while (map_copy[i][j])
 		{

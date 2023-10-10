@@ -26,6 +26,7 @@ SRC	= ./main.c\
 	./src/utils/is_valid_colors.c\
 	./src/utils/ft_bzero.c\
 	./src/utils/ft_split.c\
+	./src/utils/ft_split_set.c\
 	./src/utils/ft_calloc.c\
 	./src/utils/ft_is_numeric.c\
 	./src/utils/ft_strdup.c\

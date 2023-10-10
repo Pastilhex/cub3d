@@ -3,74 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   read_cub_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:53:33 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/10 21:41:22 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/10 23:59:04 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	fill_t_rgb(t_rgb *c, char *r, char *g, char *b)
+static void	close_free(char *msg, char **arr, t_map *m)
 {
-	c->r = atoi(r);
-	c->g = atoi(g);
-	c->b = atoi(b);
+	free_arr1(arr);
+	perror_close(msg, m);
 }
 
-static void	define_rgb_colors(t_map *m, char **array, char *str)
+static void	fill_t_rgb(t_rgb *c, char *r, char *g, char *b)
 {
-	char	**rgb;
+	c->r = ft_atoi(r);
+	c->g = ft_atoi(g);
+	c->b = ft_atoi(b);
+}
 
-	rgb = ft_split(array[1], ',');
+static void	define_rgb_colors(t_map *m, char **rgb, char *str)
+{
 	if (ft_strncmp(str, "C", 1) == 0)
 	{
-		fill_t_rgb(&m->ceiling_colors, rgb[0], rgb[1], rgb[2]);
-		if (!is_valid_colors(&m->ceiling_colors)
-			|| !is_only_digit_or_comma(array[1]))
-		{
-			free_arr1(rgb);
-			perror_close("Invalid Ceil Color", m);
-		}
+		fill_t_rgb(&m->ceiling_colors, rgb[1], rgb[2], rgb[3]);
+		if (!is_valid_colors(&m->ceiling_colors))
+			close_free("Invalid Ceil Color", rgb, m);
 	}
 	else if (ft_strncmp(str, "F", 1) == 0)
 	{
-		fill_t_rgb(&m->floor_colors, rgb[0], rgb[1], rgb[2]);
-		if (!is_valid_colors(&m->ceiling_colors)
-			|| !is_only_digit_or_comma(array[1]))
-		{
-			free_arr1(rgb);
-			perror_close("Invalid Floor Color", m);
-		}
+		fill_t_rgb(&m->floor_colors, rgb[1], rgb[2], rgb[3]);
+		if (!is_valid_colors(&m->floor_colors))
+			close_free("Invalid Floor Color", rgb, m);
 	}
-	free_arr1(rgb);
 }
 
 void	check_elements(t_map *m, char *texture, char *c)
 {
 	int		i;
+	int		j;
 	char	**array;
 
-	i = -1;
-	m->nbr = 0;
-	m->comma = 0;
-	m->rest = 0;
-	array = ft_split(texture, ' ');
-	while (array[1][++i] && array[1][i] != '\n')
+	i = 1;
+	j = 0;
+	array = ft_split_set(texture, ", \n");
+	if (get_arr_size(array) != 4)
+		close_free("Invalid color", array, m);
+	while (array[i])
 	{
-		if (ft_isdigit(array[1][i]))
-			m->nbr++;
-		else if (array[1][i] == ',')
-			m->comma++;
-		else
-			m->rest++;
-	}
-	if (ft_strncmp(array[0], c, 1) != 0
-		|| ((m->nbr < 0 || m->nbr > 9) && (m->comma != 2) && m->rest != 0))
-	{
-		free_arr1(array);
-		perror_close("Invalid Char in Color Definition", m);
+		j = 0;
+		while (array[i][j] && array[i][j] != '\n')
+			if (!ft_isdigit(array[i][j++]))
+				close_free("Invalid Char in Color Definition", array, m);
+		i++;
 	}
 	define_rgb_colors(m, array, c);
 	free_arr1(array);
