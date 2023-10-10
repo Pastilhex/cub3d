@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   handle_player_keys.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:11:05 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/09 16:58:24 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:34:27 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	move_p_up(t_mlx *m)
 {

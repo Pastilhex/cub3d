@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_pixel_get.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 15:47:07 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/10 14:25:19 by joaoalme         ###   ########.fr       */
+/*   Created: 2023/10/10 14:30:46 by joaoalme          #+#    #+#             */
+/*   Updated: 2023/10/10 14:38:32 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-char	*ft_strchr(char *s, int c)
+int	ft_pixel_get(t_texture *txt, int x, int y)
 {
-	int		slen;
-	char	*ptr;
-	int		last;
-
-	last = (unsigned int)ft_strlen(s);
-	ptr = (char *)s;
-	slen = 0;
-	if (c == '\0')
-		return (ptr + last);
-	while (s[slen] != '\0')
-	{
-		if (s[slen] == c)
-			return ((char *)s + slen);
-		slen++;
-	}
-	return (NULL);
+	return (*(unsigned int *)((txt->addr + (y * txt->line_length) + \
+		(x * txt->bits_per_pixel / 8))));
 }

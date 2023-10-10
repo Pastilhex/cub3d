@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/10 00:01:36 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:06:26 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ void	get_map_to_array(t_map *map)
 	i = 0;
 	while (map->get_line && i < map->map_end)
 	{
-		map->world_map[i] = ft_calloc((ft_strlen(map->get_line) + 1), sizeof(char));
+		map->world_map[i] = ft_calloc((ft_strlen(map->get_line)
+					+ 1), sizeof(char));
 		j = 0;
 		get_map_to_array_while_get_line(map, i, j);
 		free(map->get_line);

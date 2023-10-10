@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   access_file.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:18 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/10 11:26:53 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:26:52 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ void	access_path(t_map *map, char *texture, char **line_arr)
 		perror_close("Wrong Texture Path", map);
 	}
 	close (fd);
+	if (ft_strnstr(texture, ".xpm", ft_strlen(texture)) == 0)
+	{
+		free_arr1(line_arr);
+		perror_close("Texture not a .xpm file", map);
+	}
 }
 
 void	perror_close(char *msg, t_map *map)

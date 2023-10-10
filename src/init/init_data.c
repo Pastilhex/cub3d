@@ -6,11 +6,11 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:42:45 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 23:44:57 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:43:40 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static void	init_data2(t_data *d, struct s_map *map_ptr, t_mlx *m)
 {

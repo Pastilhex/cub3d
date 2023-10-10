@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 10:57:05 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/09 16:18:23 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:42:04 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 uint64_t	get_actual_time(void)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   render_frames.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:11:26 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 17:25:37 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:38:42 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static void	render_frames1(t_data *data, int *x)
 {

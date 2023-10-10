@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   render_frames2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:05:09 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 16:36:19 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:38:45 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static void	check_hit(t_data *data)
 {

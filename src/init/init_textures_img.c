@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures_img.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:21:33 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 16:46:09 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:43:44 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	init_textures_img(t_data *d)
 {

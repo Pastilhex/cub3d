@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   handle_keypress.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:56:22 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/09 17:04:47 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:34:10 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	move_p_slide_left(t_mlx *m)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   close_window.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:59:10 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/09 16:16:28 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:58:48 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static void	free_t_map(t_map *m)
 {

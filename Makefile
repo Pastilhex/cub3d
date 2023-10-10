@@ -5,13 +5,16 @@ NAME_BONUS = cub3d_bonus
 CC = cc
 
 SRC	= ./main.c\
-	./src/render_frames.c\
-	./src/render_frames2.c\
-	./src/time.c\
-	./src/read_cub_file.c\
-	./src/ft_pixel_put.c\
-	./src/init_textures_img.c\
-	./src/debug.c\
+	./src/init/read_cub_file.c\
+	./src/init/init_data.c\
+	./src/init/open_window.c\
+	./src/init/init_textures_img.c\
+	./src/drawing/render_frames.c\
+	./src/drawing/render_frames2.c\
+	./src/drawing/ft_pixel_put.c\
+	./src/drawing/ft_pixel_get.c\
+	./src/drawing/background.c\
+	./src/utils/time.c\
 	./src/utils/isOnlyDigitOrComma.c\
 	./src/utils/is_direction.c\
 	./src/utils/get_next_line.c\
@@ -36,12 +39,10 @@ SRC	= ./main.c\
 	./src/utils/ft_memcpy.c\
 	./src/utils/ft_put_nbr.c\
 	./src/utils/flood_fill.c\
-	./src/move_player.c\
-	./src/open_window.c\
-	./src/background.c\
-	./src/handle_keypress.c\
-	./src/handle_player_keys.c\
-	./src/close_window.c\
+	./src/move/move_player.c\
+	./src/move/handle_keypress.c\
+	./src/move/handle_player_keys.c\
+	./src/close/close_window.c\
 	./src/parser/check_map_integrity.c\
 	./src/parser/get_map_size.c\
 	./src/parser/access_file.c\
@@ -50,7 +51,6 @@ SRC	= ./main.c\
 	./src/parser/check_input.c\
 	./src/parser/check_map_extension.c\
 	./src/parser/get_map_to_array.c\
-	./src/init_data.c\
 
 SRC_BONUS = $(wildcard bonus/*.c)
 

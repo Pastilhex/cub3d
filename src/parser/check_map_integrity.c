@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 23:57:30 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:07:47 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,14 @@ char	**to_copy_map(t_map *map)
 {
 	int		i;
 	int		j;
-	int		size_arr;
 	char	**copy;
 
 	i = 0;
 	j = 0;
-	size_arr = map->map_end - map->map_start;
-	copy = malloc(size_arr * sizeof(char *));
+	copy = malloc((map->map_end - map->map_start) * sizeof(char *));
 	if (!copy)
 		return (NULL);
-	while (i < size_arr)
+	while (i < (map->map_end - map->map_start))
 	{
 		copy[i] = malloc(ft_strlen(map->world_map[i]) * sizeof(char) + 1);
 		if (!copy[i])

@@ -6,11 +6,11 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:53:33 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/09 18:53:50 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:43:58 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static void	fill_t_rgb(t_rgb *c, char *r, char *g, char *b)
 {

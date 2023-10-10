@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   background.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:50:21 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 16:15:28 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:38:15 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static void	draw_ground(t_mlx m, int color)
 {

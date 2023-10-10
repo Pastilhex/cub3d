@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   open_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:53:33 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/09 16:42:58 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:43:50 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	open_window(t_mlx *m, int screen_width,
 				int screen_height, char *window_description)

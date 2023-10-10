@@ -6,11 +6,12 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 19:33:08 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/09 23:41:16 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:14:53 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
 
 void	free_arr(char **arr, t_map *m)
 {
@@ -38,4 +39,10 @@ void	free_arr1(char **arr)
 		i++;
 	}
 	free(arr);
+}
+
+void	free_total(char **arr1, char *str)
+{
+	free(str);
+	free_arr1(arr1);
 }
