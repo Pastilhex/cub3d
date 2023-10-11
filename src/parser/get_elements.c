@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_elements.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:39 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/11 22:36:16 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/11 23:49:00 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*get_texture(char *line)
 		i++;
 	if (line[i + 1] == '\n' || line[i + 1] == '\0')
 		return (NULL);
-	str = malloc((ft_strlen(line) - i) * sizeof(char));
+	str = malloc((ft_strlen(line) + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
 	while (line[i] && line[i] != '\n')

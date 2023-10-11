@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free_arr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 19:33:08 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/10 15:14:53 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/11 23:57:16 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
 
 void	free_arr(char **arr, t_map *m)
 {

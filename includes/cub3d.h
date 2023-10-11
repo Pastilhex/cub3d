@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/11 21:45:10 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/11 23:57:55 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,7 +186,6 @@ void		free_total(char **arr, char *str);
 char		**ft_split_set(char *str, char *charset);
 int			ft_strcmp(char *s1, char *s2);
 
-
 /*-----> Cub3d <-----*/
 void		ft_pixel_put(t_mlx *data, int x, int y, int color);
 void		open_window(t_mlx *m, int screen_width, int screen_height, \
@@ -221,8 +220,6 @@ char		*get_texture(char *line);
 void		get_elements_textures(t_map *map, char **line_arr);
 void		check_line_for_digit(char *line, char **arr, t_map *m);
 int			is_coordinate(char *line);
-
-
 
 /*-----> Player Movement <-----*/
 void		move_p_up(t_mlx *m);
