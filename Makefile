@@ -36,6 +36,7 @@ SRC	= ./main.c\
 	./src/utils/ft_isdigit.c\
 	./src/utils/ft_atoi.c\
 	./src/utils/ft_strnstr.c\
+	./src/utils/ft_strlcpy.c\
 	./src/utils/ft_substr.c\
 	./src/utils/ft_memcpy.c\
 	./src/utils/ft_put_nbr.c\
@@ -53,7 +54,7 @@ SRC	= ./main.c\
 	./src/parser/check_map_extension.c\
 	./src/parser/get_map_to_array.c\
 	./src/parser/get_elements_textures.c\
-	./src/debug.c
+
 
 SRC_BONUS = $(wildcard bonus/*.c)
 

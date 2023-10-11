@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/10 22:52:54 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/11 15:41:15 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,9 @@ typedef struct s_data
 }	t_data;
 
 typedef struct s_map {
+	int			found_textures;
+	int			found_colors;
+	int			found_map;
 	int			fd;
 	int			ttl_nbr_lines;
 	char		*extension;
@@ -183,7 +186,7 @@ void		*ft_calloc(size_t nmemb, size_t size);
 void		access_path(t_map *map, char *texture);
 void		free_total(char **arr, char *str);
 char		**ft_split_set(char *str, char *charset);
-
+size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 
 /*-----> Cub3d <-----*/
 void		ft_pixel_put(t_mlx *data, int x, int y, int color);
@@ -216,6 +219,7 @@ int			check_input(int ac, char *path_str, t_map *m);
 void		check_map_inside(t_map *map, char **floor, int i, int j);
 char		*get_texture(char *line);
 void		get_elements_textures(t_map *map, char **line_arr);
+void		check_map_at_end(t_map *map);
 
 /*-----> Player Movement <-----*/
 void		move_p_up(t_mlx *m);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_integrity.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/11 00:06:15 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/11 12:13:28 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ void	check_map_inside(t_map *map, char **floor, int i, int j)
 		return ;
 	}
 	floor[i][j] = 'X';
-	ft_print_array(floor, map->map_end - map->map_start);
 	check_map_inside(map, floor, i + 1, j);
 	check_map_inside(map, floor, i - 1, j);
 	check_map_inside(map, floor, i, j + 1);
