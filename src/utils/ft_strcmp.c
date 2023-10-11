@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_ttl_nbr_lines.c                                :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 18:23:54 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/11 18:18:38 by joaoalme         ###   ########.fr       */
+/*   Created: 2023/10/11 19:45:11 by joaoalme          #+#    #+#             */
+/*   Updated: 2023/10/11 19:46:07 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	get_ttl_nbr_lines(t_map *map)
+int	ft_strcmp(char *s1, char *s2)
 {
-	int		fd;
-	int		has_content;
-	char	*line;
+	int	i;
 
-	fd = 0;
-	fd = open(map->map_path, O_RDONLY);
-	has_content = 0;
-	line = get_next_line(fd);
-	while (line)
-	{
-		if (ft_strlen(line) > 1)
-			has_content = 1;
-		map->ttl_nbr_lines++;
-		free(line);
-		line = get_next_line(fd);
-	}
-	close(fd);
-	if (has_content == 0)
-		perror_close("Empty file", map);
+	i = 0;
+	while ((s1[i] != '\0') && (s1[i] == s2[i]) && (s2[i] != '\0'))
+		i++;
+	return (s1[i] - s2[i]);
 }

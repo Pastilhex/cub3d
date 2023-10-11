@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_elements.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:39 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/11 16:13:47 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/11 22:36:16 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,10 @@ void	get_elements(t_map *map)
 	while (map->get_line)
 	{
 		map->line_nbr++;
-		line_arr = ft_split(map->get_line, ' ');
-		if (ft_strncmp("\n", line_arr[0], 1) != 0 && get_arr_size(line_arr) > 1)
+		line_arr = ft_split_set(map->get_line, " \t");
+		if (ft_strncmp("\n", line_arr[0], 1) != 0)
 		{
+			check_line_for_digit(line_arr[0], line_arr, map);
 			get_elements_side_textures(map, line_arr);
 			get_elements_colors_textures(map, line_arr);
 			if (map->north_texture && map->south_texture && map->west_texture

@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/10 14:06:26 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/11 20:49:59 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,11 @@ void	get_map_to_array_while_get_line(t_map *map, int i, int j)
 		}
 		if (is_direction(map->get_line[j]))
 		{
+			if (map->has_player == 1)
+				perror_close("More than one player", map);
 			map->world_map[i][j] = '0';
 			set_start(i, j, map->get_line[j], map);
+			map->has_player = 1;
 		}
 		else
 		{
@@ -89,26 +92,26 @@ void	get_map_to_array(t_map *map)
 	int		i;
 	int		j;
 
-	i = 0;
+	i = -1;
 	j = 0;
 	map->fd = access_file(map);
 	map->get_line = get_next_line(map->fd);
-	while (i < map->map_start)
+	while (++i < map->map_start)
 	{
 		free(map->get_line);
 		map->get_line = get_next_line(map->fd);
-		i++;
 	}
-	i = 0;
-	while (map->get_line && i < map->map_end)
+	i = -1;
+	while (map->get_line && ++i < map->map_end - map->map_start)
 	{
 		map->world_map[i] = ft_calloc((ft_strlen(map->get_line)
 					+ 1), sizeof(char));
 		j = 0;
 		get_map_to_array_while_get_line(map, i, j);
 		free(map->get_line);
-		i++;
 		map->get_line = get_next_line(map->fd);
 	}
 	close(map->fd);
+	if (map->has_player == 0)
+		perror_close("No player found", map);
 }

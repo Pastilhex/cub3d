@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:42:45 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/10 17:40:22 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/11 18:16:54 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void	init_t_map(t_map *map, t_data *d)
 	map->map_start = 0;
 	map->map_end = 0;
 	map->line_nbr = 0;
+	map->has_player = 0;
 }
 
 void	init_mlx(t_mlx *m)

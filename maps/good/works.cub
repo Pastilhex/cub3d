@@ -1,12 +1,11 @@
-				NO ./maps/textures/north.xpm
-        SO ./maps/textures/south.xpm
+				NO ./textures/north.xpm
+        SO ./textures/south.xpm
 
-W ./maps/textures/west.xpm
+W ./textures/west.xpm
 
 F      17,38,64
 
-E ./maps/textures/east.xpm
-EA textures/wolfenstein/wood.xpm
+E ./textures/east.xpm
 
 
 

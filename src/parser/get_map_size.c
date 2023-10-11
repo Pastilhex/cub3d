@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:43 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/11 16:13:21 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/11 21:46:43 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	get_map_size(t_map *map)
 		map->get_line = get_next_line(map->fd);
 	}
 	map->map_start = map->line_nbr;
-	while (map->get_line && (ft_strncmp(map->get_line, "\n", 1) != 0
-			|| ft_strncmp(map->get_line, "\0", 1) != 0))
+	while (map->get_line && (ft_strcmp(map->get_line, "\n") != 0))
 	{
 		map->line_nbr++;
 		free(map->get_line);
@@ -34,5 +33,11 @@ void	get_map_size(t_map *map)
 	map->world_map = ft_calloc(map->map_end - map->map_start, sizeof(char *));
 	if (!map->world_map)
 		return ;
+	while (map->get_line && (!ft_strcmp(map->get_line, "\n") || !ft_strcmp(map->get_line, "\0")))
+	{	if (ft_strncmp(map->get_line, "\n", 1) != 0)
+			perror_close("Invalid map configuration", map);
+		free(map->get_line);
+		map->get_line = get_next_line(map->fd);
+	}
 	close(map->fd);
 }
