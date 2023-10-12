@@ -49,7 +49,7 @@ void	check_elements(t_map *m, char *texture, char *c)
 
 	i = 1;
 	j = 0;
-	array = ft_split_set(texture, ", \n");
+	array = ft_split_set(texture, ", \n\t");
 	if (get_arr_size(array) != 4)
 		close_free("Invalid color", array, m);
 	while (array[i])

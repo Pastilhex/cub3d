@@ -28,6 +28,6 @@ void	check_line_for_digit(char *line, char **arr, t_map *m)
 	if (is_coordinate(line) == 0)
 	{
 		free_arr1(arr);
-		perror_close("Wrong map order", m);
+		perror_close("Check map elements", m);
 	}
 }

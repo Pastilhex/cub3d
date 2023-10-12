@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map_extension.c                              :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaoalme <joaoalme@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 18:23:26 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/12 16:45:37 by joaoalme         ###   ########.fr       */
+/*   Created: 2023/10/12 16:39:34 by joaoalme          #+#    #+#             */
+/*   Updated: 2023/10/12 16:39:35 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-bool	check_map_extension(t_map *map, char *filename)
+char	*ft_strrchr(const char *s, int c)
 {
-	int		i;
-	char	*s;
+	int		len;
+	char	*str;
 
-	i = 3;
-	if (ft_strlen(filename) < 5)
-		return (false);
-	s = ft_strrchr(filename, '/');
-	if (s != NULL)
+	str = (char *)s;
+	len = ft_strlen(str);
+	if (!s)
+		return (NULL);
+	if (*(str + len) == (char)c)
+		return (str + len);
+	while (len > 0)
 	{
-		s++;
-		if (ft_strlen(s) < 5)
-			return (false);
+		if (*(str + len - 1) == (char)c)
+			return (str + len - 1);
+		len--;
 	}
-	map->extension = ".cub";
-	while (i >= 0)
-	{
-		if (filename[ft_strlen(filename) - i - 1] != map->extension[3 - i])
-			return (false);
-		i--;
-	}
-	return (true);
+	return (NULL);
 }

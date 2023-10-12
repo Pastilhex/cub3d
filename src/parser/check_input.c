@@ -24,7 +24,7 @@ int	check_input(int ac, char *path_str, t_map *m)
 	m->map_path = path_str;
 	if (!check_map_extension(m, path_str))
 	{
-		printf("Error!\nCan not open file\n");
+		printf("Error!\nWrong file extension\n");
 		exit(EXIT_FAILURE);
 	}
 	temp_fd = open(m->map_path, O_RDONLY);

@@ -185,6 +185,7 @@ void		access_path(t_map *map, char *texture);
 void		free_total(char **arr, char *str);
 char		**ft_split_set(char *str, char *charset);
 int			ft_strcmp(char *s1, char *s2);
+char		*ft_strrchr(const char *s, int c);
 
 /*-----> Cub3d <-----*/
 void		ft_pixel_put(t_mlx *data, int x, int y, int color);

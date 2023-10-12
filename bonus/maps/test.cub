@@ -1,14 +1,14 @@
 
 NO ./textures/north.xpm
-SO ./textures/south.xpm
-WE ./textures/west.xpm
-F      20,20,20
+SO./textures/south.xpm
+WE      ./textures/west.xpm
+F20,20,20
 
 
 EA ./textures/east.xpm
 
 
-C 200,200,200
+C200,200,200
 
 
 

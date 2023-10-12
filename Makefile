@@ -45,6 +45,7 @@ SRC	= ./main.c\
 	./src/utils/ft_put_nbr.c\
 	./src/utils/flood_fill.c\
 	./src/utils/ft_strcmp.c\
+	./src/utils/ft_strrchr.c\
 	./src/move/move_player.c\
 	./src/move/handle_keypress.c\
 	./src/move/handle_player_keys.c\
@@ -112,6 +113,13 @@ SRC_BONUS = ./bonus/src/parser/check_input.c\
 	./bonus/src/utils/free_arr.c\
 	./bonus/main.c\
 
+OBJSDIR = objects
+
+OBJ = $(addprefix $(OBJSDIR)/, $(SRC:.c=.o))
+
+OBJSBONUSDIR = obj_bonus
+
+OBJSBONUS = $(addprefix $(OBJSDIR)/, $(SRC_BONUS:.c=.o))
 
 all: $(NAME)
 	
@@ -121,16 +129,24 @@ $(NAME): $(OBJ)
 
 bonus: $(NAME_BONUS)
 
-$(NAME_BONUS): $(OBJ_BONUS)
+$(NAME_BONUS): $(OBJSBONUS)
 	$(MAKE) -C ./minilibx-linux
 	$(CC) $(SRC_BONUS) $(CFLAGS) $(LDFLAGS) -o $(NAME_BONUS)
 
+$(OBJSDIR)/%.o: %.c
+	mkdir -p $(@D)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJBONUSSDIR)/%.o: %.c
+	mkdir -p $(@D)
+	$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
 	$(MAKE) clean -C ./minilibx-linux 
-	$(RM) $(NAME)
+	$(RM) -rf $(OBJSDIR) $(OBJBONUSDIR)
 
 fclean: clean
-	$(RM) $(NAME_BONUS)
+	$(RM) $(NAME) $(NAME_BONUS)
 
 re: fclean all
 
