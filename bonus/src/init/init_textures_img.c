@@ -6,20 +6,25 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:21:33 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/12 12:17:00 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:44:11 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
+void	new_img(t_data *d, enum e_direction var, char *txt)
+{
+	d->txt_ptr[var].img = mlx_xpm_file_to_image(d->m_ptr->mlx,
+			txt, &d->txt_ptr[var].txt_w,
+			&d->txt_ptr[var].txt_h);
+	d->txt_ptr[var].addr = mlx_get_data_addr(d->txt_ptr[var].img,
+			&d->txt_ptr[var].bits_per_pixel, &d->txt_ptr[var].line_length,
+			&d->txt_ptr[var].endian);
+}
+
 void	init_bonus_textures(t_data *d)
 {
-	d->txt_ptr[hud].img = mlx_xpm_file_to_image(d->m_ptr->mlx,
-			d->map_ptr->hud_texture, &d->txt_ptr[hud].txt_w,
-			&d->txt_ptr[hud].txt_h);
-	d->txt_ptr[hud].addr = mlx_get_data_addr(d->txt_ptr[hud].img,
-			&d->txt_ptr[hud].bits_per_pixel, &d->txt_ptr[hud].line_length,
-			&d->txt_ptr[hud].endian);
+	new_img(d, hud, d->map_ptr->hud_texture);
 }
 
 void	init_textures_img(t_data *d)

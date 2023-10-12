@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:50:21 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/12 12:10:50 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/12 15:17:48 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	draw_hud(t_data *data)
 		j = 0;
 		while (j < 80)
 		{
-			ft_pixel_put(data->m_ptr, i, j, (unsigned int)ft_pixel_get(&data->txt_ptr[hud], i, j));
+			ft_pixel_put(data->m_ptr, 0, 0, (unsigned int)ft_pixel_get(&data->txt_ptr[hud], i, j));
 			j++;
 		}
 		i++;

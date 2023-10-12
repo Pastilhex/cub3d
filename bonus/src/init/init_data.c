@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:42:45 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/12 12:19:37 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:26:47 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,6 @@ void	init_mlx(t_mlx *m)
 
 void	init_bonus(t_map *map, t_data *d)
 {
+	(void) d;
 	map->hud_texture = "./textures/xpm/hud.xpm";
 }
