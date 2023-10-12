@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cub_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:53:33 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/11 22:33:58 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:40:09 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	check_elements(t_map *m, char *texture, char *c)
 
 	i = 1;
 	j = 0;
-	array = ft_split_set(texture, ", \n");
+	array = ft_split_set(texture, ", \n\t");
 	if (get_arr_size(array) != 4)
 		close_free("Invalid color", array, m);
 	while (array[i])
