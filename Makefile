@@ -3,7 +3,6 @@ NAME_BONUS = cub3d_bonus
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 CC = cc
-#CFLAGS = -Wall -Werror -Wextra -L./minilibx-linux -g -lmlx -lXext -lX11 -lm -lz -lbsd
 CFLAGS = -Wall -Werror -Wextra
 LDFLAGS = -L./minilibx-linux -g -lmlx -lXext -lX11 -lm -lz -lbsd
 RM = rm -f
@@ -155,8 +154,7 @@ show:
 	@printf "NAME  		: $(NAME)\n"
 	@printf "NAME BONUS	: $(NAME_BONUS)\n"
 	@printf "CLEAN		: $(RM)\n"
-	@printf "FLAGS		: $(CFLAGS)\n"
-	@printf "SRC		: $(SRC)\n"
-	@printf "SRC BONUS	: $(SRC_BONUS)\n"
+	@printf "CFLAGS		: $(CFLAGS)\n"
+	@printf "LDFLAGS		: $(LDFLAGS)\n"
 
 PHONY: show fclean bonus clean all

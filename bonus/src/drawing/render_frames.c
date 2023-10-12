@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:11:26 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/12 11:52:34 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:28:38 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int	render_frames(void *arg)
 		x++;
 	}
 	draw_hud(data);
+	mlx_put_image_to_window(data->m_ptr->mlx, data->m_ptr->mlx_win, data->m_ptr->img, 0, 0);
 	fps(data);
 	data->move_speed = data->frame_time * 2.5;
 	data->rot_speed = data->frame_time * 2.0;

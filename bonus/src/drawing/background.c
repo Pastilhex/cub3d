@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:50:21 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/12 15:17:48 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:37:21 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,15 @@ void	draw_hud(t_data *data)
 	int	j;
 
 	i = 0;
-	while (i < 640)
+	j = SCREENHEIGHT - (SCREENHEIGHT / 6);
+	while (i < SCREENWIDTH)
 	{
-		j = 0;
-		while (j < 80)
+		j = SCREENHEIGHT - (SCREENHEIGHT / 6);
+		while (j < SCREENHEIGHT)
 		{
-			ft_pixel_put(data->m_ptr, 0, 0, (unsigned int)ft_pixel_get(&data->txt_ptr[hud], i, j));
+			// ft_pixel_put(data->m_ptr, 0, 0, (unsigned int)ft_pixel_get(&data->txt_ptr[hud], i, ((double) SCREENHEIGHT * 0.1667)));
+			ft_pixel_put(data->m_ptr, 0, 0, (unsigned int)ft_pixel_get(&data->txt_ptr[hud], 10, 10));
+			//ft_pixel_put(data->m_ptr, i, j, 0xff00ff);
 			j++;
 		}
 		i++;
@@ -72,5 +75,5 @@ void	background(t_mlx m, int ground_color, int sky_color)
 {
 	draw_sky(m, sky_color);
 	draw_ground(m, ground_color);
-	mlx_put_image_to_window(m.mlx, m.mlx_win, m.img, 0, 0);
+	// mlx_put_image_to_window(m.mlx, m.mlx_win, m.img, 0, 0);
 }
