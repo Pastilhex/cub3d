@@ -1,9 +1,10 @@
 NAME = cub3d
-
 NAME_BONUS = cub3d_bonus
-
+OBJ = $(SRC:.c=.o)
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
 CC = cc
-
+CFLAGS = -L ./minilibx-linux -Wall -Werror -Wextra -g -lmlx -lXext -lX11 -lm -lz -lbsd 
+RM = rm -f
 SRC	= ./main.c\
 	./src/init/read_cub_file.c\
 	./src/init/init_data.c\
@@ -58,15 +59,16 @@ SRC	= ./main.c\
 
 SRC_BONUS = $(wildcard bonus/*.c)
 
-CFLAGS = -L ./minilibx-linux -Wall -Werror -Wextra -g -lmlx -lXext -lX11 -lm -lz -lbsd 
-
-RM = rm -f
-
-all:
+all: $(NAME)
+	
+$(NAME): $(OBJ)
 	$(MAKE) -C ./minilibx-linux
 	$(CC) $(SRC) $(CFLAGS) -o $(NAME)
 
-bonus:
+bonus: $(NAME_BONUS)
+
+$(NAME_BONUS): $(OBJ)
+	$(MAKE) -C ./bonus/minilibx-linux
 	$(CC) $(SRC_BONUS) $(CFLAGS) -o $(NAME_BONUS)
 
 clean:
