@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:43 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/11 23:54:16 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/12 10:56:46 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 void	get_map_size_last_while(t_map *map)
 {
-	while (map->get_line && (!ft_strcmp(map->get_line, "\n")
-			|| !ft_strcmp(map->get_line, "\0")))
+	while (map->get_line && ft_strcmp(map->get_line, "\0") != 0)
 	{
 		if (ft_strncmp(map->get_line, "\n", 1) != 0)
+		{
+			close(map->fd);
 			perror_close("Invalid map configuration", map);
+		}
 		free(map->get_line);
 		map->get_line = get_next_line(map->fd);
 	}
