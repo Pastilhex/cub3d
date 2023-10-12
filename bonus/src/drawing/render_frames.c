@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_frames.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:11:26 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/12 18:28:38 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/12 20:57:52 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	fps(t_data *data)
 	}
 	else
 	{
-		printf("FPS: %d\n", data->fps);
+		// printf("FPS: %d\n", data->fps);
 		data->fps = 0;
 		data->tps = 0.0;
 	}

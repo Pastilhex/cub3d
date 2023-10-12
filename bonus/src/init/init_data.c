@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:42:45 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/12 18:20:02 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/12 19:34:21 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,5 @@ void	init_mlx(t_mlx *m)
 void	init_bonus(t_map *map, t_data *d)
 {
 	(void) d;
-	map->hud_texture = "./textures/xpm/hud.xpm";
+	map->hud_texture = "./bonus/textures/xpm/hud.xpm";
 }

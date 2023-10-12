@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   background.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:50:21 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/12 18:37:21 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/12 20:56:52 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,29 @@ void	draw_hud(t_data *data)
 {
 	int	i;
 	int	j;
+	double j_correction;
+	double i_correction;
 
 	i = 0;
 	j = SCREENHEIGHT - (SCREENHEIGHT / 6);
+	j_correction = 80.0 / ((double)SCREENHEIGHT / 6.0);
+	i_correction = (640.0 / (double)SCREENWIDTH);
+	int k = 0;
 	while (i < SCREENWIDTH)
 	{
 		j = SCREENHEIGHT - (SCREENHEIGHT / 6);
 		while (j < SCREENHEIGHT)
 		{
-			// ft_pixel_put(data->m_ptr, 0, 0, (unsigned int)ft_pixel_get(&data->txt_ptr[hud], i, ((double) SCREENHEIGHT * 0.1667)));
-			ft_pixel_put(data->m_ptr, 0, 0, (unsigned int)ft_pixel_get(&data->txt_ptr[hud], 10, 10));
+			// printf("j: %d\ni: %d\n",((int)(((SCREENHEIGHT - j ) * 0.8))), i);
+			// ft_pixel_put(data->m_ptr, i, j, (unsigned int)ft_pixel_get(&data->txt_ptr[hud], i, (int)(k * 0.8)));
+			ft_pixel_put(data->m_ptr, i, j, (unsigned int)ft_pixel_get(&data->txt_ptr[hud], i * i_correction, (int)(80 - ((SCREENHEIGHT - j ) * j_correction))));
+			
+			// ft_pixel_put(data->m_ptr, i, j, (unsigned int)ft_pixel_get(&data->txt_ptr[hud], i, j));
 			//ft_pixel_put(data->m_ptr, i, j, 0xff00ff);
 			j++;
+			k++;
 		}
+		k = 0;
 		i++;
 	}
 }
