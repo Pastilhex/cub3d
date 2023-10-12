@@ -54,8 +54,7 @@ SRC	= ./main.c\
 	./src/parser/check_map_extension.c\
 	./src/parser/get_map_to_array.c\
 	./src/parser/get_elements_textures.c\
-	./src/parser/check_line.c\
-	./src/debug.c
+	./src/parser/check_line.c
 
 SRC_BONUS = $(wildcard bonus/*.c)
 
