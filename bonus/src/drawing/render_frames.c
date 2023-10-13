@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_frames.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:11:26 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/12 20:57:52 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/13 15:19:42 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,11 @@ int	render_frames(void *arg)
 		render_frames2(data, &x);
 		x++;
 	}
+	// draw_hands(data);
 	draw_hud(data);
 	mlx_put_image_to_window(data->m_ptr->mlx, data->m_ptr->mlx_win, data->m_ptr->img, 0, 0);
 	fps(data);
-	data->move_speed = data->frame_time * 2.5;
+	data->move_speed = data->frame_time * 3;
 	data->rot_speed = data->frame_time * 2.0;
 	data->move_margin = 0.6;
 	move_player(data);

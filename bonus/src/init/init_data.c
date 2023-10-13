@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:42:45 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/12 19:34:21 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/13 14:23:36 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	init_data2(t_data *d, struct s_map *map_ptr, t_mlx *m)
 	d->fps = 0;
 	d->tps = 0.0;
 	d->tex_x = 0;
-	d->txt_ptr = malloc(sizeof(t_texture) * 5);
+	d->txt_ptr = malloc(sizeof(t_texture) * 13);
 	if (!d->txt_ptr)
 		exit(EXIT_FAILURE);
 	d->map_ptr = map_ptr;
@@ -99,8 +99,3 @@ void	init_mlx(t_mlx *m)
 	m->mlx_win = NULL;
 }
 
-void	init_bonus(t_map *map, t_data *d)
-{
-	(void) d;
-	map->hud_texture = "./bonus/textures/xpm/hud.xpm";
-}

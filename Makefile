@@ -147,7 +147,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME) $(NAME_BONUS)
 
-re: fclean all
+re: fclean all bonus
 
 show:
 	@printf "CC		: $(CC)\n"

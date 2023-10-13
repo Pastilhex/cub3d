@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_to_array.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/11 20:49:59 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/12 22:56:47 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	set_start(double i, double k, char c, t_map *m)
 
 bool	is_valid_char(char c)
 {
-	if (c == '0' || c == '1' || is_direction(c) || c == '\n' || c == ' ')
+	if (c == '0' || ft_isdigit(c) || is_direction(c) || c == '\n' || c == ' ')
 		return (true);
 	return (false);
 }

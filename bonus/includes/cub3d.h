@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/12 20:55:35 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/13 15:15:04 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ typedef struct s_data
 	int				pitch;
 	t_texture		*txt_ptr;
 	struct s_map	*map_ptr;
+	struct s_draw	*draw_ptr;
 	t_mlx			*m_ptr;
 }	t_data;
 
@@ -124,6 +125,14 @@ typedef struct s_map {
 	char		*ceiling_texture;
 	char		**world_map;
 	char		*hud_texture;
+	char		*eagle_wall_texture;
+	char		*flag_wall_texture;
+	char		*blue1_wall_texture;
+	char		*blue2_wall_texture;
+	char		*blueskeleton_wall_texture;
+	char		*blueempty_wall_texture;
+	char		*ceilinglamp_texture;
+	char		*hands;
 	double		wall_x;
 	double		step;
 	double		tex_pos;
@@ -147,18 +156,35 @@ typedef struct s_map {
 	t_rgb		floor_colors;
 }	t_map;
 
+typedef struct s_draw {
+	int			*x;
+	int			y;
+	int			tex_y;
+	int			wall;
+}	t_draw;
+
 enum e_direction
 {
 	south = 0,
 	north = 1,
 	east = 2,
 	west = 3,
-	hud = 4
+	hud = 4,
+	eagle = 5,
+	flag = 6,
+	blue1 = 7,
+	blue2 = 8,
+	blueskeleton = 9,
+	blueempty = 10,
+	ceilinglamp = 11,
+	hands = 12,
 };
 
 /*-----> Bonus <-----*/
 void		init_bonus(t_map *map, t_data *d);
 void		draw_hud(t_data *data);
+void		draw_hands(t_data *data);
+void		draw_wall(t_data *d, char wall_nbr, t_texture *txt_ns, t_texture *txt_we);
 
 /*-----> Utils <-----*/
 int			ft_atoi(const char *str);
