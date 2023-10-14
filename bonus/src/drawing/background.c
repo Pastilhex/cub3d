@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   background.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:50:21 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/14 12:34:28 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/14 15:21:32 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,28 +74,30 @@ void	draw_hud(t_data *data)
 	}
 }
 
-// 128 x 128
 void	draw_hands(t_data *data)
 {
 	int	i;
 	int	j;
-	// double j_correction;
-	// double i_correction;
+	double a;
+	double b;
+	double begin_i;
+	double begin_j;
 
-	i = SCREENWIDTH - (SCREENWIDTH * 0.6);
-	// i_correction = 128.0 / ((double)SCREENWIDTH / 4.6875);
-	// j_correction = 128.0 / ((double)SCREENHEIGHT / 3.75);
-	while (i < (SCREENWIDTH - SCREENWIDTH * 0.4))
+	i = SCREENWIDTH * 0.4;
+	a = 128.0 / ((double) SCREENWIDTH / 5);
+	b = 128.0 / ((double) SCREENHEIGHT / 3.75);
+	begin_i = (SCREENWIDTH * 0.4);
+	begin_j = (SCREENHEIGHT - (SCREENHEIGHT / 6.0 + SCREENHEIGHT / 3.75));
+	while (i < SCREENWIDTH * 0.6)
 	{
-		// printf("j: %d, i: %d\n",((int)SCREENHEIGHT - (SCREENHEIGHT / 6)), i);
-		j = SCREENHEIGHT - (SCREENHEIGHT / 6 + SCREENHEIGHT / 3.75);
-		while (j < SCREENHEIGHT - (SCREENHEIGHT / 6))
+		j = SCREENHEIGHT - (SCREENHEIGHT / 6.0 + SCREENHEIGHT / 3.75);
+		while (j < SCREENHEIGHT - (SCREENHEIGHT / 6.0))
 		{
-			ft_pixel_put(data->m_ptr, i, j, (unsigned int)ft_pixel_get(&data->txt_ptr[hands], (int)(i - ((SCREENWIDTH - SCREENWIDTH * 0.4) - 1)), (int)(j - ((SCREENHEIGHT - (SCREENHEIGHT / 6 + SCREENHEIGHT / 3.75)) - 1))));
+			ft_pixel_put(data->m_ptr, i, j, (unsigned int)
+				ft_pixel_get(&data->txt_ptr[hands], (int)((i - begin_i) * a), (int)((j - begin_j) * b)));
 			j++;
 		}
 		i++;
-		
 	}
 }
 

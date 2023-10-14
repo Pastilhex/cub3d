@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/13 15:15:04 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/14 15:18:21 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # include <stdint.h>
 # include <fcntl.h>
 
-# define SCREENWIDTH 640
-# define SCREENHEIGHT 480
+# define SCREENWIDTH 1024
+# define SCREENHEIGHT 768
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
 
