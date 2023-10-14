@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/14 15:18:21 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:19:55 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # include <stdint.h>
 # include <fcntl.h>
 
-# define SCREENWIDTH 1024
-# define SCREENHEIGHT 768
+# define SCREENWIDTH 640
+# define SCREENHEIGHT 480
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
 
@@ -150,6 +150,8 @@ typedef struct s_map {
 	int			map_copy_x;
 	int			map_copy_y;
 	int			has_player;
+	double		sprite_x;
+	double		sprite_y;
 	t_data		*data_ptr;
 	uint32_t	color;
 	t_rgb		ceiling_colors;
@@ -264,6 +266,6 @@ void		move_player(t_data *data);
 
 /*-----> Debug <-----*/
 void		ft_print_array(char **arr, int nb_lines);
-void		t_print_t_map(t_map *m);
+void		ft_print_t_map(t_map *m);
 
 #endif

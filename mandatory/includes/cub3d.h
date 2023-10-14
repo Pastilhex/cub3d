@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/12 17:44:03 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/13 15:44:18 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "../minilibx-linux/mlx.h"
+# include "../../minilibx-linux/mlx.h"
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>

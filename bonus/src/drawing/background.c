@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   background.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:50:21 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/14 15:21:32 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/14 15:22:21 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,10 @@ void	draw_hud(t_data *data)
 	double i_correction;
 
 	i = 0;
+	j = SCREENHEIGHT - (SCREENHEIGHT / 6);
 	j_correction = 80.0 / ((double)SCREENHEIGHT / 6.0);
 	i_correction = (640.0 / (double)SCREENWIDTH);
+	int k = 0;
 	while (i < SCREENWIDTH)
 	{
 		// printf("j: %d, i: %d\n",((int)SCREENHEIGHT - (SCREENHEIGHT / 6)), i);
@@ -69,39 +71,37 @@ void	draw_hud(t_data *data)
 			ft_pixel_put(data->m_ptr, i, j, (unsigned int)ft_pixel_get(&data->txt_ptr[hud], i * i_correction, (int)(80 - ((SCREENHEIGHT - j ) * j_correction))));
 
 			j++;
+			k++;
 		}
+		k = 0;
 		i++;
 	}
 }
-
-void	draw_hands(t_data *data)
+void    draw_hands(t_data *data)
 {
-	int	i;
-	int	j;
-	double a;
-	double b;
-	double begin_i;
-	double begin_j;
-
-	i = SCREENWIDTH * 0.4;
-	a = 128.0 / ((double) SCREENWIDTH / 5);
-	b = 128.0 / ((double) SCREENHEIGHT / 3.75);
-	begin_i = (SCREENWIDTH * 0.4);
-	begin_j = (SCREENHEIGHT - (SCREENHEIGHT / 6.0 + SCREENHEIGHT / 3.75));
-	while (i < SCREENWIDTH * 0.6)
-	{
-		j = SCREENHEIGHT - (SCREENHEIGHT / 6.0 + SCREENHEIGHT / 3.75);
-		while (j < SCREENHEIGHT - (SCREENHEIGHT / 6.0))
-		{
-			ft_pixel_put(data->m_ptr, i, j, (unsigned int)
-				ft_pixel_get(&data->txt_ptr[hands], (int)((i - begin_i) * a), (int)((j - begin_j) * b)));
-			j++;
-		}
-		i++;
-	}
+    int i;
+    int j;
+    double a;
+    double b;
+    double begin_i;
+    double begin_j;
+    i = SCREENWIDTH * 0.4;
+    a = 128.0 / ((double) SCREENWIDTH / 5);
+    b = (128.0 / ((double) SCREENHEIGHT / 3.75));
+    begin_i = (SCREENWIDTH * 0.4);
+    begin_j = (SCREENHEIGHT - (SCREENHEIGHT / 6.0 + SCREENHEIGHT / 3.75));
+    while (i < SCREENWIDTH * 0.6)
+    {
+        j = SCREENHEIGHT - (SCREENHEIGHT / 6.0 + SCREENHEIGHT / 3.75);
+        while (j < SCREENHEIGHT - (SCREENHEIGHT / 6.0))
+        {
+            ft_pixel_put(data->m_ptr, i, j, (unsigned int)
+                ft_pixel_get(&data->txt_ptr[hands], (int)((i - begin_i) * a), (int)((j - begin_j) * b)));
+            j++;
+        }
+        i++;
+    }
 }
-
-
 
 void	background(t_mlx m, int ground_color, int sky_color)
 {

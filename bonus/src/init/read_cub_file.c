@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:53:33 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/11 22:33:58 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/13 21:13:09 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ void	read_cub_file(t_map *map)
 	check_elements(map, map->floor_texture, "F");
 	get_map_size(map);
 	get_map_to_array(map);
-	check_map_integrity(map);
+	ft_print_array(map->world_map, map->map_end - map->map_start);
+	// check_map_integrity(map);
 }

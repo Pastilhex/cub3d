@@ -7,58 +7,58 @@ CFLAGS = -Wall -Werror -Wextra
 LDFLAGS = -L./minilibx-linux -g -lmlx -lXext -lX11 -lm -lz -lbsd
 RM = rm -f
 
-SRC	= ./main.c\
-	./src/init/read_cub_file.c\
-	./src/init/init_data.c\
-	./src/init/open_window.c\
-	./src/init/init_textures_img.c\
-	./src/drawing/render_frames.c\
-	./src/drawing/render_frames2.c\
-	./src/drawing/ft_pixel_put.c\
-	./src/drawing/ft_pixel_get.c\
-	./src/drawing/background.c\
-	./src/utils/time.c\
-	./src/utils/isOnlyDigitOrComma.c\
-	./src/utils/is_direction.c\
-	./src/utils/get_next_line.c\
-	./src/utils/free_arr.c\
-	./src/utils/ft_strchr.c\
-	./src/utils/ft_strncmp.c\
-	./src/utils/ft_strlen.c\
-	./src/utils/ft_itoa.c\
-	./src/utils/is_valid_colors.c\
-	./src/utils/ft_bzero.c\
-	./src/utils/ft_split.c\
-	./src/utils/ft_split_set.c\
-	./src/utils/ft_calloc.c\
-	./src/utils/ft_is_numeric.c\
-	./src/utils/ft_strdup.c\
-	./src/utils/ft_strjoin.c\
-	./src/utils/ft_strtrim.c\
-	./src/utils/get_array_size.c\
-	./src/utils/ft_isdigit.c\
-	./src/utils/ft_atoi.c\
-	./src/utils/ft_strnstr.c\
-	./src/utils/ft_substr.c\
-	./src/utils/ft_memcpy.c\
-	./src/utils/ft_put_nbr.c\
-	./src/utils/flood_fill.c\
-	./src/utils/ft_strcmp.c\
-	./src/utils/ft_strrchr.c\
-	./src/move/move_player.c\
-	./src/move/handle_keypress.c\
-	./src/move/handle_player_keys.c\
-	./src/close/close_window.c\
-	./src/parser/check_map_integrity.c\
-	./src/parser/get_map_size.c\
-	./src/parser/access_file.c\
-	./src/parser/get_ttl_nbr_lines.c\
-	./src/parser/get_elements.c\
-	./src/parser/check_input.c\
-	./src/parser/check_map_extension.c\
-	./src/parser/get_map_to_array.c\
-	./src/parser/get_elements_textures.c\
-	./src/parser/check_line.c
+SRC	= ./mandatory/main.c\
+	./mandatory/src/init/read_cub_file.c\
+	./mandatory/src/init/init_data.c\
+	./mandatory/src/init/open_window.c\
+	./mandatory/src/init/init_textures_img.c\
+	./mandatory/src/drawing/render_frames.c\
+	./mandatory/src/drawing/render_frames2.c\
+	./mandatory/src/drawing/ft_pixel_put.c\
+	./mandatory/src/drawing/ft_pixel_get.c\
+	./mandatory/src/drawing/background.c\
+	./mandatory/src/utils/time.c\
+	./mandatory/src/utils/isOnlyDigitOrComma.c\
+	./mandatory/src/utils/is_direction.c\
+	./mandatory/src/utils/get_next_line.c\
+	./mandatory/src/utils/free_arr.c\
+	./mandatory/src/utils/ft_strchr.c\
+	./mandatory/src/utils/ft_strncmp.c\
+	./mandatory/src/utils/ft_strlen.c\
+	./mandatory/src/utils/ft_itoa.c\
+	./mandatory/src/utils/is_valid_colors.c\
+	./mandatory/src/utils/ft_bzero.c\
+	./mandatory/src/utils/ft_split.c\
+	./mandatory/src/utils/ft_split_set.c\
+	./mandatory/src/utils/ft_calloc.c\
+	./mandatory/src/utils/ft_is_numeric.c\
+	./mandatory/src/utils/ft_strdup.c\
+	./mandatory/src/utils/ft_strjoin.c\
+	./mandatory/src/utils/ft_strtrim.c\
+	./mandatory/src/utils/get_array_size.c\
+	./mandatory/src/utils/ft_isdigit.c\
+	./mandatory/src/utils/ft_atoi.c\
+	./mandatory/src/utils/ft_strnstr.c\
+	./mandatory/src/utils/ft_substr.c\
+	./mandatory/src/utils/ft_memcpy.c\
+	./mandatory/src/utils/ft_put_nbr.c\
+	./mandatory/src/utils/flood_fill.c\
+	./mandatory/src/utils/ft_strcmp.c\
+	./mandatory/src/utils/ft_strrchr.c\
+	./mandatory/src/move/move_player.c\
+	./mandatory/src/move/handle_keypress.c\
+	./mandatory/src/move/handle_player_keys.c\
+	./mandatory/src/close/close_window.c\
+	./mandatory/src/parser/check_map_integrity.c\
+	./mandatory/src/parser/get_map_size.c\
+	./mandatory/src/parser/access_file.c\
+	./mandatory/src/parser/get_ttl_nbr_lines.c\
+	./mandatory/src/parser/get_elements.c\
+	./mandatory/src/parser/check_input.c\
+	./mandatory/src/parser/check_map_extension.c\
+	./mandatory/src/parser/get_map_to_array.c\
+	./mandatory/src/parser/get_elements_textures.c\
+	./mandatory/src/parser/check_line.c
 
 SRC_BONUS = ./bonus/src/parser/check_input.c\
 	./bonus/src/parser/check_map_integrity.c\
@@ -111,6 +111,7 @@ SRC_BONUS = ./bonus/src/parser/check_input.c\
 	./bonus/src/utils/isOnlyDigitOrComma.c\
 	./bonus/src/utils/free_arr.c\
 	./bonus/main.c\
+	./bonus/src/debug.c\
 
 OBJSDIR = objects
 
