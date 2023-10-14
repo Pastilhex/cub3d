@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_frames.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:11:26 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/14 21:02:18 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/14 22:26:30 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,13 @@ int	render_frames(void *arg)
 	t_rgb	*floor;
 	t_map	*m;
 
-	double z_buffer[SCREENWIDTH];
+	// double z_buffer[SCREENWIDTH];
 	int		x;
 	int		y;
 	int		d;
 	double		sprite_x;
 	double		sprite_y;
-	// double		inv_det;
+	double		inv_det;
 	double		transform_x;
 	double		transform_y;
 	int 		sprite_screen_x;
@@ -104,47 +104,55 @@ int	render_frames(void *arg)
 		render_frames2(data, &x);
 		x++;
 	}
-	z_buffer[x] = data->perp_wall_dist;
-	(void)z_buffer;
-	x = 0;
-	sprite_x = m->sprite_x - data->pos_x;
 	// sprite_x = data->pos_x;
-	sprite_y = m->sprite_y - data->pos_y;
 	// sprite_y = data->pos_y;
-	// inv_det = 1.0 / (data->plane_x * data->dir_y - data->dir_x * data->plane_y);
-	transform_x = (data->dir_y * sprite_x - data->dir_x * sprite_y);
-    transform_y = (-data->plane_y * sprite_x + data->plane_x * sprite_y); 
-	sprite_screen_x = (int)((SCREENWIDTH / 2) * (1 + transform_x / transform_y));
+	
+	sprite_x = m->sprite_x - data->pos_x;
+	sprite_y = m->sprite_y - data->pos_y;
+	
+	inv_det = 1.0 / (data->plane_x * data->dir_y - data->dir_x * data->plane_y);
+	
+	transform_x = inv_det * (data->dir_y * sprite_x - data->dir_x * sprite_y);
+    transform_y = inv_det * (-data->plane_y * sprite_x + data->plane_x * sprite_y); 
+	
+	sprite_screen_x = (int)((SCREENWIDTH / 2.0) * (1 + transform_x / transform_y));
+	
 	sprite_height = abs((int)(SCREENHEIGHT / transform_y));
+	sprite_width = abs((int)(SCREENWIDTH / transform_x));
+	
 	draw_start_y = -sprite_height / 2 + SCREENHEIGHT / 2;
 	if (draw_start_y < 0)
 		draw_start_y = 0;
 	draw_end_y = sprite_height / 2 + SCREENHEIGHT / 2;
 	if (draw_end_y >= SCREENHEIGHT)
 		draw_end_y = SCREENHEIGHT - 1;
-	sprite_width = abs((int)(SCREENWIDTH / transform_x));
+	
+	
 	draw_start_x = -sprite_width / 2 + sprite_screen_x;
 	if (draw_start_x < 0)
 		draw_start_x = 0;
 	draw_end_x = sprite_width / 2 + sprite_screen_x;
 	if(draw_end_x >= SCREENWIDTH)
 		draw_end_x = SCREENWIDTH - 1;
+	
 	stripe = draw_start_x;
 	while (stripe < draw_end_x)
 	{
 		data->tex_x = (int)(256 * (stripe - (-sprite_width / 2 + sprite_screen_x)) * TEXWIDTH / sprite_width) / 256;
-		// if (!(transform_y > 0 && stripe >= 0 && stripe < SCREENWIDTH && transform_y < z_buffer[stripe]))
-		// 	return (0);
-		y = draw_start_y;
-		while (y < draw_end_y)
+		if (transform_y > 0 && stripe >= 0 && stripe < SCREENWIDTH &&  transform_y < data->z_buffer[stripe])
 		{
-			d = y * 256 - SCREENHEIGHT * 128 + sprite_height * 128;
-			tex_y = ((d * TEXHEIGHT) / sprite_height) / 256;
-			ft_pixel_put(data->m_ptr, stripe, y, (unsigned int)ft_pixel_get(&data->txt_ptr[ceilinglamp], data->tex_x, tex_y));
-			y++;
+			y = draw_start_y;
+			while (y < draw_end_y)
+			{
+				d = y * 256 - SCREENHEIGHT * 128 + sprite_height * 128;
+				tex_y = ((d * TEXHEIGHT) / sprite_height) / 256;
+				ft_pixel_put(data->m_ptr, stripe, y, (unsigned int)ft_pixel_get(&data->txt_ptr[ceilinglamp], data->tex_x, tex_y));
+				y++;
+			}
 		}
 		stripe++;	
 	}
+
 	
 	draw_hands(data);
 	draw_hud(data);

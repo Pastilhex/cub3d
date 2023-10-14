@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_to_array.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/13 20:08:55 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/14 21:36:40 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	get_map_to_array_while_get_line(t_map *map, int i, int j)
 			set_start(i, j, map->get_line[j], map);
 			map->has_player = 1;
 		}
-		if (map->get_line[j] == '6')
+		else if (map->get_line[j] == '6')
 		{
 			map->sprite_x = i;
 			map->sprite_y = j;
