@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:43 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/12 10:56:46 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/15 17:23:59 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,19 @@ void	get_map_size_last_while(t_map *map)
 	}
 }
 
+void	count_sprites(char *line, t_map *m)
+{
+	int	i;
+	
+	i = -1;
+	while (line[++i])
+	{
+		if (is_sprite(line[i]))
+			m->sprites_nb++;
+	}
+}
+
+
 void	get_map_size(t_map *map)
 {
 	free(map->get_line);
@@ -39,6 +52,7 @@ void	get_map_size(t_map *map)
 	map->map_start = map->line_nbr;
 	while (map->get_line && (ft_strcmp(map->get_line, "\n") != 0))
 	{
+		count_sprites(map->get_line, map);
 		map->line_nbr++;
 		free(map->get_line);
 		map->get_line = get_next_line(map->fd);

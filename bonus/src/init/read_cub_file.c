@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:53:33 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/13 21:13:09 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:44:51 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@ void	read_cub_file(t_map *map)
 	check_elements(map, map->ceiling_texture, "C");
 	check_elements(map, map->floor_texture, "F");
 	get_map_size(map);
+	map->sprite_arr = ft_calloc(map->sprites_nb, (sizeof(t_sprite)));
+	map->sprite_order = ft_calloc(map->sprites_nb, (sizeof(t_sprite)));
+	map->sprite_distance = ft_calloc(map->sprites_nb, (sizeof(t_sprite)));
 	get_map_to_array(map);
 	ft_print_array(map->world_map, map->map_end - map->map_start);
 	// check_map_integrity(map);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_to_array.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/14 21:36:40 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:20:45 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	set_start(double i, double k, char c, t_map *m)
 	t_data	*d;
 
 	d = m->data_ptr;
-	d->pos_x = i + 0.49;
-	d->pos_y = k + 0.49;
+	d->pos_x = i + 0.50;
+	d->pos_y = k + 0.50;
 	set_start_ns(c, d);
 	if (c == 'W')
 	{
@@ -61,6 +61,35 @@ bool	is_valid_char(char c)
 	return (false);
 }
 
+bool	is_sprite(char c)
+{
+	if (c == '6')
+		return (true);
+	return (false);
+}
+
+t_texture	*get_sprite_texture(char c, t_data *d)
+{
+	
+	if (c == '6')
+		return (&d->txt_ptr[ceilinglamp]);
+	return (NULL);
+}
+
+void 	set_sprite_arr(t_map *m, int i, int j, char c)
+{
+	t_sprite *sprite;
+
+	sprite = m->sprite_arr;
+	sprite[m->sprite_index].x = i;
+	sprite[m->sprite_index].y = j;
+	m->world_map[i][j] = '0';
+	if (c == '6')
+		sprite[m->sprite_index].txt = &m->data_ptr->txt_ptr[ceilinglamp];
+	// sprite[m->sprite_index].txt = get_sprite_texture(c, m->data_ptr);
+	m->sprite_index++;
+}
+
 void	get_map_to_array_while_get_line(t_map *map, int i, int j)
 {
 	while (map->get_line[j])
@@ -78,16 +107,10 @@ void	get_map_to_array_while_get_line(t_map *map, int i, int j)
 			set_start(i, j, map->get_line[j], map);
 			map->has_player = 1;
 		}
-		else if (map->get_line[j] == '6')
-		{
-			map->sprite_x = i;
-			map->sprite_y = j;
-			map->world_map[i][j] = '0';
-		}
+		else if (is_sprite(map->get_line[j]))
+			set_sprite_arr(map, i, j, map->get_line[j]);
 		else
-		{
 			map->world_map[i][j] = map->get_line[j];
-		}
 		j++;
 	}
 	map->world_map[i][j] = '\0';

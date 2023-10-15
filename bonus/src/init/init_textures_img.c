@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures_img.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:21:33 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/13 14:23:18 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/15 20:04:49 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ void	new_img(t_data *d, enum e_direction var, char *txt)
 			&d->txt_ptr[var].endian);
 }
 
+void	init_bonus_sprites(t_data *d)
+{
+	new_img(d, ceilinglamp, d->map_ptr->ceilinglamp_texture);			//11
+}
+
 void	init_bonus_textures(t_data *d)
 {
 	new_img(d, hud, d->map_ptr->hud_texture);							//4
@@ -31,8 +36,7 @@ void	init_bonus_textures(t_data *d)
 	new_img(d, blue2, d->map_ptr->blue2_wall_texture);					//8
 	new_img(d, blueskeleton, d->map_ptr->blueskeleton_wall_texture);	//9
 	new_img(d, blueempty, d->map_ptr->blueempty_wall_texture);			//10
-	new_img(d, ceilinglamp, d->map_ptr->ceilinglamp_texture);			//11
-	new_img(d, hands, d->map_ptr->hands);			//11
+	new_img(d, hands, d->map_ptr->hands);								//12
 }
 
 void	init_textures_img(t_data *d)
@@ -42,11 +46,13 @@ void	init_textures_img(t_data *d)
 	new_img(d, east, d->map_ptr->east_texture);			//2
 	new_img(d, west, d->map_ptr->west_texture);			//3
 	init_bonus_textures(d);
+	init_bonus_sprites(d);
 }
 
 void	init_bonus(t_map *map, t_data *d)
 {
 	(void) d;
+	map->sprite_index = 0;
 	map->hud_texture = "./bonus/textures/xpm/hud.xpm";
 	map->eagle_wall_texture = "./bonus/textures/xpm/eaglewall.xpm";
 	map->flag_wall_texture = "./bonus/textures/xpm/flagwall.xpm";

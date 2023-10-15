@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/14 21:18:37 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:44:32 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # include <stdint.h>
 # include <fcntl.h>
 
-# define SCREENWIDTH 1024
-# define SCREENHEIGHT 768
+# define SCREENWIDTH 640
+# define SCREENHEIGHT 480
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
 
@@ -61,6 +61,13 @@ typedef struct s_rgb
 	int		g;
 	int		b;
 }	t_rgb;
+
+typedef	struct s_sprite
+{
+	int			x;
+	int			y;
+	t_texture	*txt;
+}	t_sprite;
 
 typedef struct s_data
 {
@@ -105,7 +112,7 @@ typedef struct s_data
 	double			tps;
 	int				tex_x;
 	int				pitch;
-	double			z_buffer[SCREENWIDTH];
+	double 			z_buffer[SCREENWIDTH];
 	t_texture		*txt_ptr;
 	struct s_map	*map_ptr;
 	struct s_draw	*draw_ptr;
@@ -153,7 +160,12 @@ typedef struct s_map {
 	int			has_player;
 	double		sprite_x;
 	double		sprite_y;
+	int			sprites_nb;
+	int			sprite_index;
+	int			*sprite_order;
+	int			*sprite_distance;
 	t_data		*data_ptr;
+	t_sprite	*sprite_arr;
 	uint32_t	color;
 	t_rgb		ceiling_colors;
 	t_rgb		floor_colors;
@@ -165,6 +177,7 @@ typedef struct s_draw {
 	int			tex_y;
 	int			wall;
 }	t_draw;
+
 
 enum e_direction
 {
@@ -255,6 +268,8 @@ char		*get_texture(char *line);
 void		get_elements_textures(t_map *map, char **line_arr);
 void		check_line_for_digit(char *line, char **arr, t_map *m);
 int			is_coordinate(char *line);
+bool		is_sprite(char c);
+
 
 /*-----> Player Movement <-----*/
 void		move_p_up(t_mlx *m);

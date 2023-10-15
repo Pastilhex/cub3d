@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:42:45 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/13 14:23:36 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/15 17:43:39 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	init_t_map(t_map *map, t_data *d)
 	map->map_end = 0;
 	map->line_nbr = 0;
 	map->has_player = 0;
+	map->sprites_nb = 0;
 }
 
 void	init_mlx(t_mlx *m)
@@ -98,4 +99,5 @@ void	init_mlx(t_mlx *m)
 	m->mlx = NULL;
 	m->mlx_win = NULL;
 }
+
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_frames2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:05:09 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/14 21:18:44 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:28:53 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,5 +166,4 @@ void	render_frames2(t_data *data, int *x)
 		check_hit(data);
 	calculate_cols(data);
 	draw_cols(data, x);
-	data->z_buffer[*x] = data->perp_wall_dist;
 }
