@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:21:33 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/15 20:04:49 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/16 15:36:11 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	new_img(t_data *d, enum e_direction var, char *txt)
 void	init_bonus_sprites(t_data *d)
 {
 	new_img(d, ceilinglamp, d->map_ptr->ceilinglamp_texture);			//11
-}
+	new_img(d, barrel, d->map_ptr->barrel_texture);				//13
+}	
 
 void	init_bonus_textures(t_data *d)
 {
@@ -61,5 +62,6 @@ void	init_bonus(t_map *map, t_data *d)
 	map->blueskeleton_wall_texture = "./bonus/textures/xpm/blueskeleton.xpm";
 	map->blueempty_wall_texture = "./bonus/textures/xpm/blueempty.xpm";
 	map->ceilinglamp_texture = "./bonus/textures/xpm/finalceilinglamp.xpm";
+	map->barrel_texture = "./bonus/textures/xpm/barrel.xpm";
 	map->hands = "./bonus/textures/xpm/handsgun.xpm";
 }

@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:05:09 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/15 19:28:53 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/16 08:57:54 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	check_hit(t_data *data)
 			data->map_y += data->step_y;
 			data->side = '1';
 		}
-		if (data->map_ptr->world_map[data->map_x][data->map_y] > '0')
+		if (data->map_ptr->world_map[data->map_x][data->map_y] != '0')
 			data->hit = '1';
 	}
 	if (data->side == '0')

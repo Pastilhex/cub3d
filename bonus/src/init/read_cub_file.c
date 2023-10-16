@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:53:33 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/15 19:44:51 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/16 23:02:52 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,5 @@ void	read_cub_file(t_map *map)
 	map->sprite_distance = ft_calloc(map->sprites_nb, (sizeof(t_sprite)));
 	get_map_to_array(map);
 	ft_print_array(map->world_map, map->map_end - map->map_start);
-	// check_map_integrity(map);
+	check_map_integrity(map);
 }

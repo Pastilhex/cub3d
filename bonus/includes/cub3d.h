@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/15 19:44:32 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/16 22:17:42 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define SCREENHEIGHT 480
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
+
 
 typedef struct s_texture
 {
@@ -68,6 +69,15 @@ typedef	struct s_sprite
 	int			y;
 	t_texture	*txt;
 }	t_sprite;
+
+typedef	struct sprite_list
+{
+	int	order;
+	int	distance;
+	struct sprite_list *next;
+	struct sprite_list *previous;
+} 		t_s_list;
+
 
 typedef struct s_data
 {
@@ -113,6 +123,7 @@ typedef struct s_data
 	int				tex_x;
 	int				pitch;
 	double 			z_buffer[SCREENWIDTH];
+	t_s_list		*head;
 	t_texture		*txt_ptr;
 	struct s_map	*map_ptr;
 	struct s_draw	*draw_ptr;
@@ -140,6 +151,7 @@ typedef struct s_map {
 	char		*blueskeleton_wall_texture;
 	char		*blueempty_wall_texture;
 	char		*ceilinglamp_texture;
+	char		*barrel_texture;
 	char		*hands;
 	double		wall_x;
 	double		step;
@@ -194,6 +206,7 @@ enum e_direction
 	blueempty = 10,
 	ceilinglamp = 11,
 	hands = 12,
+	barrel = 13,
 };
 
 /*-----> Bonus <-----*/
@@ -279,6 +292,13 @@ void		move_p_right(t_mlx *m);
 void		move_p_slide_left(t_mlx *m);
 void		move_p_slide_right(t_mlx *m);
 void		move_player(t_data *data);
+
+/*-----> Linked listt <-----*/
+t_s_list	*creat_node( t_data *d, int x);
+t_s_list	*find_tail(t_s_list **stack);
+t_s_list	*add_element_back(t_s_list *head, t_data *d, int x);
+void    	print_list(t_s_list *head);
+void		order_list(t_s_list **head);
 
 /*-----> Debug <-----*/
 void		ft_print_array(char **arr, int nb_lines);

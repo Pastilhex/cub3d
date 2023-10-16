@@ -106,6 +106,7 @@ SRC_BONUS = ./bonus/src/parser/check_input.c\
 	./bonus/src/utils/ft_strtrim.c\
 	./bonus/src/utils/ft_put_nbr.c\
 	./bonus/src/utils/time.c\
+	./bonus/src/utils/utils_list.c\
 	./bonus/src/utils/ft_substr.c\
 	./bonus/src/utils/is_direction.c\
 	./bonus/src/utils/isOnlyDigitOrComma.c\

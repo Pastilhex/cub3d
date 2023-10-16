@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/15 19:20:45 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/16 22:37:50 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ bool	is_valid_char(char c)
 
 bool	is_sprite(char c)
 {
-	if (c == '6')
+	if (c == '6' || c == '7')
 		return (true);
 	return (false);
 }
@@ -86,7 +86,8 @@ void 	set_sprite_arr(t_map *m, int i, int j, char c)
 	m->world_map[i][j] = '0';
 	if (c == '6')
 		sprite[m->sprite_index].txt = &m->data_ptr->txt_ptr[ceilinglamp];
-	// sprite[m->sprite_index].txt = get_sprite_texture(c, m->data_ptr);
+	if (c == '7')
+		sprite[m->sprite_index].txt = &m->data_ptr->txt_ptr[barrel];
 	m->sprite_index++;
 }
 

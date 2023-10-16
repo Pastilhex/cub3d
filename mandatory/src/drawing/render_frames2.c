@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:05:09 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/10 17:21:55 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/16 22:59:43 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	check_hit(t_data *data)
 			data->map_y += data->step_y;
 			data->side = '1';
 		}
-		if (data->map_ptr->world_map[data->map_x][data->map_y] > '0')
+		if (data->map_ptr->world_map[data->map_x][data->map_y] != '0')
 			data->hit = '1';
 	}
 	if (data->side == '0')
@@ -80,13 +80,13 @@ static void	draw_cols(t_data *data, int *x)
 				ft_pixel_get(&data->txt_ptr[south], data->tex_x, tex_y));
 		else if (data->side == '0' && data->ray_dir_x < 0)
 			ft_pixel_put(data->m_ptr, *x, y, (unsigned int)
-				ft_pixel_get(&data->txt_ptr[1], data->tex_x, tex_y));
+				ft_pixel_get(&data->txt_ptr[north], data->tex_x, tex_y));
 		else if (data->side == '1' && data->ray_dir_y > 0)
 			ft_pixel_put(data->m_ptr, *x, y, (unsigned int)
-				ft_pixel_get(&data->txt_ptr[2], data->tex_x, tex_y));
+				ft_pixel_get(&data->txt_ptr[east], data->tex_x, tex_y));
 		else if (data->side == '1' && data->ray_dir_y < 0)
 			ft_pixel_put(data->m_ptr, *x, y, (unsigned int)
-				ft_pixel_get(&data->txt_ptr[3], data->tex_x, tex_y));
+				ft_pixel_get(&data->txt_ptr[west], data->tex_x, tex_y));
 		y++;
 	}
 }
