@@ -64,30 +64,37 @@ int	get_rgb(int r, int g, int b)
 	return ((r << 16) | (g << 8) | b);
 }
 
+void	init_t_rend(t_rend_sprite *r)
+{
+	r->x = 0;
+	r->y = 0;
+	r->d = 0;
+	r->sprite_x = 0.0;
+	r->sprite_y = 0.0;
+	r->inv_det = 0.0;
+	r->transform_x = 0.0;
+	r->transform_y = 0.0;
+	r->sprite_screen_x = 0;
+	r->sprite_height = 0;
+	r->sprite_width = 0;
+	r->draw_start_y = 0;
+	r->draw_end_y = 0;
+	r->draw_start_x = 0;
+	r->draw_end_x = 0;
+	r->stripe = 0;
+	r->tex_y = 0;
+}
+
 int	render_frames(void *arg)
 {
-	t_data	*data;
-	t_rgb	*sky;
-	t_rgb	*floor;
-	t_map	*m;
+	t_data			*data;
+	t_rgb			*sky;
+	t_rgb			*floor;
+	t_map			*m;
+	t_rend_sprite	*r;
 
-	int		x;
-	int		y;
-	int		d;
-	double		sprite_x;
-	double		sprite_y;
-	double		inv_det;
-	double		transform_x;
-	double		transform_y;
-	int 		sprite_screen_x;
-	int			sprite_height;
-	int			sprite_width;
-	int			draw_start_y;
-	int			draw_end_y;
-	int			draw_start_x;
-	int			draw_end_x;
-	int			stripe;
-	int			tex_y;
+	init_t_rend(r);
+	
 
 	data = arg;
 	m = data->map_ptr;
@@ -95,24 +102,24 @@ int	render_frames(void *arg)
 	floor = &data->map_ptr->floor_colors;
 	background(*data->m_ptr, get_rgb(sky->r, sky->g, sky->b), \
 		get_rgb(floor->r, floor->g, floor->b));
-	x = 0;
-	while (x < SCREENWIDTH)
+	r->x = 0;
+	while (r->x < SCREENWIDTH)
 	{
-		render_frames1(data, &x);
-		render_frames2(data, &x);
-		data->z_buffer[x] = data->perp_wall_dist;
-		x++;
+		render_frames1(data, &r->x);
+		render_frames2(data, &r->x);
+		data->z_buffer[r->x] = data->perp_wall_dist;
+		r->x++;
 	}
-	x = 0;
-	data->head = creat_node(data, x);
-	while (++x < m->sprites_nb )
+	r->x = 0;
+	data->head = creat_node(data, r->x);
+	while (++r->x < m->sprites_nb )
     {
-		add_element_back(data->head, data, x);
+		add_element_back(data->head, data, r->x);
     }
 	order_list(&data->head);
 	while (data->head != NULL)
 	{
-		x = 0;
+		r->x = 0;
 		m->sprite_x = m->sprite_arr[data->head->order].x;
 		m->sprite_y = m->sprite_arr[data->head->order].y;
 		sprite_x = m->sprite_x - data->pos_x + 0.5;

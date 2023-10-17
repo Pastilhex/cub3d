@@ -209,6 +209,29 @@ enum e_direction
 	barrel = 13,
 };
 
+typedef	struct s_rend_sprite
+{
+	int		x;
+	int		y;
+	int		d;
+	double		sprite_x;
+	double		sprite_y;
+	double		inv_det;
+	double		transform_x;
+	double		transform_y;
+	int 		sprite_screen_x;
+	int			sprite_height;
+	int			sprite_width;
+	int			draw_start_y;
+	int			draw_end_y;
+	int			draw_start_x;
+	int			draw_end_x;
+	int			stripe;
+	int			tex_y;
+
+}		t_rend_sprite;
+
+
 /*-----> Bonus <-----*/
 void		init_bonus(t_map *map, t_data *d);
 void		draw_hud(t_data *data);
