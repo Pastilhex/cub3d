@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/17 22:20:34 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/18 00:03:29 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef	struct sprite_list
 
 typedef struct s_data
 {
+	int				press_space;
 	int				move_up;
 	int				move_down;
 	int				move_left;
@@ -123,10 +124,12 @@ typedef struct s_data
 	int				tex_x;
 	int				pitch;
 	int				swap_img;
+	int				swap_hands;
 	double 			z_buffer[SCREENWIDTH];
 	t_s_list		*head;
 	t_texture		*txt_ptr;
 	t_texture		*txt_head;
+	t_texture		*txt_hands;
 	struct s_map	*map_ptr;
 	struct s_draw	*draw_ptr;
 	t_mlx			*m_ptr;
@@ -156,6 +159,7 @@ typedef struct s_map {
 	char		*barrel_texture;
 	char		*hands;
 	char		**animated_head;
+	char		**animated_hands;
 	double		wall_x;
 	double		step;
 	double		tex_pos;
@@ -242,8 +246,9 @@ void		init_bonus(t_map *map, t_data *d);
 void		draw_hud(t_data *data);
 void		draw_hands(t_data *data);
 void		draw_wall(t_data *d, char wall_nbr, t_texture *txt_ns, t_texture *txt_we);
-void		img_head(t_data *d);
 void		draw_head_hud(t_data *data);
+void		img_head(t_data *d);
+void		img_hands(t_data *d);
 
 /*-----> Utils <-----*/
 int			ft_atoi(const char *str);

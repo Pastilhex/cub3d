@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:21:33 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/17 22:57:11 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/18 00:08:40 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	init_bonus_sprites(t_data *d)
 	new_img(d, ceilinglamp, d->map_ptr->ceilinglamp_texture);			//11
 	new_img(d, barrel, d->map_ptr->barrel_texture);						//13
 	img_head(d);
+	img_hands(d);
 }	
 
 void	init_bonus_textures(t_data *d)
@@ -38,7 +39,7 @@ void	init_bonus_textures(t_data *d)
 	new_img(d, blue2, d->map_ptr->blue2_wall_texture);					//8
 	new_img(d, blueskeleton, d->map_ptr->blueskeleton_wall_texture);	//9
 	new_img(d, blueempty, d->map_ptr->blueempty_wall_texture);			//10
-	new_img(d, hands, d->map_ptr->hands);								//12
+//	new_img(d, hands, d->map_ptr->hands);								//12
 }
 
 void	init_textures_img(t_data *d)
@@ -64,11 +65,17 @@ void	init_bonus(t_map *map, t_data *d)
 	map->blueempty_wall_texture = "./bonus/textures/xpm/blueempty.xpm";
 	map->ceilinglamp_texture = "./bonus/textures/xpm/finalceilinglamp.xpm";
 	map->barrel_texture = "./bonus/textures/xpm/barrel.xpm";
-	map->hands = "./bonus/textures/xpm/handsgun.xpm";
+	//map->hands = "./bonus/textures/xpm/handsgun.xpm";
+
 	map->animated_head = ft_calloc(3, sizeof(char *));
 	map->animated_head[0] = "./bonus/textures/xpm/guard/head_01.xpm";
 	map->animated_head[1] = "./bonus/textures/xpm/guard/head_02.xpm";
 	map->animated_head[2] = "./bonus/textures/xpm/guard/head_03.xpm";
+
+	map->animated_hands = ft_calloc(3, sizeof(char *));
+	map->animated_hands[0] = "./bonus/textures/xpm/handsgun01.xpm";
+	map->animated_hands[1] = "./bonus/textures/xpm/handsgun02.xpm";
+	map->animated_hands[2] = "./bonus/textures/xpm/handsgun03.xpm";
 }
 
 void	img_head(t_data *d)
@@ -92,4 +99,27 @@ void	img_head(t_data *d)
 	d->txt_head[2].addr = mlx_get_data_addr(d->txt_head[2].img,
 			&d->txt_head[2].bits_per_pixel, &d->txt_head[2].line_length,
 			&d->txt_head[2].endian);
+}
+
+void	img_hands(t_data *d)
+{
+	d->map_ptr->start_time = get_actual_time();
+	d->swap_hands = 0;
+	d->txt_hands = malloc(sizeof(t_texture) * 3);
+	d->txt_hands[0].img = mlx_xpm_file_to_image(d->m_ptr->mlx, d->map_ptr->animated_hands[0], &d->txt_hands[0].txt_w, &d->txt_hands[0].txt_h);
+	d->txt_hands[0].addr = mlx_get_data_addr(d->txt_hands[0].img, &d->txt_hands[0].bits_per_pixel, &d->txt_hands[0].line_length, &d->txt_hands[0].endian);
+
+	d->txt_hands[1].img = mlx_xpm_file_to_image(d->m_ptr->mlx,
+			d->map_ptr->animated_hands[1], &d->txt_hands[1].txt_w,
+			&d->txt_hands[1].txt_h);
+	d->txt_hands[1].addr = mlx_get_data_addr(d->txt_hands[1].img,
+			&d->txt_hands[1].bits_per_pixel, &d->txt_hands[1].line_length,
+			&d->txt_hands[1].endian);
+
+	d->txt_hands[2].img = mlx_xpm_file_to_image(d->m_ptr->mlx,
+			d->map_ptr->animated_hands[2], &d->txt_hands[2].txt_w,
+			&d->txt_hands[2].txt_h);
+	d->txt_hands[2].addr = mlx_get_data_addr(d->txt_hands[2].img,
+			&d->txt_hands[2].bits_per_pixel, &d->txt_hands[2].line_length,
+			&d->txt_hands[2].endian);
 }
