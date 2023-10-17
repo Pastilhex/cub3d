@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures_img.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:21:33 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/16 15:36:11 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/17 22:57:11 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	new_img(t_data *d, enum e_direction var, char *txt)
 void	init_bonus_sprites(t_data *d)
 {
 	new_img(d, ceilinglamp, d->map_ptr->ceilinglamp_texture);			//11
-	new_img(d, barrel, d->map_ptr->barrel_texture);				//13
+	new_img(d, barrel, d->map_ptr->barrel_texture);						//13
+	img_head(d);
 }	
 
 void	init_bonus_textures(t_data *d)
@@ -64,4 +65,31 @@ void	init_bonus(t_map *map, t_data *d)
 	map->ceilinglamp_texture = "./bonus/textures/xpm/finalceilinglamp.xpm";
 	map->barrel_texture = "./bonus/textures/xpm/barrel.xpm";
 	map->hands = "./bonus/textures/xpm/handsgun.xpm";
+	map->animated_head = ft_calloc(3, sizeof(char *));
+	map->animated_head[0] = "./bonus/textures/xpm/guard/head_01.xpm";
+	map->animated_head[1] = "./bonus/textures/xpm/guard/head_02.xpm";
+	map->animated_head[2] = "./bonus/textures/xpm/guard/head_03.xpm";
+}
+
+void	img_head(t_data *d)
+{
+	d->map_ptr->start_time = get_actual_time();
+	d->swap_img = 0;
+	d->txt_head = malloc(sizeof(t_texture) * 3);
+	d->txt_head[0].img = mlx_xpm_file_to_image(d->m_ptr->mlx, d->map_ptr->animated_head[0], &d->txt_head[0].txt_w, &d->txt_head[0].txt_h);
+	d->txt_head[0].addr = mlx_get_data_addr(d->txt_head[0].img, &d->txt_head[0].bits_per_pixel, &d->txt_head[0].line_length, &d->txt_head[0].endian);
+
+	d->txt_head[1].img = mlx_xpm_file_to_image(d->m_ptr->mlx,
+			d->map_ptr->animated_head[1], &d->txt_head[1].txt_w,
+			&d->txt_head[1].txt_h);
+	d->txt_head[1].addr = mlx_get_data_addr(d->txt_head[1].img,
+			&d->txt_head[1].bits_per_pixel, &d->txt_head[1].line_length,
+			&d->txt_head[1].endian);
+
+	d->txt_head[2].img = mlx_xpm_file_to_image(d->m_ptr->mlx,
+			d->map_ptr->animated_head[2], &d->txt_head[2].txt_w,
+			&d->txt_head[2].txt_h);
+	d->txt_head[2].addr = mlx_get_data_addr(d->txt_head[2].img,
+			&d->txt_head[2].bits_per_pixel, &d->txt_head[2].line_length,
+			&d->txt_head[2].endian);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_frames.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:11:26 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/17 19:11:27 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/17 22:16:58 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	calc_sprites(t_map *m, t_data *data, t_rend_sprite *r)
 	r->inv_det = 1.0 / (data->plane_x * data->dir_y - data->dir_x * data->plane_y);
 	r->transform_x = r->inv_det * (data->dir_y * r->sprite_x - data->dir_x * r->sprite_y);
 	r->transform_y = r->inv_det * (-data->plane_y * r->sprite_x + data->plane_x * r->sprite_y); 
-	r->sprite_screen_x = (int)((SCREENWIDTH / 2) * (1 + r->transform_x / r->transform_y));
+	r->sprite_screen_x = (int)((SCREENWIDTH / 2.0) * (1 + r->transform_x / r->transform_y));
 	r->sprite_height = abs((int)(SCREENHEIGHT / r->transform_y));
 	r->draw_start_y = -r->sprite_height / 2 + SCREENHEIGHT / 2;
 	if (r->draw_start_y < 0)
@@ -153,6 +153,7 @@ void	main_render(t_map *m, t_data *data, t_rend_sprite *r)
 	}
 	draw_hands(data);
 	draw_hud(data);
+	draw_head_hud(data);
 }
 
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   background.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:50:21 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/17 19:00:59 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/17 22:58:44 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,46 @@ void	draw_hud(t_data *data)
 		i++;
 	}
 }
+
+void	draw_head_hud(t_data *data)
+{
+	int	i;
+	int	j;
+    double a;
+    double b;
+    double begin_i;
+    double begin_j;
+
+    a = 47.0 / ((double) SCREENWIDTH / 13.617021277);
+    b = (62.0 / ((double) SCREENHEIGHT / 7.741935484));
+    begin_i = (SCREENWIDTH * 0.46328125);
+    begin_j = (SCREENHEIGHT * 0.85);
+	i = SCREENWIDTH * 0.46328125;
+	j = SCREENHEIGHT * 0.85;
+	
+	data->map_ptr->current_time = get_actual_time();
+	if (data->map_ptr->current_time - data->map_ptr->start_time >= 1000)
+	{
+		printf("%d tempo %ld\n", data->swap_img, data->map_ptr->current_time);
+		data->swap_img++;
+		if (data->swap_img == 3)
+		{
+			data->map_ptr->start_time = data->map_ptr->current_time;
+			data->swap_img = 0;
+		}
+	}
+	while (i < SCREENWIDTH * 0.53671875)
+	{
+		j = SCREENHEIGHT * 0.85;
+		while (j < SCREENHEIGHT)
+		{
+			ft_pixel_put(data->m_ptr, i, j, (unsigned int)ft_pixel_get(&data->txt_head[data->swap_img], (int)((i - begin_i) * a), (int)((j - begin_j) * b)));
+			j++;
+		}
+		i++;
+	}
+}
+
 void    draw_hands(t_data *data)
 {
     int i;

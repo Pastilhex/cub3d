@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/17 18:38:24 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/17 22:20:34 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,9 +122,11 @@ typedef struct s_data
 	double			tps;
 	int				tex_x;
 	int				pitch;
+	int				swap_img;
 	double 			z_buffer[SCREENWIDTH];
 	t_s_list		*head;
 	t_texture		*txt_ptr;
+	t_texture		*txt_head;
 	struct s_map	*map_ptr;
 	struct s_draw	*draw_ptr;
 	t_mlx			*m_ptr;
@@ -153,6 +155,7 @@ typedef struct s_map {
 	char		*ceilinglamp_texture;
 	char		*barrel_texture;
 	char		*hands;
+	char		**animated_head;
 	double		wall_x;
 	double		step;
 	double		tex_pos;
@@ -176,6 +179,8 @@ typedef struct s_map {
 	int			sprite_index;
 	int			*sprite_order;
 	int			*sprite_distance;
+	time_t		start_time;
+	time_t		current_time;
 	t_data		*data_ptr;
 	t_sprite	*sprite_arr;
 	uint32_t	color;
@@ -237,6 +242,8 @@ void		init_bonus(t_map *map, t_data *d);
 void		draw_hud(t_data *data);
 void		draw_hands(t_data *data);
 void		draw_wall(t_data *d, char wall_nbr, t_texture *txt_ns, t_texture *txt_we);
+void		img_head(t_data *d);
+void		draw_head_hud(t_data *data);
 
 /*-----> Utils <-----*/
 int			ft_atoi(const char *str);
