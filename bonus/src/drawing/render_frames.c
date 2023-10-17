@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_frames.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:11:26 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/16 22:49:58 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/17 18:33:53 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,23 +85,52 @@ void	init_t_rend(t_rend_sprite *r)
 	r->tex_y = 0;
 }
 
-int	render_frames(void *arg)
+void	calc_sprites(t_map *m, t_data *data, t_rend_sprite *r)
 {
-	t_data			*data;
-	t_rgb			*sky;
-	t_rgb			*floor;
-	t_map			*m;
-	t_rend_sprite	*r;
+	r->x = 0;
+	m->sprite_x = m->sprite_arr[data->head->order].x;
+	m->sprite_y = m->sprite_arr[data->head->order].y;
+	r->sprite_x = m->sprite_x - data->pos_x + 0.5;
+	r->sprite_y = m->sprite_y - data->pos_y + 0.5;
+	r->inv_det = 1.0 / (data->plane_x * data->dir_y - data->dir_x * data->plane_y);
+	r->transform_x = r->inv_det * (data->dir_y * r->sprite_x - data->dir_x * r->sprite_y);
+	r->transform_y = r->inv_det * (-data->plane_y * r->sprite_x + data->plane_x * r->sprite_y); 
+	r->sprite_screen_x = (int)((SCREENWIDTH / 2) * (1 + r->transform_x / r->transform_y));
+	r->sprite_height = abs((int)(SCREENHEIGHT / r->transform_y));
+	r->draw_start_y = -r->sprite_height / 2 + SCREENHEIGHT / 2;
+	if (r->draw_start_y < 0)
+		r->draw_start_y = 0;
+	r->draw_end_y = r->sprite_height / 2 + SCREENHEIGHT / 2;
+	if (r->draw_end_y >= SCREENHEIGHT)
+		r->draw_end_y = SCREENHEIGHT - 1;
+	r->sprite_width = abs((int)(SCREENWIDTH / r->transform_y));
+	r->draw_start_x = -r->sprite_width / 2 + r->sprite_screen_x;
+	if (r->draw_start_x < 0)
+		r->draw_start_x = 0;
+	r->draw_end_x = r->sprite_width / 2 + r->sprite_screen_x;
+	if(r->draw_end_x >= SCREENWIDTH)
+		r->draw_end_x = SCREENWIDTH - 1;
+	r->stripe = r->draw_start_x;
+}
 
-	init_t_rend(r);
-	
-
-	data = arg;
-	m = data->map_ptr;
-	sky = &data->map_ptr->ceiling_colors;
-	floor = &data->map_ptr->floor_colors;
-	background(*data->m_ptr, get_rgb(sky->r, sky->g, sky->b), \
-		get_rgb(floor->r, floor->g, floor->b));
+void	rend_sprites(t_map *m, t_data *data, t_rend_sprite *r)
+{
+	data->tex_x = (int)(256 * (r->stripe - (-r->sprite_width / 2 + r->sprite_screen_x)) * TEXWIDTH / r->sprite_width) / 256;
+	if ((r->transform_y > 0 && r->stripe > 0 && r->stripe < SCREENWIDTH && r->transform_y < data->z_buffer[r->stripe]))
+	{
+		r->y = r->draw_start_y;
+		while (r->y < r->draw_end_y)
+		{
+			r->d = r->y * 256 - SCREENHEIGHT * 128 + r->sprite_height * 128;
+			r->tex_y = ((r->d * TEXHEIGHT) / r->sprite_height) / 256;
+			ft_pixel_put(data->m_ptr, r->stripe, r->y, (unsigned int)ft_pixel_get(m->sprite_arr[data->head->order].txt, data->tex_x, r->tex_y));
+			r->y++;
+		}
+	}
+	r->stripe++;	
+}
+void	main_render(t_map *m, t_data *data, t_rend_sprite *r)
+{
 	r->x = 0;
 	while (r->x < SCREENWIDTH)
 	{
@@ -119,56 +148,41 @@ int	render_frames(void *arg)
 	order_list(&data->head);
 	while (data->head != NULL)
 	{
-		r->x = 0;
-		m->sprite_x = m->sprite_arr[data->head->order].x;
-		m->sprite_y = m->sprite_arr[data->head->order].y;
-		sprite_x = m->sprite_x - data->pos_x + 0.5;
-		sprite_y = m->sprite_y - data->pos_y + 0.5;
-		inv_det = 1.0 / (data->plane_x * data->dir_y - data->dir_x * data->plane_y);
-		transform_x = inv_det * (data->dir_y * sprite_x - data->dir_x * sprite_y);
-		transform_y = inv_det * (-data->plane_y * sprite_x + data->plane_x * sprite_y); 
-		sprite_screen_x = (int)((SCREENWIDTH / 2) * (1 + transform_x / transform_y));
-		sprite_height = abs((int)(SCREENHEIGHT / transform_y));
-		draw_start_y = -sprite_height / 2 + SCREENHEIGHT / 2;
-		if (draw_start_y < 0)
-			draw_start_y = 0;
-		draw_end_y = sprite_height / 2 + SCREENHEIGHT / 2;
-		if (draw_end_y >= SCREENHEIGHT)
-			draw_end_y = SCREENHEIGHT - 1;
-		sprite_width = abs((int)(SCREENWIDTH / transform_y));
-		draw_start_x = -sprite_width / 2 + sprite_screen_x;
-		if (draw_start_x < 0)
-			draw_start_x = 0;
-		draw_end_x = sprite_width / 2 + sprite_screen_x;
-		if(draw_end_x >= SCREENWIDTH)
-			draw_end_x = SCREENWIDTH - 1;
-		stripe = draw_start_x;
-		while (stripe < draw_end_x)
-		{
-			data->tex_x = (int)(256 * (stripe - (-sprite_width / 2 + sprite_screen_x)) * TEXWIDTH / sprite_width) / 256;
-			if ((transform_y > 0 && stripe > 0 && stripe < SCREENWIDTH && transform_y < data->z_buffer[stripe]))
-			{
-				y = draw_start_y;
-				while (y < draw_end_y)
-				{
-					d = y * 256 - SCREENHEIGHT * 128 + sprite_height * 128;
-					tex_y = ((d * TEXHEIGHT) / sprite_height) / 256;
-					ft_pixel_put(data->m_ptr, stripe, y, (unsigned int)ft_pixel_get(m->sprite_arr[data->head->order].txt, data->tex_x, tex_y));
-					y++;
-				}
-			}
-			stripe++;	
-		}
+		calc_sprites(m, data, r);
+		while (r->stripe < r->draw_end_x)
+			rend_sprites(m, data, r);
 		data->head = data->head->next;
 	}
 	draw_hands(data);
 	draw_hud(data);
+}
+
+
+int	render_frames(void *arg)
+{
+	t_data			*data;
+	t_rgb			*sky;
+	t_rgb			*floor;
+	t_map			*m;
+	t_rend_sprite	*r;
+
+	r = (t_rend_sprite *) malloc(sizeof(t_rend_sprite));
+	init_t_rend(r);
+	data = arg;
+	m = data->map_ptr;
+	sky = &data->map_ptr->ceiling_colors;
+	floor = &data->map_ptr->floor_colors;
+	background(*data->m_ptr, get_rgb(sky->r, sky->g, sky->b), \
+		get_rgb(floor->r, floor->g, floor->b));
+	main_render(m, data, r);
 	mlx_put_image_to_window(data->m_ptr->mlx, data->m_ptr->mlx_win, data->m_ptr->img, 0, 0);
 	fps(data);
 	data->move_speed = data->frame_time * 3;
 	data->rot_speed = data->frame_time * 2.0;
 	data->move_margin = 0.6;
 	move_player(data);
+	clear_list(data->head);
+	free(r);
 	return (0);
 }
 

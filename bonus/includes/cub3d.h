@@ -322,6 +322,8 @@ t_s_list	*find_tail(t_s_list **stack);
 t_s_list	*add_element_back(t_s_list *head, t_data *d, int x);
 void    	print_list(t_s_list *head);
 void		order_list(t_s_list **head);
+void		clear_list(t_s_list *node);
+
 
 /*-----> Debug <-----*/
 void		ft_print_array(char **arr, int nb_lines);

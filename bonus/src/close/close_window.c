@@ -50,7 +50,7 @@ int	close_window(t_data *d)
 	if (d->m_ptr->mlx)
 		mlx_destroy_image(d->m_ptr->mlx, d->m_ptr->img);
 	i = -1;
-	while (++i < 4)
+	while (++i < 14)
 		if (d->m_ptr->mlx)
 			mlx_destroy_image(d->m_ptr->mlx, d->txt_ptr[i].img);
 	if (d->m_ptr->mlx_win)

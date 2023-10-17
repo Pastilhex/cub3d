@@ -126,8 +126,18 @@ void    print_list(t_s_list *head)
         current = current->next;
     }
 }
-    
-    
+void    clear_list(t_s_list *node)
+{
+    t_s_list    *curr;
+
+    curr = node;
+    while (node !=NULL && curr->next != NULL)
+    {
+        node = curr;
+        curr = curr->next;
+        free(node);
+    }
+} 
     
     
     
