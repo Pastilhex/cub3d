@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_to_array.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/16 22:37:50 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/17 18:49:12 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,16 @@ void 	set_sprite_arr(t_map *m, int i, int j, char c)
 	sprite = m->sprite_arr;
 	sprite[m->sprite_index].x = i;
 	sprite[m->sprite_index].y = j;
-	m->world_map[i][j] = '0';
 	if (c == '6')
+	{
+		m->world_map[i][j] = '0';
 		sprite[m->sprite_index].txt = &m->data_ptr->txt_ptr[ceilinglamp];
+	}
 	if (c == '7')
+	{
 		sprite[m->sprite_index].txt = &m->data_ptr->txt_ptr[barrel];
+		m->world_map[i][j] = '7';
+	}
 	m->sprite_index++;
 }
 

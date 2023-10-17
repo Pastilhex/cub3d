@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:11:26 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/17 18:33:53 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/17 19:11:27 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,9 +142,7 @@ void	main_render(t_map *m, t_data *data, t_rend_sprite *r)
 	r->x = 0;
 	data->head = creat_node(data, r->x);
 	while (++r->x < m->sprites_nb )
-    {
 		add_element_back(data->head, data, r->x);
-    }
 	order_list(&data->head);
 	while (data->head != NULL)
 	{
@@ -175,11 +173,12 @@ int	render_frames(void *arg)
 	background(*data->m_ptr, get_rgb(sky->r, sky->g, sky->b), \
 		get_rgb(floor->r, floor->g, floor->b));
 	main_render(m, data, r);
-	mlx_put_image_to_window(data->m_ptr->mlx, data->m_ptr->mlx_win, data->m_ptr->img, 0, 0);
+	mlx_put_image_to_window(data->m_ptr->mlx, \
+	data->m_ptr->mlx_win, data->m_ptr->img, 0, 0);
 	fps(data);
 	data->move_speed = data->frame_time * 3;
 	data->rot_speed = data->frame_time * 2.0;
-	data->move_margin = 0.6;
+	data->move_margin = 0.4;
 	move_player(data);
 	clear_list(data->head);
 	free(r);
