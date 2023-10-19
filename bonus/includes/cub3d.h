@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/19 20:49:09 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/19 21:57:56 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # include <stdint.h>
 # include <fcntl.h>
 
-# define SCREENWIDTH 1024
-# define SCREENHEIGHT 768
+# define SCREENWIDTH 1280
+# define SCREENHEIGHT 960
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
 

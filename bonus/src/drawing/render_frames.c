@@ -225,9 +225,10 @@ void	draw_square(char c, t_data *d, int x, int y)
 	int				x_end;
 	int				y_end;
 	int				start_y;
+
 	(void)		c;
-	x_end = x + 6;
-	y_end = y + 6;
+	x_end = x + (0.0125 * SCREENHEIGHT);
+	y_end = y + (0.009375 * SCREENWIDTH);
 	start_y = y;
 	color = 0xA4A4A4;
 	if (c != '0')
@@ -237,14 +238,11 @@ void	draw_square(char c, t_data *d, int x, int y)
 		y = start_y;
 		while (y < y_end)
 		{
-			// printf("#");
 			ft_pixel_put(d->m_ptr, y, x, color);
 			y++;
 		}
-		// printf("\n");
 		x++;
 	}
-	
 }
 void	draw_miniplayer(t_data *data)
 {
@@ -261,10 +259,10 @@ void	draw_miniplayer(t_data *data)
     begin_j = (SCREENHEIGHT * 0.9125);
 
 	i = SCREENWIDTH * 0.86875;
-	while (i < SCREENWIDTH * 0.8765625)
+	while (i < SCREENWIDTH * 0.878125)
 	{
 		j = SCREENHEIGHT * 0.9125;
-		while (j < SCREENHEIGHT * 0.922916667)
+		while (j < SCREENHEIGHT * 0.925)
 		{
 			ft_pixel_put(data->m_ptr, i, j, (unsigned int)ft_pixel_get(&data->txt_ptr[miniplayer], (int)((i - begin_i) * a), (int)((j - begin_j) * b)));
 			j++;
@@ -277,17 +275,13 @@ void	draw_miniplayer(t_data *data)
 void	get_minimap(t_data *d)
 {	
 		t_minimap mm;
-		// int		count;
-		// int		x_player;
-		// int 	y_player;
-		
-		// count = 0;
+
 		d->mini_map_ptr = &mm;
 		mm.start_x = d->pos_x;
 		mm.end_x = d->pos_x + 10 + 10;
 		mm.start_y = d->pos_y;
 		mm.end_y = d->pos_y + 5 + 5;
-		mm.x = SCREENHEIGHT * 0.85;
+		mm.x = ((double)SCREENHEIGHT * 0.85);
 		mm.big_map = ft_calloc((d->map_ptr->map_end - d->map_ptr->map_start + 10), sizeof(char *));
 		copy_large_world_map(d);
 		// ft_print_array(d->mini_map_ptr->big_map, d->map_ptr->map_end - d->map_ptr->map_start + 10);
@@ -299,10 +293,10 @@ void	get_minimap(t_data *d)
 			{
 				draw_square(mm.big_map[(int)mm.start_x][(int)mm.start_y], d, mm.x, mm.y);
 				mm.start_y++;
-				mm.y += SCREENWIDTH * 0.009375;
+				mm.y += 0.009375 * SCREENWIDTH;
 			}
 			mm.start_x++;
-			mm.x += SCREENHEIGHT * 0.0125;
+			mm.x += (0.0125 * SCREENHEIGHT);
 		}
 		free_arr2(d->mini_map_ptr->big_map, d->map_ptr->map_end - d->map_ptr->map_start + 10);
 		draw_miniplayer(d);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_keypress.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:56:22 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/19 19:49:14 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/19 21:17:16 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ int	handle_mouse(int x, int y, t_data *d)
 		move_p_left(d->m_ptr);
 	else if (x > prev)
 		move_p_right(d->m_ptr);
-	prev = SCREENWIDTH / 2;
+	// prev = SCREENWIDTH / 2;
+	prev = x;
 	(void)x;
 	(void)y;
 	(void)d;
