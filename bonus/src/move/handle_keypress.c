@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_keypress.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:56:22 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/18 00:10:48 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/19 19:49:14 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,3 +73,37 @@ int	handle_keyrelease(int keysym, t_mlx *m)
 		m->data_ptr->move_left = 0;
 	return (0);
 }
+
+int	handle_mouse(int x, int y, t_data *d)
+{
+	static int prev;
+
+	if (x < 0 || x > SCREENWIDTH)
+		x = SCREENWIDTH / 2;
+	if (x < prev)
+		move_p_left(d->m_ptr);
+	else if (x > prev)
+		move_p_right(d->m_ptr);
+	prev = SCREENWIDTH / 2;
+	(void)x;
+	(void)y;
+	(void)d;
+	// mlx_mouse_move(d->m_ptr->mlx, d->m_ptr->mlx_win, prev, y);
+	return (1);
+}
+
+int	handle_mouse_fire(int button, int x, int y, t_data *d)
+{
+	if (button == 1)
+		d->press_space = 1;
+	(void)x;
+	(void)y;
+	(void)d;
+	return (0);
+}
+
+// int	win_focus(t_mlx *m)
+// {
+// 	handle_mouse(SCREENWIDTH / 2, SCREENHEIGHT / 2, m->data_ptr);
+// 	return (1);
+// }

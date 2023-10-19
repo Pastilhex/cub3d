@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/18 00:03:29 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:49:09 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,39 @@ typedef	struct sprite_list
 	struct sprite_list *previous;
 } 		t_s_list;
 
+typedef	struct s_minimap
+{
+	double		start_x;
+	double		start_y;
+	double		end_x;
+	double		end_y;
+	int			x;
+	int			y;
+	int			world_map_size;
+	char		**big_map;
+}	t_minimap;
+
+typedef	struct s_rend_sprite
+{
+	int		x;
+	int		y;
+	int		d;
+	double		sprite_x;
+	double		sprite_y;
+	double		inv_det;
+	double		transform_x;
+	double		transform_y;
+	int 		sprite_screen_x;
+	int			sprite_height;
+	int			sprite_width;
+	int			draw_start_y;
+	int			draw_end_y;
+	int			draw_start_x;
+	int			draw_end_x;
+	int			stripe;
+	int			tex_y;
+
+}		t_rend_sprite;
 
 typedef struct s_data
 {
@@ -133,6 +166,8 @@ typedef struct s_data
 	struct s_map	*map_ptr;
 	struct s_draw	*draw_ptr;
 	t_mlx			*m_ptr;
+	t_rend_sprite	*t_rend_ptr;
+	t_minimap		*mini_map_ptr;
 }	t_data;
 
 typedef struct s_map {
@@ -160,6 +195,8 @@ typedef struct s_map {
 	char		*hands;
 	char		**animated_head;
 	char		**animated_hands;
+	char		*miniplayer_texture;
+	char		*ground_square_texture;
 	double		wall_x;
 	double		step;
 	double		tex_pos;
@@ -173,6 +210,7 @@ typedef struct s_map {
 	int			inside_checked;
 	int			map_start;
 	int			map_end;
+	int			larger_line;
 	int			line_nbr;
 	int			map_copy_x;
 	int			map_copy_y;
@@ -214,32 +252,10 @@ enum e_direction
 	blueskeleton = 9,
 	blueempty = 10,
 	ceilinglamp = 11,
-	hands = 12,
-	barrel = 13,
+	barrel = 12,
+	mini_ground = 13,
+	miniplayer = 14,
 };
-
-typedef	struct s_rend_sprite
-{
-	int		x;
-	int		y;
-	int		d;
-	double		sprite_x;
-	double		sprite_y;
-	double		inv_det;
-	double		transform_x;
-	double		transform_y;
-	int 		sprite_screen_x;
-	int			sprite_height;
-	int			sprite_width;
-	int			draw_start_y;
-	int			draw_end_y;
-	int			draw_start_x;
-	int			draw_end_x;
-	int			stripe;
-	int			tex_y;
-
-}		t_rend_sprite;
-
 
 /*-----> Bonus <-----*/
 void		init_bonus(t_map *map, t_data *d);
@@ -249,6 +265,9 @@ void		draw_wall(t_data *d, char wall_nbr, t_texture *txt_ns, t_texture *txt_we);
 void		draw_head_hud(t_data *data);
 void		img_head(t_data *d);
 void		img_hands(t_data *d);
+int			handle_mouse(int x, int y, t_data *d);
+int			handle_mouse_fire(int button, int x, int y, t_data *d);
+int			win_focus(t_mlx *m);
 
 /*-----> Utils <-----*/
 int			ft_atoi(const char *str);
@@ -265,6 +284,7 @@ char		*ft_strdup(char *s);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
 void		free_arr(char **arr, t_map *m);
 void		free_arr1(char **arr);
+void		free_arr2(char **arr, int size);
 void		ft_put_nbr(long long int nbr, int base, int *len);
 int			get_arr_size(char **arr);
 bool		is_valid_colors(t_rgb *colors);
@@ -281,6 +301,8 @@ void		access_path(t_map *map, char *texture);
 void		free_total(char **arr, char *str);
 char		**ft_split_set(char *str, char *charset);
 int			ft_strcmp(char *s1, char *s2);
+char		*ft_strjoin2(char *s1, char *s2);
+
 
 /*-----> Cub3d <-----*/
 void		ft_pixel_put(t_mlx *data, int x, int y, int color);

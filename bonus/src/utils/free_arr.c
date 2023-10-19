@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_arr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 19:33:08 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/11 23:57:16 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:30:14 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,20 @@ void	free_arr1(char **arr)
 
 	i = 0;
 	while (arr[i])
+	{
+		if (arr[i])
+			free(arr[i]);
+		i++;
+	}
+	free(arr);
+}
+
+void	free_arr2(char **arr, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
 	{
 		if (arr[i])
 			free(arr[i]);

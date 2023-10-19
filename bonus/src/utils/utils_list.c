@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 16:50:40 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/16 22:02:18 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:40:01 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ void    print_list(t_s_list *head)
 void    clear_list(t_s_list *node)
 {
     t_s_list    *curr;
-
     curr = node;
     while (node !=NULL && curr->next != NULL)
     {
@@ -137,6 +136,7 @@ void    clear_list(t_s_list *node)
         curr = curr->next;
         free(node);
     }
+    free(curr);
 } 
     
     

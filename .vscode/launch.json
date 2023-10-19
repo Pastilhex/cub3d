@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/cub3d_bonus",
-			"args": ["bonus/maps/wolfenstein.cub"],
+			"args": ["bonus/maps/test.cub"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],
