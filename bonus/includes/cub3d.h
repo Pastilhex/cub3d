@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/19 21:57:56 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:19:58 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,14 @@
 # include <stdint.h>
 # include <fcntl.h>
 
-# define SCREENWIDTH 1280
-# define SCREENHEIGHT 960
+# define SCREENWIDTH 640
+# define SCREENHEIGHT 480
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
+#define FIXED_POINT_SHIFT 16 // Number of fractional bits
+#define FIXED_POINT_SCALE (1 << FIXED_POINT_SHIFT)
 
+typedef int fixed_point;
 
 typedef struct s_texture
 {
@@ -89,6 +92,22 @@ typedef	struct s_minimap
 	int			world_map_size;
 	char		**big_map;
 }	t_minimap;
+
+typedef struct s_miniplayer
+{
+	int		i_center;
+	int		j_center;
+	int		pl_radius;
+	int		line_length;
+	int		dx;
+	int		dy;
+	int		sx;
+	int		sy;
+	int		err;
+	int		e2;
+	int		x2;
+	int		y2;
+}	t_miniplayer;
 
 typedef	struct s_rend_sprite
 {
@@ -358,9 +377,23 @@ void    	print_list(t_s_list *head);
 void		order_list(t_s_list **head);
 void		clear_list(t_s_list *node);
 
+/*-----> Linked listt <-----*/
+fixed_point		float_to_fixed(float value);
+float 			fixed_to_float(fixed_point value);
+fixed_point 	int_to_fixed(int value);
+int 			fixed_to_int(fixed_point value);
+fixed_point 	fixed_add(fixed_point a, fixed_point b);
+fixed_point 	fixed_sub(fixed_point a, fixed_point b);
+fixed_point 	fixed_mul(fixed_point a, fixed_point b);
+fixed_point 	fixed_div(fixed_point a, fixed_point b);
+
 
 /*-----> Debug <-----*/
 void		ft_print_array(char **arr, int nb_lines);
 void		ft_print_t_map(t_map *m);
+
+
+
+
 
 #endif

@@ -111,6 +111,7 @@ SRC_BONUS = ./bonus/src/parser/check_input.c\
 	./bonus/src/utils/is_direction.c\
 	./bonus/src/utils/isOnlyDigitOrComma.c\
 	./bonus/src/utils/free_arr.c\
+	./bonus/src/utils/float_point.c\
 	./bonus/main.c\
 	./bonus/src/debug.c\
 

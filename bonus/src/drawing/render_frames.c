@@ -129,15 +129,7 @@ void	rend_sprites(t_map *m, t_data *data, t_rend_sprite *r)
 	}
 	r->stripe++;	
 }
-// void	init_t_minimap(t_minimap *mm)
-// {
-// 	mm->start_x = 0.0;
-// 	mm->start_y = 0.0;
-// 	mm->end_x = 0.0;
-// 	mm->end_y = 0.0;
-// 	mm->x = 0;
-// 	mm->y = 0;
-// }
+
 void	set_larger_line(t_data *d)
 {
 	int	i;
@@ -186,8 +178,6 @@ char	 *fill_end(int size)
 	s[i] = '\0';
 	return(s);
 }
-
-	
 void	add_spaces(t_data *d)
 {
 	int	i;
@@ -244,47 +234,101 @@ void	draw_square(char c, t_data *d, int x, int y)
 		x++;
 	}
 }
-void	draw_miniplayer(t_data *data)
+
+void draw_circle(t_mlx *mlx, int x, int y, int radius)
 {
-	int		i;
-	int		j;
-	double	a;
-    double	b;
-    double	begin_i;
-    double	begin_j;
-
-    a = 6 / ((double) SCREENWIDTH / 106.666666667);
-    b = (6 / ((double) SCREENHEIGHT / 80));
-    begin_i = (SCREENWIDTH * 0.86875);
-    begin_j = (SCREENHEIGHT * 0.9125);
-
-	i = SCREENWIDTH * 0.86875;
-	while (i < SCREENWIDTH * 0.878125)
-	{
-		j = SCREENHEIGHT * 0.9125;
-		while (j < SCREENHEIGHT * 0.925)
-		{
-			ft_pixel_put(data->m_ptr, i, j, (unsigned int)ft_pixel_get(&data->txt_ptr[miniplayer], (int)((i - begin_i) * a), (int)((j - begin_j) * b)));
+	int i;
+	int j;
+	int color;
+	
+	color = 0xFF0000;
+	i = 0;
+	while (i < 2 * radius) {
+		j = 0;
+		while (j < 2 * radius) {
+			if ((i - radius) * (i - radius) + (j - radius) * (j - radius) <= radius * radius)
+				ft_pixel_put(mlx, x + i - radius, y + j - radius, color);
 			j++;
 		}
 		i++;
 	}
 }
 
+void	init_t_miniplayer(t_miniplayer *mp)
+{
+	mp->pl_radius = SCREENHEIGHT * 0.00625; 
+	mp->line_length = SCREENHEIGHT * 0.025;
+	//AQUI TEMOOS QUE PEGAR O CENTRO DO MINIMAPA USANDO O INICIO E O FIM DO MINIMAPA PARA SER MAIS PRECISO
+	mp->i_center = (int)((SCREENWIDTH * 0.86875 + SCREENWIDTH * 0.878125) / 2);
+	mp->j_center = (int)((SCREENHEIGHT * 0.9125 + SCREENHEIGHT * 0.9125) / 2);
+	mp->dx = 0;
+	mp->dy = 0;
+	mp->sx = 0;
+	mp->sy = 0;
+	mp->err = 0;
+	mp->e2 = 0;
+	mp->x2 = 0;
+	mp->y2 = 0;
+}
+
+void draw_line(t_data *d, t_miniplayer mp, int x2, int y2)
+{
+	mp.x2 = mp.i_center + (d->dir_y * mp.line_length);
+	mp.y2 = mp.j_center + (d->dir_x * mp.line_length);
+	mp.dx = abs(x2 - mp.i_center);
+	mp.dy = abs(y2 - mp.j_center);
+	mp.err = mp.dx - mp.dy;
+	if (mp.i_center < x2)
+		mp.sx = 1;
+	else
+		mp.sx = -1;
+	if (mp.j_center < y2) 
+		mp.sy = 1;
+	else
+		mp.sy = -1;
+	while (mp.i_center != x2 || mp.j_center != y2)
+	{
+		mp.e2 = 2 * mp.err;
+		if (mp.e2 > -mp.dy)
+		{
+			mp.err -= mp.dy;
+			mp.i_center += mp.sx;
+		}
+		if (mp.e2 < mp.dx)
+		{
+			mp.err += mp.dx;
+			mp.j_center += mp.sy;
+		}
+		ft_pixel_put(d->m_ptr, mp.i_center, mp.j_center, 0xFE1010);
+	}
+}
+
+void	draw_miniplayer(t_data *d)
+{
+	t_miniplayer	mp;
+
+	init_t_miniplayer(&mp);
+	draw_circle(d->m_ptr, mp.i_center, mp.j_center, mp.pl_radius);
+	draw_line(d, mp, mp.i_center + (d->dir_y * mp.line_length), mp.j_center + (d->dir_x * mp.line_length));
+}
+
+void	init_t_minimap(t_minimap *mm, t_data *d)
+{
+	mm->start_x = d->pos_x;
+	mm->end_x = d->pos_x + 10 + 10;
+	mm->start_y = d->pos_y;
+	mm->end_y = d->pos_y + 5 + 5;
+	mm->x = ((double)SCREENHEIGHT * 0.85);
+	mm->big_map = ft_calloc((d->map_ptr->map_end - d->map_ptr->map_start + 10), sizeof(char *));
+}
 
 void	get_minimap(t_data *d)
 {	
 		t_minimap mm;
 
+		init_t_minimap(&mm, d);
 		d->mini_map_ptr = &mm;
-		mm.start_x = d->pos_x;
-		mm.end_x = d->pos_x + 10 + 10;
-		mm.start_y = d->pos_y;
-		mm.end_y = d->pos_y + 5 + 5;
-		mm.x = ((double)SCREENHEIGHT * 0.85);
-		mm.big_map = ft_calloc((d->map_ptr->map_end - d->map_ptr->map_start + 10), sizeof(char *));
 		copy_large_world_map(d);
-		// ft_print_array(d->mini_map_ptr->big_map, d->map_ptr->map_end - d->map_ptr->map_start + 10);
 		while (mm.start_x <= d->pos_x + 10)
 		{	
 			mm.start_y = d->pos_y;
@@ -358,7 +402,7 @@ int	render_frames(void *arg)
 	fps(data);
 	data->move_speed = data->frame_time * 3;
 	if (m->data_ptr->move_left == 1 || m->data_ptr->move_right == 1)
-		data->rot_speed = data->frame_time * 2.75;
+		data->rot_speed = data->frame_time * 2.0;
 	else
 		data->rot_speed = data->frame_time * 1;
 	data->move_margin = 0.4;
