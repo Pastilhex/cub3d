@@ -78,6 +78,9 @@ SRC_BONUS = ./bonus/src/parser/check_input.c\
 	./bonus/src/drawing/background.c\
 	./bonus/src/drawing/ft_pixel_put.c\
 	./bonus/src/drawing/ft_pixel_get.c\
+	./bonus/src/drawing/minimap_utils.c\
+	./bonus/src/drawing/minimap_array.c\
+	./bonus/src/drawing/minimap.c\
 	./bonus/src/init/open_window.c\
 	./bonus/src/init/read_cub_file.c\
 	./bonus/src/init/init_textures_img.c\

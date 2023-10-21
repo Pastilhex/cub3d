@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/20 18:19:58 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/21 11:46:14 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@
 # include <stdint.h>
 # include <fcntl.h>
 
-# define SCREENWIDTH 640
-# define SCREENHEIGHT 480
+# define SCREENWIDTH 1280
+# define SCREENHEIGHT 960
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
-#define FIXED_POINT_SHIFT 16 // Number of fractional bits
+#define FIXED_POINT_SHIFT 16
 #define FIXED_POINT_SCALE (1 << FIXED_POINT_SHIFT)
 
 typedef int fixed_point;
@@ -287,6 +287,19 @@ void		img_hands(t_data *d);
 int			handle_mouse(int x, int y, t_data *d);
 int			handle_mouse_fire(int button, int x, int y, t_data *d);
 int			win_focus(t_mlx *m);
+void		copy_large_world_map(t_data *d);
+void		draw_square(char c, t_data *d, int x, int y);
+void		draw_circle(t_mlx *mlx, int x, int y, int radius);
+void		init_t_miniplayer(t_miniplayer *mp);
+void		draw_line(t_data *d, t_miniplayer mp, int x2, int y2);
+void		draw_miniplayer(t_data *d);
+void		init_t_minimap(t_minimap *mm, t_data *d);
+void		get_minimap(t_data *d);
+void		set_larger_line(t_data *d);
+void		fill_5_lines(t_data *d, int i, int end);
+char		*fill_end(int size);
+void		add_spaces(t_data *d);
+void		get_minimap(t_data *d);
 
 /*-----> Utils <-----*/
 int			ft_atoi(const char *str);
