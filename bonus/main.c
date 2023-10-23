@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:33:20 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/19 19:49:14 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/23 19:08:20 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int	main(int ac, char **av)
 	mlx_hook(m.mlx_win, 17, 0, close_window, &data);
 	mlx_mouse_hook(m.mlx_win, &handle_mouse_fire, &data);
 	mlx_hook(m.mlx_win, 06, 1L << 6, &handle_mouse, &data);
-	// mlx_mouse_hide(m.mlx, m.mlx_win);
-	// mlx_expose_hook(m.mlx_win, win_focus, &m);
 	mlx_loop_hook(m.mlx, render_frames, &data);
 	mlx_loop(m.mlx);
 	return (0);

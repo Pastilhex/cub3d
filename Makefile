@@ -81,6 +81,10 @@ SRC_BONUS = ./bonus/src/parser/check_input.c\
 	./bonus/src/drawing/minimap_utils.c\
 	./bonus/src/drawing/minimap_array.c\
 	./bonus/src/drawing/minimap.c\
+	./bonus/src/drawing/draw_utils.c\
+	./bonus/src/drawing/draw_hands.c\
+	./bonus/src/drawing/draw_head_hud.c\
+	./bonus/src/drawing/sprites.c\
 	./bonus/src/init/open_window.c\
 	./bonus/src/init/read_cub_file.c\
 	./bonus/src/init/init_textures_img.c\
@@ -114,7 +118,6 @@ SRC_BONUS = ./bonus/src/parser/check_input.c\
 	./bonus/src/utils/is_direction.c\
 	./bonus/src/utils/isOnlyDigitOrComma.c\
 	./bonus/src/utils/free_arr.c\
-	./bonus/src/utils/float_point.c\
 	./bonus/main.c\
 	./bonus/src/debug.c\
 

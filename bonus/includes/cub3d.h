@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/21 11:46:14 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/23 20:00:57 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,6 @@
 # define SCREENHEIGHT 960
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
-#define FIXED_POINT_SHIFT 16
-#define FIXED_POINT_SCALE (1 << FIXED_POINT_SHIFT)
-
-typedef int fixed_point;
 
 typedef struct s_texture
 {
@@ -179,6 +175,7 @@ typedef struct s_data
 	int				swap_hands;
 	double 			z_buffer[SCREENWIDTH];
 	t_s_list		*head;
+	t_s_list		*temp_head;
 	t_texture		*txt_ptr;
 	t_texture		*txt_head;
 	t_texture		*txt_hands;
@@ -286,7 +283,6 @@ void		img_head(t_data *d);
 void		img_hands(t_data *d);
 int			handle_mouse(int x, int y, t_data *d);
 int			handle_mouse_fire(int button, int x, int y, t_data *d);
-int			win_focus(t_mlx *m);
 void		copy_large_world_map(t_data *d);
 void		draw_square(char c, t_data *d, int x, int y);
 void		draw_circle(t_mlx *mlx, int x, int y, int radius);
@@ -300,6 +296,14 @@ void		fill_5_lines(t_data *d, int i, int end);
 char		*fill_end(int size);
 void		add_spaces(t_data *d);
 void		get_minimap(t_data *d);
+void		init_t_rend(t_rend_sprite *r);
+void		draw_hands(t_data *data);
+void		draw_head_hud(t_data *data);
+void		draw_hud(t_data *data);
+void		draw_sprites(t_data *data, t_map *m, t_rend_sprite *r);
+
+
+
 
 /*-----> Utils <-----*/
 int			ft_atoi(const char *str);
@@ -334,6 +338,10 @@ void		free_total(char **arr, char *str);
 char		**ft_split_set(char *str, char *charset);
 int			ft_strcmp(char *s1, char *s2);
 char		*ft_strjoin2(char *s1, char *s2);
+void		fps(t_data *data);
+int			get_rgb(int r, int g, int b);
+
+
 
 
 /*-----> Cub3d <-----*/
@@ -346,7 +354,7 @@ int			handle_keyrelease(int keysym, t_mlx *m);
 int			close_window(t_data *d);
 void		init_data(t_data *d, struct s_map *map_ptr, t_mlx *m);
 int			render_frames(void *arg);
-void		render_frames2(t_data *data, int *x);
+void		draw_walls(t_data *data, int *x);
 void		background(t_mlx m, int ground_color, int sky_color);
 void		init_textures_img(t_data *d);
 void		init_mlx(t_mlx *m);
@@ -372,7 +380,6 @@ void		check_line_for_digit(char *line, char **arr, t_map *m);
 int			is_coordinate(char *line);
 bool		is_sprite(char c);
 
-
 /*-----> Player Movement <-----*/
 void		move_p_up(t_mlx *m);
 void		move_p_down(t_mlx *m);
@@ -389,17 +396,6 @@ t_s_list	*add_element_back(t_s_list *head, t_data *d, int x);
 void    	print_list(t_s_list *head);
 void		order_list(t_s_list **head);
 void		clear_list(t_s_list *node);
-
-/*-----> Linked listt <-----*/
-fixed_point		float_to_fixed(float value);
-float 			fixed_to_float(fixed_point value);
-fixed_point 	int_to_fixed(int value);
-int 			fixed_to_int(fixed_point value);
-fixed_point 	fixed_add(fixed_point a, fixed_point b);
-fixed_point 	fixed_sub(fixed_point a, fixed_point b);
-fixed_point 	fixed_mul(fixed_point a, fixed_point b);
-fixed_point 	fixed_div(fixed_point a, fixed_point b);
-
 
 /*-----> Debug <-----*/
 void		ft_print_array(char **arr, int nb_lines);

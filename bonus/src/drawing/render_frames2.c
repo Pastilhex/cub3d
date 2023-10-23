@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_frames2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:05:09 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/17 18:55:31 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/23 19:10:49 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ static void	draw_cols(t_data *data, int *x)
 	}
 }
 
-void	render_frames2(t_data *data, int *x)
+void	draw_walls(t_data *data, int *x)
 {
 	if (data->ray_dir_y < 0)
 	{

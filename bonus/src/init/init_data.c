@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:42:45 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/19 20:12:30 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/23 19:53:36 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static void	init_data2(t_data *d, struct s_map *map_ptr, t_mlx *m)
 	d->map_ptr = map_ptr;
 	d->m_ptr = m;
 	d->mini_map_ptr = NULL;
+	d->head = NULL;
+	d->temp_head = NULL;
 }
 
 void	init_data(t_data *d, struct s_map *map_ptr, t_mlx *m)
@@ -97,6 +99,27 @@ void	init_t_map(t_map *map, t_data *d)
 	map->line_nbr = 0;
 	map->has_player = 0;
 	map->sprites_nb = 0;
+}
+
+void	init_t_rend(t_rend_sprite *r)
+{
+	r->x = 0;
+	r->y = 0;
+	r->d = 0;
+	r->sprite_x = 0.0;
+	r->sprite_y = 0.0;
+	r->inv_det = 0.0;
+	r->transform_x = 0.0;
+	r->transform_y = 0.0;
+	r->sprite_screen_x = 0;
+	r->sprite_height = 0;
+	r->sprite_width = 0;
+	r->draw_start_y = 0;
+	r->draw_end_y = 0;
+	r->draw_start_x = 0;
+	r->draw_end_x = 0;
+	r->stripe = 0;
+	r->tex_y = 0;
 }
 
 void	init_mlx(t_mlx *m)
