@@ -5,6 +5,7 @@
         "get_next_line.h": "c",
         "math.h": "c",
         "unistd.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "random": "c"
     }
 }

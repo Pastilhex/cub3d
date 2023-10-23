@@ -3,56 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_to_array.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/17 18:49:12 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/23 21:50:44 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-void	set_start_ns(char c, t_data *d)
-{
-	if (c == 'N')
-	{
-		d->dir_x = -1;
-		d->dir_y = 0;
-		d->plane_x = 0;
-		d->plane_y = 0.66;
-	}
-	if (c == 'S')
-	{
-		d->dir_x = 1;
-		d->dir_y = 0;
-		d->plane_x = 0;
-		d->plane_y = -0.66;
-	}
-}
-
-void	set_start(double i, double k, char c, t_map *m)
-{
-	t_data	*d;
-
-	d = m->data_ptr;
-	d->pos_x = i + 0.50;
-	d->pos_y = k + 0.50;
-	set_start_ns(c, d);
-	if (c == 'W')
-	{
-		d->dir_x = 0;
-		d->dir_y = -1;
-		d->plane_x = -0.66;
-		d->plane_y = 0;
-	}
-	if (c == 'E')
-	{
-		d->dir_x = 0;
-		d->dir_y = 1;
-		d->plane_x = 0.66;
-		d->plane_y = 0;
-	}
-}
 
 bool	is_valid_char(char c)
 {
@@ -68,17 +26,9 @@ bool	is_sprite(char c)
 	return (false);
 }
 
-t_texture	*get_sprite_texture(char c, t_data *d)
+void	set_sprite_arr(t_map *m, int i, int j, char c)
 {
-	
-	if (c == '6')
-		return (&d->txt_ptr[ceilinglamp]);
-	return (NULL);
-}
-
-void 	set_sprite_arr(t_map *m, int i, int j, char c)
-{
-	t_sprite *sprite;
+	t_sprite	*sprite;
 
 	sprite = m->sprite_arr;
 	sprite[m->sprite_index].x = i;

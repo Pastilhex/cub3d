@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 14:26:54 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/19 14:25:14 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/23 22:19:06 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	free (s1);
 	return (str);
 }
+
 char	*ft_strjoin2(char *s1, char *s2)
 {
 	int		i;

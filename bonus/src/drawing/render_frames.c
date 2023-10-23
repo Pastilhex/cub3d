@@ -40,9 +40,16 @@ static void	calc_walls(t_data *data, int *x)
 			data->delta_dist_x;
 	}
 }
-void	main_render(t_map *m, t_data *data, t_rend_sprite *r)
+
+static void	main_render(t_map *m, t_data *data, t_rend_sprite *r)
 {
-	
+	t_rgb			*sky;
+	t_rgb			*floor;
+
+	sky = &data->map_ptr->ceiling_colors;
+	floor = &data->map_ptr->floor_colors;
+	background(*data->m_ptr, get_rgb(sky->r, sky->g, sky->b), \
+		get_rgb(floor->r, floor->g, floor->b));
 	r->x = 0;
 	while (r->x < SCREENWIDTH)
 	{
@@ -56,14 +63,12 @@ void	main_render(t_map *m, t_data *data, t_rend_sprite *r)
 	draw_hands(data);
 	draw_hud(data);
 	draw_head_hud(data);
-	get_minimap(data);	
+	get_minimap(data);
 }
 
 int	render_frames(void *arg)
 {
 	t_data			*data;
-	t_rgb			*sky;
-	t_rgb			*floor;
 	t_map			*m;
 	t_rend_sprite	*r;
 
@@ -72,10 +77,6 @@ int	render_frames(void *arg)
 	data = arg;
 	data->t_rend_ptr = r;
 	m = data->map_ptr;
-	sky = &data->map_ptr->ceiling_colors;
-	floor = &data->map_ptr->floor_colors;
-	background(*data->m_ptr, get_rgb(sky->r, sky->g, sky->b), \
-		get_rgb(floor->r, floor->g, floor->b));
 	main_render(m, data, r);
 	mlx_put_image_to_window(data->m_ptr->mlx, \
 	data->m_ptr->mlx_win, data->m_ptr->img, 0, 0);
@@ -90,4 +91,3 @@ int	render_frames(void *arg)
 	free(r);
 	return (0);
 }
-

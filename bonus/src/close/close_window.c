@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:59:10 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/19 19:49:13 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/23 22:18:08 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,39 +48,55 @@ static void	cleaning(t_data *d, t_map *m)
 	free(m->sprite_order);
 	free(m->sprite_arr);
 	free(m->sprite_distance);
-	
-	// if(d->t_rend_ptr)
-	// 	free(d->t_rend_ptr);
-	
 }
 
-int	close_window(t_data *d)
+void	destoy_img_arrays(t_data *d)
 {
-	int		i;
+	int	i;
 
-	if (d->m_ptr->mlx)
-		mlx_clear_window(d->m_ptr->mlx, d->m_ptr->mlx_win);
-	if (d->m_ptr->mlx)
-		mlx_destroy_window(d->m_ptr->mlx, d->m_ptr->mlx_win);
-	if (d->m_ptr->mlx)
-		mlx_destroy_image(d->m_ptr->mlx, d->m_ptr->img);
 	i = -1;
 	while (++i < 15)
 		if (d->m_ptr->mlx)
 			mlx_destroy_image(d->m_ptr->mlx, d->txt_ptr[i].img);
 	i = -1;
 	while (++i < 3)
+	{
 		if (d->m_ptr->mlx)
 		{
 			mlx_destroy_image(d->m_ptr->mlx, d->txt_hands[i].img);
 			mlx_destroy_image(d->m_ptr->mlx, d->txt_head[i].img);
 		}
+	}
+}
+
+int	close_window(t_data *d)
+{
+	if (d->m_ptr->mlx)
+		mlx_clear_window(d->m_ptr->mlx, d->m_ptr->mlx_win);
+	if (d->m_ptr->mlx)
+		mlx_destroy_window(d->m_ptr->mlx, d->m_ptr->mlx_win);
+	if (d->m_ptr->mlx)
+		mlx_destroy_image(d->m_ptr->mlx, d->m_ptr->img);
+	destoy_img_arrays(d);
 	if (d->m_ptr->mlx_win)
 		mlx_destroy_display(d->m_ptr->mlx);
 	cleaning(d, d->map_ptr);
 	if (d->m_ptr->mlx)
 		free(d->m_ptr->mlx);
 	exit(0);
-	// mlx_mouse_show(d->m_ptr->mlx, d->m_ptr->mlx_win);
 	return (0);
+}
+
+void	clear_list(t_s_list *node)
+{
+	t_s_list	*curr;
+
+	curr = node;
+	while (node != NULL && curr->next != NULL)
+	{
+		node = curr;
+		curr = curr->next;
+		free(node);
+	}
+	free(curr);
 }

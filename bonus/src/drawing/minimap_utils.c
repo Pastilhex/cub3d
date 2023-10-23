@@ -3,28 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:50:21 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/21 11:30:28 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/23 20:55:24 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-
 void	copy_large_world_map(t_data *d)
 {
 	set_larger_line(d);
 	add_spaces(d);
-	
 }
 
 void	init_t_miniplayer(t_miniplayer *mp)
 {
-	mp->pl_radius = SCREENHEIGHT * 0.00625; 
+	mp->pl_radius = SCREENHEIGHT * 0.00625;
 	mp->line_length = SCREENHEIGHT * 0.025;
-	//AQUI TEMOOS QUE PEGAR O CENTRO DO MINIMAPA USANDO O INICIO E O FIM DO MINIMAPA PARA SER MAIS PRECISO
 	mp->i_center = (int)((SCREENWIDTH * 0.86875 + SCREENWIDTH * 0.878125) / 2);
 	mp->j_center = (int)((SCREENHEIGHT * 0.9125 + SCREENHEIGHT * 0.9125) / 2);
 	mp->dx = 0;
@@ -44,5 +41,6 @@ void	init_t_minimap(t_minimap *mm, t_data *d)
 	mm->start_y = d->pos_y;
 	mm->end_y = d->pos_y + 5 + 5;
 	mm->x = ((double)SCREENHEIGHT * 0.85);
-	mm->big_map = ft_calloc((d->map_ptr->map_end - d->map_ptr->map_start + 10), sizeof(char *));
+	mm->big_map = ft_calloc((d->map_ptr->map_end - \
+		d->map_ptr->map_start + 10), sizeof(char *));
 }

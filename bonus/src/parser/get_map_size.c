@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:43 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/15 17:23:59 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/23 21:48:49 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	get_map_size_last_while(t_map *map)
 void	count_sprites(char *line, t_map *m)
 {
 	int	i;
-	
+
 	i = -1;
 	while (line[++i])
 	{
@@ -37,7 +37,6 @@ void	count_sprites(char *line, t_map *m)
 			m->sprites_nb++;
 	}
 }
-
 
 void	get_map_size(t_map *map)
 {

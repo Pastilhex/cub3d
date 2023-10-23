@@ -70,9 +70,11 @@ SRC_BONUS = ./bonus/src/parser/check_input.c\
 	./bonus/src/parser/access_file.c\
 	./bonus/src/parser/get_elements_textures.c\
 	./bonus/src/parser/check_map_extension.c\
+	./bonus/src/parser/set_start.c\
 	./bonus/src/move/move_player.c\
 	./bonus/src/move/handle_player_keys.c\
 	./bonus/src/move/handle_keypress.c\
+	./bonus/src/move/handle_mouse.c\
 	./bonus/src/drawing/render_frames.c\
 	./bonus/src/drawing/render_frames2.c\
 	./bonus/src/drawing/background.c\

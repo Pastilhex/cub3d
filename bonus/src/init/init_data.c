@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:42:45 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/23 19:53:36 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/23 21:28:29 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ static void	init_data2(t_data *d, struct s_map *map_ptr, t_mlx *m)
 	d->tps = 0.0;
 	d->tex_x = 0;
 	d->txt_ptr = malloc(sizeof(t_texture) * 15);
-	if (!d->txt_ptr)
-		exit(EXIT_FAILURE);
 	d->map_ptr = map_ptr;
 	d->m_ptr = m;
 	d->mini_map_ptr = NULL;
@@ -70,6 +68,16 @@ void	init_data(t_data *d, struct s_map *map_ptr, t_mlx *m)
 	init_data2(d, map_ptr, m);
 }
 
+static void	init_t_map2(t_map *map)
+{
+	map->map_start = 0;
+	map->map_end = 0;
+	map->larger_line = 0;
+	map->line_nbr = 0;
+	map->has_player = 0;
+	map->sprites_nb = 0;
+}
+
 void	init_t_map(t_map *map, t_data *d)
 {
 	map->fd = 0;
@@ -93,12 +101,7 @@ void	init_t_map(t_map *map, t_data *d)
 	map->data_ptr = d;
 	map->color = 0;
 	map->data_ptr = d;
-	map->map_start = 0;
-	map->map_end = 0;
-	map->larger_line = 0;
-	map->line_nbr = 0;
-	map->has_player = 0;
-	map->sprites_nb = 0;
+	init_t_map2(map);
 }
 
 void	init_t_rend(t_rend_sprite *r)
@@ -121,11 +124,3 @@ void	init_t_rend(t_rend_sprite *r)
 	r->stripe = 0;
 	r->tex_y = 0;
 }
-
-void	init_mlx(t_mlx *m)
-{
-	m->mlx = NULL;
-	m->mlx_win = NULL;
-}
-
-

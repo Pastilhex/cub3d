@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:29:28 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/23 19:38:46 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/23 22:21:18 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,25 @@
 
 void	draw_hud(t_data *data)
 {
-	int	i;
-	int	j;
-	double j_correction;
-	double i_correction;
+	int		i;
+	int		j;
+	double	j_correction;
+	double	i_correction;
+	int		k;
 
 	i = 0;
 	j = SCREENHEIGHT - (SCREENHEIGHT / 6);
 	j_correction = 80.0 / ((double)SCREENHEIGHT / 6.0);
 	i_correction = (640.0 / (double)SCREENWIDTH);
-	int k = 0;
+	k = 0;
 	while (i < SCREENWIDTH)
 	{
 		j = SCREENHEIGHT - (SCREENHEIGHT / 6);
 		while (j < SCREENHEIGHT)
 		{
-			ft_pixel_put(data->m_ptr, i, j,
-            (unsigned int)ft_pixel_get(&data->txt_ptr[hud], i * i_correction,
-            (int)(80 - ((SCREENHEIGHT - j ) * j_correction))));
+			ft_pixel_put(data->m_ptr, i, j, (unsigned int)
+				ft_pixel_get(&data->txt_ptr[hud], i * i_correction,
+					(int)(80 - ((SCREENHEIGHT - j) * j_correction))));
 			j++;
 			k++;
 		}
@@ -40,9 +41,9 @@ void	draw_hud(t_data *data)
 	}
 }
 
-static void    head_timing(t_data *data)
+static void	head_timing(t_data *data)
 {
-    data->map_ptr->current_time = get_actual_time();
+	data->map_ptr->current_time = get_actual_time();
 	if (data->map_ptr->current_time - data->map_ptr->start_time > 1000)
 	{
 		data->swap_img++;
@@ -54,29 +55,26 @@ static void    head_timing(t_data *data)
 
 void	draw_head_hud(t_data *data)
 {
-	int	i;
-	int	j;
-    double a;
-    double b;
-    double begin_i;
-    double begin_j;
+	t_aux	var;
 
-    a = 47.0 / ((double) SCREENWIDTH / 13.617021277);
-    b = (62.0 / ((double) SCREENHEIGHT / 7.741935484));
-    begin_i = (SCREENWIDTH * 0.4265625);
-    begin_j = (SCREENHEIGHT * 0.85);
-	i = SCREENWIDTH * 0.4265625;
-	j = SCREENHEIGHT * 0.855;
+	var.a = 47.0 / ((double)SCREENWIDTH / 13.617021277);
+	var.b = (62.0 / ((double)SCREENHEIGHT / 7.741935484));
+	var.begin_i = (SCREENWIDTH * 0.4265625);
+	var.begin_j = (SCREENHEIGHT * 0.85);
+	var.i = SCREENWIDTH * 0.4265625;
+	var.j = SCREENHEIGHT * 0.855;
 	head_timing(data);
-	while (i < SCREENWIDTH * 0.5)
+	while (var.i < SCREENWIDTH * 0.5)
 	{
-		j = SCREENHEIGHT * 0.855;
-		while (j < SCREENHEIGHT * 0.972916667)
+		var.j = SCREENHEIGHT * 0.855;
+		while (var.j < SCREENHEIGHT * 0.972916667)
 		{
-			ft_pixel_put(data->m_ptr, i, j, (unsigned int)ft_pixel_get(&data->txt_head
-            [data->swap_img],(int)((i - begin_i) * a), (int)((j - begin_j) * b)));
-			j++;
+			ft_pixel_put(data->m_ptr, var.i, var.j,
+				(unsigned int)ft_pixel_get(&data->txt_head[data->swap_img],
+					(int)((var.i - var.begin_i) * var.a), (int)((var.j
+							- var.begin_j) * var.b)));
+			var.j++;
 		}
-		i++;
+		var.i++;
 	}
 }
