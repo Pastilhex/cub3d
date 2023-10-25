@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:21:33 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/23 21:44:49 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/25 22:18:39 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	init_textures_img(t_data *d)
 	new_img(d, blueempty, d->map_ptr->blueempty_wall_texture);
 	new_img(d, ceilinglamp, d->map_ptr->ceilinglamp_texture);
 	new_img(d, barrel, d->map_ptr->barrel_texture);
-	new_img(d, mini_ground, d->map_ptr->ground_square_texture);
+	new_img(d, door, d->map_ptr->door_texture);
 	new_img(d, miniplayer, d->map_ptr->miniplayer_texture);
 	img_head(d);
 	img_hands(d);
@@ -56,7 +56,7 @@ void	init_bonus(t_map *map, t_data *d)
 	map->ceilinglamp_texture = "./bonus/textures/xpm/finalceilinglamp.xpm";
 	map->barrel_texture = "./bonus/textures/xpm/barrel.xpm";
 	map->miniplayer_texture = "./bonus/textures/xpm/mini_player.xpm";
-	map->ground_square_texture = "./bonus/textures/xpm/ground_square.xpm";
+	map->door_texture = "./bonus/textures/xpm/barrel.xpm";
 	map->animated_head = ft_calloc(3, sizeof(char *));
 	map->animated_head[0] = "./bonus/textures/xpm/guard/head_01.xpm";
 	map->animated_head[1] = "./bonus/textures/xpm/guard/head_02.xpm";

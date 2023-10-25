@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:42:45 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/23 21:28:29 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/25 17:39:24 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	init_t_map(t_map *map, t_data *d)
 	map->ceiling_texture = NULL;
 	map->world_map = NULL;
 	map->miniplayer_texture = NULL;
-	map->ground_square_texture = NULL;
+	map->door_texture = NULL;
 	map->wall_x = 0.0;
 	map->step = 0.0;
 	map->tex_pos = 0.0;

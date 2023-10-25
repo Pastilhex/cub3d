@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/23 22:23:34 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/25 17:39:00 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,8 @@ typedef struct s_data
 	double				old_dir_x;
 	double				old_plane_x;
 	double				frame_time;
+	double				wallXOffset;
+	double				wallYOffset;
 	int					fps;
 	double				tps;
 	int					tex_x;
@@ -213,7 +215,7 @@ typedef struct s_map
 	char				**animated_head;
 	char				**animated_hands;
 	char				*miniplayer_texture;
-	char				*ground_square_texture;
+	char				*door_texture;
 	double				wall_x;
 	double				step;
 	double				tex_pos;
@@ -280,7 +282,7 @@ enum					e_direction
 	blueempty = 10,
 	ceilinglamp = 11,
 	barrel = 12,
-	mini_ground = 13,
+	door = 13,
 	miniplayer = 14,
 };
 
@@ -311,6 +313,9 @@ void					draw_hands(t_data *data);
 void					draw_head_hud(t_data *data);
 void					draw_hud(t_data *data);
 void					draw_sprites(t_data *data, t_map *m, t_rend_sprite *r);
+void					draw_wall(t_data *d, char c, t_texture *txt_ns, t_texture *txt_we);
+void					draw_walls2(t_data *d, int *x);
+
 
 /*-----> Utils <-----*/
 int						ft_atoi(const char *str);
@@ -349,6 +354,7 @@ int						ft_strcmp(char *s1, char *s2);
 char					*ft_strjoin2(char *s1, char *s2);
 void					fps(t_data *data);
 int						get_rgb(int r, int g, int b);
+
 
 /*-----> Cub3d <-----*/
 void					ft_pixel_put(t_mlx *data, int x, int y, int color);
