@@ -108,6 +108,8 @@ static void	main_render(t_map *m, t_data *data, t_rend_sprite *r)
 		calc_doors(data, &r->x);
 		draw_walls2(data, &r->x);
 		r->x++;
+		if (m->world_map[data->map_x][data->map_y] == '9')
+			data->z_buffer[r->x] = data->perp_wall_dist;
 	}
 	draw_sprites(data, m, r);
 	clear_list(data->temp_head);
@@ -115,6 +117,7 @@ static void	main_render(t_map *m, t_data *data, t_rend_sprite *r)
 	draw_hud(data);
 	draw_head_hud(data);
 	get_minimap(data);
+	// printf("PosX: %f PosY:%f\n", data->pos_x, data->pos_y);
 }
 
 int	render_frames(void *arg)

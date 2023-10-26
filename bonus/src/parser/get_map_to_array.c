@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_to_array.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/23 21:50:44 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/26 10:43:18 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	is_valid_char(char c)
 
 bool	is_sprite(char c)
 {
-	if (c == '6' || c == '7')
+	if (c == '6' || c == '7' || c == '8')
 		return (true);
 	return (false);
 }
@@ -42,6 +42,11 @@ void	set_sprite_arr(t_map *m, int i, int j, char c)
 	{
 		sprite[m->sprite_index].txt = &m->data_ptr->txt_ptr[barrel];
 		m->world_map[i][j] = '7';
+	}
+	if (c == '8')
+	{
+		sprite[m->sprite_index].txt = &m->data_ptr->txt_ptr[soldier];
+		m->world_map[i][j] = '8';
 	}
 	m->sprite_index++;
 }

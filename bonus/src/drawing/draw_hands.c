@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_hands.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:21:48 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/23 20:50:28 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/26 13:35:11 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	trigger(t_data *data)
 	data->map_ptr->current_time = get_actual_time();
 	if (data->press_space == 1)
 	{
-		if (data->map_ptr->current_time - data->map_ptr->start_time > 100)
+		if (data->map_ptr->current_time - data->map_ptr->start_time_hand > 100)
 		{
 			data->swap_hands++;
 			if (data->swap_hands == 3)
@@ -25,7 +25,7 @@ void	trigger(t_data *data)
 				data->swap_hands = 0;
 				data->press_space = 0;
 			}
-			data->map_ptr->start_time = get_actual_time();
+			data->map_ptr->start_time_hand = get_actual_time();
 		}
 	}
 }

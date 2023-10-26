@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:50:21 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/23 20:55:24 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/26 13:21:49 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_t_miniplayer(t_miniplayer *mp)
 	mp->pl_radius = SCREENHEIGHT * 0.00625;
 	mp->line_length = SCREENHEIGHT * 0.025;
 	mp->i_center = (int)((SCREENWIDTH * 0.86875 + SCREENWIDTH * 0.878125) / 2);
-	mp->j_center = (int)((SCREENHEIGHT * 0.9125 + SCREENHEIGHT * 0.9125) / 2);
+	mp->j_center = (int)((SCREENHEIGHT * 0.9125 + SCREENHEIGHT * 0.925) / 2);
 	mp->dx = 0;
 	mp->dy = 0;
 	mp->sx = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_keypress.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:56:22 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/23 22:18:32 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/26 14:52:38 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,17 @@ void	move_p_slide_left(t_mlx *m)
 {
 	if (m->data_ptr->map_ptr->world_map \
 		[(int)(m->data_ptr->pos_x - m->data_ptr->plane_x * \
-			m->data_ptr->move_margin)][(int)(m->data_ptr->pos_y)] == '0')
+			m->data_ptr->move_margin)][(int)(m->data_ptr->pos_y)] == '0'
+			|| m->data_ptr->map_ptr->world_map \
+		[(int)(m->data_ptr->pos_x - m->data_ptr->plane_x * \
+			m->data_ptr->move_margin)][(int)(m->data_ptr->pos_y)] == '9')
 		m->data_ptr->pos_x -= m->data_ptr->plane_x * m->data_ptr->move_speed;
 	if (m->data_ptr->map_ptr->world_map \
 		[(int)(m->data_ptr->pos_x)][(int)(m->data_ptr->pos_y \
-			- m->data_ptr->plane_y * m->data_ptr->move_margin)] == '0')
+			- m->data_ptr->plane_y * m->data_ptr->move_margin)] == '0'
+		|| m->data_ptr->map_ptr->world_map \
+		[(int)(m->data_ptr->pos_x)][(int)(m->data_ptr->pos_y \
+			- m->data_ptr->plane_y * m->data_ptr->move_margin)] == '9')
 		m->data_ptr->pos_y -= m->data_ptr->plane_y * m->data_ptr->move_speed;
 }
 
@@ -28,11 +34,17 @@ void	move_p_slide_right(t_mlx *m)
 {
 	if (m->data_ptr->map_ptr->world_map \
 		[(int)(m->data_ptr->pos_x + m->data_ptr->plane_x * \
-			m->data_ptr->move_margin)][(int)(m->data_ptr->pos_y)] == '0')
+			m->data_ptr->move_margin)][(int)(m->data_ptr->pos_y)] == '0'
+			|| m->data_ptr->map_ptr->world_map \
+		[(int)(m->data_ptr->pos_x + m->data_ptr->plane_x * \
+			m->data_ptr->move_margin)][(int)(m->data_ptr->pos_y)] == '9')
 		m->data_ptr->pos_x += m->data_ptr->plane_x * m->data_ptr->move_speed;
 	if (m->data_ptr->map_ptr->world_map \
 		[(int)(m->data_ptr->pos_x)][(int)(m->data_ptr->pos_y \
-			+ m->data_ptr->plane_y * m->data_ptr->move_margin)] == '0')
+			+ m->data_ptr->plane_y * m->data_ptr->move_margin)] == '0'
+			|| m->data_ptr->map_ptr->world_map \
+		[(int)(m->data_ptr->pos_x)][(int)(m->data_ptr->pos_y \
+			+ m->data_ptr->plane_y * m->data_ptr->move_margin)] == '9')
 		m->data_ptr->pos_y += m->data_ptr->plane_y * m->data_ptr->move_speed;
 }
 

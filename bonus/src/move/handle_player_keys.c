@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_player_keys.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:11:05 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/10 17:44:32 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/26 14:53:48 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,17 @@ void	move_p_up(t_mlx *m)
 {
 	if (m->data_ptr->map_ptr->world_map[(int)(m->data_ptr->pos_x + \
 			m->data_ptr->dir_x * m->data_ptr->move_margin)]
-			[(int)(m->data_ptr->pos_y)] == '0')
+			[(int)(m->data_ptr->pos_y)] == '0'
+			|| m->data_ptr->map_ptr->world_map[(int)(m->data_ptr->pos_x + \
+			m->data_ptr->dir_x * m->data_ptr->move_margin)]
+			[(int)(m->data_ptr->pos_y)] == '9')
 		m->data_ptr->pos_x += m->data_ptr->dir_x * m->data_ptr->move_speed;
 	if (m->data_ptr->map_ptr->world_map[(int)(m->data_ptr->pos_x)] \
 			[(int)(m->data_ptr->pos_y + m->data_ptr->dir_y *
-			m->data_ptr->move_margin)] == '0')
+			m->data_ptr->move_margin)] == '0'
+			|| m->data_ptr->map_ptr->world_map[(int)(m->data_ptr->pos_x)] \
+			[(int)(m->data_ptr->pos_y + m->data_ptr->dir_y *
+			m->data_ptr->move_margin)] == '9')
 		m->data_ptr->pos_y += m->data_ptr->dir_y * m->data_ptr->move_speed;
 }
 
@@ -28,11 +34,17 @@ void	move_p_down(t_mlx *m)
 {
 	if (m->data_ptr->map_ptr->world_map[(int)(m->data_ptr->pos_x - \
 			m->data_ptr->dir_x * m->data_ptr->move_margin)]
-			[(int)(m->data_ptr->pos_y)] == '0')
+			[(int)(m->data_ptr->pos_y)] == '0'
+			|| m->data_ptr->map_ptr->world_map[(int)(m->data_ptr->pos_x - \
+			m->data_ptr->dir_x * m->data_ptr->move_margin)]
+			[(int)(m->data_ptr->pos_y)] == '9')
 		m->data_ptr->pos_x -= m->data_ptr->dir_x * m->data_ptr->move_speed;
 	if (m->data_ptr->map_ptr->world_map[(int)(m->data_ptr->pos_x)] \
 			[(int)(m->data_ptr->pos_y - m->data_ptr->dir_y *
-			m->data_ptr->move_margin)] == '0')
+			m->data_ptr->move_margin)] == '0'
+			|| m->data_ptr->map_ptr->world_map[(int)(m->data_ptr->pos_x)] \
+			[(int)(m->data_ptr->pos_y - m->data_ptr->dir_y *
+			m->data_ptr->move_margin)] == '9')
 		m->data_ptr->pos_y -= m->data_ptr->dir_y * m->data_ptr->move_speed;
 }
 

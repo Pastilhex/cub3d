@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/25 17:39:00 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/26 14:42:06 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ typedef struct s_rend_sprite
 
 typedef struct s_data
 {
+	int					door_state;
 	int					press_space;
 	int					move_up;
 	int					move_down;
@@ -175,12 +176,15 @@ typedef struct s_data
 	int					pitch;
 	int					swap_img;
 	int					swap_hands;
+	int					close_door;
+	int					open_door;
 	double				z_buffer[SCREENWIDTH];
 	t_s_list			*head;
 	t_s_list			*temp_head;
 	t_texture			*txt_ptr;
 	t_texture			*txt_head;
 	t_texture			*txt_hands;
+	t_texture			*txt_door;
 	struct s_map		*map_ptr;
 	struct s_draw		*draw_ptr;
 	t_mlx				*m_ptr;
@@ -212,10 +216,12 @@ typedef struct s_map
 	char				*ceilinglamp_texture;
 	char				*barrel_texture;
 	char				*hands;
+	char				*door_texture;
+	char				*soldier_texture;
 	char				**animated_head;
 	char				**animated_hands;
+	char				**animated_door;
 	char				*miniplayer_texture;
-	char				*door_texture;
 	double				wall_x;
 	double				step;
 	double				tex_pos;
@@ -240,7 +246,9 @@ typedef struct s_map
 	int					sprite_index;
 	int					*sprite_order;
 	int					*sprite_distance;
-	time_t				start_time;
+	time_t				start_time_head;
+	time_t				start_time_hand;
+	time_t				start_time_door;
 	time_t				current_time;
 	t_data				*data_ptr;
 	t_sprite			*sprite_arr;
@@ -284,6 +292,7 @@ enum					e_direction
 	barrel = 12,
 	door = 13,
 	miniplayer = 14,
+	soldier = 15,
 };
 
 /*-----> Bonus <-----*/

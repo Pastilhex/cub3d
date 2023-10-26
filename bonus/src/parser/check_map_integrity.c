@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_integrity.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/13 20:08:11 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/26 11:02:37 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,20 +79,14 @@ int	find_next_space(t_map *map, char **map_copy)
 
 void	check_map_inside(t_map *map, char **floor, int i, int j)
 {
-	if (i < (map->map_start - map->map_start)
-		|| i > (map->map_end - map->map_start - 1)
-		|| j < ft_begin_strlen(floor[i])
-		|| j >= ft_strlen(floor[i])
-		|| floor[i][j] != '0')
+	if (i < (map->map_start - map->map_start) || i > (map->map_end - map->map_start - 1) || j < ft_begin_strlen(floor[i]) || j >= ft_strlen(floor[i]) || (floor[i][j] != '0' && floor[i][j] != '9'))
 	{
 		if (i < 0 || j < 0 || i >= map->map_end - map->map_start)
 		{
 			map->inside_checked = 1;
 			return ;
 		}
-		if (floor[i][j] != '0'
-			&& !ft_isdigit(floor[i][j])
-			&& floor[i][j] != 'X')
+		if (floor[i][j] != '0' && !ft_isdigit(floor[i][j]) && floor[i][j] != 'X')
 			map->inside_checked = 1;
 		return ;
 	}

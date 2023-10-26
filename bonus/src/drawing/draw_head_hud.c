@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_head_hud.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:29:28 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/23 22:21:18 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/26 13:34:26 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ void	draw_hud(t_data *data)
 static void	head_timing(t_data *data)
 {
 	data->map_ptr->current_time = get_actual_time();
-	if (data->map_ptr->current_time - data->map_ptr->start_time > 1000)
+	if (data->map_ptr->current_time - data->map_ptr->start_time_head > 1000)
 	{
 		data->swap_img++;
 		if (data->swap_img == 3)
 			data->swap_img = 0;
-		data->map_ptr->start_time = get_actual_time();
+		data->map_ptr->start_time_head = get_actual_time();
 	}
 }
 
