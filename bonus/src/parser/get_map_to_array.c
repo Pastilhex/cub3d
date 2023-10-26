@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_to_array.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/26 10:43:18 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/26 21:05:51 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	get_map_to_array_while_get_line(t_map *map, int i, int j)
 		j++;
 	}
 	map->world_map[i][j] = '\0';
+	
 }
 
 void	get_map_to_array(t_map *map)
@@ -104,4 +105,5 @@ void	get_map_to_array(t_map *map)
 	close(map->fd);
 	if (map->has_player == 0)
 		perror_close("No player found", map);
+	
 }

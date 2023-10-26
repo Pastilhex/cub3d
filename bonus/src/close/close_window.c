@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:59:10 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/23 22:18:08 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/26 22:10:14 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static void	cleaning(t_data *d, t_map *m)
 		clear_list(d->head);
 	free(d->txt_head);
 	free(d->txt_hands);
+	free(d->txt_door);
+	free(m->animated_door);
 	free(m->sprite_order);
 	free(m->sprite_arr);
 	free(m->sprite_distance);
@@ -67,6 +69,10 @@ void	destoy_img_arrays(t_data *d)
 			mlx_destroy_image(d->m_ptr->mlx, d->txt_head[i].img);
 		}
 	}
+	i = -1;
+	while (++i <= 20)
+		if (d->m_ptr->mlx)
+			mlx_destroy_image(d->m_ptr->mlx, d->txt_door[i].img);
 }
 
 int	close_window(t_data *d)

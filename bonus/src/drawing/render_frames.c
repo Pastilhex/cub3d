@@ -89,6 +89,7 @@ static void	main_render(t_map *m, t_data *data, t_rend_sprite *r)
 {
 	t_rgb			*sky;
 	t_rgb			*floor;
+	t_minimap	mm;
 
 	sky = &data->map_ptr->ceiling_colors;
 	floor = &data->map_ptr->floor_colors;
@@ -103,6 +104,11 @@ static void	main_render(t_map *m, t_data *data, t_rend_sprite *r)
 		r->x++;
 	}
 	r->x = 0;
+	init_t_minimap(&mm, data);
+	data->mini_map_ptr = &mm;
+	copy_large_world_map(data);
+	// ft_print_array(data->mini_map_ptr->big_map, data->map_ptr->map_end - data->map_ptr->map_start + 10);
+	// exit(0);
 	while (r->x < SCREENWIDTH)
 	{
 		calc_doors(data, &r->x);
@@ -117,6 +123,8 @@ static void	main_render(t_map *m, t_data *data, t_rend_sprite *r)
 	draw_hud(data);
 	draw_head_hud(data);
 	get_minimap(data);
+	free_arr2(data->mini_map_ptr->big_map, data->map_ptr->map_end
+		- data->map_ptr->map_start + 10);
 	// printf("PosX: %f PosY:%f\n", data->pos_x, data->pos_y);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:50:21 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/26 13:20:24 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/26 20:52:12 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,26 +107,28 @@ void	draw_miniplayer(t_data *d)
 
 void	get_minimap(t_data *d)
 {
-	t_minimap	mm;
+	// t_minimap	mm;
 
-	init_t_minimap(&mm, d);
-	d->mini_map_ptr = &mm;
-	copy_large_world_map(d);
-	while (mm.start_x <= d->pos_x + 10)
+	// init_t_minimap(&mm, d);
+	// d->mini_map_ptr = &mm;
+	// copy_large_world_map(d);
+	while (d->mini_map_ptr->start_x <= d->pos_x + 10)
 	{
-		mm.start_y = d->pos_y;
-		mm.y = SCREENWIDTH * 0.775;
-		while (mm.start_y <= d->pos_y + 20)
+		d->mini_map_ptr->start_y = d->pos_y;
+		d->mini_map_ptr->y = SCREENWIDTH * 0.775;
+		while (d->mini_map_ptr->start_y <= d->pos_y + 20)
 		{
-			draw_square(mm.big_map[(int)mm.start_x][(int)mm.start_y], d, mm.x,
-				mm.y);
-			mm.start_y++;
-			mm.y += 0.009375 * SCREENWIDTH;
+			draw_square(d->mini_map_ptr->big_map[(int)d->mini_map_ptr->start_x][(int)d->mini_map_ptr->start_y], d, d->mini_map_ptr->x,
+				d->mini_map_ptr->y);
+			d->mini_map_ptr->start_y++;
+			d->mini_map_ptr->y += 0.009375 * SCREENWIDTH;
 		}
-		mm.start_x++;
-		mm.x += (0.0125 * SCREENHEIGHT);
+		d->mini_map_ptr->start_x++;
+		d->mini_map_ptr->x += (0.0125 * SCREENHEIGHT);
 	}
-	free_arr2(d->mini_map_ptr->big_map, d->map_ptr->map_end
-		- d->map_ptr->map_start + 10);
+	// free_arr2(d->mini_map_ptr->big_map, d->map_ptr->map_end
+	// 	- d->map_ptr->map_start + 10);
+	// ft_print_array(d->mini_map_ptr->big_map, d->map_ptr->map_end - d->map_ptr->map_start + 10);
+
 	draw_miniplayer(d);
 }

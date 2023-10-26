@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:42:45 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/26 13:32:41 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/26 20:06:33 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	init_data2(t_data *d, struct s_map *map_ptr, t_mlx *m)
 	d->fps = 0;
 	d->tps = 0.0;
 	d->tex_x = 0;
-	d->txt_ptr = malloc(sizeof(t_texture) * 16);
+	d->txt_ptr = malloc(sizeof(t_texture) * 15);
 	d->map_ptr = map_ptr;
 	d->m_ptr = m;
 	d->mini_map_ptr = NULL;
@@ -65,6 +65,7 @@ void	init_data(t_data *d, struct s_map *map_ptr, t_mlx *m)
 	d->map_x = 0;
 	d->map_y = 0;
 	d->press_space = 0;
+	d->door_state = 0;
 	init_mlx(m);
 	init_data2(d, map_ptr, m);
 }

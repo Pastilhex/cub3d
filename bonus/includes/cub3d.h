@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/26 14:42:06 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:58:44 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,9 +290,8 @@ enum					e_direction
 	blueempty = 10,
 	ceilinglamp = 11,
 	barrel = 12,
-	door = 13,
-	miniplayer = 14,
-	soldier = 15,
+	miniplayer = 13,
+	soldier = 14,
 };
 
 /*-----> Bonus <-----*/
@@ -324,6 +323,8 @@ void					draw_hud(t_data *data);
 void					draw_sprites(t_data *data, t_map *m, t_rend_sprite *r);
 void					draw_wall(t_data *d, char c, t_texture *txt_ns, t_texture *txt_we);
 void					draw_walls2(t_data *d, int *x);
+void				calculate_cols(t_data *data);
+
 
 
 /*-----> Utils <-----*/

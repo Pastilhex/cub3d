@@ -87,6 +87,7 @@ SRC_BONUS = ./bonus/src/parser/check_input.c\
 	./bonus/src/drawing/draw_hands.c\
 	./bonus/src/drawing/draw_head_hud.c\
 	./bonus/src/drawing/sprites.c\
+	./bonus/src/drawing/draw_doors.c\
 	./bonus/src/init/open_window.c\
 	./bonus/src/init/read_cub_file.c\
 	./bonus/src/init/init_textures_img.c\
