@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/27 13:28:51 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:06:20 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -362,6 +362,10 @@ void					init_extra_bonus(t_map *map, t_data *d);
 void					set_sprite_extra(t_map *m, int i, int j, char c);
 int						allowed_sprites(int c);
 bool					dont_hit(t_data *data);
+void					check_hit_doors(t_data *data);
+void					door_animation(t_data *d);
+
+
 
 /*-----> Utils <-----*/
 int						ft_atoi(const char *str);
