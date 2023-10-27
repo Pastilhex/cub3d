@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:50:21 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/26 20:52:12 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:22:16 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	get_minimap(t_data *d)
 		while (d->mini_map_ptr->start_y <= d->pos_y + 20)
 		{
 			draw_square(d->mini_map_ptr->big_map
-				[(int)d->mini_map_ptr->start_x][(int)d->mini_map_ptr->start_y],
+			[(int)d->mini_map_ptr->start_x][(int)d->mini_map_ptr->start_y],
 				d, d->mini_map_ptr->x, d->mini_map_ptr->y);
 			d->mini_map_ptr->start_y++;
 			d->mini_map_ptr->y += 0.009375 * SCREENWIDTH;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_arr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 19:33:08 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/11 23:57:16 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:12:24 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_arr(char **arr, t_map *m)
 	int	i;
 
 	i = 0;
-	while (i < m->map_end - m->map_start)
+	while (i < m->m_end - m->m_start)
 	{
 		if (arr[i])
 			free(arr[i]);

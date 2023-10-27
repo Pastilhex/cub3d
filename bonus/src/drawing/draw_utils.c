@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:17:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/23 22:23:04 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:05:40 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	fps(t_data *data)
 	}
 	else
 	{
-		// printf("FPS: %d\n", data->fps);
 		data->fps = 0;
 		data->tps = 0.0;
 	}

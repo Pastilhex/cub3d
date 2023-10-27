@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_extra_sprites.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:21:33 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/27 15:22:27 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:22:54 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ void	set_sprite_extra_one(t_map *m, int i, int j, char c)
 	}
 	if (c == 'f')
 	{
-		m->sprite_arr[m->sprite_index].txt = &m->data_ptr->txt_ptr[hangskeleton];
+		m->sprite_arr[m->sprite_index].txt
+			= &m->data_ptr->txt_ptr[hangskeleton];
 		m->world_map[i][j] = 'f';
 	}
 	if (c == 'g')

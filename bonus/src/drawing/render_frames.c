@@ -87,8 +87,8 @@ static void	main_render(t_map *m, t_data *data, t_rend_sprite *r)
 	draw_hud(data);
 	draw_head_hud(data);
 	get_minimap(data);
-	free_arr2(data->mini_map_ptr->big_map, data->map_ptr->map_end
-		- data->map_ptr->map_start + 10);
+	free_arr2(data->mini_map_ptr->big_map, data->map_ptr->m_end
+		- data->map_ptr->m_start + 10);
 }
 
 int	render_frames(void *arg)

@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/11 20:49:59 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:12:24 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,13 +96,13 @@ void	get_map_to_array(t_map *map)
 	j = 0;
 	map->fd = access_file(map);
 	map->get_line = get_next_line(map->fd);
-	while (++i < map->map_start)
+	while (++i < map->m_start)
 	{
 		free(map->get_line);
 		map->get_line = get_next_line(map->fd);
 	}
 	i = -1;
-	while (map->get_line && ++i < map->map_end - map->map_start)
+	while (map->get_line && ++i < map->m_end - map->m_start)
 	{
 		map->world_map[i] = ft_calloc((ft_strlen(map->get_line)
 					+ 1), sizeof(char));

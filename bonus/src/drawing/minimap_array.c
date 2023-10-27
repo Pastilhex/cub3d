@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 11:34:17 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/26 21:20:57 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:12:24 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	set_larger_line(t_data *d)
 	int	i;
 
 	i = 0;
-	while (i < d->map_ptr->map_end - d->map_ptr->map_start)
+	while (i < d->map_ptr->m_end - d->map_ptr->m_start)
 	{
 		if (ft_strlen(d->map_ptr->world_map[i]) > d->map_ptr->larger_line)
 			d->map_ptr->larger_line = ft_strlen(d->map_ptr->world_map[i]);
@@ -72,7 +72,7 @@ void	add_spaces(t_data *d)
 	fill_5_lines(d, 0, 5);
 	s = "**********";
 	i = 5;
-	while (i < (d->map_ptr->map_end - d->map_ptr->map_start) + 5)
+	while (i < (d->map_ptr->m_end - d->map_ptr->m_start) + 5)
 	{
 		temp = ft_strjoin2(s, ft_strtrim(d->map_ptr->world_map[i - 5], "\n"));
 		space_diff = (d->map_ptr->larger_line + 20) - ft_strlen(temp);
@@ -81,5 +81,5 @@ void	add_spaces(t_data *d)
 		i++;
 		free(s_end);
 	}
-	fill_5_lines(d, i, d->map_ptr->map_end - d->map_ptr->map_start + 10);
+	fill_5_lines(d, i, d->map_ptr->m_end - d->map_ptr->m_start + 10);
 }

@@ -126,7 +126,6 @@ SRC_BONUS = ./bonus/src/parser/check_input.c\
 	./bonus/src/utils/isOnlyDigitOrComma.c\
 	./bonus/src/utils/free_arr.c\
 	./bonus/main.c\
-	./bonus/src/debug.c\
 
 OBJSDIR = objects
 

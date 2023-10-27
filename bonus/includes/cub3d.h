@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/27 16:06:20 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:28:18 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,8 +168,8 @@ typedef struct s_data
 	double				old_dir_x;
 	double				old_plane_x;
 	double				frame_time;
-	double				wallXOffset;
-	double				wallYOffset;
+	double				wall_x_offset;
+	double				wall_y_offset;
 	int					fps;
 	double				tps;
 	int					tex_x;
@@ -179,7 +179,6 @@ typedef struct s_data
 	int					close_door;
 	int					open_door;
 	double				z_buffer[SCREENWIDTH];
-	// char				**big_map_copy;
 	t_s_list			*head;
 	t_s_list			*temp_head;
 	t_texture			*txt_ptr;
@@ -247,8 +246,8 @@ typedef struct s_map
 	int					border_begin_x;
 	int					border_begin_y;
 	int					inside_checked;
-	int					map_start;
-	int					map_end;
+	int					m_start;
+	int					m_end;
 	int					larger_line;
 	int					line_nbr;
 	int					map_copy_x;
@@ -368,11 +367,6 @@ void					check_side(t_data *d);
 void					draw_doors(t_data *d, int *x);
 void					draw_doors_cols(t_data *data, int *x);
 
-
-
-
-
-
 /*-----> Utils <-----*/
 int						ft_atoi(const char *str);
 char					*ft_itoa(int n);
@@ -410,7 +404,6 @@ int						ft_strcmp(char *s1, char *s2);
 char					*ft_strjoin2(char *s1, char *s2);
 void					fps(t_data *data);
 int						get_rgb(int r, int g, int b);
-
 
 /*-----> Cub3d <-----*/
 void					ft_pixel_put(t_mlx *data, int x, int y, int color);

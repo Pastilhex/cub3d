@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_integrity.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/11 23:56:59 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:12:24 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ char	**to_copy_map(t_map *map)
 
 	i = 0;
 	j = 0;
-	copy = malloc((map->map_end - map->map_start) * sizeof(char *));
+	copy = malloc((map->m_end - map->m_start) * sizeof(char *));
 	if (!copy)
 		return (NULL);
-	while (i < (map->map_end - map->map_start))
+	while (i < (map->m_end - map->m_start))
 	{
 		copy[i] = malloc(ft_strlen(map->world_map[i]) * sizeof(char) + 1);
 		if (!copy[i])
@@ -59,7 +59,7 @@ int	find_next_space(t_map *map, char **map_copy)
 	j = 0;
 	map->map_copy_x = 0;
 	map->map_copy_y = 0;
-	while (i < (map->map_end - map->map_start))
+	while (i < (map->m_end - map->m_start))
 	{
 		while (map_copy[i][j])
 		{
@@ -79,13 +79,13 @@ int	find_next_space(t_map *map, char **map_copy)
 
 void	check_map_inside(t_map *map, char **floor, int i, int j)
 {
-	if (i < (map->map_start - map->map_start)
-		|| i > (map->map_end - map->map_start - 1)
+	if (i < (map->m_start - map->m_start)
+		|| i > (map->m_end - map->m_start - 1)
 		|| j < ft_begin_strlen(floor[i])
 		|| j >= ft_strlen(floor[i])
 		|| floor[i][j] != '0')
 	{
-		if (i < 0 || j < 0 || i >= map->map_end - map->map_start)
+		if (i < 0 || j < 0 || i >= map->m_end - map->m_start)
 		{
 			map->inside_checked = 1;
 			return ;

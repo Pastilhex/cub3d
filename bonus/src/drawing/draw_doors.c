@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:53:04 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/27 16:08:24 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:26:21 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	calc_doors(t_data *data, int *x)
 	else
 		data->delta_dist_y = fabs(1.0 / data->ray_dir_y);
 	data->hit = 0;
-	data->wallXOffset = 0;
-	data->wallYOffset = 0;
+	data->wall_x_offset = 0;
+	data->wall_y_offset = 0;
 	calc_door2(data);
 }
 
@@ -102,6 +102,7 @@ void	door_animation(t_data *d)
 		d->close_door = 1;
 	}
 }
+
 void	draw_doors(t_data *d, int *x)
 {
 	if (d->ray_dir_y < 0)

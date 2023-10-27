@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:42:45 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/27 13:33:56 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:12:24 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ void	init_data(t_data *d, struct s_map *map_ptr, t_mlx *m)
 
 static void	init_t_map2(t_map *map, t_data *d)
 {
-	map->map_start = 0;
-	map->map_end = 0;
+	map->m_start = 0;
+	map->m_end = 0;
 	map->larger_line = 0;
 	map->line_nbr = 0;
 	map->has_player = 0;

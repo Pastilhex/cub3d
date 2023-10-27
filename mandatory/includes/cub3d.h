@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/13 15:44:18 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:12:24 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,8 +134,8 @@ typedef struct s_map {
 	int			border_begin_x;
 	int			border_begin_y;
 	int			inside_checked;
-	int			map_start;
-	int			map_end;
+	int			m_start;
+	int			m_end;
 	int			line_nbr;
 	int			map_copy_x;
 	int			map_copy_y;

@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:50:21 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/27 09:21:00 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:12:24 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	init_t_miniplayer(t_miniplayer *mp)
 	mp->pl_radius = SCREENHEIGHT * 0.00625;
 	mp->line_length = SCREENHEIGHT * 0.025;
 	mp->i_center = (int)((SCREENWIDTH * 0.86875
-		+ SCREENWIDTH * 0.878125) / 2);
+				+ SCREENWIDTH * 0.878125) / 2);
 	mp->j_center = (int)((SCREENHEIGHT * 0.9125
-		+ SCREENHEIGHT * 0.925) / 2);
+				+ SCREENHEIGHT * 0.925) / 2);
 	mp->dx = 0;
 	mp->dy = 0;
 	mp->sx = 0;
@@ -43,6 +43,6 @@ void	init_t_minimap(t_minimap *mm, t_data *d)
 	mm->start_y = d->pos_y;
 	mm->end_y = d->pos_y + 5 + 5;
 	mm->x = ((double)SCREENHEIGHT * 0.85);
-	mm->big_map = ft_calloc((d->map_ptr->map_end - \
-		d->map_ptr->map_start + 10), sizeof(char *));
+	mm->big_map = ft_calloc((d->map_ptr->m_end - \
+		d->map_ptr->m_start + 10), sizeof(char *));
 }
