@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/26 19:58:44 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/27 10:54:44 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,7 @@ typedef struct s_data
 	int					close_door;
 	int					open_door;
 	double				z_buffer[SCREENWIDTH];
+	// char				**big_map_copy;
 	t_s_list			*head;
 	t_s_list			*temp_head;
 	t_texture			*txt_ptr;
@@ -303,7 +304,7 @@ void					img_head(t_data *d);
 void					img_hands(t_data *d);
 int						handle_mouse(int x, int y, t_data *d);
 int						handle_mouse_fire(int button, int x, int y, t_data *d);
-void					copy_large_world_map(t_data *d);
+void					create_big_map(t_data *d);
 void					draw_square(char c, t_data *d, int x, int y);
 void					draw_circle(t_mlx *mlx, int x, int y, int radius);
 void					init_t_miniplayer(t_miniplayer *mp);
@@ -321,11 +322,15 @@ void					draw_hands(t_data *data);
 void					draw_head_hud(t_data *data);
 void					draw_hud(t_data *data);
 void					draw_sprites(t_data *data, t_map *m, t_rend_sprite *r);
-void					draw_wall(t_data *d, char c, t_texture *txt_ns, t_texture *txt_we);
-void					draw_walls2(t_data *d, int *x);
-void				calculate_cols(t_data *data);
-
-
+void					draw_wall(t_data *d, char c, t_texture *txt_ns,
+							t_texture *txt_we);
+void					draw_doors(t_data *d, int *x);
+void					calculate_cols(t_data *data);
+void					calc_doors(t_data *data, int *x);
+void					img_head(t_data *d);
+void					img_hands(t_data *d);
+void					new_img(t_data *d, enum e_direction var, char *txt);
+void					img_door(t_data *d);
 
 /*-----> Utils <-----*/
 int						ft_atoi(const char *str);

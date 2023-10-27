@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:50:21 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/26 13:21:49 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/27 09:21:00 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	copy_large_world_map(t_data *d)
+void	create_big_map(t_data *d)
 {
 	set_larger_line(d);
 	add_spaces(d);
@@ -43,4 +43,6 @@ void	init_t_minimap(t_minimap *mm, t_data *d)
 	mm->x = ((double)SCREENHEIGHT * 0.85);
 	mm->big_map = ft_calloc((d->map_ptr->map_end - \
 		d->map_ptr->map_start + 10), sizeof(char *));
+	// d->big_map_copy = ft_calloc((d->map_ptr->map_end - 
+	// 	d->map_ptr->map_start + 10), sizeof(char *));
 }

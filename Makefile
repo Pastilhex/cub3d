@@ -90,8 +90,9 @@ SRC_BONUS = ./bonus/src/parser/check_input.c\
 	./bonus/src/drawing/draw_doors.c\
 	./bonus/src/init/open_window.c\
 	./bonus/src/init/read_cub_file.c\
-	./bonus/src/init/init_textures_img.c\
+	./bonus/src/init/init_textures.c\
 	./bonus/src/init/init_data.c\
+	./bonus/src/init/init_imgs.c\
 	./bonus/src/close/close_window.c\
 	./bonus/src/utils/ft_strjoin.c\
 	./bonus/src/utils/get_next_line.c\

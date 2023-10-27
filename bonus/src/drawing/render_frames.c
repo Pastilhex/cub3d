@@ -12,48 +12,6 @@
 
 #include "../../includes/cub3d.h"
 
-static void	calc_doors(t_data *data, int *x)
-{
-	data->camera_x = 2 * *x / (double)SCREENWIDTH - 1;
-	data->ray_dir_x = data->dir_x + data->plane_x * data->camera_x;
-	data->ray_dir_y = data->dir_y + data->plane_y * data->camera_x;
-	data->map_x = (int)data->pos_x;
-	data->map_y = (int)data->pos_y;
-	if (data->ray_dir_x == 0)
-		data->delta_dist_x = 1e30;
-	else
-		data->delta_dist_x = fabs(1.0 / data->ray_dir_x);
-	if (data->ray_dir_y == 0)
-		data->delta_dist_y = 1e30;
-	else
-		data->delta_dist_y = fabs(1.0 / data->ray_dir_y);
-	data->hit = 0;
-	data->wallXOffset = 0;
-	data->wallYOffset = 0;
-	if (data->ray_dir_x < 0)
-	{
-		data->step_x = -1;
-		data->side_dist_x = (data->pos_x - data->map_x) * data->delta_dist_x;
-	}
-	else
-	{
-		data->step_x = 1;
-		data->side_dist_x = (data->map_x + 1.0 - data->pos_x) * 
-			data->delta_dist_x;
-	}
-	if (data->ray_dir_y < 0)
-	{
-		data->step_y = -1;
-		data->side_dist_y = (data->pos_y - data->map_y) * data->delta_dist_y;
-	}
-	else
-	{
-		data->step_y = 1;
-		data->side_dist_y = (data->map_y + 1.0 - data->pos_y) * 
-			data->delta_dist_y;
-	}
-}
-
 static void	calc_walls(t_data *data, int *x)
 {
 	data->camera_x = 2 * *x / (double)SCREENWIDTH - 1;
@@ -83,18 +41,8 @@ static void	calc_walls(t_data *data, int *x)
 	}
 }
 
-
-
-static void	main_render(t_map *m, t_data *data, t_rend_sprite *r)
+void	walls(t_data *data, t_rend_sprite *r)
 {
-	t_rgb			*sky;
-	t_rgb			*floor;
-	t_minimap	mm;
-
-	sky = &data->map_ptr->ceiling_colors;
-	floor = &data->map_ptr->floor_colors;
-	background(*data->m_ptr, get_rgb(sky->r, sky->g, sky->b), \
-		get_rgb(floor->r, floor->g, floor->b));
 	r->x = 0;
 	while (r->x < SCREENWIDTH)
 	{
@@ -103,21 +51,37 @@ static void	main_render(t_map *m, t_data *data, t_rend_sprite *r)
 		data->z_buffer[r->x] = data->perp_wall_dist;
 		r->x++;
 	}
+}
+
+void	doors(t_data *data, t_rend_sprite *r)
+{
 	r->x = 0;
-	init_t_minimap(&mm, data);
-	data->mini_map_ptr = &mm;
-	copy_large_world_map(data);
-	// ft_print_array(data->mini_map_ptr->big_map, data->map_ptr->map_end - data->map_ptr->map_start + 10);
-	// exit(0);
 	while (r->x < SCREENWIDTH)
 	{
 		calc_doors(data, &r->x);
-		draw_walls2(data, &r->x);
+		draw_doors(data, &r->x);
 		r->x++;
-		if (m->world_map[data->map_x][data->map_y] == '9')
+		if (data->map_ptr->world_map[data->map_x][data->map_y] == '9')
 			data->z_buffer[r->x] = data->perp_wall_dist;
 	}
+}
+
+static void	main_render(t_map *m, t_data *data, t_rend_sprite *r)
+{
+	t_rgb			*sky;
+	t_rgb			*floor;
+	t_minimap		mm;
+
+	sky = &data->map_ptr->ceiling_colors;
+	floor = &data->map_ptr->floor_colors;
+	background(*data->m_ptr, get_rgb(sky->r, sky->g, sky->b), \
+		get_rgb(floor->r, floor->g, floor->b));
+	walls(data, r);
+	init_t_minimap(&mm, data);
+	data->mini_map_ptr = &mm;
+	create_big_map(data);
 	draw_sprites(data, m, r);
+	doors(data, r);
 	clear_list(data->temp_head);
 	draw_hands(data);
 	draw_hud(data);
@@ -125,7 +89,6 @@ static void	main_render(t_map *m, t_data *data, t_rend_sprite *r)
 	get_minimap(data);
 	free_arr2(data->mini_map_ptr->big_map, data->map_ptr->map_end
 		- data->map_ptr->map_start + 10);
-	// printf("PosX: %f PosY:%f\n", data->pos_x, data->pos_y);
 }
 
 int	render_frames(void *arg)

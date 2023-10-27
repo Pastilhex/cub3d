@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:05:09 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/26 19:58:23 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/27 10:42:39 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	check_hit(t_data *data)
 		}
 		if (data->map_ptr->world_map[data->map_x][data->map_y] != '0'
 			&& data->map_ptr->world_map[data->map_x][data->map_y] != '7'
-			&& data->map_ptr->world_map[data->map_x][data->map_y] != '8' 
+			&& data->map_ptr->world_map[data->map_x][data->map_y] != '8'
 			&& data->map_ptr->world_map[data->map_x][data->map_y] != '9')
 			data->hit = 1;
 	}
@@ -69,20 +69,23 @@ void	calculate_cols(t_data *data)
 
 void	draw_wall(t_data *d, char c, t_texture *txt_ns, t_texture *txt_we)
 {
-	if (d->side == 0 && d->ray_dir_x > 0 && d->map_ptr->world_map[(int)d->map_x][(int)d->map_y] == c)
-		ft_pixel_put(d->m_ptr, *d->draw_ptr->x, d->draw_ptr->y, (unsigned int)ft_pixel_get(txt_ns, d->tex_x, d->draw_ptr->tex_y));
-	
-	else if (d->side == 0 && d->ray_dir_x < 0 && d->map_ptr->world_map[(int)d->map_x][(int)d->map_y] == c)
-		ft_pixel_put(d->m_ptr, *d->draw_ptr->x, d->draw_ptr->y, (unsigned int)ft_pixel_get(txt_ns, d->tex_x, d->draw_ptr->tex_y));
-	
-	else if (d->side == 1 && d->ray_dir_y > 0 && d->map_ptr->world_map[(int)d->map_x][(int)d->map_y] == c)
-		ft_pixel_put(d->m_ptr, *d->draw_ptr->x, d->draw_ptr->y, (unsigned int)ft_pixel_get(txt_we, d->tex_x, d->draw_ptr->tex_y));
-	
-	else if (d->side == 1 && d->ray_dir_y < 0 && d->map_ptr->world_map[(int)d->map_x][(int)d->map_y] == c)
-		ft_pixel_put(d->m_ptr, *d->draw_ptr->x, d->draw_ptr->y, (unsigned int)ft_pixel_get(txt_we, d->tex_x, d->draw_ptr->tex_y));
+	if (d->side == 0 && d->ray_dir_x > 0 && d->map_ptr->world_map
+		[(int)d->map_x][(int)d->map_y] == c)
+		ft_pixel_put(d->m_ptr, *d->draw_ptr->x, d->draw_ptr->y,
+			(unsigned int)ft_pixel_get(txt_ns, d->tex_x, d->draw_ptr->tex_y));
+	else if (d->side == 0 && d->ray_dir_x < 0 && d->map_ptr->world_map
+		[(int)d->map_x][(int)d->map_y] == c)
+		ft_pixel_put(d->m_ptr, *d->draw_ptr->x, d->draw_ptr->y,
+			(unsigned int)ft_pixel_get(txt_ns, d->tex_x, d->draw_ptr->tex_y));
+	else if (d->side == 1 && d->ray_dir_y > 0 && d->map_ptr->world_map
+		[(int)d->map_x][(int)d->map_y] == c)
+		ft_pixel_put(d->m_ptr, *d->draw_ptr->x, d->draw_ptr->y,
+			(unsigned int)ft_pixel_get(txt_we, d->tex_x, d->draw_ptr->tex_y));
+	else if (d->side == 1 && d->ray_dir_y < 0 && d->map_ptr->world_map
+		[(int)d->map_x][(int)d->map_y] == c)
+		ft_pixel_put(d->m_ptr, *d->draw_ptr->x, d->draw_ptr->y,
+			(unsigned int)ft_pixel_get(txt_we, d->tex_x, d->draw_ptr->tex_y));
 }
-
-
 
 static void	draw_cols(t_data *data, int *x)
 {
@@ -124,5 +127,3 @@ void	draw_walls(t_data *data, int *x)
 	calculate_cols(data);
 	draw_cols(data, x);
 }
-
-

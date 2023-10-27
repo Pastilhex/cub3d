@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/26 21:05:51 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/27 10:37:33 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,4 @@ void	get_map_to_array(t_map *map)
 	close(map->fd);
 	if (map->has_player == 0)
 		perror_close("No player found", map);
-	
 }
