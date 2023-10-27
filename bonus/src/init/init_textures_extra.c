@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:21:33 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/27 13:36:26 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/27 15:21:48 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,22 @@ void	init_textures_extra_img(t_data *d)
 void	init_extra_bonus(t_map *map, t_data *d)
 {
 	(void)d;
-	map->ceilinglamp_texture = "./bonus/textures/xpm/finalceilinglamp.xpm";
-	map->barrel_texture = "./bonus/textures/xpm/barrel.xpm";
-	map->soldier_texture = "./bonus/textures/xpm/guard/front_01.xpm";
-	map->bed_texture = "./bonus/textures/xpm/bed.xpm";
-	map->redflag_texture = "./bonus/textures/xpm/redflag.xpm";
-	map->hangskeleton_texture = "./bonus/textures/xpm/hangskeleton.xpm";
-	map->kitchenware_texture = "./bonus/textures/xpm/kitchenware.xpm";
-	map->oven_texture = "./bonus/textures/xpm/oven.xpm";
-	map->pilar_texture = "./bonus/textures/xpm/pilar.xpm";
-	map->table_texture = "./bonus/textures/xpm/table.xpm";
-	map->weapons_texture = "./bonus/textures/xpm/weapons.xpm";
-	map->knight_texture = "./bonus/textures/xpm/knight.xpm";
-	map->bush_texture = "./bonus/textures/xpm/bush.xpm";
-	map->groundlamp_texture = "./bonus/textures/xpm/ground_lamp.xpm";
-	map->lamp_texture = "./bonus/textures/xpm/lamp.xpm";
-	map->sink_texture = "./bonus/textures/xpm/sink.xpm";
+	map->ceilinglamp_texture = "./bonus/textures/xpm/finalceilinglamp.xpm";	//a
+	map->barrel_texture = "./bonus/textures/xpm/barrel.xpm";				//b
+	map->soldier_texture = "./bonus/textures/xpm/guard/front_01.xpm";		//c
+	map->bed_texture = "./bonus/textures/xpm/bed.xpm";						//d
+	map->redflag_texture = "./bonus/textures/xpm/redflag.xpm";				//e
+	map->hangskeleton_texture = "./bonus/textures/xpm/hangskeleton.xpm";	//f
+	map->kitchenware_texture = "./bonus/textures/xpm/kitchenware.xpm";		//g
+	map->oven_texture = "./bonus/textures/xpm/oven.xpm";					//h
+	map->pilar_texture = "./bonus/textures/xpm/pilar.xpm";					//k
+	map->table_texture = "./bonus/textures/xpm/table.xpm";					//l
+	map->weapons_texture = "./bonus/textures/xpm/weapons.xpm";				//m
+	map->knight_texture = "./bonus/textures/xpm/knight.xpm";				//n
+	map->bush_texture = "./bonus/textures/xpm/bush.xpm";					//o
+	map->groundlamp_texture = "./bonus/textures/xpm/ground_lamp.xpm";		//p
+	map->lamp_texture = "./bonus/textures/xpm/lamp.xpm";					//q
+	map->sink_texture = "./bonus/textures/xpm/sink.xpm";					//r
 }
 
 int	allowed_sprites(int c)
