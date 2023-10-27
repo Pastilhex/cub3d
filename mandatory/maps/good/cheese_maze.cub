@@ -1,9 +1,9 @@
-NO ./textures/north.xpm
-SO ./textures/south.xpm
+NO ./mandatory/textures/north.xpm
+SO  ./mandatory/textures/south.xpm
+WE ./mandatory/textures/west.xpm
 
-W ./textures/west.xpm
-E ./textures/east.xpm
 
+EA ./mandatory/textures/east.xpm
 F 164,169,20
 C 153,204,255
 
@@ -14,5 +14,5 @@ C 153,204,255
 101011111111111010101
 101010000000000010001
 101010111011111111101
-1N1000001000000000001
+101N00001000000000001
  1111111111111111111

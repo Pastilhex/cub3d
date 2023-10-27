@@ -18,7 +18,7 @@ SRC	= ./mandatory/main.c\
 	./mandatory/src/drawing/ft_pixel_get.c\
 	./mandatory/src/drawing/background.c\
 	./mandatory/src/utils/time.c\
-	./mandatory/src/utils/isOnlyDigitOrComma.c\
+	./mandatory/src/utils/is_only_digit_or_comma.c\
 	./mandatory/src/utils/is_direction.c\
 	./mandatory/src/utils/get_next_line.c\
 	./mandatory/src/utils/free_arr.c\
@@ -60,72 +60,72 @@ SRC	= ./mandatory/main.c\
 	./mandatory/src/parser/get_elements_textures.c\
 	./mandatory/src/parser/check_line.c
 
-SRC_BONUS = ./bonus/src/parser/check_input.c\
-	./bonus/src/parser/check_map_integrity.c\
-	./bonus/src/parser/check_line.c\
-	./bonus/src/parser/get_ttl_nbr_lines.c\
-	./bonus/src/parser/get_map_size.c\
-	./bonus/src/parser/get_map_to_array.c\
-	./bonus/src/parser/get_elements.c\
-	./bonus/src/parser/access_file.c\
-	./bonus/src/parser/get_elements_textures.c\
-	./bonus/src/parser/check_map_extension.c\
-	./bonus/src/parser/set_start.c\
-	./bonus/src/move/move_player.c\
-	./bonus/src/move/handle_player_keys.c\
-	./bonus/src/move/handle_keypress.c\
-	./bonus/src/move/handle_mouse.c\
-	./bonus/src/drawing/render_frames.c\
-	./bonus/src/drawing/render_frames2.c\
-	./bonus/src/drawing/background.c\
-	./bonus/src/drawing/ft_pixel_put.c\
-	./bonus/src/drawing/ft_pixel_get.c\
-	./bonus/src/drawing/minimap_utils.c\
-	./bonus/src/drawing/minimap_array.c\
-	./bonus/src/drawing/minimap.c\
-	./bonus/src/drawing/draw_utils.c\
-	./bonus/src/drawing/draw_hands.c\
-	./bonus/src/drawing/draw_head_hud.c\
-	./bonus/src/drawing/sprites.c\
-	./bonus/src/drawing/draw_doors.c\
-	./bonus/src/drawing/draw_doors2.c\
-	./bonus/src/init/open_window.c\
-	./bonus/src/init/read_cub_file.c\
-	./bonus/src/init/init_textures.c\
-	./bonus/src/init/init_textures_extra.c\
-	./bonus/src/init/init_extra_sprites.c\
-	./bonus/src/init/init_data.c\
-	./bonus/src/init/init_imgs.c\
-	./bonus/src/close/close_window.c\
-	./bonus/src/utils/ft_strjoin.c\
-	./bonus/src/utils/get_next_line.c\
-	./bonus/src/utils/ft_strnstr.c\
-	./bonus/src/utils/get_array_size.c\
-	./bonus/src/utils/ft_isdigit.c\
-	./bonus/src/utils/ft_strlen.c\
-	./bonus/src/utils/ft_itoa.c\
-	./bonus/src/utils/flood_fill.c\
-	./bonus/src/utils/ft_is_numeric.c\
-	./bonus/src/utils/ft_atoi.c\
-	./bonus/src/utils/is_valid_colors.c\
-	./bonus/src/utils/ft_strdup.c\
-	./bonus/src/utils/ft_strchr.c\
-	./bonus/src/utils/ft_strncmp.c\
-	./bonus/src/utils/ft_calloc.c\
-	./bonus/src/utils/ft_bzero.c\
-	./bonus/src/utils/ft_split_set.c\
-	./bonus/src/utils/ft_strcmp.c\
-	./bonus/src/utils/ft_memcpy.c\
-	./bonus/src/utils/ft_split.c\
-	./bonus/src/utils/ft_strtrim.c\
-	./bonus/src/utils/ft_put_nbr.c\
-	./bonus/src/utils/time.c\
-	./bonus/src/utils/utils_list.c\
-	./bonus/src/utils/ft_substr.c\
-	./bonus/src/utils/is_direction.c\
-	./bonus/src/utils/isOnlyDigitOrComma.c\
-	./bonus/src/utils/free_arr.c\
-	./bonus/main.c\
+SRC_BONUS = ./bonus/src/parser/check_input_bonus.c\
+	./bonus/src/parser/check_map_integrity_bonus.c\
+	./bonus/src/parser/check_line_bonus.c\
+	./bonus/src/parser/get_ttl_nbr_lines_bonus.c\
+	./bonus/src/parser/get_map_size_bonus.c\
+	./bonus/src/parser/get_map_to_array_bonus.c\
+	./bonus/src/parser/get_elements_bonus.c\
+	./bonus/src/parser/access_file_bonus.c\
+	./bonus/src/parser/get_elements_textures_bonus.c\
+	./bonus/src/parser/check_map_extension_bonus.c\
+	./bonus/src/parser/set_start_bonus.c\
+	./bonus/src/move/move_player_bonus.c\
+	./bonus/src/move/handle_player_keys_bonus.c\
+	./bonus/src/move/handle_keypress_bonus.c\
+	./bonus/src/move/handle_mouse_bonus.c\
+	./bonus/src/drawing/render_frames_bonus.c\
+	./bonus/src/drawing/render_frames2_bonus.c\
+	./bonus/src/drawing/background_bonus.c\
+	./bonus/src/drawing/ft_pixel_put_bonus.c\
+	./bonus/src/drawing/ft_pixel_get_bonus.c\
+	./bonus/src/drawing/minimap_utils_bonus.c\
+	./bonus/src/drawing/minimap_array_bonus.c\
+	./bonus/src/drawing/minimap_bonus.c\
+	./bonus/src/drawing/draw_utils_bonus.c\
+	./bonus/src/drawing/draw_hands_bonus.c\
+	./bonus/src/drawing/draw_head_hud_bonus.c\
+	./bonus/src/drawing/sprites_bonus.c\
+	./bonus/src/drawing/draw_doors_bonus.c\
+	./bonus/src/drawing/draw_doors2_bonus.c\
+	./bonus/src/init/open_window_bonus.c\
+	./bonus/src/init/read_cub_file_bonus.c\
+	./bonus/src/init/init_textures_bonus.c\
+	./bonus/src/init/init_textures_extra_bonus.c\
+	./bonus/src/init/init_extra_sprites_bonus.c\
+	./bonus/src/init/init_data_bonus.c\
+	./bonus/src/init/init_imgs_bonus.c\
+	./bonus/src/close/close_window_bonus.c\
+	./bonus/src/utils/ft_strjoin_bonus.c\
+	./bonus/src/utils/get_next_line_bonus.c\
+	./bonus/src/utils/ft_strnstr_bonus.c\
+	./bonus/src/utils/get_array_size_bonus.c\
+	./bonus/src/utils/ft_isdigit_bonus.c\
+	./bonus/src/utils/ft_strlen_bonus.c\
+	./bonus/src/utils/ft_itoa_bonus.c\
+	./bonus/src/utils/flood_fill_bonus.c\
+	./bonus/src/utils/ft_is_numeric_bonus.c\
+	./bonus/src/utils/ft_atoi_bonus.c\
+	./bonus/src/utils/is_valid_colors_bonus.c\
+	./bonus/src/utils/ft_strdup_bonus.c\
+	./bonus/src/utils/ft_strchr_bonus.c\
+	./bonus/src/utils/ft_strncmp_bonus.c\
+	./bonus/src/utils/ft_calloc_bonus.c\
+	./bonus/src/utils/ft_bzero_bonus.c\
+	./bonus/src/utils/ft_split_set_bonus.c\
+	./bonus/src/utils/ft_strcmp_bonus.c\
+	./bonus/src/utils/ft_memcpy_bonus.c\
+	./bonus/src/utils/ft_split_bonus.c\
+	./bonus/src/utils/ft_strtrim_bonus.c\
+	./bonus/src/utils/ft_put_nbr_bonus.c\
+	./bonus/src/utils/time_bonus.c\
+	./bonus/src/utils/utils_list_bonus.c\
+	./bonus/src/utils/ft_substr_bonus.c\
+	./bonus/src/utils/is_direction_bonus.c\
+	./bonus/src/utils/is_only_digit_or_comma_bonus.c\
+	./bonus/src/utils/free_arr_bonus.c\
+	./bonus/main_bonus.c\
 
 OBJSDIR = objects
 

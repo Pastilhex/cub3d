@@ -111,7 +111,7 @@ void	get_minimap(t_data *d)
 	{
 		d->mini_map_ptr->start_y = d->pos_y;
 		d->mini_map_ptr->y = SCREENWIDTH * 0.775;
-		while (d->mini_map_ptr->start_y <= d->pos_y + 20)
+		while (d->mini_map_ptr->start_y <= ceil(d->pos_y) + 20)
 		{
 			draw_square(d->mini_map_ptr->big_map
 			[(int)d->mini_map_ptr->start_x][(int)d->mini_map_ptr->start_y],
