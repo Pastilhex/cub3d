@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_to_array.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/27 10:37:33 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/27 12:54:55 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 bool	is_valid_char(char c)
 {
-	if (c == '0' || ft_isdigit(c) || is_direction(c) || c == '\n' || c == ' ')
+	if (c == '0' || ft_isdigit(c) || is_direction(c) ||  allowed_sprites(c) ||c == '\n' || c == ' ')
 		return (true);
 	return (false);
 }
 
 bool	is_sprite(char c)
 {
-	if (c == '6' || c == '7' || c == '8')
+	if (c == '6' || allowed_sprites(c))
 		return (true);
 	return (false);
 }
@@ -33,21 +33,7 @@ void	set_sprite_arr(t_map *m, int i, int j, char c)
 	sprite = m->sprite_arr;
 	sprite[m->sprite_index].x = i;
 	sprite[m->sprite_index].y = j;
-	if (c == '6')
-	{
-		m->world_map[i][j] = '0';
-		sprite[m->sprite_index].txt = &m->data_ptr->txt_ptr[ceilinglamp];
-	}
-	if (c == '7')
-	{
-		sprite[m->sprite_index].txt = &m->data_ptr->txt_ptr[barrel];
-		m->world_map[i][j] = '7';
-	}
-	if (c == '8')
-	{
-		sprite[m->sprite_index].txt = &m->data_ptr->txt_ptr[soldier];
-		m->world_map[i][j] = '8';
-	}
+	set_sprite_extra(m, i, j, c);
 	m->sprite_index++;
 }
 

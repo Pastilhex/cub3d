@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:23:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/26 11:02:37 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/10/27 12:53:29 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	check_map_inside(t_map *map, char **floor, int i, int j)
 			map->inside_checked = 1;
 			return ;
 		}
-		if (floor[i][j] != '0' && !ft_isdigit(floor[i][j]) && floor[i][j] != 'X')
+		if (floor[i][j] != '0' && !ft_isdigit(floor[i][j]) && !allowed_sprites(floor[i][j]) && floor[i][j] != 'X')
 			map->inside_checked = 1;
 		return ;
 	}

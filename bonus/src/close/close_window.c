@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close_window.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:59:10 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/26 22:10:14 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/27 12:43:06 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static void	cleaning(t_data *d, t_map *m)
 		clear_list(d->head);
 	free(d->txt_head);
 	free(d->txt_hands);
-	free(d->txt_door);
 	free(m->animated_door);
 	free(m->sprite_order);
 	free(m->sprite_arr);

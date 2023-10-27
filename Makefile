@@ -91,6 +91,8 @@ SRC_BONUS = ./bonus/src/parser/check_input.c\
 	./bonus/src/init/open_window.c\
 	./bonus/src/init/read_cub_file.c\
 	./bonus/src/init/init_textures.c\
+	./bonus/src/init/init_textures_extra.c\
+	./bonus/src/init/init_extra_sprites.c\
 	./bonus/src/init/init_data.c\
 	./bonus/src/init/init_imgs.c\
 	./bonus/src/close/close_window.c\

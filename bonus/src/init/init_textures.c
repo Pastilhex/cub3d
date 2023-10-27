@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:21:33 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/27 10:55:35 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/27 13:32:21 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,11 @@ void	init_textures_img(t_data *d)
 	new_img(d, blue2, d->map_ptr->blue2_wall_texture);
 	new_img(d, blueskeleton, d->map_ptr->blueskeleton_wall_texture);
 	new_img(d, blueempty, d->map_ptr->blueempty_wall_texture);
-	new_img(d, ceilinglamp, d->map_ptr->ceilinglamp_texture);
-	new_img(d, barrel, d->map_ptr->barrel_texture);
 	new_img(d, miniplayer, d->map_ptr->miniplayer_texture);
-	new_img(d, soldier, d->map_ptr->soldier_texture);
 	img_head(d);
 	img_hands(d);
 	img_door(d);
+	init_textures_extra_img(d);
 }
 
 void	init_door(t_map *map)
@@ -71,11 +69,7 @@ void	init_bonus(t_map *map, t_data *d)
 	map->blue2_wall_texture = "./bonus/textures/xpm/bluewall2.xpm";
 	map->blueskeleton_wall_texture = "./bonus/textures/xpm/blueskeleton.xpm";
 	map->blueempty_wall_texture = "./bonus/textures/xpm/blueempty.xpm";
-	map->ceilinglamp_texture = "./bonus/textures/xpm/finalceilinglamp.xpm";
-	map->barrel_texture = "./bonus/textures/xpm/barrel.xpm";
 	map->miniplayer_texture = "./bonus/textures/xpm/mini_player.xpm";
-	map->door_texture = "./bonus/textures/xpm/door.xpm";
-	map->soldier_texture = "./bonus/textures/xpm/guard/front_01.xpm";
 	map->animated_head = ft_calloc(3, sizeof(char *));
 	map->animated_head[0] = "./bonus/textures/xpm/guard/head_01.xpm";
 	map->animated_head[1] = "./bonus/textures/xpm/guard/head_02.xpm";
@@ -85,4 +79,5 @@ void	init_bonus(t_map *map, t_data *d)
 	map->animated_hands[1] = "./bonus/textures/xpm/handsgun02.xpm";
 	map->animated_hands[2] = "./bonus/textures/xpm/handsgun03.xpm";
 	init_door(map);
+	init_extra_bonus(map, d);
 }

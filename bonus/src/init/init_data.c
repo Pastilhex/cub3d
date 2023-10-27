@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:42:45 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/27 10:46:42 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/27 13:33:56 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	init_data2(t_data *d, struct s_map *map_ptr, t_mlx *m)
 	d->fps = 0;
 	d->tps = 0.0;
 	d->tex_x = 0;
-	d->txt_ptr = malloc(sizeof(t_texture) * 15);
+	d->txt_ptr = malloc(sizeof(t_texture) * 28);
 	d->map_ptr = map_ptr;
 	d->m_ptr = m;
 	d->mini_map_ptr = NULL;

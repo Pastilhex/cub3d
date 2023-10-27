@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_frames2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:05:09 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/10/27 10:42:39 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/27 13:06:41 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ static void	check_hit(t_data *data)
 			data->map_y += data->step_y;
 			data->side = 1;
 		}
-		if (data->map_ptr->world_map[data->map_x][data->map_y] != '0'
-			&& data->map_ptr->world_map[data->map_x][data->map_y] != '7'
-			&& data->map_ptr->world_map[data->map_x][data->map_y] != '8'
-			&& data->map_ptr->world_map[data->map_x][data->map_y] != '9')
+		if (dont_hit(data))
 			data->hit = 1;
 	}
 	if (data->side == 0)

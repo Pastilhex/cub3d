@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:51:58 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/10/27 10:54:44 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/10/27 13:28:51 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,6 +219,19 @@ typedef struct s_map
 	char				*hands;
 	char				*door_texture;
 	char				*soldier_texture;
+	char				*bed_texture;
+	char				*redflag_texture;
+	char				*hangskeleton_texture;
+	char				*kitchenware_texture;
+	char				*oven_texture;
+	char				*pilar_texture;
+	char				*table_texture;
+	char				*weapons_texture;
+	char				*knight_texture;
+	char				*bush_texture;
+	char				*groundlamp_texture;
+	char				*lamp_texture;
+	char				*sink_texture;
 	char				**animated_head;
 	char				**animated_hands;
 	char				**animated_door;
@@ -293,6 +306,19 @@ enum					e_direction
 	barrel = 12,
 	miniplayer = 13,
 	soldier = 14,
+	bed = 15,
+	redflag = 16,
+	hangskeleton = 17,
+	kitchenware = 18,
+	oven = 19,
+	pilar = 20,
+	table = 21,
+	weapons = 22,
+	knight = 23,
+	bush = 24,
+	groundlamp = 25,
+	lamp = 26,
+	sink = 27,
 };
 
 /*-----> Bonus <-----*/
@@ -331,6 +357,11 @@ void					img_head(t_data *d);
 void					img_hands(t_data *d);
 void					new_img(t_data *d, enum e_direction var, char *txt);
 void					img_door(t_data *d);
+void					init_textures_extra_img(t_data *d);
+void					init_extra_bonus(t_map *map, t_data *d);
+void					set_sprite_extra(t_map *m, int i, int j, char c);
+int						allowed_sprites(int c);
+bool					dont_hit(t_data *data);
 
 /*-----> Utils <-----*/
 int						ft_atoi(const char *str);
