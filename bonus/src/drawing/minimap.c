@@ -107,28 +107,20 @@ void	draw_miniplayer(t_data *d)
 
 void	get_minimap(t_data *d)
 {
-	// t_minimap	mm;
-
-	// init_t_minimap(&mm, d);
-	// d->mini_map_ptr = &mm;
-	// copy_large_world_map(d);
 	while (d->mini_map_ptr->start_x <= d->pos_x + 10)
 	{
 		d->mini_map_ptr->start_y = d->pos_y;
 		d->mini_map_ptr->y = SCREENWIDTH * 0.775;
 		while (d->mini_map_ptr->start_y <= d->pos_y + 20)
 		{
-			draw_square(d->mini_map_ptr->big_map[(int)d->mini_map_ptr->start_x][(int)d->mini_map_ptr->start_y], d, d->mini_map_ptr->x,
-				d->mini_map_ptr->y);
+			draw_square(d->mini_map_ptr->big_map
+				[(int)d->mini_map_ptr->start_x][(int)d->mini_map_ptr->start_y],
+				d, d->mini_map_ptr->x, d->mini_map_ptr->y);
 			d->mini_map_ptr->start_y++;
 			d->mini_map_ptr->y += 0.009375 * SCREENWIDTH;
 		}
 		d->mini_map_ptr->start_x++;
 		d->mini_map_ptr->x += (0.0125 * SCREENHEIGHT);
 	}
-	// free_arr2(d->mini_map_ptr->big_map, d->map_ptr->map_end
-	// 	- d->map_ptr->map_start + 10);
-	// ft_print_array(d->mini_map_ptr->big_map, d->map_ptr->map_end - d->map_ptr->map_start + 10);
-
 	draw_miniplayer(d);
 }

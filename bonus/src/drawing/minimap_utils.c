@@ -22,8 +22,10 @@ void	init_t_miniplayer(t_miniplayer *mp)
 {
 	mp->pl_radius = SCREENHEIGHT * 0.00625;
 	mp->line_length = SCREENHEIGHT * 0.025;
-	mp->i_center = (int)((SCREENWIDTH * 0.86875 + SCREENWIDTH * 0.878125) / 2);
-	mp->j_center = (int)((SCREENHEIGHT * 0.9125 + SCREENHEIGHT * 0.925) / 2);
+	mp->i_center = (int)((SCREENWIDTH * 0.86875
+		+ SCREENWIDTH * 0.878125) / 2);
+	mp->j_center = (int)((SCREENHEIGHT * 0.9125
+		+ SCREENHEIGHT * 0.925) / 2);
 	mp->dx = 0;
 	mp->dy = 0;
 	mp->sx = 0;
@@ -43,6 +45,4 @@ void	init_t_minimap(t_minimap *mm, t_data *d)
 	mm->x = ((double)SCREENHEIGHT * 0.85);
 	mm->big_map = ft_calloc((d->map_ptr->map_end - \
 		d->map_ptr->map_start + 10), sizeof(char *));
-	// d->big_map_copy = ft_calloc((d->map_ptr->map_end - 
-	// 	d->map_ptr->map_start + 10), sizeof(char *));
 }

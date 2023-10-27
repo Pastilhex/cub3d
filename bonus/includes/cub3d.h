@@ -364,6 +364,12 @@ int						allowed_sprites(int c);
 bool					dont_hit(t_data *data);
 void					check_hit_doors(t_data *data);
 void					door_animation(t_data *d);
+void					check_side(t_data *d);
+void					draw_doors(t_data *d, int *x);
+void					draw_doors_cols(t_data *data, int *x);
+
+
+
 
 
 

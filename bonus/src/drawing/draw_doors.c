@@ -102,5 +102,23 @@ void	door_animation(t_data *d)
 		d->close_door = 1;
 	}
 }
-
-
+void	draw_doors(t_data *d, int *x)
+{
+	if (d->ray_dir_y < 0)
+	{
+		d->step_y = -1;
+		d->side_dist_y = (d->pos_y - d->map_y) * d->delta_dist_y;
+	}
+	else
+	{
+		d->step_y = 1;
+		d->side_dist_y = (d->map_y + 1.0 - d->pos_y) * \
+			d->delta_dist_y;
+	}
+	if (d->map_x && d->map_y)
+		check_hit_doors(d);
+	if (d->map_ptr->world_map[d->map_x][d->map_y] == '9')
+		check_side(d);
+	calculate_cols(d);
+	draw_doors_cols(d, x);
+}
