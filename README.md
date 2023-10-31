@@ -1,5 +1,4 @@
 # Cub3D
-Cub3D - My first RayCaster with miniLibX
 
 <p align="center">
   <img src="https://img.shields.io/github/languages/top/pastilhex/cub3d?color=#FFFFFF&style=flat-square" />
@@ -8,9 +7,10 @@ Cub3D - My first RayCaster with miniLibX
   <img src="https://img.shields.io/github/last-commit/pastilhex/cub3d?color=#FFFFFF&style=flat-square" />
 </p>
 <p align="center">
-  <img src="https://github.com/Pastilhex/cub3d/blob/main/README/005.gif" width="500" />
+  <img src="https://github.com/Pastilhex/cub3d/blob/main/README/wolfenstein.gif" width="639" />
 </p>
 
+Cub3D - My first RayCaster with miniLibX
 ### 🤝 Authorship - Collaborative Work
 > This project is based on sharing knowledge and experiences throughout the entire process of understanding the MinilibX library and consecutive implementation in cub3d :)
 
