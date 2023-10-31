@@ -8,7 +8,7 @@ Cub3D - My first RayCaster with miniLibX
   <img src="https://img.shields.io/github/last-commit/pastilhex/cub3d?color=#FFFFFF&style=flat-square" />
 </p>
 <p align="center">
-  <img src="https://github.com/ziliolu/42_minishell/blob/main/info/42minishell.gif" width="500" />
+  <img src="https://github.com/Pastilhex/cub3d/blob/main/README/005.gif" width="500" />
 </p>
 
 ### 🤝 Authorship - Collaborative Work
