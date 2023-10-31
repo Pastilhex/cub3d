@@ -51,16 +51,12 @@ The maps used in this project are the main root for the graphics design. Based i
 In Cub3d the main objective it's to translate a string map into a 3D game. With the implementation of miniLibX we were able to design all the pixels requirements for the Raycasting technique. [Raycast](https://en.wikipedia.org/wiki/Ray_casting) 
 
 At first we started with some simple tests to understand how our ft_put_pixel function worked. Pixels are painted according to coordinates.
-<img src="https://github.com/Pastilhex/cub3d/blob/main/README/002.png" width="400" />
-
 After some tests, we moved on to the first contact with printing several vertical lines. This is the basic principle of Raycasting. At this stage we draw the first part of the project, which is the sky and the ground.
-<img src="https://github.com/Pastilhex/cub3d/blob/main/README/003.png" width="400" />
+<p align="center"><img src="https://github.com/Pastilhex/cub3d/blob/main/README/002.png" width="400" /> <img src="https://github.com/Pastilhex/cub3d/blob/main/README/003.png" width="400" /></p>
 
 The image and the space through which we can navigate is generated based on a map of characters that identify the walls, the free space through which we can walk and some sprites spread across the map.
-<img src="https://github.com/Pastilhex/cub3d/blob/main/README/006.png" width="400" />
-
 After converting the character map, through the Raytracing process, to a graphical environment, we obtained the first satisfactory results where we were able to apply mobility through the hooks events of the miniLibX library.
-<img src="https://github.com/Pastilhex/cub3d/blob/main/README/005.gif" width="400" />
+<p align="center"><img src="https://github.com/Pastilhex/cub3d/blob/main/README/006.png" width="400" /> <img src="https://github.com/Pastilhex/cub3d/blob/main/README/005.gif" width="400" /></p>
 
 
 
