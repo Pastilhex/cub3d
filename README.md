@@ -1,5 +1,4 @@
-# Cub3D
-
+# <p align="center">Cub3D - My first RayCaster with miniLibX</p>
 <p align="center">
   <img src="https://img.shields.io/github/languages/top/pastilhex/cub3d?color=#FFFFFF&style=flat-square" />
   <img src="https://img.shields.io/badge/score-125%20%2F%20125-success?color=#FFFFFF&style=flat-square" />
@@ -10,7 +9,7 @@
   <img src="https://github.com/Pastilhex/cub3d/blob/main/README/wolfenstein.gif" width="639" />
 </p>
 
-Cub3D - My first RayCaster with miniLibX
+
 ### 🤝 Authorship - Collaborative Work
 > This project is based on sharing knowledge and experiences throughout the entire process of understanding the MinilibX library and consecutive implementation in cub3d :)
 
@@ -59,13 +58,16 @@ After converting the character map, through the Raytracing process, to a graphic
 <p align="center"><img src="https://github.com/Pastilhex/cub3d/blob/main/README/006.png" width="400" /> <img src="https://github.com/Pastilhex/cub3d/blob/main/README/005.gif" width="400" /></p>
 
 The next step was to demystify the process of applying textures to each face of the blocks individually. The faces were identified as North, South, East, West and the path to their textures were indicated through the map file.
-<img src="https://github.com/Pastilhex/cub3d/blob/main/README/007.gif" width="400" /> <img src="https://github.com/Pastilhex/cub3d/blob/main/README/009.gif" width="400" />
 
-For the bonus phase of our project, we had to implement collisions with walls, create animations, doors that open and close and finally the possibility of using the mouse to move the player's view! One of the first implementations was the player HUD and player face animation.
-<img src="https://github.com/Pastilhex/cub3d/blob/main/README/013.png" width="400" /> <img src="https://github.com/Pastilhex/cub3d/blob/main/README/014.png" width="400" /> 
+<p align="center"><img src="https://github.com/Pastilhex/cub3d/blob/main/README/000.gif" width="400" /> <img src="https://github.com/Pastilhex/cub3d/blob/main/README/009.png" width="400" /></p>
+
+For the bonus phase of our project, we had to implement collisions with walls, create animations, doors that open and close and finally the possibility of using the mouse to move the player's view! One of the first implementations was the player HUD, player face animation and minimap system.
+
+<p align="center"><img src="https://github.com/Pastilhex/cub3d/blob/main/README/013.png" width="400" /> <img src="https://github.com/Pastilhex/cub3d/blob/main/README/014.png" width="400" /></p>
 
 After applying the textures, it was not difficult to import new textures and identify new blocks on the map to build a more detailed map. Sprites were also implemented, because they behave differently from blocks and allow the implementation of all types of objects from all aspects across the map. So the game looks very identical to the original game, Wolfenstein.
-<img src="https://github.com/Pastilhex/cub3d/blob/main/README/015.png" width="400" /> <img src="https://github.com/Pastilhex/cub3d/blob/main/README/wolfenstein.gif" width="400" /> 
+
+<p align="center"><img src="https://github.com/Pastilhex/cub3d/blob/main/README/015.png" width="400" /> <img src="https://github.com/Pastilhex/cub3d/blob/main/README/wolfenstein.gif" width="400" /></p>
 
 
 ## Installation
