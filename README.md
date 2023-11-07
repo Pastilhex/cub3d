@@ -58,6 +58,14 @@ The image and the space through which we can navigate is generated based on a ma
 After converting the character map, through the Raytracing process, to a graphical environment, we obtained the first satisfactory results where we were able to apply mobility through the hooks events of the miniLibX library.
 <p align="center"><img src="https://github.com/Pastilhex/cub3d/blob/main/README/006.png" width="400" /> <img src="https://github.com/Pastilhex/cub3d/blob/main/README/005.gif" width="400" /></p>
 
+The next step was to demystify the process of applying textures to each face of the blocks individually. The faces were identified as North, South, East, West and the path to their textures were indicated through the map file.
+<img src="https://github.com/Pastilhex/cub3d/blob/main/README/007.gif" width="400" /> <img src="https://github.com/Pastilhex/cub3d/blob/main/README/009.gif" width="400" />
+
+For the bonus phase of our project, we had to implement collisions with walls, create animations, doors that open and close and finally the possibility of using the mouse to move the player's view! One of the first implementations was the player HUD and player face animation.
+<img src="https://github.com/Pastilhex/cub3d/blob/main/README/013.png" width="400" /> <img src="https://github.com/Pastilhex/cub3d/blob/main/README/014.png" width="400" /> 
+
+After applying the textures, it was not difficult to import new textures and identify new blocks on the map to build a more detailed map. Sprites were also implemented, because they behave differently from blocks and allow the implementation of all types of objects from all aspects across the map. So the game looks very identical to the original game, Wolfenstein.
+<img src="https://github.com/Pastilhex/cub3d/blob/main/README/015.png" width="400" /> <img src="https://github.com/Pastilhex/cub3d/blob/main/README/wolfenstein.gif" width="400" /> 
 
 
 ## Installation
